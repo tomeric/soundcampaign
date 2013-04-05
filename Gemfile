@@ -10,8 +10,11 @@ end
 # Database:
 gem 'pg'
 gem 'friendly_id'
-gem 'paperclip'
 gem 'protected_attributes'
+
+# Files:
+gem 'aws-sdk'
+gem 'paperclip'
 
 # Authentication:
 gem 'devise'
