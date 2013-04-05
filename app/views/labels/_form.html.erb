@@ -1,0 +1,25 @@
+<%= semantic_form_for @label do |f| %>
+  <%= f.inputs 'Preview' do %>
+    <%= f.input :name        %>
+    <%= f.input :cover       %>
+    <%= f.input :description %>
+  <% end %>
+  
+  <%= f.inputs 'Label information' do %>
+    <%= f.input :catid %>
+    <%= f.input :style %>
+  <% end %>
+  
+  <%= f.inputs 'Contact information' do %>
+    <%= f.input :contact_name         %>
+    <%= f.input :contact_email        %>
+    <%= f.input :contact_street       %>
+    <%= f.input :contact_phone        %>
+    <%= f.input :contact_zipcode_city %>
+    <%= f.input :contact_url          %>
+  <% end %>
+  
+  <%= f.actions do %>
+    <%= f.action :submit %>
+  <% end %>
+<% end %>

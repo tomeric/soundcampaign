@@ -23,5 +23,8 @@
 # Ignore precompiled assets
 /public/assets
 
+# Ignore uploads:
+/public/system
+
 # Ignore coverage reports
 /coverage

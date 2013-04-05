@@ -11,4 +11,8 @@ FactoryGirl.define do
     password { 'password'      }
     name     { generate :name  }
   end
+  
+  factory :label do
+    name { generate :brand }
+  end
 end

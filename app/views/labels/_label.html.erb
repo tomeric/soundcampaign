@@ -1,0 +1,34 @@
+<section class="label" id="<%= dom_id(label) %>">
+  <header>
+    <h2><%= label.name %></h2>
+    <%= image_tag label.cover.url(:thumbnail_2x), width: '230', height: '230' %>
+  </header>
+  <ul class="links">
+    <li><%= link_to 'Show', label %></li>
+    <li><%= link_to 'Edit', [:edit, label] %></li>
+  </ul>
+  <div class="description">
+    <%= simple_format label.description %>
+  </div>
+  <div class="label-information">
+    <h3>Label information</h3>
+    <h4><%= label.name %></h4>
+    <dl>
+      <dt>Catcode:</dt>
+      <dd><%= label.catid %></dd>
+      <dt>Style:</dt>
+      <dd><%= label.style %></dd>
+    </dl>
+  </div>
+  <div class="contact-information">
+    <h3>Contact information</h3>
+    <h4><%= label.contact_name %></h4>
+    <p>
+      <%= link_to label.contact_email, "mailto:#{label.contact_email}", class: 'email' %>
+      <span class="street"><%= label.contact_street %></span>
+      <span class="phone"><%=  label.contact_phone  %></span>
+      <span class="city"><%=   label.contact_zipcode_city %></span>
+      <%= link_to label.contact_url, label.contact_url, class: 'url' %>
+    </p>
+  </div>
+</section>

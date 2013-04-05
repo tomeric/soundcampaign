@@ -20,6 +20,9 @@ module SoundCampaign
     # ActionMailer:
     config.action_mailer.default_url_options = { host: 'soundcampaign.com' }
     
+    # ActiveRecord:
+    config.active_record.whitelist_attributes = false
+    
     # Development:
     console do
       require 'pry'

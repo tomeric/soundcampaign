@@ -11,7 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130405204454) do
+ActiveRecord::Schema.define(version: 20130405212432) do
+
+  create_table "labels", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "catid"
+    t.string   "style"
+    t.string   "contact_name"
+    t.string   "contact_email"
+    t.string   "contact_street"
+    t.string   "contact_phone"
+    t.string   "contact_zipcode_city"
+    t.string   "contact_url"
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name",                                            null: false
