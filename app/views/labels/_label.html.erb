@@ -4,8 +4,10 @@
     <%= image_tag label.cover.url(:thumbnail_2x), width: '230', height: '230' %>
   </header>
   <ul class="links">
-    <li><%= link_to 'Show', label %></li>
-    <li><%= link_to 'Edit', [:edit, label] %></li>
+    <li><%= link_to 'Show',    label %></li>
+    <li><%= link_to 'Edit',    [:edit, label] %></li>
+    <li><%= link_to 'Destroy', label,
+              method: :delete, data: { confirm: 'Are you sure?' } %></li>
   </ul>
   <div class="description">
     <%= simple_format label.description %>
