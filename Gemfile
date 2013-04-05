@@ -11,6 +11,10 @@ end
 gem 'pg'
 gem 'friendly_id'
 gem 'paperclip'
+gem 'protected_attributes'
+
+# Authentication:
+gem 'devise'
 
 # Frontend:
 group :assets do

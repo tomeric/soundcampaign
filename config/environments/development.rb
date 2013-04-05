@@ -1,5 +1,6 @@
 SoundCampaign::Application.configure do
-  # Settings specified here will take precedence over those in config/application.rb.
+  # ActionMailer:
+  config.action_mailer.default_url_options = { host: 'soundcampaign.dev' }
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
