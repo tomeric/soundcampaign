@@ -1,21 +1,27 @@
 <div id="top">
   <div class="content">
     <div id="logo">
-        Soundsends12
+      Sound Campaign
     </div>
     
-    <a href="#">
-      <div id="user">
-          <img src="images/kanye-west.jpeg">
-          <span>Infinitize MUSIC ProductionZz</span>
-      </div>
-    </a>
+    <% if current_user %>
+      <%= link_to '#' do%>
+        <div id="user">
+          <%= gravatar_tag current_user.email %>
+          <span><%= current_user.name %></span>
+        </div>
+      <% end %>
+    <% else %>
+      <%= link_to new_user_session_path do %>
+        <div id="user"><span>Login</span></div>
+      <% end %>
+    <% end %>
     
     <nav>
       <ul>
-          <li><a href="#">Feedback</a></li>
-          <li><a href="#">Templates</a></li>
-          <li><a href="#">Contactlists</a></li>
+        <li><a href="#">Feedback</a></li>
+        <li><a href="#">Templates</a></li>
+        <li><a href="#">Contactlists</a></li>
       </ul>
     </nav>
   </div>
