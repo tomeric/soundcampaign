@@ -1,36 +1,50 @@
-<section class="label" id="<%= dom_id(label) %>">
-  <header>
-    <h2><%= label.name %></h2>
-    <%= image_tag label.cover.url(:thumbnail_2x), width: '230', height: '230' %>
-  </header>
-  <ul class="links">
-    <li><%= link_to 'Show',    label %></li>
-    <li><%= link_to 'Edit',    [:edit, label] %></li>
-    <li><%= link_to 'Destroy', label,
-              method: :delete, data: { confirm: 'Are you sure?' } %></li>
-  </ul>
-  <div class="description">
-    <%= simple_format label.description %>
+<div class="main-label" id="<%= dom_id(label) %>">
+  <div class="main-label-top">
+      <div class="main-label-img">
+        <%= image_tag label.cover.url(:thumbnail_2x), width: '230', height: '230' %>
+      </div>
+      <div class="main-label-header">
+        <span class="main-label-header-title"><%= label.name %></span>
+        <span class="main-label-header-count">55</span>
+        <span class="main-label-header-edit">
+            <%= link_to 'Edit', [:edit, label] %>
+        </span>
+        <span class="main-label-header-delete">
+          <%= link_to 'Destroy', label,
+                method: :delete,
+                data: {
+                  confirm: 'Are you sure?'
+                } %>
+        </span>
+        <span class="main-label-header-sound">
+          <%= link_to 'Show', label %>
+        </span>
+      </div>
+      <div class="main-label-content">
+        <%= simple_format label.description %>
+      </div>
   </div>
-  <div class="label-information">
-    <h3>Label information</h3>
-    <h4><%= label.name %></h4>
-    <dl>
-      <dt>Catcode:</dt>
-      <dd><%= label.catid %></dd>
-      <dt>Style:</dt>
-      <dd><%= label.style %></dd>
-    </dl>
+  <div class="main-label-info">
+      <div class="main-label-label-box">
+          <h4>Label Information</h4>
+          <ul>
+              <li><%= label.name %></li>
+              <li><strong>Catcode:</strong> <%= label.catid %></li>
+              <li><strong>Style:</strong> <%= label.style %></li>
+          </ul>
+      </div>
+      <div class="main-label-contact-box">
+          <h4>Contact Information</h4>
+          <ul>
+              <li><strong><%= label.contact_name %></strong></li>
+              <li><%= label.contact_street %></li>
+              <li><%= label.contact_zipcode_city %></li>
+          </ul>
+          <ul>
+              <li><%= link_to label.contact_email, "mailto:#{label.contact_email}", class: 'email' %></li>
+              <li><%= label.contact_phone  %></li>
+              <li><%= link_to label.contact_url, label.contact_url, class: 'url' %></li>
+          </ul>
+      </div>
   </div>
-  <div class="contact-information">
-    <h3>Contact information</h3>
-    <h4><%= label.contact_name %></h4>
-    <p>
-      <%= link_to label.contact_email, "mailto:#{label.contact_email}", class: 'email' %>
-      <span class="street"><%= label.contact_street %></span>
-      <span class="phone"><%=  label.contact_phone  %></span>
-      <span class="city"><%=   label.contact_zipcode_city %></span>
-      <%= link_to label.contact_url, label.contact_url, class: 'url' %>
-    </p>
-  </div>
-</section>
+</div>

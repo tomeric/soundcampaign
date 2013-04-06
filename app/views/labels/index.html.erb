@@ -1,4 +1,9 @@
-<h1>Labels</h1>
-<p><%= link_to 'New Label', new_label_path %></p>
+<div class="main-header">
+  <h1 class="main-header-title">Welcome <%= current_user.try(:name) %></h1>
+  <span class="main-header-options">
+    Add a new:
+    <%= link_to 'Label', new_label_path %>
+  </span>
+</div>
 
 <%= render @labels %>
