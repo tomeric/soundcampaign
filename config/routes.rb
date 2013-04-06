@@ -1,5 +1,7 @@
 SoundCampaign::Application.routes.draw do
-  root to: 'labels#index'
+  root to: 'subscribers#new'
+  resources :subscribers
+  
   resources :labels
   
   devise_for :users

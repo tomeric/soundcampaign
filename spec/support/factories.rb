@@ -6,6 +6,10 @@ RSpec.configure do |config|
 end
 
 FactoryGirl.define do
+  factory :subscriber do
+    email { generate :email }
+  end
+  
   factory :user do
     email    { generate :email }
     password { 'password'      }

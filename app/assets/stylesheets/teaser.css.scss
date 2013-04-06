@@ -68,7 +68,7 @@
 		
 	}
 
-#form1, #form2 {
+#subscribe, #thanks {
 		float: left;
 		padding: 0;
 		position:absolute; left:0; right:0; top:0;
@@ -142,7 +142,7 @@ p {
 	
 
 	input.email {
-		background: image-url("teaser-email.png") no-repeat 10px 11px white;
+		background: image-url("icons/teaser-email.png") no-repeat 10px 11px white;
 		text-indent: 32px;
 		width: 30%;
 	}
@@ -150,14 +150,14 @@ p {
 
 
 
-	#form1.fadeInDown {
+	#subscribe.fadeInDown {
 		-webkit-animation-delay: 1s;
 		-moz-animation-delay: 1s;
 		-ms-animation-delay: 1s;
 		-o-animation-delay: 1s;
 		animation-delay: 1s;
 	}
-	#form2.fadeInDown {
+	#thanks.fadeInDown {
 		-webkit-animation-delay: 0.5s;
 		-moz-animation-delay: 0.5s;
 		-ms-animation-delay: 0.5s;

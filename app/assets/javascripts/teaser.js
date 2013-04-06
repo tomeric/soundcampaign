@@ -1,11 +1,7 @@
 $(function () { 
-  $("#form1").addClass("animated fadeInDown");
-  $(".teasersubmit").click(function() {
-    $("#form1").removeClass("fadeInDown").addClass("fadeOutDown");
-    setTimeout(function() {
-      $("#form1").hide();
-    }, 1000);
-    
-    $("#form2").show().addClass("animated fadeInDown");
-  });
+  $('#subscribe').addClass('animated fadeInDown');
+  $('#thanks').addClass('animated fadeInDown');
+  $('#subscribe form').submit(function() {
+    $('#subscribe').removeClass('fadeInDown').addClass('fadeOutDown');
+  })
 });
