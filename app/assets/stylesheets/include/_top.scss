@@ -1,0 +1,73 @@
+$top-bar-height:52px;
+
+
+#top {
+	height:$top-bar-height;
+	/*margin: 1px; conflict sticky footer*/
+	outline: 1px solid #207aa0;
+	border-top: solid 1px rgba(255,255,255, 0.5);
+	@include background-image(linear-gradient(#00a6ff, #008cd8));
+	@include box-shadow(rgba(black, 0.2) 0 2px 3px);
+	.content {
+		margin: 0 auto;
+		width: 980px;
+		border-right: 1px solid rgba(255,255,255, 0.3);
+		height:91px;
+		}
+	}
+
+#logo {
+	float:left;
+	height:$top-bar-height;
+	line-height: $top-bar-height;
+	color:white;
+	font-size: 21px;
+	font-family: "proxima-nova-soft";
+	font-weight: 600;
+	@include user-select(none);
+	@include text-shadow(0px 0px 2px rgba(15,102,139, 0.5));
+}
+
+#user {
+	height:$top-bar-height;
+	line-height: $top-bar-height;
+	float:right;
+	border-left: 1px solid rgba(0,54,83, 0.6);
+	border-right: 1px solid rgba(0,54,83, 0.6);
+	padding: 0 30px;
+	span {
+		color:white;
+		font-family: Helvetica;
+		font-size: 13px;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	img {
+		height:32px;
+		width:32px;
+		@include border-radius(4px);
+		margin-right:20px;
+		
+		@include box-shadow(0px 0px 1px 1px #005786); 
+	}
+}
+
+nav {
+	float: right;
+	border-right: 1px solid rgba(255,255,255, 0.3);
+	ul {
+		list-style: none;
+		li {
+			float: left;
+			height:$top-bar-height;
+			line-height: $top-bar-height;
+			a {
+				color:white;
+				font-family: Helvetica;
+				font-size: 13px;
+				font-weight: bold;
+				margin-right:33px;
+			}
+		}
+	}
+}

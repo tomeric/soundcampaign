@@ -1,0 +1,73 @@
+
+.cd-icon {
+	@include background-image(image-url("icons/cd.png"), linear-gradient(#fefefe, #f5f5f5));
+}
+.music-icon {
+	@include background-image(image-url("icons/music.png"), linear-gradient(#fefefe, #f5f5f5));
+}
+.user-icon {
+	@include background-image(image-url("icons/user.png"), linear-gradient(#fefefe, #f5f5f5));
+}
+
+.knop {
+	float:left;
+	width:225px;
+	height:36px;
+	line-height: 36px;
+	margin-bottom:17px;
+	border: 1px solid #b3b3b3;
+	@include border-radius(3px);
+	background-repeat: no-repeat;
+	@include box-shadow(rgba(100,100,100, 0.1) 1px 1px 2px 1px); 
+	.title {
+		color: #808080;
+		font-size: 13px;
+		font-weight: bold;
+		height:36px;
+		float: left;
+		text-indent: 11px;
+		border-left:1px solid #b3b3b3;
+		margin-left:48px
+	}
+	.number {
+		float:right;
+		background:#808080;
+		color:white;
+		height:18px;
+		margin:9px 9px;
+		padding: 0 8px;
+		line-height: 19px;
+		font-size: 11px;
+		font-weight: bold;
+		@include border-radius(10px);
+		@include box-shadow(#636363 0px 1px 5px 1px inset); 
+	}
+}
+
+h4 {
+	font-size:11px;
+	font-weight:bold;
+	margin: 5px 0;
+	
+}
+.account {
+
+	padding:0 7px 15px 7px;
+	float:left;
+	width:211px;
+	@include background-image(linear-gradient(#fefefe, #f5f5f5));
+	border: 1px solid #b3b3b3;
+	@include border-radius(3px);
+	font-size: 11px;
+	.account-progress{
+		float:left;
+		width:100%;
+		background: #e9e9e9;
+		border-bottom: 1px solid white;
+		@include box-shadow(rgba(100,100,100, 0.2) 0px 1px 2px 1px inset); 
+		height:14px;
+		@include border-radius(6px);
+
+	}
+
+}

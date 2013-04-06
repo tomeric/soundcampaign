@@ -70,6 +70,9 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.1)
       debug_inspector (>= 0.0.1)
+    bourbon (3.1.1)
+      sass (>= 3.2.0)
+      thor
     builder (3.1.4)
     capybara (2.0.3)
       mime-types (>= 1.16)
@@ -249,6 +252,7 @@ DEPENDENCIES
   aws-sdk
   better_errors
   binding_of_caller
+  bourbon
   capybara
   coffee-rails (~> 4.0.0.beta1)
   database_cleaner

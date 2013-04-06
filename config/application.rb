@@ -16,6 +16,7 @@ module SoundCampaign
     
     # Asset pipeline:
     config.assets.initialize_on_precompile = false
+    config.assets.precompile += %w(teaser.css teaser.js lib/modernizr.min.js)
     
     # ActionMailer:
     config.action_mailer.default_url_options = { host: 'soundcampaign.com' }
