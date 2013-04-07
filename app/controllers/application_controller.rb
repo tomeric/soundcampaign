@@ -5,10 +5,12 @@ class ApplicationController < ActionController::Base
   
   private
   
+  def unauthorized
+    redirect_to new_user_session_url(return_to: request.url)
+    return false
+  end
+  
   def require_user
-    unless user_signed_in?
-      redirect_to new_user_session_url(return_to: request.url)
-      return false
-    end
+    unauthorized unless user_signed_in?
   end
 end
