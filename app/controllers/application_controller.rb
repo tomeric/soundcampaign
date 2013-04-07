@@ -10,6 +10,11 @@ class ApplicationController < ActionController::Base
     return false
   end
   
+  def require_label_owner
+    unauthorized unless user_signed_in? &&
+                        current_user == @label.try(:owner)
+  end
+  
   def require_user
     unauthorized unless user_signed_in?
   end
