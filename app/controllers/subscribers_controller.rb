@@ -6,7 +6,11 @@ class SubscribersController < ApplicationController
   end
   
   def new
-    @subscriber = Subscriber.new
+    if user_signed_in?
+      redirect_to labels_url
+    else
+      @subscriber = Subscriber.new
+    end
   end
   
   def create
