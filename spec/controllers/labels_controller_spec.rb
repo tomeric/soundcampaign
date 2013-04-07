@@ -1,8 +1,35 @@
 require 'spec_helper'
 
 describe LabelsController do
+  let(:user)  { create :user  }
+  let(:label) { create :label }
+  
+  context 'authorization' do
+    context 'logged out' do
+      it { should_not have_access_to :get,    :index                       }
+      it { should_not have_access_to :get,    :new                         }
+      it { should_not have_access_to :post,   :create                      }
+      it { should_not have_access_to :get,    :show,    id: label.to_param }
+      it { should_not have_access_to :get,    :edit,    id: label.to_param }
+      it { should_not have_access_to :patch,  :update,  id: label.to_param }
+      it { should_not have_access_to :delete, :destroy, id: label.to_param }
+    end
+    
+    context 'logged in' do
+      before { sign_in user }
+      
+      it { should have_access_to :get,    :index                       }
+      it { should have_access_to :get,    :new                         }
+      it { should have_access_to :post,   :create                      }
+      it { should have_access_to :get,    :show,    id: label.to_param }
+      it { should have_access_to :get,    :edit,    id: label.to_param }
+      it { should have_access_to :patch,  :update,  id: label.to_param }
+      it { should have_access_to :delete, :destroy, id: label.to_param }
+    end
+  end
+  
   describe 'GET :index' do
-    let!(:label) { create :label }
+    before { sign_in user }
     
     it 'assigns all labels as @labels' do
       get :index, {}
@@ -11,7 +38,7 @@ describe LabelsController do
   end
   
   describe 'GET :show' do
-    let!(:label) { create :label }
+    before { sign_in user }
     
     it 'assigns the requested label as @label' do
       get :show, id: label.to_param
@@ -20,6 +47,8 @@ describe LabelsController do
   end
   
   describe 'GET :new' do
+    before { sign_in user }
+    
     it 'assigns a new label as @label' do
       get :new
       expect(assigns[:label]).to be_a_new Label
@@ -27,7 +56,7 @@ describe LabelsController do
   end
   
   describe 'GET :edit' do
-    let!(:label) { create :label }
+    before { sign_in user }
     
     it 'assigns the requested label as @label' do
       get :edit, id: label.to_param
@@ -36,6 +65,8 @@ describe LabelsController do
   end
   
   describe 'POST :create' do
+    before { sign_in user }
+    
     let(:attributes) { attributes_for(:label) }
     
     context 'with valid params' do
@@ -79,7 +110,7 @@ describe LabelsController do
   end
   
   describe 'PATCH :update' do
-    let!(:label) { create :label }
+    before { sign_in user }
     
     let(:attributes) { { name: 'updated name' } }
     
@@ -129,9 +160,11 @@ describe LabelsController do
   end
   
   describe 'DELETE :destroy' do
-    let!(:label) { create :label }
+    before { sign_in user }
     
     it 'destroys the requested label' do
+      label # make sure it exists
+      
       expect {
         delete :destroy, id: label.to_param
       }.to change {
