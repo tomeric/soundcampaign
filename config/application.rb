@@ -28,7 +28,7 @@ module SoundCampaign
     console do
       require 'pry'
       config.console = Pry
-    end
+    end if Rails.env.development?
     
     config.generators do |g|
       g.helper false
