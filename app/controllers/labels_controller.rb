@@ -1,5 +1,7 @@
 class LabelsController < ApplicationController
   
+  layout 'backend'
+  
   before_action :require_user
   
   before_action :set_label,
