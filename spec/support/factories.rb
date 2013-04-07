@@ -17,6 +17,7 @@ FactoryGirl.define do
   end
   
   factory :label do
-    name { generate :brand }
+    owner { build :user     }
+    name  { generate :brand }
   end
 end

@@ -78,6 +78,12 @@ describe LabelsController do
         }.by +1
       end
       
+      it 'sets the owner of the created label to the logged in user' do
+        post :create, label: attributes
+        owner = assigns[:label].owner
+        expect(owner).to eq user
+      end
+      
       it 'assigns a newly created label as @label' do
         post :create, label: attributes
         assigned_label = assigns[:label]

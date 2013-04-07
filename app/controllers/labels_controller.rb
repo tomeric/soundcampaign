@@ -19,6 +19,7 @@ class LabelsController < ApplicationController
   
   def create
     @label = Label.new(label_params)
+    @label.owner = current_user
     
     if @label.save
       redirect_to @label, notice: 'Label was successfully created.'

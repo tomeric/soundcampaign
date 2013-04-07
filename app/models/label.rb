@@ -13,4 +13,9 @@ class Label < ActiveRecord::Base
   validates :name,
     presence: true
   
+  ### ASSOCIATIONS:
+  
+  belongs_to :owner,
+    class_name: User
+  
 end
