@@ -1,6 +1,9 @@
-<h1>Editing label</h1>
+<header class="main-header">
+  <h1 class="main-header-title">Update Label</h1>
+  <span class="main-header-options">
+    Add a new:
+    <%= link_to 'Label', new_label_path %>
+  </span>
+</header>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @label %> |
-<%= link_to 'Back', labels_path %>
