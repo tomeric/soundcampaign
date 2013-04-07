@@ -18,7 +18,7 @@ gem 'aws-sdk'
 gem 'paperclip'
 
 # Authentication:
-gem 'devise'
+gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
 
 # Frontend:
 group :assets do
