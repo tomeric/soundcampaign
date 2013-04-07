@@ -4,21 +4,18 @@
         <%= image_tag label.cover.url(:thumbnail_2x), width: '230', height: '230' %>
       </div>
       <div class="main-label-header">
-        <span class="main-label-header-title"><%= label.name %></span>
+        <%= link_to label.name, label, class: 'main-label-header-title' %>
         <span class="main-label-header-count">55</span>
-        <span class="main-label-header-edit">
-            <%= link_to 'Edit', [:edit, label] %>
-        </span>
-        <span class="main-label-header-delete">
-          <%= link_to 'Destroy', label,
-                method: :delete,
-                data: {
-                  confirm: 'Are you sure?'
-                } %>
-        </span>
-        <span class="main-label-header-sound">
-          <%= link_to 'Show', label %>
-        </span>
+        <%= link_to 'Edit', [:edit, label],
+            class: 'main-label-header-edit' %>
+        <%= link_to 'Destroy', label,
+              method: :delete,
+              data: {
+                confirm: 'Are you sure?'
+              },
+              class: 'main-label-header-remove' %>
+        <%= link_to 'Show', label,
+            class: 'main-label-header-sound' %>
       </div>
       <div class="main-label-content">
         <%= simple_format label.description %>
