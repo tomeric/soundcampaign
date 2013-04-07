@@ -119,18 +119,6 @@ box-shadow: inner 0 0 5px red;
 				@include box-shadow(inset 1px 0px 1px rgba(255,255,255, 0.4));
         text-indent: -3000em;
 			}
-			.main-label-header-remove {
-        display: none;
-				float:right;
-				height: 39px;
-				width: 50px;
-				@include background-image(image-url("icons/remove.png"),linear-gradient(#cf4848, #cf3839));
-				background-position: center;
-				background-repeat: no-repeat;
-				border-left:1px solid black;
-				@include box-shadow(inset 1px 0px 1px rgba(255,255,255, 0.4));
-        text-indent: -3000em;
-			}
 			.main-label-header-cancel {
 				float:right;
 				height: 39px;

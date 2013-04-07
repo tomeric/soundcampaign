@@ -16,10 +16,16 @@
         <%= f.text_field :name, placeholder: 'Label name' %>
       </span>
       <%= f.submit 'Accept', class: 'main-label-header-accept' %>
-      <%= link_to 'Cancel', :back,  class: 'main-label-header-cancel' %>
+      <%= link_to  'Cancel', @label,
+            class: 'main-label-header-cancel',
+            method: :delete,
+            data: {
+              confirm: 'Are you sure you want to remove this label?'
+            } %>
     </div>
     <div class="main-label-content ">
-      <%= f.text_area :description, rows: 3 %>
+      <%= f.text_area :description, rows: 3,
+            placeholder: 'A description of your label' %>
     </div>
   </div>
   <div class="main-label-info">
@@ -28,13 +34,13 @@
       <ul>
         <li>
           <div class="input-prepend">
-            <span class="add-on">Catid</span>
+            <label class="add-on" for="label_catid">Catid</label>
             <%= f.text_field :catid, class: 'span2', placeholder: 'Catid' %>
           </div>
         </li>
         <li>
           <div class="input-prepend">
-            <span class="add-on">Style</span>
+            <label class="add-on" for="label_style">Style</label>
             <%= f.text_field :style, class: 'span2', placeholder: 'Style' %>
           </div>
         </li>
