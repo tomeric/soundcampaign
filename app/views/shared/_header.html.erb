@@ -1,8 +1,8 @@
 <div id="top">
   <div class="content">
-    <div id="logo">
+    <%= link_to root_url, id: 'logo' do %>
       Sound Campaign
-    </div>
+    <% end %>
     
     <% if current_user %>
       <%= link_to '#' do%>
