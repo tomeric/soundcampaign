@@ -7,6 +7,11 @@ class User < ActiveRecord::Base
   
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
   
+  ### ASSOCIATIONS:
+  
+  has_many :labels,
+    foreign_key: 'owner_id'
+  
   ### VALIDATIONS:
   
   validates :name,

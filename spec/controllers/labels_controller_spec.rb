@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe LabelsController do
-  let(:user)  { create :user  }
-  let(:label) { create :label }
+  let(:user)  { create :user               }
+  let(:label) { create :label, owner: user }
   
   context 'authorization' do
     context 'logged out' do
@@ -31,9 +31,13 @@ describe LabelsController do
   describe 'GET :index' do
     before { sign_in user }
     
-    it 'assigns all labels as @labels' do
+    it "assigns the user's labels as @labels" do
+      owned_label = label
+      other_label = create :label
+      
       get :index, {}
-      expect(assigns[:labels]).to eq [label]
+      expect(assigns[:labels]).to     include owned_label
+      expect(assigns[:labels]).to_not include other_label
     end
   end
   

@@ -4,7 +4,7 @@ class LabelsController < ApplicationController
   before_action :require_user
   
   def index
-    @labels = Label.all
+    @labels = current_user.labels
   end
   
   def show
