@@ -1,10 +1,10 @@
 <div id="sidebar">
     <h3>Overview</h3>
     
-    <div class="knop cd-icon">
+    <%= link_to labels_url, class: 'knop cd-icon' do %>
       <span class="title">See Labels</span>
-      <span class="number">1</span>
-    </div>
+      <span class="number"><%= current_user.labels.count %></span>
+    <% end %>
     <div class="knop music-icon">
       <span class="title">See Releases</span>
       <span class="number">5</span>
