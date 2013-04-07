@@ -1,7 +1,12 @@
 class LabelsController < ApplicationController
   
-  before_action :set_label,    only: %i[show edit update destroy]
   before_action :require_user
+  
+  before_action :set_label,
+    only: %i[show edit update destroy]
+  
+  before_action :require_label_owner,
+    only: %i[show edit update destroy]
   
   def index
     @labels = current_user.labels

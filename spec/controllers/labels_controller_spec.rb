@@ -18,13 +18,20 @@ describe LabelsController do
     context 'logged in' do
       before { sign_in user }
       
-      it { should have_access_to :get,    :index                       }
-      it { should have_access_to :get,    :new                         }
-      it { should have_access_to :post,   :create                      }
-      it { should have_access_to :get,    :show,    id: label.to_param }
-      it { should have_access_to :get,    :edit,    id: label.to_param }
-      it { should have_access_to :patch,  :update,  id: label.to_param }
-      it { should have_access_to :delete, :destroy, id: label.to_param }
+      let(:owned_label) { label         }
+      let(:other_label) { create :label }
+      
+      it { should     have_access_to :get,    :index                             }
+      it { should     have_access_to :get,    :new                               }
+      it { should     have_access_to :post,   :create                            }
+      it { should     have_access_to :get,    :show,    id: owned_label.to_param }
+      it { should_not have_access_to :get,    :show,    id: other_label.to_param }
+      it { should     have_access_to :get,    :edit,    id: owned_label.to_param }
+      it { should_not have_access_to :get,    :edit,    id: other_label.to_param }
+      it { should     have_access_to :patch,  :update,  id: owned_label.to_param }
+      it { should_not have_access_to :patch,  :update,  id: other_label.to_param }
+      it { should     have_access_to :delete, :destroy, id: owned_label.to_param }
+      it { should_not have_access_to :delete, :destroy, id: other_label.to_param }
     end
   end
   
