@@ -5,14 +5,14 @@ body {
   padding: 0;
 }
 
-#wrap {
+.page-wrapper {
   min-height: 100%;
   height: auto !important;
   height: 100%;
   margin: 0 auto (-$footerHeight); // Negative indent footer by it's height 
 }
 
-.page-wrapper {
+.content-wrapper {
   margin: 0 auto;
   width: 980px;
   overflow: hidden;

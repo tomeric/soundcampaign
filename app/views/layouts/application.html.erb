@@ -13,10 +13,12 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <%= render 'shared/header' %>
-    
-    <div id="content" class="page-wrapper">
-      <%= yield %>
+    <div class="page-wrapper">
+      <%= render 'shared/header' %>
+      
+      <section id="content" class="content-wrapper">
+        <%= yield %>
+      </section>
     </div>
     
     <%= render 'shared/footer' %>
