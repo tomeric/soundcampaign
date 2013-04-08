@@ -1,0 +1,19 @@
+$sectionHeaderHeight: 60px !default;
+
+.section-header {
+  float: left;
+  height: $sectionHeaderHeight;
+  width: 100%;
+  
+  .section-header-title {
+    font-size: 21px;
+    font-weight: bold;
+    float: left;
+  }
+  
+  .section-header-options {
+    line-height: $sectionHeaderHeight;
+    float: right;
+    font-size: 13px;
+  }
+}

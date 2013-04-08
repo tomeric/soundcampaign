@@ -1,24 +1,3 @@
-$main-header-height:60px;
-
-.main-header {
-	float:left;
-	height: $main-header-height;
-	width: 100%;
-}
-
-h1, .main-header-title {
-	font-size:21px;
-	font-weight:bold;
-	float:left;
-}
-
-.main-header-options {
-	line-height:$main-header-height;
-	float: right;
-	font-size: 13px;
-}
-
-
 .main-frame-intro {
 	float:left;
 	width:726px;
