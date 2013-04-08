@@ -27,7 +27,6 @@
 @import 'modules/layout/header';
 @import 'modules/layout/footer';
 @import 'modules/layout/sidebar';
-@import 'modules/layout/main-content';
 
 //
 // Typography:
@@ -54,6 +53,7 @@
 //
 
 @import 'modules/boxes/account-status';
+@import 'modules/boxes/blank-slate';
 @import 'modules/boxes/label';
 @import 'modules/boxes/logo';
 @import 'modules/boxes/release';

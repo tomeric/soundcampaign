@@ -1,0 +1,26 @@
+.blank-slate {
+  float: left;
+  width: 726px;
+  @include border-radius(3px);
+  border: 1px solid #add6ec;
+  background: #f5fbfe image-url("intro-arrow.png") no-repeat 520px 10px;
+  @include box-shadow(rgba(100,100,100, 0.1) 1px 1px 2px 1px);
+  padding: 70px 0;
+  
+  .blank-slate-title{
+    font-size: 17px;
+    font-weight: bold;
+    color: #008edc;
+    text-align: center;
+  }
+  
+  .blank-slate-subtitle{
+    text-align: center;
+  }
+  
+  a {
+    color: black;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+}
