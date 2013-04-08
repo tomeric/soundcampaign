@@ -1,0 +1,49 @@
+.shortcut {
+  float: left;
+  width: 225px;
+  height: 36px;
+  line-height: 36px;
+  margin-bottom: 17px;
+  border: 1px solid #b3b3b3;
+  background-repeat: no-repeat;
+  @include background-image(linear-gradient(#fefefe, #f5f5f5));
+  @include border-radius(3px);
+  @include box-shadow(rgba(100,100,100, 0.1) 1px 1px 2px 1px); 
+  
+  .title {
+    color: #808080;
+    font-size: 13px;
+    font-weight: bold;
+    height:36px;
+    float: left;
+    text-indent: 11px;
+    border-left:1px solid #b3b3b3;
+    margin-left:48px
+  }
+  
+  .number {
+    float:right;
+    background:#808080;
+    color:white;
+    height:18px;
+    margin:9px 9px;
+    padding: 0 8px;
+    line-height: 19px;
+    font-size: 11px;
+    font-weight: bold;
+    @include border-radius(10px);
+    @include box-shadow(#636363 0px 1px 5px 1px inset); 
+  }
+  
+  &.labels-shortcut {
+    @include background-image(image-url("icons/cd.png"), linear-gradient(#fefefe, #f5f5f5));
+  }
+  
+  &.releases-shortcut {
+    @include background-image(image-url("icons/music.png"), linear-gradient(#fefefe, #f5f5f5));
+  }
+  
+  &.artists-shortcut {
+    @include background-image(image-url("icons/user.png"), linear-gradient(#fefefe, #f5f5f5));
+  }
+}
