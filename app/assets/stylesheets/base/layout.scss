@@ -1,0 +1,19 @@
+$footerHeight: 209px !default;
+
+html,
+body {
+  height: 100%;
+  margin:  0;
+  padding: 0;
+}
+
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto (-$footerHeight); // Negative indent footer by it's height 
+}
+
+.main-footer {
+  height: $footerHeight;
+}
