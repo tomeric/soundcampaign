@@ -23,10 +23,17 @@
 // Layout:
 //
 
+@import 'base/layout';
 @import 'modules/layout/header';
 @import 'modules/layout/footer';
 @import 'modules/layout/sidebar';
 @import 'modules/layout/main-content';
+
+//
+// Typography:
+//
+
+@import 'base/typography';
 
 //
 // Collections:
@@ -43,38 +50,3 @@
 @import 'modules/boxes/label';
 @import 'modules/boxes/release';
 @import 'modules/boxes/shortcut';
-
-//
-// Layout:
-//
-
-@import 'base/layout';
-
-body {
-  background: #f4f4f4;
-}
-
-* {
-  -webkit-font-smoothing: antialiased;
-  -moz-font-smoothing: antialiased;
-  -o-font-smoothing: antialiased;
-}
-
-h3 {
-  font-size: 13px;
-  font-weight: bold;
-  color: #323232;
-}
-
-#center {
-  margin: 0 auto;
-  width: 980px;
-  overflow: hidden;
-  padding-top:40px;
-  padding-bottom: 40px;
-  
-  #main {
-    float: left;
-    width:729px;
-  }
-}

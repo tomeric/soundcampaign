@@ -14,6 +14,19 @@ body {
   margin: 0 auto (-$footerHeight); // Negative indent footer by it's height 
 }
 
+.main-wrapper {
+  margin: 0 auto;
+  width: 980px;
+  overflow: hidden;
+  padding-top:40px;
+  padding-bottom: 40px;
+}
+
+.main-content {
+  float: left;
+  width: 729px;
+}
+
 .main-footer {
   height: $footerHeight;
 }

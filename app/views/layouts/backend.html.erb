@@ -15,9 +15,10 @@
   <body>
     <%= render 'shared/header' %>
     
-    <div id="center">
+    <div class="main-wrapper">
       <%= render 'shared/aside' %>
-      <div id="main">
+      
+      <div id="content" class="main-content">
         <%= yield %>
       </div>
     </div>
