@@ -63,6 +63,9 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.1)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass-rails (2.3.1.1)
+      railties (>= 3.1.0)
+      sass-rails (>= 3.1.0)
     bourbon (3.1.1)
       sass (>= 3.2.0)
       thor
@@ -257,6 +260,7 @@ DEPENDENCIES
   aws-sdk
   better_errors
   binding_of_caller
+  bootstrap-sass-rails
   bourbon
   capybara
   coffee-rails (~> 4.0.0.beta1)
