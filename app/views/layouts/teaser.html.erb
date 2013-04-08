@@ -13,11 +13,10 @@
     <%= csrf_meta_tags %>
   </head>
     <body id="TEASER">
-      <h1>Sound Campaign</h1>
-      <h2>A music promotion service for labels and music professionals</h2>
-      
-      <%= yield %>
-      
-      <%= render 'shared/javascripts', main: 'teaser' %>
+      <div id="center">
+        <%= yield %>
+        
+        <%= render 'shared/javascripts', main: 'teaser' %>
+      </div>
     </body>
 </html>
