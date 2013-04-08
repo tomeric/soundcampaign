@@ -4,5 +4,7 @@ SoundCampaign::Application.routes.draw do
   
   resources :labels
   
+  resources :mockups, only: %i[index show]
+  
   devise_for :users
 end
