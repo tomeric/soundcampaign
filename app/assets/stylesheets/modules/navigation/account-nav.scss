@@ -1,0 +1,37 @@
+.account-nav {
+  float: right;
+  border-left: 1px solid rgba(0,54,83, 0.6);
+  border-right: 1px solid rgba(0,54,83, 0.6);
+  
+  img {
+    height:32px;
+    width:32px;
+    margin-right:20px;
+    
+    @include border-radius(4px);
+    @include box-shadow(0px 0px 1px 1px #005786); 
+  }
+  
+  .user, .login {
+    display: block;
+    height: $mainHeaderHeight;
+    line-height: $mainHeaderHeight;
+    font-family: Helvetica;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 0 30px;
+    
+    span {
+      text-decoration: underline;
+      color: white;
+    }
+    
+    &:hover {
+      text-decoration: none;
+      
+      span {
+        text-decoration: none;
+      }
+    }
+  }
+}

@@ -1,24 +1,23 @@
-<div id="top">
+<header id="top" class="page-header">
   <div class="content">
-    <%= link_to root_url, id: 'logo' do %>
+    <%= link_to root_url, id: 'logo', class: 'logo' do %>
       Sound Campaign
     <% end %>
     
-    <% if current_user %>
-      <%= link_to '#' do%>
-        <div id="user">
+    <nav class="account-nav">
+      <% if user_signed_in? %>
+        <%= link_to '#', class: 'user' do %>
           <%= gravatar_tag current_user.email %>
           <span><%= current_user.name %></span>
-        </div>
+        <% end%>
+        <!-- dropdown menu --> 
+      <% else %>
+        <%= link_to content_tag(:span, 'Login'), new_user_session_path, class: 'login' %>
       <% end %>
-    <% else %>
-      <%= link_to new_user_session_path do %>
-        <div id="user"><span>Login</span></div>
-      <% end %>
-    <% end %>
+    </nav>
     
     <!--
-    <nav>
+    <nav class="section-nav">
       <ul>
         <li><a href="#">Feedback</a></li>
         <li><a href="#">Templates</a></li>
@@ -27,4 +26,4 @@
     </nav>
     -->
   </div>
-</div>
+</header>

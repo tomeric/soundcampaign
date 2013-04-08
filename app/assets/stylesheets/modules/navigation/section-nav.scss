@@ -1,0 +1,26 @@
+.section-nav {
+  float: right;
+  border-right: 1px solid rgba(255,255,255, 0.3);
+  
+  ul {
+    list-style: none;
+  }
+  
+  li {
+    float: left;
+    height: $mainHeaderHeight;
+    line-height: $mainHeaderHeight;
+  }
+  
+  a {
+    color: white;
+    font-family: Helvetica;
+    font-size: 13px;
+    font-weight: bold;
+    margin-right: 33px;
+    
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
