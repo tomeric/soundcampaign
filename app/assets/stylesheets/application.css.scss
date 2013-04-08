@@ -1,20 +1,43 @@
-@import "bourbon";
-@import "twitter/bootstrap";
+//
+// Variables:
+//
 
-/* Custom mixins toevoegen */
-@import 'include/mixins';
+@import 'base/variables';
 
-/* Onderdelen toevoegen */
-@import "include/variables";
-@import 'include/top';
-@import 'include/footer';
-@import "include/sidebar";
-@import "include/maincontent";
-@import "include/labels";
-@import "include/release";
+//
+// Libraries:
+//
 
-@import "include/bootstrap-editable";
+@import 'bourbon';
+@import 'twitter/bootstrap';
+@import 'lib/bootstrap-editable';
 
+//
+// Custom Mixins:
+//
+
+@import 'mixins/text-shadow';
+@import 'mixins/border-radius';
+
+//
+// Layout:
+//
+
+@import 'modules/layout/header';
+@import 'modules/layout/footer';
+@import 'modules/layout/sidebar';
+@import 'modules/layout/main-content';
+
+//
+// Boxes:
+//
+
+@import 'modules/boxes/label';
+@import 'modules/boxes/release';
+
+//
+// Layout:
+//
 
 body {
 	background: #f4f4f4;

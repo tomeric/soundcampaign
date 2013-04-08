@@ -1,9 +1,32 @@
-@import "bourbon";
-@import "twitter/bootstrap";
+//
+// Variables:
+//
 
-/* Custom mixins toevoegen */
-@import 'include/mixins';
-@import 'include/animations/teaser';
+@import 'base/variables';
+
+//
+// Libraries:
+//
+
+@import 'bourbon';
+@import 'twitter/bootstrap';
+
+//
+// Custom Mixins:
+//
+
+@import 'mixins/text-shadow';
+@import 'mixins/border-radius';
+
+//
+// Custom animations:
+//
+
+@import 'animations/teaser';
+
+//
+// Layout:
+//
 
 * {
     -webkit-font-smoothing: antialiased;
