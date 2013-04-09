@@ -1,0 +1,68 @@
+<section class="section" id="releases">
+  <%= render 'header', title: 'Your Releases' %>
+  <% if @releases.present? %>
+    <div class="releases">
+      <div class="top">
+        <span class="title">2Diy4</span>
+        <span class="number">55</span>
+      </div>
+      <div class="bar">
+        Pending releases
+      </div>
+      <ul>
+        <li>
+          <span class="title">
+            <strong>2Diy4 #002 - Wowshit EP</strong> (Karmon, Ntfo, Betoko)
+          </span>
+          <a href="#" class="edit"></a>
+          <a href="#" class="public"></a>
+          <a href="#" class="send"></a>
+        </li>
+        <li>
+          <span class="title">
+            <strong>2Diy4 #002 - Wowshit EP</strong> (Karmon, Ntfo, Betoko)
+          </span>
+          <a href="#" class="edit"></a>
+          <a href="#" class="public"></a>
+          <a href="#" class="send"></a>
+        </li>
+        <li>
+          <span class="title">
+            <strong>2Diy4 #002 - Wowshit EP</strong> (Karmon, Ntfo, Betoko)
+          </span>
+          <a href="#" class="edit"></a>
+          <a href="#" class="public"></a>
+          <a href="#" class="send"></a>
+        </li>
+      </ul>
+      <div class="bar">
+        Sent releases
+      </div>
+      <ul class="sent">
+        <li>
+          <span class="title">
+            <strong>2Diy4 #002 - Wowshit EP</strong> (Karmon, Ntfo, Betoko)
+          </span>
+          <a href="#" class="feedback"></a>
+          <a href="#" class="switch"></a>
+          <a href="#" class="public"></a>
+          <a href="#" class="remove"></a>
+        </li>
+        <li>
+          <span class="title">
+            <strong>2Diy4 #002 - Wowshit EP</strong> (Karmon, Ntfo, Betoko)
+          </span>
+          <a href="#" class="feedback"></a>
+          <a href="#" class="switch"></a>
+          <a href="#" class="public"></a>
+          <a href="#" class="remove"></a>
+        </li>
+      </ul>
+    </div>
+  <% else %>
+    <div class="blank-slate">
+      <h2 class="blank-slate-title">Let's create your first release!</h2>
+      <p class="blank-slate-subtitle"><a href="#">Click here</a> to see a video!</p>
+    </div>
+  <% end %>
+</section>

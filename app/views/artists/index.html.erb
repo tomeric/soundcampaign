@@ -1,0 +1,11 @@
+<section class="section" id="artists">
+  <%= render 'header', title: 'Your Artists' %>
+  <% if @artists.present? %>
+    <!-- no template -->
+  <% else %>
+    <div class="blank-slate">
+      <h2 class="blank-slate-title">Let's add your first artist!</h2>
+      <p class="blank-slate-subtitle"><a href="#">Click here</a> to see a video!</p>
+    </div>
+  <% end %>
+</section>

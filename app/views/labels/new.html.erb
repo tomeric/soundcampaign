@@ -1,10 +1,4 @@
 <section class="section" id="labels">
-  <header class="section-header">
-    <h1 class="section-header-title">New Label</h1>
-    <span class="section-header-options">
-      Add a new:
-      <%= link_to 'Label', new_label_path %>
-    </span>
-  </header>
+  <%= render 'header', title: 'New Label' %>
   <%= render 'form' %>
 </section>

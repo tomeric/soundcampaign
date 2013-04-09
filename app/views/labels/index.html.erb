@@ -7,13 +7,8 @@ end
 %>
 
 <section class="section" id="labels">
-  <header class="section-header">
-    <h1 class="section-header-title"><%= title %></h1>
-    <span class="section-header-options">
-      Add a new:
-      <%= link_to 'Label', new_label_path %>
-    </span>
-  </header>
+  <%= render 'header', title: title %>
+  
   <% if @labels.present? %>
     <%= render @labels %>
   <% else %>

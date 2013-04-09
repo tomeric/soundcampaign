@@ -3,6 +3,8 @@ SoundCampaign::Application.routes.draw do
   resources :subscribers
   
   resources :labels
+  resources :releases
+  resources :artists
   
   resources :mockups, only: %i[index show]
   

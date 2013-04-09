@@ -1,4 +1,4 @@
-class Label < ActiveRecord::Base
+class Artist < ActiveRecord::Base
   
   ### PAPERCLIP:
   
@@ -13,11 +13,9 @@ class Label < ActiveRecord::Base
   belongs_to :owner,
     class_name: User
   
-  has_many :releases
+  has_many :release_artists
   
-  ### VALIDATIONS:
-  
-  validates :name,
-    presence: true
+  has_many :releases,
+    through: :release_artists
   
 end

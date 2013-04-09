@@ -11,7 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130407114651) do
+ActiveRecord::Schema.define(version: 20130409144718) do
+
+  create_table "artists", force: true do |t|
+    t.integer  "owner_id",           null: false
+    t.string   "name",               null: false
+    t.text     "bio"
+    t.string   "soundcloud_url"
+    t.string   "facebook_url"
+    t.string   "twitter"
+    t.string   "beatport_url"
+    t.string   "website_url"
+    t.string   "email"
+    t.string   "country"
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "artists", ["owner_id"], name: "index_artists_on_owner_id"
 
   create_table "labels", force: true do |t|
     t.string   "name"
@@ -35,6 +56,36 @@ ActiveRecord::Schema.define(version: 20130407114651) do
 
   add_index "labels", ["owner_id"], name: "index_labels_on_owner_id"
 
+  create_table "release_artists", force: true do |t|
+    t.integer  "release_id", null: false
+    t.integer  "artist_id",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "release_artists", ["artist_id"], name: "index_release_artists_on_artist_id"
+  add_index "release_artists", ["release_id", "artist_id"], name: "index_release_artists_on_release_id_and_artist_id", unique: true
+  add_index "release_artists", ["release_id"], name: "index_release_artists_on_release_id"
+
+  create_table "releases", force: true do |t|
+    t.integer  "label_id",           null: false
+    t.integer  "owner_id",           null: false
+    t.string   "title",              null: false
+    t.string   "catid"
+    t.string   "style"
+    t.date     "date"
+    t.text     "description"
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "releases", ["label_id"], name: "index_releases_on_label_id"
+  add_index "releases", ["owner_id"], name: "index_releases_on_owner_id"
+
   create_table "subscribers", force: true do |t|
     t.string   "email",      null: false
     t.datetime "created_at"
@@ -42,6 +93,21 @@ ActiveRecord::Schema.define(version: 20130407114651) do
   end
 
   add_index "subscribers", ["email"], name: "index_subscribers_on_email", unique: true
+
+  create_table "tracks", force: true do |t|
+    t.integer  "release_id"
+    t.integer  "position"
+    t.string   "artist"
+    t.string   "title"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tracks", ["release_id"], name: "index_tracks_on_release_id"
 
   create_table "users", force: true do |t|
     t.string   "name",                                            null: false
