@@ -15,9 +15,9 @@
       <span class="main-label-header-title">
         <%= f.text_field :name, placeholder: 'Label name' %>
       </span>
-      <%= f.submit 'Accept', class: 'main-label-header-accept' %>
+      <%= f.submit 'Accept', class: 'main-label-header-action main-label-header-accept' %>
       <%= link_to  'Cancel', @label,
-            class: 'main-label-header-cancel',
+            class: 'main-label-header-action main-label-header-cancel',
             method: :delete,
             data: {
               confirm: 'Are you sure you want to remove this label?'

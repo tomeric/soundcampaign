@@ -1,1 +1,10 @@
-<%= render @label %>
+<section class="section" id="labels">
+  <header class="section-header">
+    <h1 class="section-header-title"><%= @label.name %></h1>
+    <span class="section-header-options">
+      Add a new:
+      <%= link_to 'Label', new_label_path %>
+    </span>
+  </header>
+  <%= render @label %>
+</section>

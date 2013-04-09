@@ -1,41 +1,41 @@
-<div class="main-label" id="<%= dom_id(label) %>">
+<section class="main-label" id="<%= dom_id(label) %>">
   <div class="main-label-top">
-      <div class="main-label-img">
-        <%= image_tag label.cover.url(:thumbnail_2x), width: '230', height: '230' %>
-      </div>
-      <div class="main-label-header">
-        <%= link_to label.name, label, class: 'main-label-header-title' %>
-        <span class="main-label-header-count">55</span>
-        <%= link_to 'Edit', [:edit, label],
-            class: 'main-label-header-edit' %>
-        <%= link_to 'Show', label,
-            class: 'main-label-header-sound' %>
-      </div>
-      <div class="main-label-content">
-        <%= simple_format label.description %>
-      </div>
+    <div class="main-label-img">
+      <%= image_tag label.cover.url(:thumbnail_2x) %>
+    </div>
+    <header class="main-label-header">
+      <%= link_to label.name, label, class: 'main-label-header-title' %>
+      <span class="main-label-header-count">55</span>
+      <%= link_to 'Edit', [:edit, label],
+          class: 'main-label-header-action main-label-header-edit' %>
+      <%= link_to 'Show', label,
+          class: 'main-label-header-action main-label-header-sound' %>
+    </header>
+    <div class="main-label-content">
+      <%= simple_format label.description %>
+    </div>
   </div>
   <div class="main-label-info">
-      <div class="main-label-label-box">
-          <h4>Label Information</h4>
-          <ul>
-              <li><%= label.name %></li>
-              <li><strong>Catcode:</strong> <%= label.catid %></li>
-              <li><strong>Style:</strong> <%= label.style %></li>
-          </ul>
-      </div>
-      <div class="main-label-contact-box">
-          <h4>Contact Information</h4>
-          <ul>
-              <li><strong><%= label.contact_name %></strong></li>
-              <li><%= label.contact_street %></li>
-              <li><%= label.contact_zipcode_city %></li>
-          </ul>
-          <ul>
-              <li><%= link_to label.contact_email, "mailto:#{label.contact_email}", class: 'email' %></li>
-              <li><%= label.contact_phone  %></li>
-              <li><%= link_to label.contact_url, label.contact_url, class: 'url' %></li>
-          </ul>
-      </div>
+    <div class="main-label-label-box">
+      <h4>Label Information</h4>
+      <ul>
+        <li><%= label.name %></li>
+        <li><strong>Catcode:</strong> <%= label.catid %></li>
+        <li><strong>Style:</strong> <%= label.style %></li>
+      </ul>
+    </div>
+    <div class="main-label-contact-box">
+      <h4>Contact Information</h4>
+      <ul>
+        <li><strong><%= label.contact_name %></strong></li>
+        <li><%= label.contact_street %></li>
+        <li><%= label.contact_zipcode_city %></li>
+      </ul>
+      <ul>
+        <li><%= link_to label.contact_email, "mailto:#{label.contact_email}", class: 'email' %></li>
+        <li><%= label.contact_phone  %></li>
+        <li><%= link_to label.contact_url, label.contact_url, class: 'url' %></li>
+      </ul>
+    </div>
   </div>
-</div>
+</section>
