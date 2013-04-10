@@ -4,9 +4,9 @@
   border-right: 1px solid rgba(0,54,83, 0.6);
   
   img {
-    height:32px;
-    width:32px;
-    margin-right:20px;
+    height: $baseLineHeight * 1.5;
+    width:  $baseLineHeight * 1.5;
+    margin-right: $gridColumnWidth * 0.25;
     
     @include border-radius(4px);
     @include box-shadow(0px 0px 1px 1px #005786); 
@@ -19,7 +19,7 @@
     font-family: Helvetica;
     font-size: 13px;
     font-weight: bold;
-    padding: 0 30px;
+    padding: 0 ($gridColumnWidth / 2);
     
     span {
       text-decoration: underline;

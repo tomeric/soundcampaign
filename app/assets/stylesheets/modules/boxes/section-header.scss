@@ -1,9 +1,6 @@
-$sectionHeaderHeight: 60px !default;
-
 .section-header {
-  float: left;
-  height: $sectionHeaderHeight;
-  width: 100%;
+  line-height: $baseLineHeight * 3;
+  @include clearfix;
   
   .section-header-title {
     font-size: 21px;
@@ -12,7 +9,6 @@ $sectionHeaderHeight: 60px !default;
   }
   
   .section-header-options {
-    line-height: $sectionHeaderHeight;
     float: right;
     font-size: 13px;
   }

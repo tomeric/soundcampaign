@@ -1,24 +1,26 @@
-$footerBackgroundColor: #282a2d !default;
-
 .page-footer {
   background: $footerBackgroundColor;
   color: white;
   
   .content {
-    margin: 0 auto;
-    width: 980px;
+    @include makeRow;
+    @include container-fixed;
+    clear: both;
+    width: $siteWidth;
   }
   
   .block {
-    float: left;
-    width:227px;
-    margin-right:20px;
+    @include makeColumn(4, 2);
+    
+    &:first-child {
+      margin-left: 0;
+    }
   }
   
   h4 {
     font-size: 15px;
     font-weight: bold;
-    margin:25px 0;
+    margin: ($baseLineHeight * 1.5) 0;
   }
   
   ul {

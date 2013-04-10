@@ -1,15 +1,22 @@
 //
-// Custom Variables
-//
-
-$primaryColor: #008eda;
-
-$mainHeaderHeight: 52px;
-$footerHeight:    209px;
-
-//
 // Twitter Bootstrap
 // Default: http://twitter.github.io/bootstrap/customize.html#variables
 //
 
+// Grid settings:
+$siteWidth:       984px;
+$gridGutterWidth: 0px;
+$gridColumns:     24;
+$gridColumnWidth: $siteWidth / $gridColumns;
+$baseLineHeight:  20px;
+
 $bodyBackground: #f4f4f4;
+
+//
+// Custom Variables
+//
+
+$primaryColor: #008eda;
+$footerBackgroundColor: #282a2d;
+
+$mainHeaderHeight: $baseLineHeight * 2.5;

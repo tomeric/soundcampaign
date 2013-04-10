@@ -2,7 +2,7 @@ $pageHeaderGradientStart: lighten($primaryColor, 10%) !default;
 $pageHeaderGradientEnd:    darken($primaryColor,  2%) !default;
 
 .page-header {
-  height: $mainHeaderHeight;
+  height: $mainHeaderHeight - 1px;
   margin: 0;
   padding: 0;
   outline: 1px solid #207aa0;
@@ -13,9 +13,12 @@ $pageHeaderGradientEnd:    darken($primaryColor,  2%) !default;
   @include box-shadow(rgba(black, 0.2) 0 2px 3px);
   
   .content {
-    margin: 0 auto;
-    width: 980px;
+    @include makeRow;
+    @include container-fixed;
+    width: $siteWidth;
     border-right: 1px solid rgba(255,255,255, 0.3);
-    height:91px;
+    height: $mainHeaderHeight;
+    position: relative;
+    top: -1px;
   }
 }

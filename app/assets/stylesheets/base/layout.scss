@@ -3,25 +3,25 @@ body {
   height: 100%;
   margin:  0;
   padding: 0;
+  background: $footerBackgroundColor;
 }
 
 .page-wrapper {
-  margin: 0 auto; // Negative indent footer by it's height
+  background: $bodyBackground;
 }
 
 .content-wrapper {
-  margin: 0 auto;
-  width: 980px;
-  overflow: hidden;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  @include makeRow;
+  @include container-fixed;
+  clear: both;
+  width: $siteWidth;
+  padding: ($baseLineHeight * 2) 0;
+}
+
+.main-sidebar {
+  @include makeColumn(5);
 }
 
 .main-content {
-  float: left;
-  width: 729px;
-}
-
-.page-footer {
-  height: $footerHeight;
+  @include makeColumn(18, 1);
 }

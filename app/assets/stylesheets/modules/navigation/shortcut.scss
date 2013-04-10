@@ -1,49 +1,79 @@
 .shortcut {
-  float: left;
-  width: 225px;
-  height: 36px;
-  line-height: 36px;
-  margin-bottom: 17px;
+  $shortcut-height: ($baseLineHeight * 1.75 - 2); // Remove 2px for border
+  
   border: 1px solid #b3b3b3;
-  background-repeat: no-repeat;
+  height: $shortcut-height;
+  line-height: $shortcut-height;
+  margin-bottom: ($baseLineHeight / 2);
+  display: block;
+  position: relative;
+  background-repeat: repeat;
+  background-position: 0 0;
   @include background-image(linear-gradient(#fefefe, #f5f5f5));
   @include border-radius(3px);
-  @include box-shadow(rgba(100,100,100, 0.1) 1px 1px 2px 1px); 
+  @include box-shadow(rgba(100,100,100, 0.1) 1px 1px 2px 1px);
   
   .title {
+    display: block;
     color: #808080;
     font-size: 13px;
     font-weight: bold;
-    height:36px;
-    float: left;
     text-indent: 11px;
-    border-left:1px solid #b3b3b3;
-    margin-left:48px
+    border-left: 1px solid #b3b3b3;
+    margin-left: $gridColumnWidth;
   }
   
   .number {
-    float:right;
-    background:#808080;
-    color:white;
-    height:18px;
-    margin:9px 9px;
+    height: $baseLineHeight;
+    line-height: $baseLineHeight;
+    
+    $number-offset: ($shortcut-height - $baseLineHeight) / 2;
+    position: absolute;
+    right: $number-offset;
+    top: $number-offset;
+    
+    background: #808080;
+    color: white;
     padding: 0 8px;
-    line-height: 19px;
     font-size: 11px;
     font-weight: bold;
     @include border-radius(10px);
     @include box-shadow(#636363 0px 1px 5px 1px inset); 
   }
   
-  &.labels-shortcut {
-    @include background-image(image-url("icons/cd.png"), linear-gradient(#fefefe, #f5f5f5));
+  &:before {
+    display: block;
+    width: $gridColumnWidth;
+    height: $shortcut-height;
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    background-position: (($gridColumnWidth - 16px) / 2) (($shortcut-height - 16px) / 2);
   }
   
-  &.releases-shortcut {
-    @include background-image(image-url("icons/music.png"), linear-gradient(#fefefe, #f5f5f5));
+  &.labels-shortcut:before {
+    @include background-image(image-url("icons/label.png"));
+    @include media-retina {
+      @include background-image(image-url("icons/label@2x.png"));
+    }
   }
   
-  &.artists-shortcut {
-    @include background-image(image-url("icons/user.png"), linear-gradient(#fefefe, #f5f5f5));
+  &.releases-shortcut:before {
+    @include background-image(image-url("icons/releases.png"));
+  
+    @include media-retina {
+      @include background-image(image-url("icons/releases@2x.png"));
+    }
+  }
+  
+  &.artists-shortcut:before {
+    @include background-image(image-url("icons/artists.png"));
+    
+    @include media-retina {
+      @include background-image(image-url("icons/artists@2x.png"));
+    }
   }
 }
