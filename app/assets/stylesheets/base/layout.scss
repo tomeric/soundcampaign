@@ -19,9 +19,9 @@ body {
 }
 
 .main-sidebar {
-  @include makeColumn(5);
+  @include makeColumn(5.5);
 }
 
 .main-content {
-  @include makeColumn(18, 1);
+  @include makeColumn(18, 0.5);
 }
