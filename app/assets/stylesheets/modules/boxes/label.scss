@@ -1,28 +1,33 @@
 .main-label {
-  float:left;
-  width: 726px;
+  $cover-dimensions: $gridColumnWidth * 5.5;
+  $header-height: $baseLineHeight * 2;
+  
   border: 1px solid #b7b7b7;
-  @include border-radius(3px);
   background: white;
+  position: relative;
+  @include border-radius(3px);
   @include box-shadow(rgba(100,100,100, 0.1) 1px 1px 2px 1px);
+  @include clearfix;
   
   // TOP:
   
   .main-label-top {
-    float: left;
-    width: 100%;
-    clear: both;
+    padding-left: $cover-dimensions;
+    height:       $cover-dimensions;
+    position: relative;
   }
   
   // IMAGE:
   
   .main-label-img, .main-label-img-drop {
-    float:left;
-    width:226px;
-    height:227px;
+    width:  $cover-dimensions;
+    height: $cover-dimensions;
     @include border-radius(3px 0px 0px 0px);
     display: block;
-    position: relative;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 9;
   }
   
   .main-label-img {
@@ -38,6 +43,8 @@
     
     img {
       display: block;
+      position: relative;
+      z-index: 9;
       @include border-radius(3px 0px 0px 0px);
       @include box-shadow(inset 0 0 5px red);
     }
@@ -66,14 +73,13 @@
   // TITLE:
   
   .main-label-header {
-    height:39px;
-    width:500px;
-    float:left;
-    line-height: 39px;
-    text-indent: 15px;
+    display: block;
+    height: $header-height - 1;
+    line-height: $header-height - 1;
     border-bottom: 1px solid rgba(0,0,0, 0.9);
     @include background-image(linear-gradient(#00a6ff, #008cd8)); 
     @include border-radius(0px 2px 0px 0px);
+    overflow: hidden;
     
     &:after {
       @include border-radius(0px 3px 0px 0px);
@@ -87,10 +93,11 @@
   }
   
   .main-label-header-title {
-    float:left;
+    padding-left: $gridColumnWidth / 2;
+    float: left;
     font-size: 17px;
     font-weight: bold;
-    color:white;
+    color: white;
     @include text-shadow(rgba(15,102,149, 0.9) 0px 0px 2px);
   }
   
@@ -116,8 +123,9 @@
     background-position: center;
     background-repeat: no-repeat;
     float: right;
-    height: 39px;
-    width: 50px;
+    background-color: green;
+    height: $header-height;
+    width: $gridColumnWidth * 1.25;
     border: 0;
     border-left: 1px solid #0f71a6;
     @include box-shadow(inset 1px 0px 1px rgba(255,255,255, 0.4));
@@ -146,11 +154,9 @@
   // CONTENT:
   
   .main-label-content {
-    width:467px;
-    float:left;
-    padding: 16px;
+    padding: ($baseLineHeight / 2 - 1) ($gridColumnWidth / 2 - 1);
     font-size: 13px;
-    height: 155px;
+    height: ($cover-dimensions - $header-height) - $baseLineHeight + 2;
     overflow: auto;
     position: relative;
   }
@@ -159,35 +165,40 @@
   
   .main-label-info {
     font-size: 13px;
+    border-top: 1px solid #e7e7e7;
+    border-left: 1px solid #e7e7e7;
+    margin-left: $cover-dimensions - 1;
+    position: relative;
+    @include clearfix;
     
     h4 {
       color:#008eda;
       font-size: 13px;
       font-weight: bold;
       border-bottom: 1px solid #e7e7e7;
-      padding: 19px;
-      margin:0;
+      padding: ($baseLineHeight - 1) ($gridColumnWidth / 2);
+      margin: 0;
     }
     
     ul {
       float:left;
       list-style: none;
-      margin:15px 0 20px 19px;
-      width: 200px;
+      margin: ($baseLineHeight * 0.75) ($gridColumnWidth / 2);
+      padding: 0;
+      width: $gridColumnWidth * 5;
     }
   }
   
   .main-label-label-box {
-    float: left;
-    width: 226px;
     border-top: 1px solid #e7e7e7;
+    position: absolute;
+    left: (-$cover-dimensions);
+    top: -1px;
+    width: $cover-dimensions;
   }
   
   .main-label-contact-box {
-    float:left;
-    width: 499px;
-    border-left: 1px solid #e7e7e7;
-    border-top: 1px solid #e7e7e7;
+    z-index: 10;
   }
   
   // EDITABLE:
@@ -202,28 +213,33 @@
     }
     
     .input-prepend {
-      margin-bottom: 10px;
+      margin-bottom: $baseLineHeight / 2;
     }
     
     .input-prepend input {
-      width: 125px;
+      width: $gridColumnWidth * 3;
     }
     
-    .main-label-header-title input {
-      display: block;
-      height: 40px;
-      width: 398px;
-      padding: 0;
-      margin: 0;
-      border: 0;
-      border-left: 1px solid black;
-      text-indent: 20px;
-      background: #2c2c2c;
-      font-weight: bold;
-      color: white;
-      font-size: 15px;
-      @include border-radius(0px);
-      @include box-shadow(inset 0px 0px 3px 2px rgba(0,0,0, 0.3));
+    .main-label-header-title {
+      padding-left: 0;
+      float: none;
+      
+      input {
+        display: block;
+        height: 40px;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        border: 0;
+        border-left: 1px solid black;
+        text-indent: $gridColumnWidth / 2;
+        background: #2c2c2c;
+        font-weight: bold;
+        color: white;
+        font-size: 15px;
+        @include border-radius(0px);
+        @include box-shadow(inset 0px 0px 3px 2px rgba(0,0,0, 0.3));
+      }
     }
     
     .main-label-content {
@@ -231,14 +247,14 @@
       
       textarea {
         background: #f4f4f4;
-        width:100%;
-        height:100%;
+        width: 100%;
+        height: 100%;
         border:0;
         @include box-shadow(none);
-        resize:none;
+        resize: none;
         overflow: hidden;
-        padding:0;
-        margin:0;
+        padding: 0;
+        margin: 0;
       }
     }
   }
