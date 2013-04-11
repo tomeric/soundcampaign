@@ -1,0 +1,52 @@
+#!/bin/sh
+
+brew --help >/dev/null || {
+  # Install homebrew:
+  echo "Installing homebrew (http://mxcl.github.io/homebrew/)"
+  ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+}
+
+brew --help >/dev/null || {
+  echo "Homebrew is required and I can't seem to install it. Aborting."
+  exit 1
+}
+
+brew info imagemagick > /dev/null || {
+  # Install imagemagick:
+  brew install imagemagick
+}
+
+rvm --help > /dev/null || {
+  # Install RVM:
+  echo "Installing RVM (https://rvm.io)"
+  curl -L https://get.rvm.io | bash -s stable --rails --autolibs=enabled --ruby=1.9.3
+}
+
+rvm --help > /dev/null || {
+  echo "RVM is required and I can't seem to install it. Aborting"
+  exit 1
+}
+
+# Setup RVM env:
+rvm 2.0.0@soundcampaign
+
+# Setup Ruby dependencies:
+bundle --help > /dev/null || {
+  gem install bundler
+}
+bundle install --binstubs
+
+# Setup database:
+rake db:create:all || {
+  echo "Postgres does not seem to be running. Please start it and rerun this script."
+  exit 1
+}
+rake db:setup
+
+# Set up DNS through Pow
+if [ -d ~/.pow ]
+then
+  echo 7000 > ~/.pow/`basename $PWD`
+else
+  echo "Pow not set up but the team uses it for this project. Setup: http://goo.gl/RaDPO"
+fi
