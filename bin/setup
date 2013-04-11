@@ -44,9 +44,18 @@ rake db:create:all || {
 rake db:setup
 
 # Set up DNS through Pow
-if [ -d ~/.pow ]
+if ! [ -d ~/.pow ]
 then
-  echo 7000 > ~/.pow/`basename $PWD`
-else
-  echo "Pow not set up but the team uses it for this project. Setup: http://goo.gl/RaDPO"
+  # Install Pow:
+  echo "Installing Pow (http://pow.cx/)"
+  curl get.pow.cx | sh
 fi
+
+if ! [ -d ~/.pow/`basename $PWD` ]
+then
+  echo "Setting up pow"
+  ln -s $PWD ~/.pow/`basename $PWD`
+fi
+
+echo "You can access this app on: http://`basename $PWD`.dev/"
+open "http://`basename $PWD`.dev/"
