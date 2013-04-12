@@ -1,29 +1,29 @@
 <%= form_for @label do |f| %>
-  <div class="main-label edit">
-    <div class="main-label-top">
-      <div class="main-label-img-drop">
+  <div class="music-label edit">
+    <div class="music-label-top">
+      <div class="music-label-img-drop">
         <label for="label_cover">
-          <div class="main-label-img-info">
+          <div class="music-label-img-info">
             Drag &amp; drop image here
             <%= f.file_field :cover %>
           </div>
-          <span class="main-label-img-info">
+          <span class="music-label-img-info">
             230px by 230px works best
           </span>
         </label>
       </div>
-      <div class="main-label-header">
-        <span class="main-label-header-title">
+      <div class="music-label-header">
+        <span class="music-label-header-title">
           <%= f.text_field :name, placeholder: 'Label name' %>
         </span>
       </div>
-      <div class="main-label-content ">
+      <div class="music-label-content ">
         <%= f.text_area :description, rows: 3,
               placeholder: 'A description of your label' %>
       </div>
     </div>
-    <div class="main-label-info">
-      <div class="main-label-label-box">
+    <div class="music-label-info">
+      <div class="music-label-label-box">
         <h4>Label Information</h4>
         <ul>
           <li>
@@ -40,7 +40,7 @@
           </li>
         </ul>
       </div>
-      <div class="main-label-contact-box">
+      <div class="music-label-contact-box">
         <h4>Contact Information</h4>
         <ul>
           <li>
@@ -73,13 +73,10 @@
       </div>
     </div>
   </div>
-  <div class="main-label-buttons">
-    <%= link_to  'Cancel', @label,
-          class: 'main-label-cancel-button',
-          method: :delete,
-          data: {
-            confirm: 'Are you sure you want to remove this label?'
-          } %>
-    <%= f.submit 'Save', class: 'main-label-save-button' %>
+  <div class="music-label-buttons">
+    <%= link_to  'Cancel', labels_path,
+          class: 'music-label-cancel-link' %>
+    <%= f.submit 'Save',
+          class: 'music-label-save-button' %>
   </div>
 <% end %>

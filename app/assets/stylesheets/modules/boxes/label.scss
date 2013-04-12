@@ -1,4 +1,4 @@
-.main-label {
+.music-label {
   $cover-dimensions: $gridColumnWidth * 5.5;
   $header-height: $baseLineHeight * 2;
   
@@ -11,7 +11,7 @@
   
   // TOP:
   
-  .main-label-top {
+  .music-label-top {
     padding-left: $cover-dimensions;
     height:       $cover-dimensions;
     position: relative;
@@ -19,7 +19,7 @@
   
   // IMAGE:
   
-  .main-label-img, .main-label-img-drop {
+  .music-label-img, .music-label-img-drop {
     width:  $cover-dimensions;
     height: $cover-dimensions;
     @include border-radius(3px 0px 0px 0px);
@@ -30,7 +30,7 @@
     z-index: 9;
   }
   
-  .main-label-img {
+  .music-label-img {
     &:after { 
       @include border-radius(3px 0px 0px 0px);
       display: block;
@@ -50,12 +50,12 @@
     }
   }
   
-  .main-label-img-drop {
+  .music-label-img-drop {
     background: image-url('icons/paperclip.png') 50% 36% no-repeat #2c2c2c;
     @include box-shadow(inset 0px 0px 3px 2px rgba(0,0,0, 0.3));
   }
   
-  .main-label-img-info {
+  .music-label-img-info {
     display: block;
     position: relative;
     top:115px;
@@ -72,7 +72,7 @@
   
   // TITLE:
   
-  .main-label-header {
+  .music-label-header {
     display: block;
     height: $header-height - 1;
     line-height: $header-height - 1;
@@ -92,7 +92,7 @@
     }
   }
   
-  .main-label-header-title {
+  .music-label-header-title {
     padding-left: $gridColumnWidth / 2;
     float: left;
     font-size: 17px;
@@ -101,7 +101,7 @@
     @include text-shadow(rgba(15,102,149, 0.9) 0px 0px 2px);
   }
   
-  .main-label-header-count {
+  .music-label-header-count {
     float: left;
     background: #007dc0;
     color: white;
@@ -119,7 +119,7 @@
   
   // ACTIONS:
   
-  .main-label-header-action {
+  .music-label-header-action {
     background-position: center;
     background-repeat: no-repeat;
     float: right;
@@ -136,24 +136,24 @@
     }
   }
   
-  .main-label-header-sound {
+  .music-label-header-sound {
     background: image-url("icons/music.png") 50% 50% no-repeat;
   }
-  .main-label-header-edit {
+  .music-label-header-edit {
     background: image-url("icons/pencil.png") 50% 50% no-repeat;
   }
-  .main-label-header-cancel {
+  .music-label-header-cancel {
     @include background-image(image-url("icons/cancel.png") ,linear-gradient(#cf4848, #cf3839));
     border-left: 1px solid black;
   }
-  .main-label-header-accept {
+  .music-label-header-accept {
     @include background-image(image-url("icons/accept.png"),linear-gradient(#46c346, #2dc338));
     border-left: 1px solid black;
   }
   
   // CONTENT:
   
-  .main-label-content {
+  .music-label-content {
     padding: ($baseLineHeight / 2 - 1) ($gridColumnWidth / 2 - 1);
     font-size: 13px;
     height: ($cover-dimensions - $header-height) - $baseLineHeight + 2;
@@ -163,11 +163,10 @@
   
   // INFO
   
-  .main-label-info {
+  .music-label-info {
     font-size: 13px;
     border-top: 1px solid #e7e7e7;
     border-left: 1px solid #e7e7e7;
-    margin-left: $cover-dimensions - 1;
     position: relative;
     @include clearfix;
     
@@ -189,16 +188,16 @@
     }
   }
   
-  .main-label-label-box {
-    border-top: 1px solid #e7e7e7;
-    position: absolute;
-    left: (-$cover-dimensions);
-    top: -1px;
-    width: $cover-dimensions;
+  .music-label-label-box {
+    border-right: 1px solid #e7e7e7;
+    width: $cover-dimensions - 1;
+    float: left;
   }
   
-  .main-label-contact-box {
-    z-index: 10;
+  .music-label-contact-box {
+    margin-left: $cover-dimensions - 1;
+    border-left: 1px solid #e7e7e7;
+    @include clearfix;
   }
   
   // EDITABLE:
@@ -220,7 +219,7 @@
       width: $gridColumnWidth * 3;
     }
     
-    .main-label-header-title {
+    .music-label-header-title {
       padding-left: 0;
       float: none;
       
@@ -242,7 +241,7 @@
       }
     }
     
-    .main-label-content {
+    .music-label-content {
       background: #f4f4f4;
       
       textarea {

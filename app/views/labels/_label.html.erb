@@ -1,22 +1,22 @@
-<section class="main-label" id="<%= dom_id(label) %>">
-  <div class="main-label-top">
-    <div class="main-label-img">
+<section class="music-label" id="<%= dom_id(label) %>">
+  <div class="music-label-top">
+    <div class="music-label-img">
       <%= image_tag label.cover.url(:thumbnail_2x) %>
     </div>
-    <header class="main-label-header">
-      <%= link_to label.name, label, class: 'main-label-header-title' %>
-      <span class="main-label-header-count">55</span>
+    <header class="music-label-header">
+      <%= link_to label.name, label, class: 'music-label-header-title' %>
+      <span class="music-label-header-count">55</span>
       <%= link_to 'Edit', [:edit, label],
-          class: 'main-label-header-action main-label-header-edit' %>
+          class: 'music-label-header-action music-label-header-edit' %>
       <%= link_to 'Show', label,
-          class: 'main-label-header-action main-label-header-sound' %>
+          class: 'music-label-header-action music-label-header-sound' %>
     </header>
-    <div class="main-label-content">
+    <div class="music-label-content">
       <%= simple_format label.description %>
     </div>
   </div>
-  <div class="main-label-info">
-    <div class="main-label-label-box">
+  <div class="music-label-info">
+    <div class="music-label-label-box">
       <h4>Label Information</h4>
       <ul>
         <li><%= label.name %></li>
@@ -24,7 +24,7 @@
         <li><strong>Style:</strong> <%= label.style %></li>
       </ul>
     </div>
-    <div class="main-label-contact-box">
+    <div class="music-label-contact-box">
       <h4>Contact Information</h4>
       <ul>
         <li><strong><%= label.contact_name %></strong></li>
