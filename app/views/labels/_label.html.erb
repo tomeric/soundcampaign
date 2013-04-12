@@ -1,17 +1,17 @@
-<section class="music-label" id="<%= dom_id(label) %>">
-  <div class="music-label-top">
-    <div class="music-label-img">
+<section class="music-label cover-box" id="<%= dom_id(label) %>">
+  <div class="top">
+    <div class="cover">
       <%= image_tag label.cover.url(:thumbnail_2x) %>
     </div>
-    <header class="music-label-header">
-      <%= link_to label.name, label, class: 'music-label-header-title' %>
-      <span class="music-label-header-count">55</span>
+    <header class="header">
+      <%= link_to label.name, label, class: 'header-title' %>
+      <span class="header-count">55</span>
       <%= link_to 'Edit', [:edit, label],
-          class: 'music-label-header-action music-label-header-edit' %>
+          class: 'header-action music-label-header-edit' %>
       <%= link_to 'Show', label,
-          class: 'music-label-header-action music-label-header-sound' %>
+          class: 'header-action music-label-header-sound' %>
     </header>
-    <div class="music-label-content">
+    <div class="content">
       <%= simple_format label.description %>
     </div>
   </div>

@@ -1,6 +1,5 @@
-.music-label {
-  $cover-dimensions: $gridColumnWidth * 5.5;
-  $header-height: $baseLineHeight * 2;
+.cover-box {
+  $cover-box-header-height: $baseLineHeight * 2;
   
   border: 1px solid #b7b7b7;
   background: white;
@@ -11,35 +10,23 @@
   
   // TOP:
   
-  .music-label-top {
-    padding-left: $cover-dimensions;
-    height:       $cover-dimensions;
+  .top {
+    padding-left: $cover-box-cover-dimensions;
+    height:       $cover-box-cover-dimensions;
     position: relative;
   }
   
   // IMAGE:
   
-  .music-label-img, .music-label-img-drop {
-    width:  $cover-dimensions;
-    height: $cover-dimensions;
+  .cover, .cover-drop {
+    width:  $cover-box-cover-dimensions;
+    height: $cover-box-cover-dimensions;
     @include border-radius(3px 0px 0px 0px);
     display: block;
     position: absolute;
     left: 0;
     top: 0;
     z-index: 9;
-  }
-  
-  .music-label-img {
-    &:after { 
-      @include border-radius(3px 0px 0px 0px);
-      display: block;
-      content: '';
-      border-top: 1px solid rgba(255,255,255, 0.7);
-      height: 100%; 
-      width: 100%;
-      @include box-sizing(border-box);
-    }
     
     img {
       display: block;
@@ -50,12 +37,48 @@
     }
   }
   
-  .music-label-img-drop {
-    background: image-url('icons/paperclip.png') 50% 36% no-repeat #2c2c2c;
-    @include box-shadow(inset 0px 0px 3px 2px rgba(0,0,0, 0.3));
+  .cover {
+    &:after { 
+      @include border-radius(3px 0px 0px 0px);
+      display: block;
+      content: '';
+      border-top: 1px solid rgba(255,255,255, 0.7);
+      height: 100%; 
+      width: 100%;
+      @include box-sizing(border-box);
+    }
   }
   
-  .music-label-img-info {
+  .cover-drop {
+    background: image-url('icons/paperclip.png') 50% 36% no-repeat #2c2c2c;
+    @include box-shadow(inset 0px 0px 3px 2px rgba(0,0,0, 0.3));
+    
+    input[type="file"] {
+      display: block;
+      position: absolute;
+      left: 0;
+      right: 0;
+      width: $cover-box-cover-dimensions;
+      height: $cover-box-cover-dimensions;
+      opacity: 0.1;
+      border: 0;
+      margin: 0;
+      padding: 0;
+      z-index: 10;
+    }
+  }
+  
+  .cover-drop-label {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: $cover-box-cover-dimensions;
+    height: $cover-box-cover-dimensions;
+    z-index: 9;
+  }
+  
+  .cover-info {
     display: block;
     position: relative;
     top:115px;
@@ -63,6 +86,9 @@
     color: white;
     text-align: center;
     font-size: 11px;
+    z-index: 1;
+    margin: 0;
+    padding: 0;
     
     &:first-child {
       font-weight: 600;
@@ -72,10 +98,10 @@
   
   // TITLE:
   
-  .music-label-header {
+  .header {
     display: block;
-    height: $header-height - 1;
-    line-height: $header-height - 1;
+    height: $cover-box-header-height - 1;
+    line-height: $cover-box-header-height - 1;
     border-bottom: 1px solid rgba(0,0,0, 0.9);
     @include background-image(linear-gradient(#00a6ff, #008cd8)); 
     @include border-radius(0px 2px 0px 0px);
@@ -92,7 +118,7 @@
     }
   }
   
-  .music-label-header-title {
+  .header-title {
     padding-left: $gridColumnWidth / 2;
     float: left;
     font-size: 17px;
@@ -101,7 +127,7 @@
     @include text-shadow(rgba(15,102,149, 0.9) 0px 0px 2px);
   }
   
-  .music-label-header-count {
+  .header-count {
     float: left;
     background: #007dc0;
     color: white;
@@ -119,12 +145,12 @@
   
   // ACTIONS:
   
-  .music-label-header-action {
+  .header-action {
     background-position: center;
     background-repeat: no-repeat;
     float: right;
     background-color: green;
-    height: $header-height;
+    height: $cover-box-header-height;
     width: $gridColumnWidth * 1.25;
     border: 0;
     border-left: 1px solid #0f71a6;
@@ -136,94 +162,24 @@
     }
   }
   
-  .music-label-header-sound {
-    background: image-url("icons/music.png") 50% 50% no-repeat;
-  }
-  .music-label-header-edit {
-    background: image-url("icons/pencil.png") 50% 50% no-repeat;
-  }
-  .music-label-header-cancel {
-    @include background-image(image-url("icons/cancel.png") ,linear-gradient(#cf4848, #cf3839));
-    border-left: 1px solid black;
-  }
-  .music-label-header-accept {
-    @include background-image(image-url("icons/accept.png"),linear-gradient(#46c346, #2dc338));
-    border-left: 1px solid black;
-  }
-  
   // CONTENT:
   
-  .music-label-content {
+  .content {
     padding: ($baseLineHeight / 2 - 1) ($gridColumnWidth / 2 - 1);
     font-size: 13px;
-    height: ($cover-dimensions - $header-height) - $baseLineHeight + 2;
+    height: ($cover-box-cover-dimensions - $cover-box-header-height) - $baseLineHeight + 2;
     overflow: auto;
     position: relative;
-  }
-  
-  // INFO
-  
-  .music-label-info {
-    font-size: 13px;
-    border-top: 1px solid #e7e7e7;
-    border-left: 1px solid #e7e7e7;
-    position: relative;
-    @include clearfix;
-    
-    h4 {
-      color:#008eda;
-      font-size: 13px;
-      font-weight: bold;
-      border-bottom: 1px solid #e7e7e7;
-      padding: ($baseLineHeight - 1) ($gridColumnWidth / 2);
-      margin: 0;
-    }
-    
-    ul {
-      float:left;
-      list-style: none;
-      margin: ($baseLineHeight * 0.75) ($gridColumnWidth / 2);
-      padding: 0;
-      width: $gridColumnWidth * 5;
-    }
-  }
-  
-  .music-label-label-box {
-    border-right: 1px solid #e7e7e7;
-    width: $cover-dimensions - 1;
-    float: left;
-  }
-  
-  .music-label-contact-box {
-    margin-left: $cover-dimensions - 1;
-    border-left: 1px solid #e7e7e7;
-    @include clearfix;
   }
   
   // EDITABLE:
   
   &.edit {
-    h4 {
-      color: #2a2a2a;
-    }
-    
-    input[type=text] {
-      width: 170px;
-    }
-    
-    .input-prepend {
-      margin-bottom: $baseLineHeight / 2;
-    }
-    
-    .input-prepend input {
-      width: $gridColumnWidth * 3;
-    }
-    
-    .music-label-header-title {
+    .header-title {
       padding-left: 0;
       float: none;
       
-      input {
+      input[type="text"] {
         display: block;
         height: 40px;
         width: 100%;
@@ -241,7 +197,7 @@
       }
     }
     
-    .music-label-content {
+    .content {
       background: #f4f4f4;
       
       textarea {

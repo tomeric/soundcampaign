@@ -1,23 +1,23 @@
 <%= form_for @label do |f| %>
-  <div class="music-label edit">
-    <div class="music-label-top">
-      <div class="music-label-img-drop">
-        <label for="label_cover">
-          <div class="music-label-img-info">
+  <div class="music-label cover-box edit">
+    <div class="top">
+      <div class="cover-drop">
+        <label for="label_cover" class="cover-drop-label">
+          <%= f.file_field :cover %>
+          <p class="cover-info">
             Drag &amp; drop image here
-            <%= f.file_field :cover %>
-          </div>
-          <span class="music-label-img-info">
+          </p>
+          <p class="cover-info">
             230px by 230px works best
-          </span>
+          </p>
         </label>
       </div>
-      <div class="music-label-header">
-        <span class="music-label-header-title">
+      <header class="header">
+        <span class="header-title">
           <%= f.text_field :name, placeholder: 'Label name' %>
         </span>
-      </div>
-      <div class="music-label-content ">
+      </header>
+      <div class="content ">
         <%= f.text_area :description, rows: 3,
               placeholder: 'A description of your label' %>
       </div>

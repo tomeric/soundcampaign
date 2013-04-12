@@ -1,0 +1,84 @@
+.music-label {
+  
+  // ACTIONS:
+  
+  .music-label-header-sound {
+    background: image-url("icons/music.png") 50% 50% no-repeat;
+  }
+  .music-label-header-edit {
+    background: image-url("icons/pencil.png") 50% 50% no-repeat;
+  }
+  .music-label-header-cancel {
+    @include background-image(image-url("icons/cancel.png") ,linear-gradient(#cf4848, #cf3839));
+    border-left: 1px solid black;
+  }
+  .music-label-header-accept {
+    @include background-image(image-url("icons/accept.png"),linear-gradient(#46c346, #2dc338));
+    border-left: 1px solid black;
+  }
+  
+  // CONTENT:
+  
+  .content {
+    height: ($cover-box-cover-dimensions - $cover-box-header-height) - $baseLineHeight + 2;
+  }
+  
+  // INFO
+  
+  .music-label-info {
+    font-size: 13px;
+    border-top: 1px solid #e7e7e7;
+    border-left: 1px solid #e7e7e7;
+    position: relative;
+    @include clearfix;
+    
+    h4 {
+      color:#008eda;
+      font-size: 13px;
+      font-weight: bold;
+      border-bottom: 1px solid #e7e7e7;
+      padding: ($baseLineHeight - 1) ($gridColumnWidth / 2);
+      margin: 0;
+    }
+    
+    ul {
+      float:left;
+      list-style: none;
+      margin: ($baseLineHeight * 0.75) ($gridColumnWidth / 2);
+      padding: 0;
+      width: $gridColumnWidth * 5;
+    }
+  }
+  
+  .music-label-label-box {
+    border-right: 1px solid #e7e7e7;
+    width: $cover-box-cover-dimensions - 1;
+    float: left;
+  }
+  
+  .music-label-contact-box {
+    margin-left: $cover-box-cover-dimensions - 1;
+    border-left: 1px solid #e7e7e7;
+    @include clearfix;
+  }
+  
+  // EDITABLE:
+  
+  &.edit {
+    h4 {
+      color: #2a2a2a;
+    }
+    
+    input[type=text] {
+      width: 170px;
+    }
+    
+    .input-prepend {
+      margin-bottom: $baseLineHeight / 2;
+    }
+    
+    .input-prepend input {
+      width: $gridColumnWidth * 3;
+    }
+  }
+}
