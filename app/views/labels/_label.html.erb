@@ -5,7 +5,7 @@
     </div>
     <header class="header">
       <%= link_to label.name, label, class: 'header-title' %>
-      <span class="header-count">55</span>
+      <span class="header-count"><%= label.releases.count %></span>
       <%= link_to 'Edit', [:edit, label],
           class: 'header-action music-label-header-edit' %>
       <%= link_to 'Show', label,

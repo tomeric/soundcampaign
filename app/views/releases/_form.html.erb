@@ -1,0 +1,63 @@
+<%= form_for @release do |f| %>
+  <div class="cover-box release edit">
+    <div class="top">
+      <div class="cover-drop">
+        <label for="label_cover" class="cover-drop-label">
+          <%= f.file_field :cover %>
+          <p class="cover-info">
+            Drag &amp; drop image here
+          </p>
+          <p class="cover-info">
+            230px by 230px works best
+          </p>
+        </label>
+      </div>
+      <header class="header">
+        <span class="header-title">
+          <%= f.text_field :title, placeholder: 'Release title' %>
+        </span>
+      </header>
+    </div>
+    <div class="release-information-box">
+      <h4>Release Information</h4>
+      <ul>
+        <li>
+          <div class="input-prepend">
+            <%= f.select :label_id,
+                  current_user.labels.map { |l| [l.name, l.id] },
+                  include_blank: true,
+                  class: 'span2' %>
+          </div>
+        </li>
+        <li>
+          <div class="input-prepend">
+            <release class="add-on" for="release_catid">Catid</release>
+            <%= f.text_field :catid, class: 'span2', placeholder: 'Catid' %>
+          </div>
+        </li>
+        <li>
+          <div class="input-prepend">
+            <release class="add-on" for="release_style">Style</release>
+            <%= f.text_field :style, class: 'span2', placeholder: 'Style' %>
+          </div>
+        </li>
+        <li>
+          <div class="input-prepend">
+            <release class="add-on" for="release_style">Date</release>
+            <%= f.date_field :date, class: 'span2', placeholder: 'YYYY-MM-DD' %>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="content">
+      <%= f.text_area :description, rows: 3,
+            placeholder: 'A description of your release' %>
+    </div>
+  </div>
+  <div class="release-buttons">
+    <%= link_to  'Cancel', releases_path,
+          class: 'release-cancel-link' %>
+    <%= f.submit 'Save',
+          class: 'release-save-button' %>
+  </div>
+<% end %>

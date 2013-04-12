@@ -1,0 +1,16 @@
+<div class="releases">
+  <% releases.each do |label, releases| %>
+    <% if label %>
+    <div class="top">
+      <span class="title"><%= label.name %></span>
+      <span class="number"><%= label.releases.count %></span>
+    </div>
+    <% end %>
+    <div class="bar">
+      Pending releases
+    </div>
+    <ul>
+      <%= render releases %>
+    </ul>
+  <% end %>
+</div>

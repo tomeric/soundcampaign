@@ -12,7 +12,7 @@
   
   .top {
     padding-left: $cover-box-cover-dimensions;
-    height:       $cover-box-cover-dimensions;
+    min-height: $cover-box-cover-dimensions;
     position: relative;
   }
   
@@ -167,7 +167,6 @@
   .content {
     padding: ($baseLineHeight / 2 - 1) ($gridColumnWidth / 2 - 1);
     font-size: 13px;
-    height: ($cover-box-cover-dimensions - $cover-box-header-height) - $baseLineHeight + 2;
     overflow: auto;
     position: relative;
   }
@@ -175,6 +174,22 @@
   // EDITABLE:
   
   &.edit {
+    h4 {
+      color: #2a2a2a;
+    }
+    
+    input[type=text], select {
+      width: 170px;
+    }
+    
+    .input-prepend {
+      margin-bottom: $baseLineHeight / 2;
+    }
+    
+    .input-prepend input {
+      width: $gridColumnWidth * 3;
+    }
+    
     .header-title {
       padding-left: 0;
       float: none;

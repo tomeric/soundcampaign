@@ -1,5 +1,11 @@
 .music-label {
   
+  // TOP:
+  
+  .top {
+    height: $cover-box-cover-dimensions;
+  }
+  
   // ACTIONS:
   
   .music-label-header-sound {
@@ -60,25 +66,5 @@
     margin-left: $cover-box-cover-dimensions - 1;
     border-left: 1px solid #e7e7e7;
     @include clearfix;
-  }
-  
-  // EDITABLE:
-  
-  &.edit {
-    h4 {
-      color: #2a2a2a;
-    }
-    
-    input[type=text] {
-      width: 170px;
-    }
-    
-    .input-prepend {
-      margin-bottom: $baseLineHeight / 2;
-    }
-    
-    .input-prepend input {
-      width: $gridColumnWidth * 3;
-    }
   }
 }
