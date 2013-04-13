@@ -15,6 +15,11 @@ class ApplicationController < ActionController::Base
                         current_user == @label.try(:owner)
   end
   
+  def require_release_owner
+    unauthorized unless user_signed_in? &&
+                        current_user == @release.try(:owner)
+  end
+  
   def require_user
     unauthorized unless user_signed_in?
   end

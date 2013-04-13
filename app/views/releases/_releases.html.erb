@@ -1,5 +1,5 @@
 <div class="releases">
-  <% releases.each do |label, releases| %>
+  <% releases.group_by(&:label).each do |label, releases| %>
     <% if label %>
     <div class="top">
       <span class="title"><%= label.name %></span>
