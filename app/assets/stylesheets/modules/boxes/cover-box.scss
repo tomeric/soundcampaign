@@ -99,48 +99,7 @@
   // TITLE:
   
   .header {
-    display: block;
-    height: $cover-box-header-height - 1;
-    line-height: $cover-box-header-height - 1;
-    border-bottom: 1px solid rgba(0,0,0, 0.9);
-    @include background-image(linear-gradient(#00a6ff, #008cd8)); 
-    @include border-radius(0px 2px 0px 0px);
-    overflow: hidden;
-    
-    &:after {
-      @include border-radius(0px 3px 0px 0px);
-      display: block;
-      content: '';
-      border-top: 1px solid rgba(255,255,255, 0.7);
-      height: 100%;
-      width:  100%;
-      @include box-sizing(border-box);
-    }
-  }
-  
-  .header-title {
-    padding-left: $gridColumnWidth / 2;
-    float: left;
-    font-size: 17px;
-    font-weight: bold;
-    color: white;
-    @include text-shadow(rgba(15,102,149, 0.9) 0px 0px 2px);
-  }
-  
-  .header-count {
-    float: left;
-    background: #007dc0;
-    color: white;
-    height: 18px;
-    margin: 11px 11px;
-    padding: 0 8px;
-    line-height: 19px;
-    text-indent: 0;
-    font-size: 11px;
-    font-weight: bold;
-    @include border-radius(10px);
-    @include box-shadow(rgba(99,99,99, 0.5) 0px 1px 5px 1px inset); 
-    border-bottom: 1px solid rgba(255,255,255, 0.4);
+    @include box-header;
   }
   
   // ACTIONS:
@@ -156,6 +115,8 @@
     border-left: 1px solid #0f71a6;
     @include box-shadow(inset 1px 0px 1px rgba(255,255,255, 0.4));
     text-indent: -3000em;
+    position: relative;
+    z-index: 10;
     
     &:first-child {
       @include border-radius(0px 3px 0px 0px);
@@ -165,7 +126,7 @@
   // CONTENT:
   
   .content {
-    padding: ($baseLineHeight / 2 - 1) ($gridColumnWidth / 2 - 1);
+    padding: ($baseLineHeight / 2 - 1) ($gridColumnWidth / 2);
     font-size: 13px;
     overflow: auto;
     position: relative;
@@ -190,7 +151,7 @@
       width: $gridColumnWidth * 3;
     }
     
-    .header-title {
+    .title {
       padding-left: 0;
       float: none;
       
@@ -207,6 +168,8 @@
         font-weight: bold;
         color: white;
         font-size: 15px;
+        position: relative;
+        z-index: 10;
         @include border-radius(0px);
         @include box-shadow(inset 0px 0px 3px 2px rgba(0,0,0, 0.3));
       }
