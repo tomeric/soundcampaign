@@ -103,7 +103,7 @@ describe LabelsController do
       end
       
       it 'redirects to the created label' do
-        post :create, label: attributes_for(:label)
+        post :create, label: attributes
         expect(response).to redirect_to Label.last
       end
     end
@@ -111,7 +111,7 @@ describe LabelsController do
     context 'with invalid params' do
       before do
         # Trigger the behavior that occurs when invalid params are submitted
-        Label.any_instance.stub(:save).and_return(false)
+        Label.any_instance.stub(:valid?).and_return(false)
       end
       
       it 'assigns a newly created but unsaved label as @label' do
@@ -153,7 +153,8 @@ describe LabelsController do
     
     context 'with invalid params' do
       before do
-        Label.any_instance.stub(:save).and_return(false)
+        label # create the label first
+        Label.any_instance.stub(:valid?).and_return(false)
       end
       
       it "doesn't update the requested label's attributes" do
@@ -169,7 +170,7 @@ describe LabelsController do
         expect(assigns[:label]).to eq label
       end
       
-      it "re-renders the 'edit' template" do
+      it 're-renders the "edit" template' do
         patch :update, id: label.to_param, label: attributes
         expect(response).to render_template("edit")
       end
