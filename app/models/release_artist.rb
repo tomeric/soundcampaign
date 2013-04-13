@@ -1,4 +1,4 @@
-class ReleaseArtists < ActiveRecord::Base
+class ReleaseArtist < ActiveRecord::Base
   
   ### ASSOCIATIONS:
   

@@ -20,4 +20,24 @@ FactoryGirl.define do
     owner { build :user     }
     name  { generate :brand }
   end
+  
+  factory :release do
+    owner { build :user     }
+    label { build :label    }
+    title { generate :title }
+  end
+  
+  factory :artist do
+    name { generate :name }
+  end
+  
+  factory :release_artist do
+    release { build :release }
+    artist  { build :artist  }
+  end
+  
+  factory :track do
+    artist { generate :name  }
+    title  { generate :title }
+  end
 end

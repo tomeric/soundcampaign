@@ -8,4 +8,12 @@ class Track < ActiveRecord::Base
   
   belongs_to :release
   
+  ### VALIDATIONS:
+  
+  validates :title,
+    presence: true
+  
+  validates :artist,
+    presence: true
+  
 end

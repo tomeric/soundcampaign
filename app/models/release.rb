@@ -20,4 +20,9 @@ class Release < ActiveRecord::Base
   has_many :artists,
     through: :release_artists
   
+  ### VALIDATIONS:
+  
+  validates :title,
+    presence: true
+  
 end

@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe Track do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject(:track) { build :track }
+  
+  it { should be_valid }
 end
