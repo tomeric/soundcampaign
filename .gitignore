@@ -26,5 +26,8 @@
 # Ignore uploads:
 /public/system
 
+# Ignore binstubs:
+/bin/*
+
 # Ignore coverage reports
 /coverage
