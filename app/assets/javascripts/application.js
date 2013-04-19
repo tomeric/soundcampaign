@@ -3,6 +3,7 @@
 //= require bootstrapx-clickover
 //= require jqBootstrapValidation
 //= require jquery.autosize
+//= require fine-uploader/jquery.fineuploader
 
 $(function(){
   // $('a').clickover({ html : true, global_close: false });
