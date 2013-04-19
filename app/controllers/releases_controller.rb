@@ -53,7 +53,9 @@ class ReleasesController < ApplicationController
   def release_params
     params.require(:release)
           .permit(:title, :description, :catid,
-                  :style, :cover, :label_id, :date)
+                  :style, :cover, :label_id, :date,
+                  { track_ids: [] },
+                  { tracks_attributes: [[:id, :position, :title, :artist]] })
   end
   
   def set_release

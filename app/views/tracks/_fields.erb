@@ -1,0 +1,23 @@
+<li class="track">
+  <%= hidden_field_tag 'release[track_ids][]', track.id, id: "release_track_ids_#{track.id}" %>
+  <%= fields_for 'release[tracks_attributes][]', track do |f| %>
+    <%= f.hidden_field :id %>
+    <span class="position"><%= f.number_field :position   %></span>
+    <span class="filename"><%= track.attachment_file_name %></span>
+    <span class="artist"><%=   f.text_field :artist       %></span>
+    <span class="title"><%=    f.text_field :title        %></span>
+    <%= link_to 'Delete', track,
+          data:  { method: :destroy, confirm: 'Are you sure?' },
+          class: 'delete' %>
+  <% end %>
+</li>
+<!--
+<li class="track">
+  <input id="release_tracks_attributes_0_id" name="release[tracks_attributes][0][id]" type="hidden" value="3">
+  <span class="position"><input id="release_tracks_attributes_0_position" name="release[tracks_attributes][0][position]" type="number" value="1"></span>
+  <span class="filename">Pimsleur_-_Thai_-_Lesson_01.mp3</span>
+  <span class="artist"><input id="release_tracks_attributes_0_artist" name="release[tracks_attributes][0][artist]" type="text" value="Pimsleur"></span>
+  <span class="title"><input id="release_tracks_attributes_0_title" name="release[tracks_attributes][0][title]" type="text" value="Thai Lesson #01"></span>
+  <a class="delete" data-confirm="Are you sure?" data-method="destroy" href="/tracks/3">Delete</a>
+</li>
+-->

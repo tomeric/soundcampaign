@@ -54,6 +54,12 @@
             placeholder: 'A description of your release' %>
     </div>
   </div>
+  <ul id="track_list" class="release-tracks">
+    <% @release.tracks.each do |track| %>
+      <%= render 'tracks/fields', form: f, track: track %>
+    <% end %>
+  </ul>
+  
   <div class="release-buttons">
     <%= link_to  'Cancel', releases_path,
           class: 'release-cancel-link' %>
