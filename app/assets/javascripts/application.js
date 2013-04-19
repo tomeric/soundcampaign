@@ -4,6 +4,7 @@
 //= require jqBootstrapValidation
 //= require jquery.autosize
 //= require fine-uploader/jquery.fineuploader
+//= require releases
 
 $(function(){
   // $('a').clickover({ html : true, global_close: false });
