@@ -15,6 +15,9 @@ class Release < ActiveRecord::Base
   
   belongs_to :label
   
+  has_many :tracks
+  accepts_nested_attributes_for :tracks
+  
   has_many :release_artists
   
   has_many :artists,
