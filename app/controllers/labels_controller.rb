@@ -11,7 +11,7 @@ class LabelsController < ApplicationController
     only: %i[show edit update destroy]
   
   def index
-    @labels = current_user.labels
+    @labels = current_organization.labels
   end
   
   def show

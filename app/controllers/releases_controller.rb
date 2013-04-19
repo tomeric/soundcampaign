@@ -11,7 +11,7 @@ class ReleasesController < ApplicationController
     only: %i[show edit update destroy]
   
   def index
-    @releases = current_user.releases
+    @releases = current_organization.releases
   end
   
   def show

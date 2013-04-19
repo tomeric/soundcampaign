@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
   
   private
   
+  def current_organization
+    @current_organization ||= current_user.organization
+  end
+  
   def unauthorized
     redirect_to new_user_session_url(return_to: request.url)
     return false
@@ -12,12 +16,12 @@ class ApplicationController < ActionController::Base
   
   def require_label_owner
     unauthorized unless user_signed_in? &&
-                        current_user == @label.try(:owner)
+                        current_user.in?(@label.try(:owners).to_a)
   end
   
   def require_release_owner
     unauthorized unless user_signed_in? &&
-                        current_user == @release.try(:owner)
+                        current_user.in?(@release.try(:owners).to_a)
   end
   
   def require_user

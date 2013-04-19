@@ -20,4 +20,11 @@ class Label < ActiveRecord::Base
   validates :name,
     presence: true
   
+  
+  ### INSTANCE METHODS:
+
+  def owners
+    owner.organization.members
+  end
+  
 end
