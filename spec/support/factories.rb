@@ -1,5 +1,6 @@
 require 'factory_girl_rails'
 require 'ffaker'
+require 'paperclip/io_adapters/pathname_adapter'
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
@@ -37,6 +38,7 @@ FactoryGirl.define do
   end
   
   factory :track do
+    attachment { Rails.root.join('spec', 'fixtures', 'track.mp3') }
     artist { generate :name  }
     title  { generate :title }
   end
