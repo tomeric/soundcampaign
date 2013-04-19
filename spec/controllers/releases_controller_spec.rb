@@ -97,6 +97,12 @@ describe ReleasesController do
         expect(owner).to eq user
       end
       
+      it "sets the organization of the created release to the logged in user's organization" do
+        post :create, release: attributes
+        organization = assigns[:release].organization
+        expect(organization).to eq user.organization
+      end
+      
       it 'assigns a newly created release as @release' do
         post :create, release: attributes
         assigned_release = assigns[:release]

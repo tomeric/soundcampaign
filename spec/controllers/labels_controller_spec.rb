@@ -95,6 +95,12 @@ describe LabelsController do
         expect(owner).to eq user
       end
       
+      it "sets the organization of the created label to the logged in user's organization" do
+        post :create, label: attributes
+        organization = assigns[:label].organization
+        expect(organization).to eq user.organization
+      end
+      
       it 'assigns a newly created label as @label' do
         post :create, label: attributes
         assigned_label = assigns[:label]

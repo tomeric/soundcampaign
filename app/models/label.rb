@@ -10,6 +10,8 @@ class Label < ActiveRecord::Base
   
   ### ASSOCIATIONS:
   
+  belongs_to :organization
+  
   belongs_to :owner,
     class_name: User
   
@@ -19,7 +21,6 @@ class Label < ActiveRecord::Base
   
   validates :name,
     presence: true
-  
   
   ### INSTANCE METHODS:
 

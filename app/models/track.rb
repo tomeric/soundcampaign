@@ -6,6 +6,8 @@ class Track < ActiveRecord::Base
   
   ### ASSOCIATIONS:
   
+  belongs_to :organization
+  
   belongs_to :release
   
   ### VALIDATIONS:

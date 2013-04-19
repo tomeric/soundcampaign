@@ -10,6 +10,8 @@ class Release < ActiveRecord::Base
   
   ### ASSOCIATIONS:
   
+  belongs_to :organization
+  
   belongs_to :owner,
     class_name: User
   

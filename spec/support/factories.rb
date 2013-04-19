@@ -4,6 +4,10 @@ require 'paperclip/io_adapters/pathname_adapter'
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
+  
+  def fixture(name)
+    Rails.root.join('spec', 'fixtures', name)
+  end
 end
 
 FactoryGirl.define do
@@ -17,24 +21,27 @@ FactoryGirl.define do
   
   factory :user do
     organization { build :organization }
-    email        { generate :email }
-    password     { 'password'      }
-    name         { generate :name  }
+    email        { generate :email     }
+    password     { 'password'          }
+    name         { generate :name      }
   end
   
   factory :label do
-    owner { build :user     }
-    name  { generate :brand }
+    organization { build :organization }
+    owner        { build :user         }
+    name         { generate :brand     }
   end
   
   factory :release do
-    owner { build :user     }
-    label { build :label    }
-    title { generate :title }
+    organization { build :organization }
+    owner        { build :user         }
+    label        { build :label        }
+    title        { generate :title     }
   end
   
   factory :artist do
-    name { generate :name }
+    organization { build :organization }
+    name         { generate :name      }
   end
   
   factory :release_artist do
@@ -43,8 +50,9 @@ FactoryGirl.define do
   end
   
   factory :track do
-    attachment { Rails.root.join('spec', 'fixtures', 'track.mp3') }
-    artist { generate :name  }
-    title  { generate :title }
+    attachment   { fixture 'track.mp3' }
+    organization { build :organization }
+    artist       { generate :name      }
+    title        { generate :title     }
   end
 end

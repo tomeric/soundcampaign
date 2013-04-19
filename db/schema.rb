@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130419165855) do
+ActiveRecord::Schema.define(version: 20130419172633) do
 
   create_table "artists", force: true do |t|
     t.integer  "owner_id",           null: false
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20130419165855) do
     t.datetime "cover_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "organization_id",    null: false
   end
 
   add_index "artists", ["owner_id"], name: "index_artists_on_owner_id"
@@ -52,6 +53,7 @@ ActiveRecord::Schema.define(version: 20130419165855) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "owner_id",             null: false
+    t.integer  "organization_id",      null: false
   end
 
   add_index "labels", ["owner_id"], name: "index_labels_on_owner_id"
@@ -87,6 +89,7 @@ ActiveRecord::Schema.define(version: 20130419165855) do
     t.datetime "cover_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "organization_id",    null: false
   end
 
   add_index "releases", ["label_id"], name: "index_releases_on_label_id"
@@ -111,6 +114,7 @@ ActiveRecord::Schema.define(version: 20130419165855) do
     t.datetime "attachment_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "organization_id",         null: false
   end
 
   add_index "tracks", ["release_id"], name: "index_tracks_on_release_id"
