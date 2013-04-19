@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   
   ### ASSOCIATIONS:
   
+  belongs_to :organization
+  
   has_many :labels,
     foreign_key: 'owner_id'
   

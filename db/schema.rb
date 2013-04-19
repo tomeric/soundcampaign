@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130409144718) do
+ActiveRecord::Schema.define(version: 20130419165855) do
 
   create_table "artists", force: true do |t|
     t.integer  "owner_id",           null: false
@@ -55,6 +55,12 @@ ActiveRecord::Schema.define(version: 20130409144718) do
   end
 
   add_index "labels", ["owner_id"], name: "index_labels_on_owner_id"
+
+  create_table "organizations", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "release_artists", force: true do |t|
     t.integer  "release_id", null: false
@@ -123,6 +129,7 @@ ActiveRecord::Schema.define(version: 20130409144718) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "organization_id",                                 null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

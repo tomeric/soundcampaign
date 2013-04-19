@@ -11,10 +11,15 @@ FactoryGirl.define do
     email { generate :email }
   end
   
+  factory :organization do
+    name { generate :brand }
+  end
+  
   factory :user do
-    email    { generate :email }
-    password { 'password'      }
-    name     { generate :name  }
+    organization { build :organization }
+    email        { generate :email }
+    password     { 'password'      }
+    name         { generate :name  }
   end
   
   factory :label do
