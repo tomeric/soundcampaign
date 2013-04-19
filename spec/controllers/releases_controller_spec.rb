@@ -147,9 +147,9 @@ describe ReleasesController do
         expect(assigns[:release]).to eq release
       end
       
-      it 'redirects to the releases list' do
+      it 'redirects to the releases form' do
         patch :update, id: release.to_param, release: attributes
-        expect(response).to redirect_to releases_url
+        expect(response).to redirect_to edit_release_url(release.to_param)
       end
     end
     

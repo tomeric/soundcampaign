@@ -36,8 +36,8 @@ class ReleasesController < ApplicationController
   end
   
   def update
-    if @release.update(release_params)
-      redirect_to releases_url, notice: 'Release was successfully updated.'
+    if @release.update_attributes(release_params)
+      redirect_to [:edit, @release], notice: 'Release was successfully updated.'
     else
       render action: 'edit'
     end
