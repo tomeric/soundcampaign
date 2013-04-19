@@ -1,0 +1,9 @@
+.track {
+  input[type=number] {
+    display: none;
+  }
+  
+  border: 1px solid #000;
+  padding: ($baseLineHeight / 2 - 1) ($gridColumnWidth / 2 - 1) ($baseLineHeight / 4 - 1);
+  margin-bottom: $baseLineHeight / 2;
+}
