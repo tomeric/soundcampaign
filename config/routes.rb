@@ -5,6 +5,7 @@ SoundCampaign::Application.routes.draw do
   resources :labels
   resources :releases
   resources :artists
+  resources :tracks, only: %i[create destroy show]
   
   resources :mockups, only: %i[index show]
   

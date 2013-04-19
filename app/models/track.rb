@@ -28,6 +28,16 @@ class Track < ActiveRecord::Base
   
   ### INSTANCE METHODS:
   
+  def as_json
+    {
+      id: id,
+      release_id: release.try(:id),
+      title: title,
+      artist: artist,
+      attachment: (attachment.url if attachment?)
+    }
+  end
+  
   def set_track_attributes
     self.artist ||= 'Unknown Artist'
     self.title  ||= 'Unknown Title'
