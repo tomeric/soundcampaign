@@ -1,114 +1,17 @@
 .releases {
-  $releases-header-height: $baseLineHeight * 2;
-  
-  @include border-radius(3px);
-  border-top: 1px solid #207aa0;
-  
-  // TOP:
-  
-  .top {
-    @include box-header;
-    border-left: 1px solid #207aa0;
-    border-right: 1px solid #207aa0;
-    border-bottom: 1px solid rgba(0,0,0, 0.9);
-    
-    .title {
-      padding-left: ($gridColumnWidth / 2) - 2;
-    }
+  .edit {
+    background: image-url("icons/edit_light.png") center no-repeat;
+    text-indent: -3000em;
   }
   
-  // BLACK BAR:
-  
-  .bar {
-    height: $baseLineHeight * 1.5 - 2;
-    line-height: $baseLineHeight * 1.5 - 2;
-    @include background-image(linear-gradient(#535353, #2f2f2f));
-    color: white;
-    font-size: 11px;
-    font-weight: bold;
-    border: 1px solid #383838;
-    border-top: 1px solid #707070;
-    border-bottom: 1px solid #616161;
-    padding-left: ($gridColumnWidth / 2 - 2);
+  .public {
+    background: image-url("icons/public_light.png") center no-repeat;
+    text-indent: -3000em;
   }
   
-  // LIST:
-  
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    border-right: 1px solid #acacac;
-    border-left: 1px solid #a7a7a7;
-    border-bottom: 1px solid #a7a7a7;
-  }
-  
-  li {
-    border-top: 1px solid #a7a7a7;
-    color: #555555;
-    font-size: 13px;
-    height: ($baseLineHeight * 2) - 1;
-    line-height: ($baseLineHeight * 2) - 1;
-    padding-left: ($gridColumnWidth / 2 - 1);
-    @include text-shadow(white 1px 1px 1px);
-    @include background-image(linear-gradient(#e4e4e4, #dcdcdc));
-    
-    &:first-child {
-      margin-top: -1px;
-    }
-    
-    &:nth-of-type(even) {
-      @include background-image(linear-gradient(#f1f1f1, #e9e9e9));
-    }
-    
-    .title {
-      float:left;
-    }
-    
-    .edit, .public, .send, .feedback {
-      display: block;
-      float: right;
-      width: $gridColumnWidth * 1.25;
-      height: ($baseLineHeight * 2) - 1;
-      border-left:  1px solid #acacac;
-      position: relative;
-      text-align: center;
-      
-      &:before {
-        display: block;
-        width: $gridColumnWidth * 1.25 - 1;
-        height: ($baseLineHeight * 2) - 1;
-        position: absolute;
-        right: 0;
-        top: 0;
-        border-left: 1px solid #fff;
-        content: "";
-      }
-      
-      &:hover {
-        background-color: #0093e2;
-        border-left: 1px solid #207aa0;
-        border-right: 1px solid #207aa0;
-        margin-right: -1px;
-        border-bottom: 1px solid #207aa0;
-        
-        &:before {
-          border-left: 1px solid rgba(255,255,255, 0.7);
-        }
-      }
-    }
-    .edit {
-      background: image-url("icons/edit_light.png") center no-repeat;
-      text-indent: -3000em;
-    }
-    .public {
-      background: image-url("icons/public_light.png") center no-repeat;
-      text-indent: -3000em;
-    }
-    .send {
-      background: image-url("icons/send_light.png") center no-repeat;
-      text-indent: -3000em;
-    }
+  .send {
+    background: image-url("icons/send_light.png") center no-repeat;
+    text-indent: -3000em;
   }
 }
 
