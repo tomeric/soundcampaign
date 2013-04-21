@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   def current_organization
     @current_organization ||= current_user.organization
   end
+  helper_method :current_organization
   
   def unauthorized
     redirect_to new_user_session_url(return_to: request.url)
