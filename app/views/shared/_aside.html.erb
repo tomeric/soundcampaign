@@ -3,17 +3,17 @@
   
   <%= link_to labels_url, class: 'shortcut labels-shortcut' do %>
     <span class="title">Labels</span>
-    <span class="number"><%= current_user.labels.count %></span>
+    <span class="number"><%= current_organization.labels.count %></span>
   <% end %>
   
   <%= link_to releases_url, class: 'shortcut releases-shortcut' do %>
     <span class="title">Releases</span>
-    <span class="number"><%= current_user.releases.count %></span>
+    <span class="number"><%= current_organization.releases.count %></span>
   <% end %>
   
   <%= link_to artists_url, class: 'shortcut artists-shortcut' do %>
     <span class="title">Artists</span>
-    <span class="number"><%= current_user.artists.count %></span>
+    <span class="number"><%= current_organization.artists.count %></span>
   <% end %>
   
   <h3>Account</h3>
