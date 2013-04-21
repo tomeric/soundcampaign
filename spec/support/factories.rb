@@ -53,4 +53,9 @@ FactoryGirl.define do
     artist       { generate :name      }
     title        { generate :title     }
   end
+  
+  factory :contact_list do
+    organization { build :organization }
+    name         { generate :brand     }
+  end
 end

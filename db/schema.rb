@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130421100916) do
+ActiveRecord::Schema.define(version: 20130421110029) do
 
   create_table "artists", force: true do |t|
     t.string   "name",               null: false
@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 20130421100916) do
     t.datetime "updated_at"
     t.integer  "organization_id",    null: false
   end
+
+  create_table "contact_lists", force: true do |t|
+    t.integer  "organization_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "contact_lists", ["organization_id"], name: "index_contact_lists_on_organization_id"
 
   create_table "labels", force: true do |t|
     t.string   "name"
