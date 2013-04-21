@@ -75,4 +75,12 @@
       @include background-image(image-url("icons/artists@2x.png"));
     }
   }
+  
+  &.contacts-shortcut:before {
+    @include background-image(image-url("icons/contacts.png"));
+    
+    @include media-retina {
+      @include background-image(image-url("icons/contacts@2x.png"));
+    }
+  }
 }
