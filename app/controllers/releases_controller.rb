@@ -27,7 +27,6 @@ class ReleasesController < ApplicationController
   def create
     @release = Release.new(release_params)
     @release.organization = current_organization
-    @release.owner        = current_user
     
     if @release.save
       redirect_to releases_url, notice: 'Release was successfully created.'

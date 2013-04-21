@@ -28,13 +28,11 @@ FactoryGirl.define do
   
   factory :label do
     organization { build :organization }
-    owner        { build :user         }
     name         { generate :brand     }
   end
   
   factory :release do
     organization { build :organization }
-    owner        { build :user         }
     label        { build :label        }
     title        { generate :title     }
   end

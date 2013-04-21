@@ -12,9 +12,6 @@ class Label < ActiveRecord::Base
   
   belongs_to :organization
   
-  belongs_to :owner,
-    class_name: User
-  
   has_many :releases
   
   ### VALIDATIONS:
@@ -25,7 +22,7 @@ class Label < ActiveRecord::Base
   ### INSTANCE METHODS:
 
   def owners
-    owner.organization.members
+    organization.members
   end
   
 end

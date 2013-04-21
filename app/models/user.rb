@@ -11,15 +11,6 @@ class User < ActiveRecord::Base
   
   belongs_to :organization
   
-  has_many :labels,
-    foreign_key: 'owner_id'
-  
-  has_many :artists,
-    foreign_key: 'owner_id'
-  
-  has_many :releases,
-    foreign_key: 'owner_id'
-  
   ### VALIDATIONS:
   
   validates :name,

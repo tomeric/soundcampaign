@@ -24,7 +24,7 @@
         <li>
           <div class="input-prepend">
             <%= f.select :label_id,
-                  current_user.labels.map { |l| [l.name, l.id] },
+                  current_organization.labels.map { |l| [l.name, l.id] },
                   include_blank: true,
                   class: 'span2' %>
           </div>

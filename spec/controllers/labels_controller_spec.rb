@@ -1,8 +1,9 @@
 require 'spec_helper'
 
 describe LabelsController do
-  let(:user)  { create :user               }
-  let(:label) { create :label, owner: user }
+  let(:user)  { create :user                      }
+  let(:label) { create :label,
+                  organization: user.organization }
   
   context 'authorization' do
     context 'logged out' do
@@ -87,12 +88,6 @@ describe LabelsController do
         }.to change {
           Label.count
         }.by +1
-      end
-      
-      it 'sets the owner of the created label to the logged in user' do
-        post :create, label: attributes
-        owner = assigns[:label].owner
-        expect(owner).to eq user
       end
       
       it "sets the organization of the created label to the logged in user's organization" do

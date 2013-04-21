@@ -11,10 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130419172633) do
+ActiveRecord::Schema.define(version: 20130421100916) do
 
   create_table "artists", force: true do |t|
-    t.integer  "owner_id",           null: false
     t.string   "name",               null: false
     t.text     "bio"
     t.string   "soundcloud_url"
@@ -33,8 +32,6 @@ ActiveRecord::Schema.define(version: 20130419172633) do
     t.integer  "organization_id",    null: false
   end
 
-  add_index "artists", ["owner_id"], name: "index_artists_on_owner_id"
-
   create_table "labels", force: true do |t|
     t.string   "name"
     t.text     "description"
@@ -52,11 +49,8 @@ ActiveRecord::Schema.define(version: 20130419172633) do
     t.datetime "cover_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "owner_id",             null: false
     t.integer  "organization_id",      null: false
   end
-
-  add_index "labels", ["owner_id"], name: "index_labels_on_owner_id"
 
   create_table "organizations", force: true do |t|
     t.string   "name"
@@ -77,7 +71,6 @@ ActiveRecord::Schema.define(version: 20130419172633) do
 
   create_table "releases", force: true do |t|
     t.integer  "label_id",           null: false
-    t.integer  "owner_id",           null: false
     t.string   "title",              null: false
     t.string   "catid"
     t.string   "style"
@@ -93,7 +86,6 @@ ActiveRecord::Schema.define(version: 20130419172633) do
   end
 
   add_index "releases", ["label_id"], name: "index_releases_on_label_id"
-  add_index "releases", ["owner_id"], name: "index_releases_on_owner_id"
 
   create_table "subscribers", force: true do |t|
     t.string   "email",      null: false

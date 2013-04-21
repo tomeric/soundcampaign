@@ -12,9 +12,6 @@ class Artist < ActiveRecord::Base
   
   belongs_to :organization
   
-  belongs_to :owner,
-    class_name: User
-  
   has_many :release_artists
   
   has_many :releases,

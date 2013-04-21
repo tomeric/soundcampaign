@@ -1,10 +1,11 @@
 require 'spec_helper'
 
 describe ReleasesController do
-  let(:user)    { create :user                  }
-  let(:label)   { create :label                 }
-  let(:release) { create :release, owner: user,
-                                   label: label }
+  let(:user)    { create :user                       }
+  let(:label)   { create :label                      }
+  let(:release) { create :release,
+                    organization: user.organization,
+                    label:        label              }
   
   context 'authorization' do
     context 'logged out' do
@@ -89,12 +90,6 @@ describe ReleasesController do
         }.to change {
           Release.count
         }.by +1
-      end
-      
-      it 'sets the owner of the created release to the logged in user' do
-        post :create, release: attributes
-        owner = assigns[:release].owner
-        expect(owner).to eq user
       end
       
       it "sets the organization of the created release to the logged in user's organization" do
