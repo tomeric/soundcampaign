@@ -25,6 +25,11 @@ class ApplicationController < ActionController::Base
                         @release.in?(current_organization.releases)
   end
   
+  def require_contact_list_owner
+    unauthorized unless user_signed_in? &&
+                        @contact_list.in?(current_organization.contact_lists)
+  end
+  
   def require_user
     unauthorized unless user_signed_in?
   end
