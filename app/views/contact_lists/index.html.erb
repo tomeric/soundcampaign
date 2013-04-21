@@ -1,0 +1,11 @@
+<section class="section" id="contact_lists">
+  <%= render 'header', title: 'Your Contact Lists' %>
+  <% if @contact_lists.present? %>
+    <%= render 'contact_lists', contact_lists: @contact_lists %>
+  <% else %>
+    <div class="blank-slate">
+      <h2 class="blank-slate-title">Let's create your first contact list!</h2>
+      <p class="blank-slate-subtitle"><a href="#">Click here</a> to see a video!</p>
+    </div>
+  <% end %>
+</section>

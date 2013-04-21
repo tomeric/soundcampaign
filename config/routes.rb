@@ -1,4 +1,6 @@
 SoundCampaign::Application.routes.draw do
+  resources :contact_lists
+
   root to: 'subscribers#new'
   resources :subscribers
   
