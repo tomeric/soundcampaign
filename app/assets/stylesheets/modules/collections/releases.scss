@@ -98,15 +98,15 @@
       }
     }
     .edit {
-      background: image-url("icons/edit.png") center no-repeat;
+      background: image-url("icons/edit_light.png") center no-repeat;
       text-indent: -3000em;
     }
     .public {
-      background: image-url("icons/public.png") center no-repeat;
+      background: image-url("icons/public_light.png") center no-repeat;
       text-indent: -3000em;
     }
     .send {
-      background: image-url("icons/send.png") center no-repeat;
+      background: image-url("icons/send_light.png") center no-repeat;
       text-indent: -3000em;
     }
   }
@@ -121,7 +121,7 @@
       }
       
       .feedback {
-        background: image-url("icons/feedback.png") 15px 10px no-repeat;
+        background: image-url("icons/feedback_light.png") 15px 10px no-repeat;
       }
       
       .switch {
@@ -131,7 +131,7 @@
         border-left:1px solid #fff;
         border-right:1px solid #acacac;
         border-top: 1px solid #f8f8f8;
-        background: image-url("icons/feedback.png") 15px 10px no-repeat;
+        background: image-url("icons/feedback_light.png") 15px 10px no-repeat;
       }
       
       .remove {
@@ -141,7 +141,7 @@
         border-left:1px solid #fff;
         border-right:1px solid #acacac;
         border-top: 1px solid #f8f8f8;
-        background: image-url("icons/remove.png") 16px 12px no-repeat;
+        background: image-url("icons/remove_light.png") 16px 12px no-repeat;
       }
     }
   }

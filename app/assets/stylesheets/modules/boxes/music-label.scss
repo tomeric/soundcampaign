@@ -10,18 +10,15 @@
   // ACTIONS:
   
   .music-label-header-sound {
-    background: image-url("icons/music.png") 50% 50% no-repeat;
+    background: image-url("icons/releases_light.png") 50% 50% no-repeat;
+    
+    @include media-retina {
+      @include background-image(image-url("icons/releases_light@2x.png"));
+      background-size: 16px 16px;
+    }
   }
   .music-label-header-edit {
-    background: image-url("icons/pencil.png") 50% 50% no-repeat;
-  }
-  .music-label-header-cancel {
-    @include background-image(image-url("icons/cancel.png") ,linear-gradient(#cf4848, #cf3839));
-    border-left: 1px solid black;
-  }
-  .music-label-header-accept {
-    @include background-image(image-url("icons/accept.png"),linear-gradient(#46c346, #2dc338));
-    border-left: 1px solid black;
+    background: image-url("icons/pencil_light.png") 50% 50% no-repeat;
   }
   
   // CONTENT:
