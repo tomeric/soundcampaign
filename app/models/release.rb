@@ -27,10 +27,4 @@ class Release < ActiveRecord::Base
   validates :title,
     presence: true
   
-  ### INSTANCE METHODS:
-  
-  def owners
-    organization.members
-  end
-  
 end

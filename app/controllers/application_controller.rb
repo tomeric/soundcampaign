@@ -17,12 +17,12 @@ class ApplicationController < ActionController::Base
   
   def require_label_owner
     unauthorized unless user_signed_in? &&
-                        current_user.in?(@label.try(:owners).to_a)
+                        @label.in?(current_organization.labels)
   end
   
   def require_release_owner
     unauthorized unless user_signed_in? &&
-                        current_user.in?(@release.try(:owners).to_a)
+                        @release.in?(current_organization.releases)
   end
   
   def require_user
