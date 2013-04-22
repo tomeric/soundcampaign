@@ -2,7 +2,9 @@ class Contact < ActiveRecord::Base
   
   ### ASSOCIATIONS:
   
-  belongs_to :contact_list
+  belongs_to :list,
+    class_name:  ContactList,
+    foreign_key: :contact_list_id
   
   ### VALIDATIONS:
   

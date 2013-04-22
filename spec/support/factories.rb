@@ -60,7 +60,7 @@ FactoryGirl.define do
   end
   
   factory :contact do
-    contact_list { build :contact_list }
-    email        { generate :email     }
+    list  { build :contact_list }
+    email { generate :email     }
   end
 end

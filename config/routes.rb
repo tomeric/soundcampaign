@@ -1,6 +1,4 @@
 SoundCampaign::Application.routes.draw do
-  resources :contact_lists
-
   root to: 'subscribers#new'
   resources :subscribers
   
@@ -8,6 +6,9 @@ SoundCampaign::Application.routes.draw do
   resources :releases
   resources :artists
   resources :tracks, only: %i[create destroy show]
+  resources :contact_lists do
+    resources :contacts
+  end
   
   resources :mockups, only: %i[index show]
   
