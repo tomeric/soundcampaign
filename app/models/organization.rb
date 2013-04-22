@@ -9,6 +9,9 @@ class Organization < ActiveRecord::Base
   
   has_many :contact_lists
   
+  has_many :contacts,
+    through: :contact_lists
+  
   has_many :labels
   
   has_many :releases

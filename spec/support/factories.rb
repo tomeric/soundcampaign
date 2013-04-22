@@ -58,4 +58,9 @@ FactoryGirl.define do
     organization { build :organization }
     name         { generate :brand     }
   end
+  
+  factory :contact do
+    contact_list { build :contact_list }
+    email        { generate :email     }
+  end
 end

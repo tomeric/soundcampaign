@@ -4,6 +4,8 @@ class ContactList < ActiveRecord::Base
   
   belongs_to :organization
   
+  has_many :contacts
+  
   ### VALIDATIONS:
   
   validates :name,
