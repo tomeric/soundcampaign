@@ -15,6 +15,7 @@ class ContactListsController < ApplicationController
   end
   
   def show
+    @contacts = @contact_list.contacts
   end
   
   def new

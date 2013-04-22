@@ -56,6 +56,12 @@ describe ContactListsController do
       get :show, id: list.to_param
       expect(assigns[:contact_list]).to eq list
     end
+    
+    it "assigns the requested contact list's contacts as @contacts" do
+      contact = create :contact, list: list
+      get :show, id: list.to_param
+      expect(assigns[:contacts]).to eq [contact]
+    end
   end
   
   describe 'GET :new' do

@@ -1,0 +1,15 @@
+<tr>
+  <td><%= link_to contact.email, "mailto:#{contact.email}" %></td>
+  <td><%= contact.first_name %></td>
+  <td><%= contact.last_name  %></td>
+  <td class="main-table-btn-edit">
+    <%= link_to 'Edit',  [contact.list, contact] %>
+  </td>
+  <td class="main-table-btn-del">
+    <%= link_to 'Delete', [contact.list, contact],
+          data: {
+            method: :delete,
+            confirm: 'Are you sure?'
+          } %>
+  </td>
+</tr>
