@@ -1,5 +1,5 @@
 <section class="section" id="contact_lists">
-  <%= render 'header', title: @contact_list.name %>
+  <%= render 'contacts/header', title: @contact_list.name %>
   <% if @contacts.present? %>
     <%= render 'contacts', list: @contact_list, contacts: @contacts %>
   <% else %>
