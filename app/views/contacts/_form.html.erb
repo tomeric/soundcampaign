@@ -1,4 +1,11 @@
+<%
+legend = @contact.new_record? ? "Add a new contact to #{@contact_list.name}" :
+                                "Update contact in #{@contact_list.name}"
+%>
 <%= semantic_form_for [@contact_list, @contact] do |f| %>
-  <%= f.inputs :email, :name %>
+  <%= f.inputs legend do %>
+    <%= f.input :email, placeholder: 'The e-mail address of your contact' %>
+    <%= f.input :name,  placeholder: 'The name of your contact'  %>
+  <% end %>
   <%= f.actions %>
 <% end %>
