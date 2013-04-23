@@ -2,9 +2,11 @@
   <%= f.inputs "Update your account" do %>
     <%= f.input :name,  placeholder: 'Your name'           %>
     <%= f.input :email, placeholder: 'Your e-mail address' %>
-    <%= f.input :password                                  %>
-    <%= f.input :password_confirmation                     %>
     <%= f.input :current_password, hint: 'We need your current password to confirm your changes' %>
+  <% end %>
+  <%= f.inputs "Update your password" do %>
+    <%= f.input :password              %>
+    <%= f.input :password_confirmation %>
   <% end %>
   <%= f.actions do %>
     <%= f.action :submit, label: 'Update' %>
