@@ -145,15 +145,15 @@ describe ContactsController do
   describe 'PATCH :update' do
     before { sign_in user }
     
-    let(:attributes) { { first_name: 'updated first name' } }
+    let(:attributes) { { name: 'updated name' } }
     
     context 'with valid params' do
       it "updates the requested contact's attributes" do
         expect {
           patch :update, contact_list_id: list.to_param, id: contact.to_param, contact: attributes
         }.to change {
-          contact.reload.first_name
-        }.to 'updated first name'
+          contact.reload.name
+        }.to 'updated name'
       end
       
       it 'assigns the requested contact list as @contact_list' do
@@ -182,7 +182,7 @@ describe ContactsController do
         expect {
           patch :update, contact_list_id: list.to_param, id: contact.to_param, contact: attributes
         }.to_not change {
-          contact.reload.first_name
+          contact.reload.name
         }
       end
       

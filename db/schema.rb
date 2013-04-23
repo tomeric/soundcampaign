@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130422192549) do
+ActiveRecord::Schema.define(version: 20130423185115) do
 
   create_table "artists", force: true do |t|
     t.string   "name",               null: false
@@ -44,15 +44,13 @@ ActiveRecord::Schema.define(version: 20130422192549) do
   create_table "contacts", force: true do |t|
     t.integer  "contact_list_id"
     t.string   "email"
-    t.string   "first_name"
-    t.string   "last_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
   add_index "contacts", ["contact_list_id"], name: "index_contacts_on_contact_list_id"
   add_index "contacts", ["email", "contact_list_id"], name: "index_contacts_on_email_and_contact_list_id", unique: true
-  add_index "contacts", ["first_name", "last_name"], name: "contact_name"
 
   create_table "labels", force: true do |t|
     t.string   "name"
