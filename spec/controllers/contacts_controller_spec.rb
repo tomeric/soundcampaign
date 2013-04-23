@@ -96,6 +96,11 @@ describe ContactsController do
     let(:attributes) { attributes_for(:contact).except(:contact_list_id) }
     
     context 'with valid params' do
+      before do
+        # Make sure list is created
+        list
+      end
+      
       it 'creates a new contact in the contact list' do
         expect {
           post :create, contact_list_id: list.to_param, contact: attributes
@@ -119,6 +124,8 @@ describe ContactsController do
     
     context 'with invalid params' do
       before do
+        # Make sure list is created
+        list
         # Trigger the behavior that occurs when invalid params are submitted
         Contact.any_instance.stub(:valid?).and_return(false)
       end

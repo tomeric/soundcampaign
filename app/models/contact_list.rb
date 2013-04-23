@@ -14,4 +14,16 @@ class ContactList < ActiveRecord::Base
       scope: :organization_id
     }
   
+  ### CALLBACKS:
+  
+  after_create :add_organization_members_as_contacts
+  
+  private
+  
+  def add_organization_members_as_contacts
+    organization.members.find_each do |member|
+      contacts.create! email: member.email, first_name: member.name
+    end
+  end
+  
 end
