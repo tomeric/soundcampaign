@@ -35,7 +35,6 @@ gem 'turbolinks'
 
 # I18n:
 gem 'rails-i18n', github: 'svenfuchs/rails-i18n'
-gem 'i18n-js',    github: 'fnando/i18n-js'
 
 group :development do
   gem 'rb-fsevent',       require: false
