@@ -1,0 +1,79 @@
+.formtastic {
+  @include border-radius(3px);
+  background: #f4f4f4;
+  border: 1px solid #b3b3b3;
+  border-top: 1px solid #207aa0;
+  border-bottom: 0;
+  
+  legend span {
+    @include box-header;
+    @include border-top-radius(3px);
+    font-size: 17px;
+    font-weight: bold;
+    color: white;
+    margin: 0 -1px 0 -1px;
+    padding-left: $gridColumnWidth / 2;
+    @include text-shadow(rgba(15,102,149, 0.9) 0px 0px 2px);
+  }
+  
+  .inputs ol, .actions ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .input, .action {
+    padding: ($baseLineHeight*0.75) ($gridColumnWidth/2 - 1) ($baseLineHeight/2 - 1);
+    margin: 0;
+    border-bottom: 1px solid #e1e1e1;
+  }
+  
+  .input {
+    .label {
+      background: transparent;
+      font-size: 17px;
+      font-weight: bold;
+      color: #008edc;
+      padding-bottom: $baseLineHeight/2;
+      display: block;
+      @include text-shadow(none);
+      
+      abbr {
+        text-decoration: none;
+        border: 0;
+        font-weight: normal;
+        opacity: 0.6;
+      }
+    }
+    
+    input[type=text], input[type=email], textarea {
+      width: 100%;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      line-height: $baseLineHeight;
+      min-height: $baseLineHeight + ($baseLineHeight*2/3);
+      padding: ($baseLineHeight/3) ($gridColumnWidth/4);
+    }
+  }
+  
+  .inline-hints {
+    display: block;
+    color: #777777;
+    font-weight: bold;
+    font-size: 13px;
+    margin: 0;
+  }
+  
+  .action {
+    background: white;
+    border-bottom: 1px solid #b3b3b3;
+    padding-top: $baseLineHeight;
+    padding-bottom: $baseLineHeight - 1;
+    @include clearfix;
+    
+    input[type=submit] {
+      float: right;
+    }
+  }
+}
