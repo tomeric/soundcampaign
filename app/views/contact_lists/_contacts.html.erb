@@ -4,7 +4,12 @@
     <span class="main-table-count"><%= list.contacts.count %></span>
     <span class="main-table-add"><%=  link_to 'Add Contact', new_contact_list_contact_path(list) %></span>
     <span class="main-table-edit"><%= link_to 'Edit List',   edit_contact_list_path(list) %></span>
-    <span class="main-table-importexport"><a href="#">Import</a> or <a href="#">Export</a> contacts</span>
+    <span class="main-table-importexport">
+      <a href="#">Import</a>
+      or 
+      <%= link_to 'Export', contact_list_path(list, format: 'csv'), download: "#{list.name.parameterize}.csv" %>
+      contacts
+    </span>
   </caption>
   <thead class="main-table-head">
     <tr>

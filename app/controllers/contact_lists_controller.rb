@@ -15,7 +15,15 @@ class ContactListsController < ApplicationController
   end
   
   def show
-    @contacts = @contact_list.contacts
+    respond_to do |format|
+      format.html do
+        @contacts = @contact_list.contacts # Add pagination
+      end
+      
+      format.csv do
+        @contacts = @contact_list.contacts
+      end
+    end
   end
   
   def new
