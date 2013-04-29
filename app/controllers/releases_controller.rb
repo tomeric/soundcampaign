@@ -15,6 +15,7 @@ class ReleasesController < ApplicationController
   end
   
   def show
+    render layout: 'release'
   end
   
   def new
