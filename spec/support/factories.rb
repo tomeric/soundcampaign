@@ -63,4 +63,12 @@ FactoryGirl.define do
     list  { build :contact_list }
     email { generate :email     }
   end
+  
+  factory :import do
+    spreadsheet { fixture 'empty.csv' }
+  end
+  
+  factory :import_row, class: Import::Row do
+    import { build :import }
+  end
 end

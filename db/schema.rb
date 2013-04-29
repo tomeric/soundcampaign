@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130423185115) do
+ActiveRecord::Schema.define(version: 20130429121704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,29 @@ ActiveRecord::Schema.define(version: 20130423185115) do
 
   add_index "contacts", ["contact_list_id"], name: "index_contacts_on_contact_list_id"
   add_index "contacts", ["email", "contact_list_id"], name: "index_contacts_on_email_and_contact_list_id", unique: true
+
+  create_table "import_rows", force: true do |t|
+    t.integer  "import_id"
+    t.integer  "position",   default: 0,     null: false
+    t.boolean  "header",     default: false, null: false
+    t.string   "columns",    default: [],    null: false, array: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "import_rows", ["import_id", "position"], name: "index_import_rows_on_import_id_and_position", unique: true
+  add_index "import_rows", ["import_id"], name: "index_import_rows_on_import_id"
+
+  create_table "imports", force: true do |t|
+    t.string   "spreadsheet_file_name"
+    t.string   "spreadsheet_content_type"
+    t.integer  "spreadsheet_file_size"
+    t.datetime "spreadsheet_updated_at"
+    t.integer  "context_id"
+    t.string   "context_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "labels", force: true do |t|
     t.string   "name"

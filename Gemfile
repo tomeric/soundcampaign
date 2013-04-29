@@ -13,6 +13,9 @@ gem 'pg'
 gem 'friendly_id'
 gem 'protected_attributes'
 
+# Data:
+gem 'roo'
+
 # Files:
 gem 'aws-sdk'
 gem 'paperclip'

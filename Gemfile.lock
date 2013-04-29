@@ -180,6 +180,10 @@ GEM
       json (~> 1.4)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    roo (1.11.2)
+      nokogiri
+      rubyzip
+      spreadsheet (> 0.6.4)
     rspec (2.13.0)
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
@@ -196,6 +200,7 @@ GEM
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
       rspec-mocks (~> 2.13.0)
+    ruby-ole (1.2.11.6)
     ruby-progressbar (1.0.2)
     rubyzip (0.9.9)
     sass (3.2.7)
@@ -216,6 +221,8 @@ GEM
       rack (>= 1.0)
     slop (3.4.4)
     spork (0.9.2)
+    spreadsheet (0.8.5)
+      ruby-ole (>= 1.0)
     sprockets (2.9.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -289,6 +296,7 @@ DEPENDENCIES
   rails (= 4.0.0.beta1)
   rails-i18n!
   rb-fsevent
+  roo
   rspec-rails
   sass-rails (~> 4.0.0.beta1)
   shoulda-matchers
