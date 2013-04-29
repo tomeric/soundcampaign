@@ -1,0 +1,15 @@
+$media-PortraitTablets: 983px;
+$media-PhonesToTablets: 767px;
+$media-Phones: 480px;
+
+@mixin modular-mq($breakpoint) {
+  @if $breakpoint == PortraitTablets {
+    @media screen and (max-width: $media-PortraitTablets) { @content; }
+  }
+  @else if $breakpoint == PhonesToTablets {
+    @media screen and (max-width: $media-PhonesToTablets) { @content; }
+  }
+  @else if $breakpoint == Phones {
+    @media screen and (max-width: $media-Phones) { @content; }
+  }
+}
