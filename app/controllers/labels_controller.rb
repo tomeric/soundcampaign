@@ -45,7 +45,7 @@ class LabelsController < ApplicationController
   
   def destroy
     @label.destroy
-    redirect_to labels_url, notice: 'Label was successfully destroyed.'
+    redirect_to labels_url, alert: "You've just deleted \"#{@label.name}\". <a href='#TODO'>Undo this</a>."
   end
   
   private

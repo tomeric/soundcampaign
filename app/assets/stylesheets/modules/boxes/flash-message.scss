@@ -1,0 +1,35 @@
+.flash {
+  color: #332a06;
+  line-height: $baseLineHeight;
+  padding: $baseLineHeight/2 0;
+  text-align: center;
+  
+  p {
+    margin: 0;
+    padding: 0;
+    line-height: $baseLineHeight;
+    display: inline;
+    font-weight: bold;
+  }
+  
+  &.alert {
+    background: #fff400;
+    @include background-image(linear-gradient(#fff400, #ffce00));
+    border-top: 1px solid #fffe00;
+    border-bottom: 1px solid #b3b3b3;
+  }
+  
+  &.error {
+    background: #cf3839;
+    @include background-image(linear-gradient(#cf7373, #cf3839));
+    border-top: 1px solid #00fe00;
+    border-bottom: 1px solid #b3b3b3;
+  }
+  
+  &.notice {
+    background: #37c338;
+    @include background-image(linear-gradient(#73c373, #41c341));
+    border-top: 1px solid #00fe00;
+    border-bottom: 1px solid #b3b3b3;
+  }
+}

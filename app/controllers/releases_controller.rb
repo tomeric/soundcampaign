@@ -45,7 +45,7 @@ class ReleasesController < ApplicationController
   
   def destroy
     @release.destroy
-    redirect_to releases_url, notice: 'Release was successfully destroyed.'
+    redirect_to releases_url,  alert: "You've just deleted \"#{@release.title}\". <a href='#TODO'>Undo this</a>."
   end
   
   private

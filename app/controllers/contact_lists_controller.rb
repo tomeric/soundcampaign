@@ -46,7 +46,7 @@ class ContactListsController < ApplicationController
   
   def destroy
     @contact_list.destroy
-    redirect_to contact_lists_url, notice: 'Contact list was successfully destroyed.'
+    redirect_to contact_lists_url, alert: "You've just deleted \"#{@contact_list.name}\". <a href='#TODO'>Undo this</a>."
   end
   
   private
