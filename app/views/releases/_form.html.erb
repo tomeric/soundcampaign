@@ -62,8 +62,9 @@
     <% @release.tracks.each do |track| %>
       <%= render 'tracks/fields', form: f, track: track %>
     <% end %>
-
-    <!-- release track normal -->
+    
+    <!-- release track upload -->
+    <!--
     <li class="release-track">
       <div class="release-track-handle">
       </div>
@@ -78,27 +79,8 @@
         <a href="#delete"></a>
       </div>
     </li>
-
-    <!-- release track editable -->
-    <li class="release-track">
-      <div class="release-track-handle">
-      </div>
-      <div class="release-track-info">
-        <span class="filename">nobody_else_final.mp3</span>
-        <span class="loader">
-          <span class="loader-inner" style="width:40%"></span>
-        </span>
-      </div>
-      <div class="release-track-name editable">
-        <input placeholder="Karmon">
-        <span>-</span>
-        <input placeholder="Nobody Else Final">
-      </div>
-      <div class="release-track-delete">
-        <a href="#delete"></a>
-      </div>
-    </li>
-
+    -->
+    
   </ul>
   
   <div class="release-buttons">
