@@ -37,6 +37,8 @@ gem 'turbolinks'
 gem 'rails-i18n', github: 'svenfuchs/rails-i18n'
 
 group :development do
+  gem 'sqlite3'
+  gem 'taps'
   gem 'rb-fsevent',       require: false
   gem 'guard-bundler'
   gem 'guard-rspec'
