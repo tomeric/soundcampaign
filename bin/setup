@@ -19,7 +19,7 @@ brew info imagemagick > /dev/null || {
 rvm --help > /dev/null || {
   # Install RVM:
   echo "Installing RVM (https://rvm.io)"
-  curl -L https://get.rvm.io | bash -s stable --rails --autolibs=enabled --ruby=1.9.3
+  curl -L https://get.rvm.io | bash -s stable --rails --autolibs=enabled --ruby=2.0.0
 }
 
 rvm --help > /dev/null || {
@@ -34,9 +34,14 @@ rvm 2.0.0@soundcampaign
 bundle --help > /dev/null || {
   gem install bundler
 }
-bundle install --binstubs
+bundle install
 
 # Setup database:
+if ! [ -f ./config/database.yml ]
+then
+  cp config/database.yml.example config/database.yml
+fi
+
 rake db:create:all || {
   echo "Postgres does not seem to be running. Please start it and rerun this script."
   exit 1
