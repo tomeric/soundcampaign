@@ -2,7 +2,8 @@ class TracksController < ApplicationController
   
   def create
     @track = Track.new
-    @track.attachment = uploaded_attachment
+    @track.organization = current_organization
+    @track.attachment   = uploaded_attachment
     
     if @track.save
       template = render_to_string(partial: 'tracks/fields', locals: { track: @track })
