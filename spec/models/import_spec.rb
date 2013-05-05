@@ -16,6 +16,15 @@ describe Import do
     end
   end
   
+  context 'callbacks' do
+    context 'after create' do
+      it 'imports the spreadsheet rows' do
+        import.should_receive(:import_rows!)
+        import.save
+      end
+    end
+  end
+  
   context 'instance methods' do
     describe '#import_rows!' do
       let(:import) { create :import }

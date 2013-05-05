@@ -21,6 +21,10 @@ class Import < ActiveRecord::Base
   
   validate :valid_spreadsheet, if: :spreadsheet?
   
+  ### CALLBACKS:
+  
+  after_create :import_rows!
+  
   ### INSTANCE METHODS:
   
   def import_rows!
