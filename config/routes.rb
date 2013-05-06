@@ -8,6 +8,12 @@ SoundCampaign::Application.routes.draw do
   resources :tracks, only: %i[create destroy show]
   resources :contact_lists do
     resources :contacts
+    resources :imports, only: %i[index new create show] do
+      member do
+        get  :prepare
+        post :execute
+      end
+    end
   end
   
   resources :mockups, only: %i[index show]

@@ -1,0 +1,11 @@
+<section class="section" id="import">
+  <%= render 'header', title: 'Prepare import' %>
+  
+  <% if @rows.present? %>
+    <%= render 'mapping_form',
+          context:  @context,
+          import:   @import,
+          rows:     @rows,
+          mappable: @mappable %>
+  <% end %>
+</section>

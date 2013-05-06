@@ -1,0 +1,34 @@
+<%= form_tag [:execute, context, import] do %>
+  <table class="table table-striped main-table">
+    <thead>
+      <% if header = rows[0] %>
+        <tr>
+          <% header.columns.each.with_index do |column, index| %>
+            <th class="column-select">
+              <%= select_tag "column[#{index}][mapping]",
+                    @mappable.map { |m| content_tag(:option, m.to_s.titleize, value: m) }.join,
+                    include_blank: true %>
+            </th>
+          <% end %>
+          <th class="header-check"></th>
+        </tr>
+      <% end %>
+    </thead>
+    <tbody>
+      <% rows.each.with_index do |row, row_index| %>
+        <tr>
+          <% row.columns.each.with_index do |column, column_index| %>
+            <td class="column-value"><%= column %></td>
+          <% end %>
+          <td class="header-check">
+            <% if row_index == 0 %>
+              <%= check_box_tag "row[#{row_index}][header]", true, false, id: 'first_row_header' %>
+              <label for="first_row_header">is a header</label>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= submit_tag 'Import' %>
+<% end %>

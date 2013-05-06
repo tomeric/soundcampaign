@@ -5,6 +5,16 @@ class ApplicationController < ActionController::Base
   
   private
   
+  def hash_to_indexed_array(hash = {})
+    array = []
+    if hash.is_a?(Hash)
+      hash.each do |index, values|
+        array[index.to_i] = values
+      end
+    end
+    array
+  end
+  
   def current_organization
     @current_organization ||= current_user.organization
   end
