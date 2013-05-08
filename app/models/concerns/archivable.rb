@@ -10,4 +10,8 @@ module Archivable
   def archive
     update_column :deleted_at, Time.now
   end
+  
+  def unarchive
+    update_column :deleted_at, nil
+  end
 end

@@ -61,5 +61,16 @@ shared_examples_for Archivable do
         end
       end
     end
+    
+    describe '#unarchive' do
+      it 'sets deleted_at to nil' do
+        model.archive
+        expect {
+          model.unarchive
+        }.to change {
+          model.deleted_at
+        }.to nil
+      end
+    end
   end
 end
