@@ -5,10 +5,10 @@ class LabelsController < ApplicationController
   before_action :require_user
   
   before_action :set_label,
-    only: %i[show edit update destroy]
+    only: %i[show edit update destroy undestroy]
   
   before_action :require_label_owner,
-    only: %i[show edit update destroy]
+    only: %i[show edit update destroy undestroy]
   
   def index
     @labels = current_organization.labels
@@ -48,10 +48,19 @@ class LabelsController < ApplicationController
     redirect_to labels_url, alert: "You've just deleted \"#{@label.name}\". <a href='#TODO'>Undo this</a>."
   end
   
+  def undestroy
+    @label.unarchive
+    redirect_to edit_label_url(@label)
+  end
+  
   private
   
   def set_label
-    @label = Label.find(params[:id])
+    if action_name == 'undestroy'
+      @label = current_organization.labels.archived.find_by(id: params[:id])
+    else
+      @label = current_organization.labels.find_by(id: params[:id])
+    end
   end
   
   def label_params

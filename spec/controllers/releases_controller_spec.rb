@@ -198,4 +198,24 @@ describe ReleasesController do
       expect(response).to redirect_to releases_url
     end
   end
+  
+  describe 'PUT :undestroy' do
+    before do
+      release.archive
+      sign_in user
+    end
+    
+    it 'unarchives an archived release' do
+      expect {
+        put :undestroy, id: release.to_param
+      }.to change {
+        Release.count
+      }.by +1
+    end
+    
+    it 'redirects to the release' do
+      put :undestroy, id: release.to_param
+      expect(response).to redirect_to release
+    end
+  end
 end
