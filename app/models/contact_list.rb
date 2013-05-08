@@ -1,4 +1,5 @@
 class ContactList < ActiveRecord::Base
+  include Archivable
   
   ### ASSOCIATIONS:
   

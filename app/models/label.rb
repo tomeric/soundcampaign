@@ -1,4 +1,5 @@
 class Label < ActiveRecord::Base
+  include Archivable
   
   ### PAPERCLIP:
   

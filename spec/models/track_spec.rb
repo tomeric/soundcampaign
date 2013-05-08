@@ -1,9 +1,12 @@
 require 'spec_helper'
+require_relative './concerns/archivable'
 
 describe Track do
   subject(:track) { build :track }
   
   it { should be_valid }
+  
+  it_behaves_like Archivable
   
   describe 'callbacks' do
     context 'on creation' do

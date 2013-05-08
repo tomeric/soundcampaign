@@ -12,8 +12,8 @@ class Import < ActiveRecord::Base
     polymorphic: true
   
   has_many :rows,
-    class_name: Import::Row,
-    order:      :position
+    -> { order :position },
+    class_name: Import::Row
   
   ### VALIDATIONS:
   
