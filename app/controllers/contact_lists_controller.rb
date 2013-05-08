@@ -27,15 +27,14 @@ class ContactListsController < ApplicationController
   end
   
   def new
-    @contact_list = ContactList.new
+    @contact_list = current_organization.contact_lists.new
   end
   
   def edit
   end
   
   def create
-    @contact_list = ContactList.new(contact_list_params)
-    @contact_list.organization = current_organization
+    @contact_list = current_organization.contact_lists.new(contact_list_params)
     
     if @contact_list.save
       redirect_to @contact_list, notice: 'Contact list was successfully created.'
