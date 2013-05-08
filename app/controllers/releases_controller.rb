@@ -45,8 +45,8 @@ class ReleasesController < ApplicationController
   end
   
   def destroy
-    @release.destroy
-    redirect_to releases_url,  alert: "You've just deleted \"#{@release.title}\". <a href='#TODO'>Undo this</a>."
+    @release.archive
+    redirect_to releases_url,  alert: "You've just deleted \"#{@release.title}\". <a href='#{undestroy_release_path(@release)}' data-method='PUT'>Undo this</a>."
   end
   
   def undestroy

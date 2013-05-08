@@ -44,8 +44,8 @@ class LabelsController < ApplicationController
   end
   
   def destroy
-    @label.destroy
-    redirect_to labels_url, alert: "You've just deleted \"#{@label.name}\". <a href='#TODO'>Undo this</a>."
+    @label.archive
+    redirect_to labels_url, alert: "You've just deleted \"#{@label.name}\". <a href='#{undestroy_label_path(@label)}' data-method='PUT'>Undo this</a>."
   end
   
   def undestroy

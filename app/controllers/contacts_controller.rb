@@ -45,8 +45,8 @@ class ContactsController < ApplicationController
   end
   
   def destroy
-    @contact.destroy
-    redirect_to @contact_list, alert: "You've just removed \"#{@contact.name || @contact.email}\" from \"#{@contact_list.name}\". <a href='#TODO'>Undo this</a>."
+    @contact.archive
+    redirect_to @contact_list, alert: "You've just removed \"#{@contact.name || @contact.email}\" from \"#{@contact_list.name}\". <a href='#{undestroy_contact_list_contact_path(@contact_list, @contact)}' data-method='PUT'>Undo this</a>."
   end
   
   def undestroy
