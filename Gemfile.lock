@@ -242,6 +242,7 @@ GEM
     thread_safe (0.1.0)
       atomic
     tilt (1.4.0)
+    timecop (0.6.1)
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
@@ -299,6 +300,7 @@ DEPENDENCIES
   sqlite3
   taps
   thin
+  timecop
   turbolinks
   turnip
   uglifier

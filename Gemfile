@@ -66,4 +66,5 @@ group :test do
   gem 'launchy',            require: false
   gem 'fuubar',             require: false
   gem 'turnip',             require: false
+  gem 'timecop',            require: false
 end
