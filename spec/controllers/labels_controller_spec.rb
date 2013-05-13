@@ -196,4 +196,24 @@ describe LabelsController do
       expect(response).to redirect_to labels_url
     end
   end
+  
+  describe 'PUT :undestroy' do
+    before do
+      label.archive
+      sign_in user
+    end
+    
+    it 'unarchives an archived label' do
+      expect {
+        put :undestroy, id: label.to_param
+      }.to change {
+        Label.count
+      }.by +1
+    end
+    
+    it 'redirects to the edit label form' do
+      put :undestroy, id: label.to_param
+      expect(response).to redirect_to edit_label_url(label.to_param)
+    end
+  end
 end

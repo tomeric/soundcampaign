@@ -9,7 +9,7 @@ class ContactsController < ApplicationController
   before_action :require_contact_list_owner
   
   before_action :set_contact,
-    only: %i[show edit update destroy]
+    only: %i[show edit update destroy undestroy]
   
   def index
     redirect_to @contact_list
@@ -45,8 +45,13 @@ class ContactsController < ApplicationController
   end
   
   def destroy
-    @contact.destroy
-    redirect_to @contact_list, alert: "You've just removed \"#{@contact.name || @contact.email}\" from \"#{@contact_list.name}\". <a href='#TODO'>Undo this</a>."
+    @contact.archive
+    redirect_to @contact_list, alert: "You've just removed \"#{@contact.name || @contact.email}\" from \"#{@contact_list.name}\". <a href='#{undestroy_contact_list_contact_path(@contact_list, @contact)}' data-method='PUT'>Undo this</a>."
+  end
+  
+  def undestroy
+    @contact.unarchive
+    redirect_to @contact_list
   end
   
   private
@@ -57,11 +62,15 @@ class ContactsController < ApplicationController
   end
   
   def set_contact_list
-    @contact_list = ContactList.find(params[:contact_list_id])
+    @contact_list = current_organization.contact_lists.find_by(id: params[:contact_list_id])
   end
   
   def set_contact
-    @contact = @contact_list.contacts.find(params[:id])
+    if action_name == 'undestroy'
+      @contact = @contact_list.contacts.archived.find_by(id: params[:id])
+    else
+      @contact = @contact_list.contacts.find_by(id: params[:id])
+    end
   end
   
 end

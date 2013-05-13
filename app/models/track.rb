@@ -1,4 +1,5 @@
 class Track < ActiveRecord::Base
+  include Archivable
   
   ### PAPERCLIP:
   

@@ -5,10 +5,10 @@ class ReleasesController < ApplicationController
   before_action :require_user
   
   before_action :set_release,
-    only: %i[show edit update destroy]
+    only: %i[show edit update destroy undestroy]
   
   before_action :require_release_owner,
-    only: %i[show edit update destroy]
+    only: %i[show edit update destroy undestroy]
   
   def index
     @releases = current_organization.releases
@@ -45,8 +45,13 @@ class ReleasesController < ApplicationController
   end
   
   def destroy
-    @release.destroy
-    redirect_to releases_url,  alert: "You've just deleted \"#{@release.title}\". <a href='#TODO'>Undo this</a>."
+    @release.archive
+    redirect_to releases_url,  alert: "You've just deleted \"#{@release.title}\". <a href='#{undestroy_release_path(@release)}' data-method='PUT'>Undo this</a>."
+  end
+  
+  def undestroy
+    @release.unarchive
+    redirect_to @release
   end
   
   private
@@ -60,7 +65,11 @@ class ReleasesController < ApplicationController
   end
   
   def set_release
-    @release = Release.find(params[:id])
+    if action_name == 'undestroy'
+      @release = current_organization.releases.archived.find_by(id: params[:id])
+    else
+      @release = current_organization.releases.find_by(id: params[:id])
+    end
   end
   
 end

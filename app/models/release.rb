@@ -1,4 +1,5 @@
 class Release < ActiveRecord::Base
+  include Archivable
   
   ### PAPERCLIP:
   

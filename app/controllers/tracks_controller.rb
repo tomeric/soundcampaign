@@ -1,7 +1,7 @@
 class TracksController < ApplicationController
   
   def create
-    @track = Track.new
+    @track = current_organization.tracks.new
     @track.attachment = uploaded_attachment
     
     if @track.save

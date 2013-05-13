@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130429121704) do
+ActiveRecord::Schema.define(version: 20130508112123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20130429121704) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "organization_id",    null: false
+    t.datetime "deleted_at"
   end
 
   create_table "contact_lists", force: true do |t|
@@ -40,9 +41,10 @@ ActiveRecord::Schema.define(version: 20130429121704) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
-  add_index "contact_lists", ["organization_id"], name: "index_contact_lists_on_organization_id"
+  add_index "contact_lists", ["organization_id"], name: "index_contact_lists_on_organization_id", using: :btree
 
   create_table "contacts", force: true do |t|
     t.integer  "contact_list_id"
@@ -50,10 +52,11 @@ ActiveRecord::Schema.define(version: 20130429121704) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.datetime "deleted_at"
   end
 
-  add_index "contacts", ["contact_list_id"], name: "index_contacts_on_contact_list_id"
-  add_index "contacts", ["email", "contact_list_id"], name: "index_contacts_on_email_and_contact_list_id", unique: true
+  add_index "contacts", ["contact_list_id"], name: "index_contacts_on_contact_list_id", using: :btree
+  add_index "contacts", ["email", "contact_list_id", "deleted_at"], name: "contact_list_contact", unique: true, using: :btree
 
   create_table "import_rows", force: true do |t|
     t.integer  "import_id"
@@ -64,8 +67,8 @@ ActiveRecord::Schema.define(version: 20130429121704) do
     t.datetime "updated_at"
   end
 
-  add_index "import_rows", ["import_id", "position"], name: "index_import_rows_on_import_id_and_position", unique: true
-  add_index "import_rows", ["import_id"], name: "index_import_rows_on_import_id"
+  add_index "import_rows", ["import_id", "position"], name: "index_import_rows_on_import_id_and_position", unique: true, using: :btree
+  add_index "import_rows", ["import_id"], name: "index_import_rows_on_import_id", using: :btree
 
   create_table "imports", force: true do |t|
     t.string   "spreadsheet_file_name"
@@ -96,6 +99,7 @@ ActiveRecord::Schema.define(version: 20130429121704) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "organization_id",      null: false
+    t.datetime "deleted_at"
   end
 
   create_table "organizations", force: true do |t|
@@ -111,9 +115,9 @@ ActiveRecord::Schema.define(version: 20130429121704) do
     t.datetime "updated_at"
   end
 
-  add_index "release_artists", ["artist_id"], name: "index_release_artists_on_artist_id"
-  add_index "release_artists", ["release_id", "artist_id"], name: "index_release_artists_on_release_id_and_artist_id", unique: true
-  add_index "release_artists", ["release_id"], name: "index_release_artists_on_release_id"
+  add_index "release_artists", ["artist_id"], name: "index_release_artists_on_artist_id", using: :btree
+  add_index "release_artists", ["release_id", "artist_id"], name: "index_release_artists_on_release_id_and_artist_id", unique: true, using: :btree
+  add_index "release_artists", ["release_id"], name: "index_release_artists_on_release_id", using: :btree
 
   create_table "releases", force: true do |t|
     t.integer  "label_id",           null: false
@@ -129,9 +133,10 @@ ActiveRecord::Schema.define(version: 20130429121704) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "organization_id",    null: false
+    t.datetime "deleted_at"
   end
 
-  add_index "releases", ["label_id"], name: "index_releases_on_label_id"
+  add_index "releases", ["label_id"], name: "index_releases_on_label_id", using: :btree
 
   create_table "subscribers", force: true do |t|
     t.string   "email",      null: false
@@ -139,7 +144,7 @@ ActiveRecord::Schema.define(version: 20130429121704) do
     t.datetime "updated_at"
   end
 
-  add_index "subscribers", ["email"], name: "index_subscribers_on_email", unique: true
+  add_index "subscribers", ["email"], name: "index_subscribers_on_email", unique: true, using: :btree
 
   create_table "tracks", force: true do |t|
     t.integer  "release_id"
@@ -153,9 +158,10 @@ ActiveRecord::Schema.define(version: 20130429121704) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "organization_id",         null: false
+    t.datetime "deleted_at"
   end
 
-  add_index "tracks", ["release_id"], name: "index_tracks_on_release_id"
+  add_index "tracks", ["release_id"], name: "index_tracks_on_release_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name",                                            null: false
@@ -174,8 +180,8 @@ ActiveRecord::Schema.define(version: 20130429121704) do
     t.integer  "organization_id",                                 null: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["name"], name: "index_users_on_name"
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["name"], name: "index_users_on_name", using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

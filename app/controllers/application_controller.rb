@@ -5,6 +5,16 @@ class ApplicationController < ActionController::Base
   
   private
   
+  def hash_to_indexed_array(hash = {})
+    array = []
+    if hash.is_a?(Hash)
+      hash.each do |index, values|
+        array[index.to_i] = values
+      end
+    end
+    array
+  end
+  
   def current_organization
     @current_organization ||= current_user.organization
   end
@@ -17,17 +27,17 @@ class ApplicationController < ActionController::Base
   
   def require_label_owner
     unauthorized unless user_signed_in? &&
-                        @label.in?(current_organization.labels)
+                        current_organization == @label.try(:organization)
   end
   
   def require_release_owner
     unauthorized unless user_signed_in? &&
-                        @release.in?(current_organization.releases)
+                        current_organization == @release.try(:organization)
   end
   
   def require_contact_list_owner
     unauthorized unless user_signed_in? &&
-                        @contact_list.in?(current_organization.contact_lists)
+                        current_organization == @contact_list.try(:organization)
   end
   
   def require_user

@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
-gem 'rails', '= 4.0.0.beta1'
+gem 'rails', '= 4.0.0.rc1'
 
 # Daemons:
 group :production do
@@ -66,4 +66,5 @@ group :test do
   gem 'launchy',            require: false
   gem 'fuubar',             require: false
   gem 'turnip',             require: false
+  gem 'timecop',            require: false
 end

@@ -16,6 +16,8 @@ class Organization < ActiveRecord::Base
   
   has_many :releases
   
+  has_many :tracks
+  
   ### VALIDATIONS:
   
   validates :name,

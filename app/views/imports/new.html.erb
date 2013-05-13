@@ -1,0 +1,9 @@
+<section class="section" id="import">
+  <%= render 'header', title: 'Add new contacts'%>
+  <%= semantic_form_for [@context, @import] do |f| %>
+    <%= f.inputs 'Import' do %>
+      <%= f.input :spreadsheet, as: :file %>
+    <%  end %>
+    <%= f.actions %>
+  <%  end %>
+</section>

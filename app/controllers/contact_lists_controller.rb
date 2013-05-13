@@ -5,10 +5,10 @@ class ContactListsController < ApplicationController
   before_action :require_user
   
   before_action :set_contact_list,
-    only: %i[show edit update destroy]
+    only: %i[show edit update destroy undestroy]
   
   before_action :require_contact_list_owner,
-    only: %i[show edit update destroy]
+    only: %i[show edit update destroy undestroy]
   
   def index
     @contact_lists = current_organization.contact_lists
@@ -27,15 +27,14 @@ class ContactListsController < ApplicationController
   end
   
   def new
-    @contact_list = ContactList.new
+    @contact_list = current_organization.contact_lists.new
   end
   
   def edit
   end
   
   def create
-    @contact_list = ContactList.new(contact_list_params)
-    @contact_list.organization = current_organization
+    @contact_list = current_organization.contact_lists.new(contact_list_params)
     
     if @contact_list.save
       redirect_to @contact_list, notice: 'Contact list was successfully created.'
@@ -53,14 +52,23 @@ class ContactListsController < ApplicationController
   end
   
   def destroy
-    @contact_list.destroy
-    redirect_to contact_lists_url, alert: "You've just deleted \"#{@contact_list.name}\". <a href='#TODO'>Undo this</a>."
+    @contact_list.archive
+    redirect_to contact_lists_url, alert: "You've just deleted \"#{@contact_list.name}\". <a href='#{undestroy_contact_list_path(@contact_list)}' data-method='PUT'>Undo this</a>."
+  end
+  
+  def undestroy
+    @contact_list.unarchive
+    redirect_to contact_lists_url
   end
   
   private
   
   def set_contact_list
-    @contact_list = ContactList.find(params[:id])
+    if action_name == 'undestroy'
+      @contact_list = current_organization.contact_lists.archived.find_by(id: params[:id])
+    else
+      @contact_list = current_organization.contact_lists.find_by(id: params[:id])
+    end
   end
   
   def contact_list_params

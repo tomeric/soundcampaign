@@ -203,4 +203,24 @@ describe ContactListsController do
       expect(response).to redirect_to contact_lists_url
     end
   end
+  
+  describe 'PUT :undestroy' do
+    before do
+      list.archive
+      sign_in user
+    end
+    
+    it 'unarchives an archived contact list' do
+      expect {
+        put :undestroy, id: list.to_param
+      }.to change {
+        ContactList.count
+      }.by +1
+    end
+    
+    it 'redirects to the contact lists' do
+      put :undestroy, id: list.to_param
+      expect(response).to redirect_to contact_lists_url
+    end
+  end
 end
