@@ -1,4 +1,11 @@
-<section class="section" id="releases">
-  <%= render 'header', title: @release.title %>
-  <p>This is not yet available.</p>
+<div class="release-background" style="background: url(/assets/tijdelijk_bg.png);background-size: 100%;">
+</div>
+
+<section id="content" class="content-wrapper">
+  <%= render 'releases/sidebar',
+        release: @release, label:  @label %>
+  <%= render 'releases/player',
+        release: @release, tracks: @tracks %>
+  <%= render 'releases/description',
+        release: @release %>
 </section>
