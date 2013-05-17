@@ -2,7 +2,7 @@ class PosterGenerator
   
   attr_reader :source, :width, :height, :blur_radius, :side_gradient_width, :average_color, :noise_level, :noise_algorithm
   
-  def initialize(file, width: 1600, height: 250, blur_radius: 70, side_gradient_width: 180, noise_level: 0.3, noise_algorithm: 'Laplacian-noise')
+  def initialize(file, width: 1600, height: 250, blur_radius: 70, side_gradient_width: 180, noise_level: 2.5, noise_algorithm: 'Uniform-noise')
     @source              = file
     @width               = width
     @height              = height
