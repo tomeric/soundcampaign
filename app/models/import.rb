@@ -31,7 +31,7 @@ class Import < ActiveRecord::Base
   def import_rows!
     save if changed?
     
-    sheet = Roo::Spreadsheet.open(attachment.path)
+    sheet = Roo::Spreadsheet.open(spreadsheet_io.path)
     sheet.each_with_index do |columns, position|
       unless columns.all?(&:blank?)
         rows.create! columns: columns, position: position
@@ -43,14 +43,14 @@ class Import < ActiveRecord::Base
   
   private
   
-  def attachment
+  def spreadsheet_io
     file = spreadsheet.queued_for_write[:original]
     file || Paperclip.io_adapters.for(spreadsheet)
   end
   
   def valid_spreadsheet
     begin
-      Roo::Spreadsheet.open(attachment.path)
+      Roo::Spreadsheet.open(spreadsheet_io.path)
       true
     rescue
       errors.add :spreadsheet, :invalid
