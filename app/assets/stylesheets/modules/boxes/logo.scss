@@ -125,7 +125,7 @@
 			width:30px;
 			height:30px;
 			@include border-radius(20px 0 0 20px);
-			@include background-image(url("/assets/icons/left.png"), linear-gradient(#404040, #2d2d2d));
+			@include background-image(image-url("icons/left.png"), linear-gradient(#404040, #2d2d2d));
 			background-position: center;
 			background-repeat: no-repeat;
 			@include box-shadow(inset rgba(white, 0.3) 0 1px 1px);
@@ -141,7 +141,7 @@
 			width:40px;
 			height:40px;
 			@include border-radius(20px);
-			@include background-image(url("/assets/icons/play.png"), linear-gradient(#404040, #2d2d2d));
+			@include background-image(image-url("icons/play.png"), linear-gradient(#404040, #2d2d2d));
 			background-position: center;
 			background-repeat: no-repeat;
 			@include box-shadow(inset rgba(white, 0.3) 0 1px 1px);
@@ -149,7 +149,7 @@
 			cursor: pointer;
 			transition: all 0.5s ease;
 			&:hover {
-				@include background-image(url("/assets/icons/pause.png"), linear-gradient(#404040, #2d2d2d));
+				@include background-image(image-url("icons/pause.png"), linear-gradient(#404040, #2d2d2d));
 			}
 		}
 		.right {
@@ -161,7 +161,7 @@
 			width:30px;
 			height:30px;
 			@include border-radius(0 20px 20px 0);
-			@include background-image(url("/assets/icons/right.png"), linear-gradient(#404040, #2d2d2d));
+			@include background-image(image-url("icons/right.png"), linear-gradient(#404040, #2d2d2d));
 			background-position: center;
 			background-repeat: no-repeat;
 			@include box-shadow(inset rgba(white, 0.3) 0 1px 1px);
@@ -185,7 +185,7 @@
 			width:30px;
 			height:30px;
 			@include border-radius(20px);
-			@include background-image(url("/assets/icons/volume.png"), linear-gradient(#404040, #2d2d2d));
+			@include background-image(image-url("icons/volume.png"), linear-gradient(#404040, #2d2d2d));
 			background-position: center;
 			background-repeat: no-repeat;
 			@include box-shadow(inset rgba(white, 0.3) 0 1px 1px);
@@ -250,12 +250,12 @@
 			height: 100%;
 			display: block;
 			border-left:1px solid #0d0d0d;
-			background: url(/assets/icons/download-release.png) center no-repeat;
+			background: image-url("icons/download-release.png") center no-repeat;
 			text-indent: -3000em;
 			cursor:pointer;
 			transition: all 0.5s ease;
 			&:hover {
-				background: url(/assets/icons/download-release-hover.png) center no-repeat;
+				background: url("icons/download-release-hover.png") center no-repeat;
 			}
 		}
 		.download-release {
