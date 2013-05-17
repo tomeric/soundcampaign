@@ -1,13 +1,14 @@
 class PosterGenerator
   
-  attr_reader :source, :width, :height, :blur_radius, :side_gradient_width, :average_color, :noise_level
+  attr_reader :source, :width, :height, :blur_radius, :side_gradient_width, :average_color, :noise_level, :noise_algorithm
   
-  def initialize(file, width: 1600, height: 250, blur_radius: 70, side_gradient_width: 180, noise_level: 0.3)
+  def initialize(file, width: 1600, height: 250, blur_radius: 70, side_gradient_width: 180, noise_level: 0.3, noise_algorithm: 'Laplacian-noise')
     @source              = file
     @width               = width
     @height              = height
     @blur_radius         = blur_radius
     @noise_level         = noise_level
+    @noise_algorithm     = noise_algorithm
     @side_gradient_width = side_gradient_width
   end
   
@@ -47,8 +48,10 @@ class PosterGenerator
       Paperclip.run 'convert', "#{destination} #{gradient_path} -gravity NorthEast -composite #{destination}"
     end
     
-    # Add noise:
-    Paperclip.run 'convert', "#{destination} -evaluate Laplacian-noise #{noise_level} #{destination}"
+    if noise_level && noise_algorithm && noise_level > 0
+      # Add noise:
+      Paperclip.run 'convert', "#{destination} -evaluate #{noise_algorithm} #{noise_level} #{destination}"
+    end
     
     result
   end
