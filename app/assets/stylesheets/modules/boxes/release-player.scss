@@ -1,0 +1,230 @@
+.release-player {
+	float:right;
+	@include makeColumn(18, 0.5);
+	@include box-shadow(rgba(black, 0.2) 0 2px 3px);
+	transition: all 0.5s ease;
+
+	@include modular-mq(PortraitTablets-Desktop) {
+    @include makeColumn(12, 0.5);
+    float: right;
+  }
+
+  @include modular-mq(LandscapePhone-PortraitTable) {
+		position: relative;
+	  top: 0;
+	  float: none;
+	  width: auto;
+	  margin:0;
+	}
+
+	.faux-table {
+		border:1px solid #111110;
+	}
+	.top {
+		@include background-image(linear-gradient(#333333, #2e2e2e));
+		border:none;
+		border-bottom:1px solid #111110;
+		&:after {
+			border-top: 1px solid rgba(255, 255, 255, 0.4);
+		}
+	}
+	.player {
+		position: relative;
+		@include background-image(linear-gradient(rgba(51,51,51, 0.85), rgba(46,46,46, 0.85)));
+		@include box-shadow(inset rgba(white, 0.2) 0 1px 2px);
+		@include clearfix;
+		border-bottom: 1px solid #111110;
+
+		.timeline {
+			position: relative;
+			margin:7px 8px 0px 7px;
+			background: white;
+			height:90px;
+			border:1px solid #100e0c;
+			@include box-shadow(rgba(white, 0.2) 0 1px 2px);
+			.waveform{
+				position: absolute;
+				z-index:1;
+				width:100%;
+			}
+			.loader {
+				position: absolute;
+				height: 100%;
+				z-index:2;
+				background: rgba(0,136,211, 0.2);
+			}
+			.location {
+				position: absolute;
+				z-index:3;
+				width:3px;
+				height:100%;
+				cursor: pointer;
+				background: rgba(0,136,211, 0.9);
+			}
+		}
+
+		.controls {
+			position: relative;
+			float: left;
+			width:96px;
+			height:42px;
+			margin: 3px 10px;
+
+			.left {
+				position: absolute;
+				left:0;
+				top:5px;
+				z-index: 1;
+				display: block;
+				width:30px;
+				height:30px;
+				@include border-radius(20px 0 0 20px);
+				@include background-image(image-url("icons/left.png"), linear-gradient(#404040, #2d2d2d));
+				background-position: center;
+				background-repeat: no-repeat;
+				@include box-shadow(inset rgba(white, 0.3) 0 1px 1px);
+				border:1px solid #090807;
+				cursor: pointer;
+			}
+			
+			.playpause {
+				position: absolute;
+				left:26px;
+				top:0;
+				z-index: 2;
+				display: block;
+				width:40px;
+				height:40px;
+				@include border-radius(20px);
+				@include background-image(image-url("icons/play.png"), linear-gradient(#404040, #2d2d2d));
+				background-position: center;
+				background-repeat: no-repeat;
+				@include box-shadow(inset rgba(white, 0.3) 0 1px 1px);
+				border:1px solid #090807;
+				cursor: pointer;
+				transition: all 0.5s ease;
+				&:hover {
+					@include background-image(image-url("icons/pause.png"), linear-gradient(#404040, #2d2d2d));
+				}
+			}
+			.right {
+				position: absolute;
+				left:62px;
+				top:5px;
+				z-index: 1;
+				display: block;
+				width:30px;
+				height:30px;
+				@include border-radius(0 20px 20px 0);
+				@include background-image(image-url("icons/right.png"), linear-gradient(#404040, #2d2d2d));
+				background-position: center;
+				background-repeat: no-repeat;
+				@include box-shadow(inset rgba(white, 0.3) 0 1px 1px);
+				border:1px solid #090807;
+				cursor: pointer;
+			}
+		}
+		.time {
+			float: left;
+			height:42px;
+			line-height: 42px;
+			margin: 3px 10px;
+			color:white;
+			text-shadow: 1px 1px black;
+			font-size: 12px;
+		}
+		.volume {
+			float: right;
+			margin: 8px 10px;
+				display: block;
+				width:30px;
+				height:30px;
+				@include border-radius(20px);
+				@include background-image(image-url("icons/volume.png"), linear-gradient(#404040, #2d2d2d));
+				background-position: center;
+				background-repeat: no-repeat;
+				@include box-shadow(inset rgba(white, 0.3) 0 1px 1px);
+				border:1px solid #090807;
+				cursor: pointer;
+		}
+	}
+	.bar {
+		@include background-image(linear-gradient(#333333, #2e2e2e));
+		border:1px solid #060606;
+		border-top:1px solid #494949;
+		height:31px;
+		line-height:31px;
+		font-weight: normal;
+		&:hover {
+			border-top:1px solid #363636;
+		}
+		.star {
+			float:right;
+			border-right: 1px solid #4c4c4c;
+			transition: all 0.5s ease;
+		}
+		.download {
+			float:right;
+			width: 40px;
+			height: 100%;
+			display: block;
+			border-left:1px solid #0d0d0d;
+			background: image-url("icons/download-release.png") center no-repeat;
+			text-indent: -3000em;
+			cursor:pointer;
+			transition: all 0.5s ease;
+			&:hover {
+				background: url("icons/download-release-hover.png") center no-repeat;
+			}
+		}
+		.download-release {
+			float: right;
+			margin-right:42px;
+			color:white;
+			text-decoration: underline;
+			font-weight: normal;
+			cursor: pointer;
+		}
+	}
+	.feedback {
+		padding: 0 18.5px;
+		@include background-image(linear-gradient(#333333, #2e2e2e));
+		border:1px solid #060606;
+		border-top: none;
+		@include box-shadow( inset rgba(black, 0.3) 0 2px 3px);
+		@include clearfix;
+
+		span {
+			float: left;
+			font-size: 16px;
+			color: white;
+			font-weight: bold;
+			padding:10px 0;
+		}
+
+		textarea {
+			background: #2c2c2c;
+			border: 1px solid #1a1a1a;
+			@include border-radius(3px);
+			@include box-sizing(border-box);
+			color: #dfdfdf;
+			width: 100%;
+			height: 100%;
+			resize: none;
+			overflow: hidden;
+			padding: 5px;
+			margin: 0;
+
+		}
+		button {
+			float: right;
+			margin: 10px 0;
+			font-size: 12px;
+			font-weight: bold;
+			@include background-image(linear, to bottom, #0489d3, #046da6);
+		}
+	}
+}
+
+
+

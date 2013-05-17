@@ -1,0 +1,82 @@
+.release-background {
+	height:252px;
+	position: relative;
+	z-index: 1;
+}
+
+
+.release-cover {
+	@include box-shadow(rgba(black, 0.2) 0 2px 3px);
+	border: 1px solid #8d8d8d;
+	@include border-radius(3px);
+
+	img {
+		@include border-radius(3px);
+	}
+
+	@include modular-mq(LandscapePhone-PortraitTable) {
+	    width: 99px;
+	    margin:15px;
+	    position: absolute; 
+	  }
+}
+
+.page-public-release {
+	.content-wrapper{
+		position: relative;
+		z-index: 3;
+		margin-top: -228px;
+		transition: all 0.5s ease;
+		@include modular-mq(PortraitTablets-Desktop) {
+	    width: 760px;
+	  }
+	  @include modular-mq(LandscapePhone-PortraitTable) {
+	    width: auto;
+	    margin-top: -400px;
+	    padding:0;
+	  }
+	}
+	.account-nav img {
+		@include box-shadow(rgba(black, 1) 0 0 1px 1px);
+	}
+	aside {
+		@include modular-mq(LandscapePhone-PortraitTable) {
+	    position: relative;
+	    width: auto;
+	    float: none;
+	    margin:0;
+	  }
+	}
+}
+
+
+
+.release-content {
+	float:right;
+	width:729px;
+	margin:20px 0;
+	transition: all 0.5s ease;
+
+	@include modular-mq(PortraitTablets-Desktop) {
+	    width: 760px;
+	    float: right;
+	  }
+	 @include modular-mq(LandscapePhone-PortraitTable) {
+	 	width: auto;
+	 	padding: 0 15px;
+	 }
+}
+
+.release-info {
+
+	h3 {
+		font-size: 16px;
+	}
+	ul {
+		list-style: none;
+		margin: 0 0 15px 0;
+	}
+	@include modular-mq(LandscapePhone-PortraitTable) {
+	    display:none;
+	  }
+}

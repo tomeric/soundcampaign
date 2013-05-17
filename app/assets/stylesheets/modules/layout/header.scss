@@ -25,9 +25,22 @@ $pageHeaderGradientEnd:    darken($primaryColor,  2%) !default;
   }
 }
 
-.page-public-release .page-header {
-  background-color: #2e2e2e;
-  @include background-image(linear-gradient(lighten(#2e2e2e, 10%), darken(#2e2e2e,  2%) ));
-  @include box-shadow(rgba(black, 0.3) 0 1px 2px);
-  outline: 1px solid #6a6a6a;
+.page-public-release {
+  .page-header {
+    background-color: #2e2e2e;
+    @include background-image(linear-gradient(lighten(#2e2e2e, 10%), darken(#2e2e2e,  2%) ));
+    @include box-shadow(rgba(black, 0.3) 0 1px 2px);
+    outline: 1px solid #6a6a6a;
+    .content {
+      position: relative;
+      z-index: 3;
+      transition: all 0.5s ease;
+      @include modular-mq(PortraitTablets-Desktop) {
+        width: 760px;
+      }
+      @include modular-mq(LandscapePhone-PortraitTable) {
+        width: auto;
+      }
+    }
+  }
 }
