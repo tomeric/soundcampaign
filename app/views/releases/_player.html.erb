@@ -1,48 +1,46 @@
-<div class="release-player">
-  <div class="releases faux-table">
-    <div class="top">
-      <span class="title">Diynamic #058 - Wowshit EP</span>
-    </div>
-    <div class="player" style="height:147px">
-      <div class="timeline">
-        <div class="waveform">
-          <!-- temp waveform img -->
-          <%= image_tag("temp/temp_waveform.png", :style => "width:100%;height:100%") %>
+<%
+first_track = tracks.first
+
+if first_track.present?
+%>
+  <div class="release-player">
+    <div class="releases faux-table">
+      <div class="top">
+        <span class="title"><%= release.title %></span>
+      </div>
+      <div class="player" style="height:147px">
+        <div class="timeline">
+          <div class="waveform">
+            <!-- temp waveform img -->
+            <%= image_tag("temp/temp_waveform.png", style: "width:100%;height:100%") %>
+          </div>
+          <div class="loader" style="width:50%"></div>
+          <div class="location" style="left:25%"></div>
         </div>
-        <div class="loader" style="width:50%"></div>
-        <div class="location" style="left:25%"></div>
+        <div class="controls">
+          <div class="left"></div>
+          <div class="playpause"></div>
+          <div class="right"></div>
+        </div>
+        <div class="time">00:00 / <%= first_track.length %> <%= first_track.position %>. <%= first_track.artist %> - <strong><%= first_track.title %></strong></div>
+        <div class="volume">
+        </div>
       </div>
-      <div class="controls">
-        <div class="left"></div>
-        <div class="playpause"></div>
-        <div class="right"></div>
+      <% tracks.each.with_index do |track, index| %>
+      <div class="bar">
+        <span><%= track.position || index + 1 %>. <%= track.artist %> - <strong><%= track.title %></strong></span>
+        <%= link_to 'download', track.attachment.url, class: 'download', download: track.attachment_file_name %>
+        <div class="star"></div>
       </div>
-      <div class="time">01:34 / 06:34 01. Karmon &amp; NTFO - <strong>Nobody Else</strong></div>
-      <div class="volume">
+      <% end %>
+      <div class="bar">
+        <a class="download-release">Download release as a zipfile</a>
       </div>
-    </div>
-    <div class="bar">
-      <span>01. Karmon &amp; NTFO - <strong>Nobody Else</strong> (Original Mix)</span>
-      <a class="download">download</a>
-      <div class="star"></div>
-    </div>
-    <div class="bar">
-      <span>02. Karmon - <strong>Wowshit</strong> (Original Mix)</span>
-      <a class="download">download</a>
-      <div class="star"></div>
-    </div>
-    <div class="bar">
-      <span>03. Betoko - <strong>Raining Again</strong> (Original Mix)</span>
-      <a class="download">download</a>
-      <div class="star"></div>
-    </div>
-    <div class="bar">
-      <a class="download-release">Download release as a zipfile</a>
-    </div>
-    <div class="feedback">
-      <span>Your feedback</span>
-      <textarea></textarea>
-      <button class="btn btn-primary" type="button">Submit feedback</button>
+      <div class="feedback">
+        <span>Your feedback</span>
+        <textarea></textarea>
+        <button class="btn btn-primary" type="button">Submit feedback</button>
+      </div>
     </div>
   </div>
-</div>
+<% end %>

@@ -41,6 +41,10 @@ class Track < ActiveRecord::Base
     }
   end
   
+  def length
+    90.seconds
+  end
+  
   def set_track_attributes
     set_track_attributes_from_attachment if attachment?
     

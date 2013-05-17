@@ -1,18 +1,18 @@
 <aside id="sidebar" class="main-sidebar">
   <div class="release-cover">
-    <%= image_tag("release-cover.png", :alt => "Release cover") %>
+    <%= image_tag(release.cover.url, alt: "#{release.title} cover") %>
   </div>
   <div class="release-info">
     <h3>Label Information</h3>
     <ul>
-      <li><strong>Diynamic</strong></li>
-      <li>Adriano Trolio</li>
-      <li>Talstrasse 9 </li>
-      <li>D-20359 Hamburg</li>
+      <li><strong><%= label.name %></strong></li>
+      <li><%= label.contact_name %></li>
+      <li><%= label.contact_street%></li>
+      <li><%= label.contact_zipcode_city %></li>
     </ul>
     <ul>
-      <li><a href="mailto:adriano@diybookings.com">adriano@diybookings.com</a></li>
-      <li>+31 (0)6 12 33 48 65 32</li>
+      <li><%= link_to label.contact_email, "mailto:#{label.contact_email}"%></li>
+      <li><%= label.contact_phone %></li>
     </ul>
   </div>
 </aside>

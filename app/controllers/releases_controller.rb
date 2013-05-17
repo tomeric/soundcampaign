@@ -15,6 +15,9 @@ class ReleasesController < ApplicationController
   end
   
   def show
+    @label  = @release.label
+    @tracks = @release.tracks
+    
     render layout: 'release'
   end
   
