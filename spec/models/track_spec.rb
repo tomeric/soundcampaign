@@ -19,24 +19,50 @@ describe Track do
   
   describe 'instance methods' do
     describe '#set_track_attributes' do
-      it "sets the track's title to 'Unknown Title'" do
-        track.title = nil
+      context 'without id3 tags' do
+        it "sets the track's title to 'Unknown Title'" do
+          track.title = nil
+          
+          expect {
+            track.set_track_attributes
+          }.to change {
+            track.title
+          }.to 'Unknown Title'
+        end
         
-        expect {
-          track.set_track_attributes
-        }.to change {
-          track.title
-        }.to 'Unknown Title'
+        it "sets the track's artist to 'Unknown Artist'" do
+          track.artist = nil
+          
+          expect {
+            track.set_track_attributes
+          }.to change {
+            track.artist
+          }.to 'Unknown Artist'
+        end
       end
       
-      it "sets the track's artist to 'Unknown Artist'" do
-        track.artist = nil
+      context 'with id3 tags' do
+        let(:track) { build :track, attachment: fixture('track_id3.mp3') }
         
-        expect {
-          track.set_track_attributes
-        }.to change {
-          track.artist
-        }.to 'Unknown Artist'
+        it "sets the track's title to the title in the id3 tag" do
+          track.title = nil
+          
+          expect {
+            track.set_track_attributes
+          }.to change {
+            track.title
+          }.to 'ID3 Title'
+        end
+        
+        it "sets the track's artist to the artist in the id3 tag" do
+          track.artist = nil
+          
+          expect {
+            track.set_track_attributes
+          }.to change {
+            track.artist
+          }.to 'ID3 Artist'
+        end
       end
       
       it "doesn't overwrite attributes" do

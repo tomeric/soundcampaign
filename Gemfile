@@ -14,7 +14,9 @@ gem 'friendly_id'
 gem 'protected_attributes'
 
 # Data:
+gem 'iconv'
 gem 'roo'
+gem 'mp3info'
 
 # Files:
 gem 'aws-sdk'

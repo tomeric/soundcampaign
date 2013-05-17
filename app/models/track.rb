@@ -42,8 +42,28 @@ class Track < ActiveRecord::Base
   end
   
   def set_track_attributes
+    set_track_attributes_from_attachment if attachment?
+    
     self.artist ||= 'Unknown Artist'
     self.title  ||= 'Unknown Title'
+  end
+  
+  private
+  
+  def set_track_attributes_from_attachment
+    begin
+      Mp3Info.open(attachment_io.path) do |info|
+        self.artist ||= info.tag.artist.presence
+        self.title  ||= info.tag.title.presence
+      end
+    rescue => e
+      puts e.inspect
+    end
+  end
+  
+  def attachment_io
+    file = attachment.queued_for_write[:original]
+    file || Paperclip.io_adapters.for(attachment)
   end
   
 end
