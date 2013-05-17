@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130508112123) do
+ActiveRecord::Schema.define(version: 20130517141828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,8 +120,8 @@ ActiveRecord::Schema.define(version: 20130508112123) do
   add_index "release_artists", ["release_id"], name: "index_release_artists_on_release_id", using: :btree
 
   create_table "releases", force: true do |t|
-    t.integer  "label_id",           null: false
-    t.string   "title",              null: false
+    t.integer  "label_id",            null: false
+    t.string   "title",               null: false
     t.string   "catid"
     t.string   "style"
     t.date     "date"
@@ -132,8 +132,12 @@ ActiveRecord::Schema.define(version: 20130508112123) do
     t.datetime "cover_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "organization_id",    null: false
+    t.integer  "organization_id",     null: false
     t.datetime "deleted_at"
+    t.string   "poster_file_name"
+    t.string   "poster_content_type"
+    t.integer  "poster_file_size"
+    t.datetime "poster_updated_at"
   end
 
   add_index "releases", ["label_id"], name: "index_releases_on_label_id", using: :btree
