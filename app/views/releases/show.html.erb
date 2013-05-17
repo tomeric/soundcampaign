@@ -1,5 +1,10 @@
-<div class="release-background" style="background: url('<%= asset_url 'tijdelijk_bg.png' %>');background-size: 100%;">
-</div>
+<% if @release.poster? %>
+  <div class="release-background" style="background: url('<%= @release.poster.url %>'); background-size: cover;">
+  </div>
+<% else %>
+  <div class="release-background" style="background: url('<%= asset_url 'tijdelijk_bg.png' %>');background-size: 100%;">
+  </div>
+<% end %>
 
 <section id="content" class="content-wrapper">
   <%= render 'releases/sidebar',
