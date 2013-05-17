@@ -1,15 +1,11 @@
-$media-PortraitTablets: 983px;
-$media-PhonesToTablets: 767px;
-$media-Phones: 480px;
-
 @mixin modular-mq($breakpoint) {
-  @if $breakpoint == PortraitTablets {
-    @media screen and (max-width: $media-PortraitTablets) { @content; }
+  @if $breakpoint == PortraitTablets-Desktop {
+    @media screen and (min-width: 768px) and (max-width: 986px) { @content; }
   }
-  @else if $breakpoint == PhonesToTablets {
-    @media screen and (max-width: $media-PhonesToTablets) { @content; }
+  @else if $breakpoint == LandscapePhone-PortraitTable {
+    @media screen and (max-width: 767px) { @content; }
   }
-  @else if $breakpoint == Phones {
-    @media screen and (max-width: $media-Phones) { @content; }
+  @else if $breakpoint == LandscapePhone-Down {
+    @media screen and (max-width: 480px) { @content; }
   }
 }

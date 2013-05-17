@@ -3,6 +3,8 @@ $pageHeaderGradientEnd:    darken($primaryColor,  2%) !default;
 
 .page-header {
   height: $mainHeaderHeight - 1px;
+  position: relative;
+  z-index: 3;
   margin: 0;
   padding: 0;
   outline: 1px solid #207aa0;
@@ -21,4 +23,11 @@ $pageHeaderGradientEnd:    darken($primaryColor,  2%) !default;
     position: relative;
     top: -1px;
   }
+}
+
+.page-public-release .page-header {
+  background-color: #2e2e2e;
+  @include background-image(linear-gradient(lighten(#2e2e2e, 10%), darken(#2e2e2e,  2%) ));
+  @include box-shadow(rgba(black, 0.3) 0 1px 2px);
+  outline: 1px solid #6a6a6a;
 }

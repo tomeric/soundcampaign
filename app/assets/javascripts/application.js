@@ -12,4 +12,5 @@ $(function(){
   // $('a').clickover({ html : true, global_close: false });
   $(".release-tracks").sortable({ handle: ".release-track-handle" });
   $('textarea').autosize();
+  $('.star').raty({ path: '/assets/icons/' });
 });

@@ -20,6 +20,7 @@
     font-size: 13px;
     font-weight: bold;
     padding: 0 ($gridColumnWidth / 2);
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
     
     span {
       text-decoration: underline;
