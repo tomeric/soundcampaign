@@ -53,7 +53,7 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails',        '~> 2.14.0.rc1'
   gem 'spork'
   
   # Test tools:
