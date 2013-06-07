@@ -19,7 +19,7 @@ describe Import do
   context 'callbacks' do
     context 'after create' do
       it 'imports the spreadsheet rows' do
-        import.should_receive(:import_rows!)
+        expect(import).to receive(:import_rows!)
         import.save
       end
     end

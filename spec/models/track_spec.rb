@@ -11,7 +11,7 @@ describe Track do
   describe 'callbacks' do
     context 'on creation' do
       it "sets the track's attributes" do
-        track.should_receive(:set_track_attributes)
+        expect(track).to receive(:set_track_attributes)
         track.save
       end
     end
