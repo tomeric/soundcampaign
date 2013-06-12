@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
-gem 'rails', '= 4.0.0.rc1'
+gem 'rails', '= 4.0.0.rc2'
 
 # Daemons:
 group :production do
@@ -26,16 +26,15 @@ gem 'paperclip'
 gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
 
 # Frontend:
-group :assets do
-  gem 'sass-rails',           '~> 4.0.0.beta1'
-  gem 'coffee-rails',         '~> 4.0.0.beta1'
-  gem 'bootstrap-sass-rails'
-  gem 'modernizr-rails'
-  gem 'bourbon'
-  gem 'uglifier'
-end
+gem 'sass-rails',           '~> 4.0.0.beta1'
+gem 'coffee-rails',         '~> 4.0.0.beta1'
+gem 'bootstrap-sass-rails'
+gem 'modernizr-rails'
+gem 'bourbon'
+gem 'uglifier'
 gem 'formtastic'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'turbolinks'
 
 # I18n:

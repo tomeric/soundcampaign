@@ -1,6 +1,6 @@
 //= require twitter/bootstrap
 //= require jquery_ujs
-//= require jquery-ui
+//= require jquery.ui.sortable
 //= require bootstrapx-clickover
 //= require jqBootstrapValidation
 //= require jquery.autosize
