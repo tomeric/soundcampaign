@@ -36,154 +36,154 @@
 }
 
 #TEASER {
-	background: image-url("bg.jpg") no-repeat center center fixed; 
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
+  background: image-url("bg.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 
-	color:white;
+  color:white;
 
-	h1, h2 {
-		font-family: "proxima-nova-soft";
-		width:100%;
-		text-align:center;
-		font-weight: normal;
-	}
-	h1 {
-		font-size: 44px;
-		font-weight: bold;
-	}
-	h2 {
-		font-size: 21px;
-		margin: 20px 0 50px 0;
-		@media (max-width: 767px) {
-			margin: 20px 0 30px 0;
-			}
-		@media (max-width: 480px) {
-			margin: 20px 0 10px 0;
-		}
-	}
+  h1, h2 {
+    font-family: "proxima-nova-soft";
+    width:100%;
+    text-align:center;
+    font-weight: normal;
+  }
+  h1 {
+    font-size: 44px;
+    font-weight: bold;
+  }
+  h2 {
+    font-size: 21px;
+    margin: 20px 0 50px 0;
+    @media (max-width: 767px) {
+      margin: 20px 0 30px 0;
+      }
+    @media (max-width: 480px) {
+      margin: 20px 0 10px 0;
+    }
+  }
 
 
-	.main-wrapper {
-		margin: 0 auto;
-		width: 630px;
-		padding-top:150px;
-		@media (max-width: 767px) {
-			width:auto;
-			padding: 100px 10px 10px 10px;
-			}
-		@media (max-width: 480px) {
-			width:auto;
-			padding: 30px 10px 10px 10px;
-		}
+  .main-wrapper {
+    margin: 0 auto;
+    width: 630px;
+    padding-top:150px;
+    @media (max-width: 767px) {
+      width:auto;
+      padding: 100px 10px 10px 10px;
+      }
+    @media (max-width: 480px) {
+      width:auto;
+      padding: 30px 10px 10px 10px;
+    }
 
-	}
+  }
 
-	#teaser_forms {
-		position: relative;
-		width:450px;
-		margin: 0 auto;
-		@media (max-width: 450px) {
-			width:auto;
-			}
-		
-	}
+  #teaser_forms {
+    position: relative;
+    width:450px;
+    margin: 0 auto;
+    @media (max-width: 450px) {
+      width:auto;
+      }
+    
+  }
 
 #subscribe, #thanks {
-		float: left;
-		padding: 0;
-		position:absolute; left:0; right:0; top:0;
-		margin-bottom: 30px;
-		background: grey;
-		border:1px solid rgba(0,0,0, 0.7);
-		@include border-radius(4px);
-		.top {
-			border-top:1px solid rgba(255,255,255, 0.5);
-			@include border-top-radius(4px);
-			border-bottom:1px solid black;
-			@include background-image(linear-gradient(#0098ea, #008cd8));
-			height:40px;
-			width:100%;
-			text-align: center;
-			font-size:17px;
-			line-height: 39px;
-			letter-spacing: 1px;
-			font-weight: bold;
-			@include text-shadow(rgba(black, 0.3) -1px 0, rgba(black, 0.3) 0 1px, rgba(black, 0.3) 1px 0, rgba(black, 0.3) 0 -1px,rgba(white, 0.4) 1px 1px );
-		}
-		.form {
-			
-			@media (max-width: 767px) {
-				width:auto;
-			}
-			form{
-				margin:0;
-				input {
-					width:90%;
-					height:28px;
-					line-height:28px;
-				}
-				.btn {
-					float:right;
-					height:36px;
-					font-size:15px;
-					color:white;
-					width: 100%;
-					border:1px solid rgba(0,0,0, 0.7);
-					border-color: black;
-					@include background-image(linear-gradient(#0098ea, #008cd8));
-					font-weight: bold;
-					@include text-shadow(rgba(black, 0.3) -1px 0, rgba(black, 0.3) 0 1px, rgba(black, 0.3) 1px 0, rgba(black, 0.3) 0 -1px,rgba(white, 0.4) 1px 1px );
-					&:hover {
-						background: none;
-					}
-					@media (max-width: 480px) {
-						font-size:12px;
-					}
-				}
-			}
-		}
+    float: left;
+    padding: 0;
+    position:absolute; left:0; right:0; top:0;
+    margin-bottom: 30px;
+    background: grey;
+    border:1px solid rgba(0,0,0, 0.7);
+    @include border-radius(4px);
+    .top {
+      border-top:1px solid rgba(255,255,255, 0.5);
+      @include border-top-radius(4px);
+      border-bottom:1px solid black;
+      @include background-image(linear-gradient(#0098ea, #008cd8));
+      height:40px;
+      width:100%;
+      text-align: center;
+      font-size:17px;
+      line-height: 39px;
+      letter-spacing: 1px;
+      font-weight: bold;
+      @include text-shadow(rgba(black, 0.3) -1px 0, rgba(black, 0.3) 0 1px, rgba(black, 0.3) 1px 0, rgba(black, 0.3) 0 -1px,rgba(white, 0.4) 1px 1px );
+    }
+    .form {
+      
+      @media (max-width: 767px) {
+        width:auto;
+      }
+      form{
+        margin:0;
+        input {
+          width:90%;
+          height:28px;
+          line-height:28px;
+        }
+        .btn {
+          float:right;
+          height:36px;
+          font-size:15px;
+          color:white;
+          width: 100%;
+          border:1px solid rgba(0,0,0, 0.7);
+          border-color: black;
+          @include background-image(linear-gradient(#0098ea, #008cd8));
+          font-weight: bold;
+          @include text-shadow(rgba(black, 0.3) -1px 0, rgba(black, 0.3) 0 1px, rgba(black, 0.3) 1px 0, rgba(black, 0.3) 0 -1px,rgba(white, 0.4) 1px 1px );
+          &:hover {
+            background: none;
+          }
+          @media (max-width: 480px) {
+            font-size:12px;
+          }
+        }
+      }
+    }
 }
 
 
 
 .bottom {
-	@include background-image(linear-gradient(#535353, #2f2f2f));
-	padding: 24px;
-	width: auto;
+  @include background-image(linear-gradient(#535353, #2f2f2f));
+  padding: 24px;
+  width: auto;
 }
 
 p {
-			font-size: 14px;
-			font-weight: 600;
-			font-family: "proxima-nova-soft";
-			text-align:center;
-			margin:0;
-		}
-	
+      font-size: 14px;
+      font-weight: 600;
+      font-family: "proxima-nova-soft";
+      text-align:center;
+      margin:0;
+    }
+  
 
-	input.email {
-		background: image-url("icons/teaser-email_light.png") no-repeat 10px 11px white;
-		text-indent: 32px;
-		width: 30%;
-	}
+  input.email {
+    background: image-url("icons/teaser-email_light.png") no-repeat 10px 11px white;
+    text-indent: 32px;
+    width: 30%;
+  }
 }
 
 
 
-	#subscribe.fadeInDown {
-		-webkit-animation-delay: 1s;
-		-moz-animation-delay: 1s;
-		-ms-animation-delay: 1s;
-		-o-animation-delay: 1s;
-		animation-delay: 1s;
-	}
-	#thanks.fadeInDown {
-		-webkit-animation-delay: 0.5s;
-		-moz-animation-delay: 0.5s;
-		-ms-animation-delay: 0.5s;
-		-o-animation-delay: 0.5s;
-		animation-delay: 0.5s;
-	}
+  #subscribe.fadeInDown {
+    -webkit-animation-delay: 1s;
+    -moz-animation-delay: 1s;
+    -ms-animation-delay: 1s;
+    -o-animation-delay: 1s;
+    animation-delay: 1s;
+  }
+  #thanks.fadeInDown {
+    -webkit-animation-delay: 0.5s;
+    -moz-animation-delay: 0.5s;
+    -ms-animation-delay: 0.5s;
+    -o-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+  }
