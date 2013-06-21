@@ -96,16 +96,20 @@
 				width:40px;
 				height:40px;
 				@include border-radius(20px);
-				@include background-image(image-url("icons/play.png"), linear-gradient(#404040, #2d2d2d));
 				background-position: center;
 				background-repeat: no-repeat;
 				@include box-shadow(inset rgba(white, 0.3) 0 1px 1px);
 				border:1px solid #090807;
 				cursor: pointer;
 				transition: all 0.5s ease;
-				&:hover {
-					@include background-image(image-url("icons/pause.png"), linear-gradient(#404040, #2d2d2d));
-				}
+				
+        &.playing {
+          @include background-image(image-url("icons/pause.png"), linear-gradient(#404040, #2d2d2d));
+        }
+        
+        &, &.paused {
+          @include background-image(image-url("icons/play.png"), linear-gradient(#404040, #2d2d2d));
+        }
 			}
 			.right {
 				position: absolute;
