@@ -10,6 +10,8 @@
 # Ignore pow config
 .powenv
 .powrc
+.ruby-version
+.rvmrc
 
 # Ignore yml configurations
 /config/*.yml
