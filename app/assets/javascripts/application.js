@@ -7,6 +7,7 @@
 //= require fine-uploader/jquery.fineuploader
 //= require releases
 //= require imports
+//= require release
 
 $(function(){
   // $('a').clickover({ html : true, global_close: false });
