@@ -58,6 +58,12 @@ class SCPlayer
     @play() if @playing
 
 $ ->
+  if $.fn.raty?
+    $('.star').raty
+      starHalf: '<%= image_path "icons/star-half.png" %>'
+      starOff:  '<%= image_path "icons/star-off.png" %>'
+      starOn:   '<%= image_path "icons/star-on.png"  %>'
+  
   if $.fn.jPlayer?
     player = new SCPlayer($('.release-player'), $('.player-track'))
     
