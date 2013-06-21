@@ -1,10 +1,6 @@
 <aside id="sidebar" class="main-sidebar">
+  <% if current_organization.labels.count > 0 %>
   <h3>Overview</h3>
-  
-  <%= link_to labels_url, class: 'shortcut labels-shortcut' do %>
-    <span class="title">Labels</span>
-    <span class="number"><%= current_organization.labels.count %></span>
-  <% end %>
   
   <%= link_to releases_url, class: 'shortcut releases-shortcut' do %>
     <span class="title">Releases</span>
@@ -21,6 +17,12 @@
   <%= link_to contact_lists_url, class: 'shortcut contacts-shortcut' do %>
     <span class="title">Contacts</span>
     <span class="number"><%= current_organization.contacts.count %></span>
+  <% end %>
+  
+  <%= link_to labels_url, class: 'shortcut labels-shortcut' do %>
+    <span class="title">Labels</span>
+    <span class="number"><%= current_organization.labels.count %></span>
+  <% end %>
   <% end %>
   
   <h3>Account</h3>
