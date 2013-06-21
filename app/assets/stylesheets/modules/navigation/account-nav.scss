@@ -2,6 +2,11 @@
   float: right;
   border-left: 1px solid rgba(0,54,83, 0.6);
   border-right: 1px solid rgba(0,54,83, 0.6);
+
+  .page-public-release & {
+    border-left: 1px solid rgba(45,45,45, 0.9);
+    border-right: 1px solid rgba(45,45,45, 0.9);
+  }
   
   img {
     height: $baseLineHeight * 1.5;
@@ -21,7 +26,11 @@
     font-weight: bold;
     padding: 0 ($gridColumnWidth / 2);
     border-left: 1px solid rgba(255, 255, 255, 0.3);
-    
+
+      .page-public-release & {
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
     span {
       text-decoration: underline;
       color: white;
