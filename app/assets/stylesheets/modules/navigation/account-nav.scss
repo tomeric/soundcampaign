@@ -11,7 +11,7 @@
   img {
     height: $baseLineHeight * 1.5;
     width:  $baseLineHeight * 1.5;
-    margin-right: $gridColumnWidth * 0.25;
+    margin-right: $gridColumnWidth * 0.12;
     
     @include border-radius(4px);
     @include box-shadow(0px 0px 1px 1px #005786); 
@@ -24,7 +24,7 @@
     font-family: Helvetica;
     font-size: 13px;
     font-weight: bold;
-    padding: 0 ($gridColumnWidth / 2);
+    padding: 0 ($gridColumnWidth / 4);
     border-left: 1px solid rgba(255, 255, 255, 0.3);
 
       .page-public-release & {
