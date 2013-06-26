@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
-gem 'rails', '= 4.0.0.rc2'
+gem 'rails', '= 4.0.0'
 
 # Daemons:
 group :production do
@@ -26,8 +26,8 @@ gem 'paperclip'
 gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
 
 # Frontend:
-gem 'sass-rails',           '~> 4.0.0.beta1'
-gem 'coffee-rails',         '~> 4.0.0.beta1'
+gem 'sass-rails'
+gem 'coffee-rails'
 gem 'bootstrap-sass-rails'
 gem 'modernizr-rails'
 gem 'bourbon'
