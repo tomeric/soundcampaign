@@ -1,5 +1,7 @@
 //= require twitter/bootstrap
 //= require jquery_ujs
+//= require jquery.turbolinks
+//= require turbolinks
 //= require jquery.ui.sortable
 //= require bootstrapx-clickover
 //= require jqBootstrapValidation

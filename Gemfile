@@ -36,6 +36,7 @@ gem 'formtastic'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'turbolinks'
+gem 'jquery-turbolinks'
 
 # I18n:
 gem 'rails-i18n', github: 'svenfuchs/rails-i18n'
