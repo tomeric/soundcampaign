@@ -9,12 +9,21 @@ describe SubscribersController do
   end
   
   describe 'GET :new' do
-    it "redirects to the user's labels if logged in" do
+    it "redirects to the user's labels if logged in and the user has no labels" do
       user = create :user
       sign_in user
       
       get :new
       expect(response).to redirect_to labels_url
+    end
+    
+    it "redirects to the user's releases if logged in and the user has a label" do
+      user  = create :user
+      label = create :label, organization: user.organization
+      sign_in user
+      
+      get :new
+      expect(response).to redirect_to releases_url
     end
     
     it 'assigns a new subscriber as @subscriber' do

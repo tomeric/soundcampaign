@@ -7,7 +7,11 @@ class SubscribersController < ApplicationController
   
   def new
     if user_signed_in?
-      redirect_to labels_url
+      if current_organization.labels.count > 0
+        redirect_to releases_url
+      else
+        redirect_to labels_url
+      end
     else
       @subscriber = Subscriber.new
     end

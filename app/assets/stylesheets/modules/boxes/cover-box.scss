@@ -5,7 +5,7 @@
   background: white;
   position: relative;
   @include border-radius(3px);
-  @include box-shadow(rgba(100,100,100, 0.1) 1px 1px 2px 1px);
+  @include box-shadow(rgba(100,100,100, 0.3) 0 1px 1px);
   @include clearfix;
   
   // TOP:

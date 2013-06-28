@@ -23,4 +23,22 @@ class Organization < ActiveRecord::Base
   validates :name,
     presence: true
   
+  ### INSTANCE METHODS:
+  
+  def used_disk_space
+    tracks.sum(:attachment_file_size)
+  end
+  
+  def available_disk_space
+    1.gigabyte
+  end
+  
+  def used_bandwidth
+    0.bytes
+  end
+  
+  def available_bandwidth
+    1.gigabyte
+  end
+  
 end

@@ -1,0 +1,88 @@
+#= require jplayer/jquery.jplayer.min
+
+class SCPlayer
+  constructor: (@widget, @tracks) ->
+    @player  = @widget.find('.jplayer')
+    @track   = null
+    @playing = false
+    
+    @initializePlayer()
+  
+  initializePlayer: ->
+    @player.jPlayer
+      swfPath:  '<%= asset_path("jplayer/Jplayer.swf") %>'
+      supplied: 'mp3'
+      volume:   0.8,
+      ready:    =>
+        console.log @tracks
+        @change @tracks[0] if @tracks.length >= 1
+  
+  perform: (args...) ->
+    @player.jPlayer args...
+  
+  isPlaying: ->
+    @playing
+  
+  next: ->
+    if nextTrack = @tracks[@tracks.index(@track) + 1]
+      @change nextTrack
+    else
+      @change @tracks[0]
+    @play()
+  
+  prev: ->
+    if prevTrack = @tracks[@tracks.index(@track) - 1]
+      @change prevTrack
+    else
+      @change @tracks[@tracks.length - 1]
+    @play()
+  
+  play: (args...) ->
+    unless @playing
+      @playing = true
+      @perform 'play', args...
+  
+  pause: (args...) ->
+    if @playing
+      @playing = false
+      @perform 'pause', args...
+  
+  change: (track) ->
+    @track = $ track
+    
+    # Set the track so we can play it:
+    file = @track.find('a.download').attr('href')
+    @perform 'setMedia', mp3: file
+    
+    # If we're already playing, start playing the track we're switching to:
+    @play() if @playing
+
+$ ->
+  if $.fn.raty?
+    $('.star').raty
+      starHalf: '<%= image_path "icons/star-half.png" %>'
+      starOff:  '<%= image_path "icons/star-off.png" %>'
+      starOn:   '<%= image_path "icons/star-on.png"  %>'
+  
+  if $.fn.jPlayer?
+    player = new SCPlayer($('.release-player'), $('.player-track'))
+    
+    # Click on playlist:
+    $('.player-track-title').on    'click', -> player.change($(this).parent())
+    
+    # Click on prev/next button:
+    $('.release-player .left').on  'click', -> player.prev()
+    $('.release-player .right').on 'click', -> player.next()
+    
+    # Click on play/pause button:
+    $('.release-player .playpause').on 'click', ->
+      button = $ this
+      if player.isPlaying()
+        player.pause()
+        button.removeClass('playing')
+              .addClass('paused')
+      else
+        player.play()
+        button.removeClass('paused')
+              .addClass('playing')
+    

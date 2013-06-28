@@ -1,79 +1,79 @@
 // TODO: Refactor this
 
 .main-frame {
-	float:left;
-	width:729px;
-	@include border-radius(3px);
-	background: #f4f4f4;
+  float:left;
+  width:729px;
+  @include border-radius(3px);
+  background: #f4f4f4;
 
-	.main-frame-header {
-		@include border-radius(3px 3px 0px 0px);
-		height:39px;
-		width:727px;
-		line-height: 39px;
-		text-indent: 15px;
-		border-top: 1px solid #207aa0;
-		border-bottom:1px solid rgba(0,0,0, 0.9);
-		@include background-image(linear-gradient(#00a6ff, #008cd8));
-		border-left: 1px solid #207aa0;
-		border-right: 1px solid #207aa0;
-		&:after { 
-			@include border-radius(3px 3px 0px 0px);
-			display:block; 
-			content:''; 
-			border-top:1px solid rgba(255,255,255, 0.7);
-			height:100%; 
-			width:100%; 
-			@include box-sizing(border-box);
-		}
-		.main-frame-title {
-			float:left;
-			font-size: 17px;
-			font-weight: bold;
-			color:white;
-			line-height: 39px;
-			margin:0;
-			@include text-shadow(rgba(15,102,149, 0.9) 0px 0px 2px);
-		}
-	}
-	.main-frame-content{
-		@include border-radius(0px 0px 3px 3px);
-		border-left: 1px solid #b3b3b3;
-		border-right: 1px solid #b3b3b3;
-		border-bottom: 1px solid #b3b3b3;
-		.main-frame-footer {
-			background: white;
-			border-bottom: none;
-			@include border-radius(0px 0px 3px 3px);
-		}
-	}
+  .main-frame-header {
+    @include border-radius(3px 3px 0px 0px);
+    height:39px;
+    width:727px;
+    line-height: 39px;
+    text-indent: 15px;
+    border-top: 1px solid #207aa0;
+    border-bottom:1px solid rgba(0,0,0, 0.9);
+    @include background-image(linear-gradient(#00a6ff, #008cd8));
+    border-left: 1px solid #207aa0;
+    border-right: 1px solid #207aa0;
+    &:after { 
+      @include border-radius(3px 3px 0px 0px);
+      display:block; 
+      content:''; 
+      border-top:1px solid rgba(255,255,255, 0.7);
+      height:100%; 
+      width:100%; 
+      @include box-sizing(border-box);
+    }
+    .main-frame-title {
+      float:left;
+      font-size: 17px;
+      font-weight: bold;
+      color:white;
+      line-height: 39px;
+      margin:0;
+      @include text-shadow(rgba(15,102,149, 0.9) 0px 0px 2px);
+    }
+  }
+  .main-frame-content{
+    @include border-radius(0px 0px 3px 3px);
+    border-left: 1px solid #b3b3b3;
+    border-right: 1px solid #b3b3b3;
+    border-bottom: 1px solid #b3b3b3;
+    .main-frame-footer {
+      background: white;
+      border-bottom: none;
+      @include border-radius(0px 0px 3px 3px);
+    }
+  }
 
 
 
-	form {
-		margin:0;
-		.control-group {
-			padding:20px 45px 20px 30px; /* Oplossing voor vinden later */
-			border-bottom: 1px solid #e1e1e1;
-			margin:0;
+  form {
+    margin:0;
+    .control-group {
+      padding:20px 45px 20px 30px; /* Oplossing voor vinden later */
+      border-bottom: 1px solid #e1e1e1;
+      margin:0;
 
-		}
-		.control-label {
-			font-size: 17px;
-			font-weight: bold;
-			color:#008edc;
-			padding-bottom:20px;
-		}
-		input {
-			width: 100%;
-		}
-		.main-frame-footer {
-			input {
-				width: auto;
-			}
-			label {
-				padding-right: 20px;
-			}
-		}
-	}
+    }
+    .control-label {
+      font-size: 17px;
+      font-weight: bold;
+      color:#008edc;
+      padding-bottom:20px;
+    }
+    input {
+      width: 100%;
+    }
+    .main-frame-footer {
+      input {
+        width: auto;
+      }
+      label {
+        padding-right: 20px;
+      }
+    }
+  }
 }
