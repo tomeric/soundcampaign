@@ -13,22 +13,24 @@
   }
   
   &.alert {
+    color :#332a06;
     background: #fff400;
-    @include background-image(linear-gradient(#fff400, #ffce00));
+    @include background-image(linear-gradient(#ffee00, #ffc100));
     border-top: 1px solid #fffe00;
     border-bottom: 1px solid #b3b3b3;
   }
   
   &.error {
     background: #cf3839;
-    @include background-image(linear-gradient(#cf7373, #cf3839));
+    @include background-image(linear-gradient(#f44058, #e00e13));
     border-top: 1px solid #00fe00;
     border-bottom: 1px solid #b3b3b3;
   }
   
   &.notice {
+    color: #fff;
     background: #37c338;
-    @include background-image(linear-gradient(#73c373, #41c341));
+    @include background-image(linear-gradient(#414141, #2f2f2f));
     border-top: 1px solid #00fe00;
     border-bottom: 1px solid #b3b3b3;
   }
