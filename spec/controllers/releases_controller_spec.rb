@@ -52,11 +52,24 @@ describe ReleasesController do
   end
   
   describe 'GET :show' do
-    before { sign_in user }
-    
-    it 'assigns the requested release as @release' do
-      get :show, id: release.to_param
-      expect(assigns[:release]).to eq release
+    context 'logged in' do
+      before { sign_in user }
+      
+      it 'assigns the requested release as @release' do
+        get :show, id: release.to_param
+        expect(assigns[:release]).to eq release
+      end
+      
+      it 'assigns new feedback as @feedback' do
+        get :show, id: release.to_param
+        expect(assigns[:feedback]).to be_a_new Feedback
+      end
+      
+      it 'assigns existing feedback as @feedback' do
+        existing_feedback = create :feedback, user: user, release: release
+        get :show, id: release.to_param
+        expect(assigns[:feedback]).to eql existing_feedback
+      end
     end
   end
   

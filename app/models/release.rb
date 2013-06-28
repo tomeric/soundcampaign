@@ -27,6 +27,8 @@ class Release < ActiveRecord::Base
   has_many :artists,
     through: :release_artists
   
+  has_many :feedbacks
+  
   ### VALIDATIONS:
   
   validates :title,
