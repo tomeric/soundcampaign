@@ -26,21 +26,41 @@
   <% end %>
   
   <h3>Account</h3>
-  <div class="account-status">
-    <h4>Disk space</h4>
-    <p>You have used <strong>0.0 GB</strong> of <strong>5 GB</strong></p>
-    <div class="account-progress">
-      <div class="progress">
-        <div class="bar" style="width: 1px;"></div>
+  <% current_organization.tap do |org| %>
+    <div class="account-status">
+      <h4>Disk space</h4>
+      <p>
+        You have used
+        <strong><%= number_to_human_size org.used_disk_space %></strong> of
+        <strong><%= number_to_human_size org.available_disk_space %></strong>
+      </p>
+      <%
+      disk_space_progress_class = org.used_disk_space > org.available_disk_space ? 'progress progress-danger' : 'progress'
+      disk_space_progress_width = ((org.used_disk_space.to_f / org.available_disk_space) * 100).round
+      disk_space_progress_width = 100 if disk_space_progress_width > 100
+      %>
+      <div class="account-progress">
+        <div class="<%= disk_space_progress_class %>">
+          <div class="bar" style="min-width: 1px; width: <%= disk_space_progress_width %>%;"></div>
+        </div>
+      </div>
+      
+      <h4>Inclusive bandwith</h4>
+      <p>
+        You have used
+        <strong><%= number_to_human_size org.used_bandwidth %></strong> of
+        <strong><%= number_to_human_size org.available_bandwidth %></strong>
+      </p>
+      <%
+      bandwidth_progress_class = org.used_bandwidth > org.available_bandwidth ? 'progress progress-danger' : 'progress'
+      bandwidth_progress_width = (org.used_bandwidth.to_f / org.available_bandwidth) * 100
+      bandwidth_progress_width = 100 if bandwidth_progress_width > 100
+      %>
+      <div class="account-progress">
+        <div class="<%= bandwidth_progress_class %>">
+          <div class="bar" style="min-width: 1px; width: <%= bandwidth_progress_width %>%;"></div>
+        </div>
       </div>
     </div>
-    
-    <h4>Inclusive bandwith</h4>
-    <p>You have used <strong>0.0 GB</strong> of <strong>5 GB</strong></p>
-    <div class="account-progress">
-      <div class="progress">
-        <div class="bar" style="width: 1px;"></div>
-      </div>
-    </div>
-  </div>
+  <% end %>
 </aside>
