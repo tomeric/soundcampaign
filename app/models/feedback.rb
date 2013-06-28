@@ -19,6 +19,20 @@ class Feedback < ActiveRecord::Base
   
   validate :user_or_subscriber_present
   
+  ### SCOPES:
+  
+  scope :by, -> user_or_subscriber {
+    if user_or_subscriber.is_a?(User)
+      user = user_or_subscriber
+      where(user_id: user.id)
+    elsif user_or_subscriber.is_a?(Subscriber)
+      subscriber = user_or_subscriber
+      where(subscriber_id: subscriber.id)
+    else
+      none
+    end
+  }
+  
   private
   
   def user_or_subscriber_present
