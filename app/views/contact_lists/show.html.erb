@@ -5,7 +5,12 @@
   <% else %>
     <div class="blank-slate">
       <h2 class="blank-slate-title">Let's add your first contact to this list!</h2>
-      <p class="blank-slate-subtitle"><a href="#">Click here</a> to see a video!</p>
+      <p class="blank-slate-subtitle">
+        <a href="#">Click here</a>
+        to see a video, or
+        <%= link_to 'import', new_contact_list_import_path(@contact_list) %>
+        an existing list!
+      </p>
     </div>
   <% end %>
 </section>
