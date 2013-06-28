@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130517141828) do
+ActiveRecord::Schema.define(version: 20130628113328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,19 @@ ActiveRecord::Schema.define(version: 20130517141828) do
 
   add_index "contacts", ["contact_list_id"], name: "index_contacts_on_contact_list_id", using: :btree
   add_index "contacts", ["email", "contact_list_id", "deleted_at"], name: "contact_list_contact", unique: true, using: :btree
+
+  create_table "feedbacks", force: true do |t|
+    t.integer  "release_id"
+    t.integer  "user_id"
+    t.integer  "subscriber_id"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "feedbacks", ["release_id"], name: "index_feedbacks_on_release_id", using: :btree
+  add_index "feedbacks", ["subscriber_id"], name: "index_feedbacks_on_subscriber_id", using: :btree
+  add_index "feedbacks", ["user_id"], name: "index_feedbacks_on_user_id", using: :btree
 
   create_table "import_rows", force: true do |t|
     t.integer  "import_id"
@@ -107,6 +120,17 @@ ActiveRecord::Schema.define(version: 20130517141828) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "ratings", force: true do |t|
+    t.integer  "feedback_id"
+    t.integer  "track_id"
+    t.integer  "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ratings", ["feedback_id"], name: "index_ratings_on_feedback_id", using: :btree
+  add_index "ratings", ["track_id"], name: "index_ratings_on_track_id", using: :btree
 
   create_table "release_artists", force: true do |t|
     t.integer  "release_id", null: false

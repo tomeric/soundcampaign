@@ -38,4 +38,8 @@ FactoryGirl.define do
     
     (@titles << title).last
   end
+  
+  sequence :story do |n|
+    Faker::Lorem.paragraphs(3).join("\n\n")
+  end
 end

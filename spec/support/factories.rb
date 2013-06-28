@@ -37,6 +37,18 @@ FactoryGirl.define do
     title        { generate :title     }
   end
   
+  factory :feedback do
+    release    { build :release    }
+    subscriber { build :subscriber }
+    body       { generate :story   }
+  end
+  
+  factory :rating do
+    feedback { build :feedback        }
+    track    { build :track           }
+    value    { 1.upto(10).to_a.sample }
+  end
+  
   factory :artist do
     organization { build :organization }
     name         { generate :name      }
