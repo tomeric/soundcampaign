@@ -1,4 +1,8 @@
-.release {
+.release-campaign {
+	float:left;
+	width: $siteWidth;
+	@include border-radius(3px);
+
   .release-information-box {
     background: #fff;
     border-right: 1px solid #e7e7e7;
@@ -48,19 +52,11 @@
     }
   }
 }
-
-/*
-.release {
-	float:left;
-	width:980px;
-	@include border-radius(3px);
-
-	.release-header {
+.release-header {
 		@include border-radius(3px 3px 0px 0px);
-		height:39px;
-		width:978px;
-		line-height: 39px;
-		text-indent: 15px;
+		width: $siteWidth - 2;
+		height: $baseLineHeight * 2 - 2;
+    line-height: $baseLineHeight * 2 - 2;
 		border-top: 1px solid #207aa0;
 		
 		border-bottom:1px solid rgba(0,0,0, 0.9);
@@ -71,6 +67,7 @@
 		.release-header-title {
 			float:left;
 			font-size: 17px;
+			padding-left: ($gridColumnWidth / 2) - 2;
 			font-weight: bold;
 			color:white;
 			@include text-shadow(rgba(15,102,149, 0.9) 0px 0px 2px);
@@ -85,9 +82,10 @@
 			@include box-sizing(border-box);
 		}
 	}
-	.release-steps {
-		height:26px;
-		line-height:26px;
+
+.release-steps {
+		height: $baseLineHeight * 1.5 - 2;
+    line-height: $baseLineHeight * 1.5 - 2;
 		@include background-image(linear-gradient(#535353, #2f2f2f));
 		color:white;
 		font-size:11px;
@@ -95,7 +93,7 @@
 		text-align: center;
 
 		.release-step {
-			width:194px;
+			width: ($siteWidth - 10) / 5;
 			float: left;
 			height: 24px;
 			line-height: 24px;
@@ -111,8 +109,12 @@
 			color:white;
 		}
 	}
-	.release-content {
+
+
+.release-content {
 		float: left;
+		width: $siteWidth - 2;
+		
 		background: #f4f4f4;		
 		border-left: 1px solid #e1e1e1;
 		border-right: 1px solid #e1e1e1;
@@ -167,6 +169,7 @@
 		background: white;
 		float: left;
 		height:99px;
+		width: $siteWidth - 2;
 		line-height: 99px;
 		text-indent: 30px;
 		border: 1px solid #e1e1e1;
@@ -177,5 +180,133 @@
 			padding: 11px 65px;
 		}
 	}
+/*
+.release {
+  float:left;
+  width:980px;
+  @include border-radius(3px);
+
+  .release-header {
+    @include border-radius(3px 3px 0px 0px);
+    height:39px;
+    width:978px;
+    line-height: 39px;
+    text-indent: 15px;
+    border-top: 1px solid #207aa0;
+    
+    border-bottom:1px solid rgba(0,0,0, 0.9);
+    @include background-image(linear-gradient(#00a6ff, #008cd8));
+    
+    border-left: 1px solid #207aa0;
+    border-right: 1px solid #207aa0;
+    .release-header-title {
+      float:left;
+      font-size: 17px;
+      font-weight: bold;
+      color:white;
+      @include text-shadow(rgba(15,102,149, 0.9) 0px 0px 2px);
+    }
+    &:after { 
+      @include border-radius(3px 3px 0px 0px);
+      display:block; 
+      content:''; 
+      border-top:1px solid rgba(255,255,255, 0.7);
+      height:100%; 
+      width:100%; 
+      @include box-sizing(border-box);
+    }
+  }
+  .release-steps {
+    height:26px;
+    line-height:26px;
+    @include background-image(linear-gradient(#535353, #2f2f2f));
+    color:white;
+    font-size:11px;
+    font-weight: bold;
+    text-align: center;
+
+    .release-step {
+      width:194px;
+      float: left;
+      height: 24px;
+      line-height: 24px;
+      border-top:1px solid #727272;
+      border-right:1px solid #313131;
+      border-left: 1px solid #686868;
+      color:#757575;
+      &:first-child {
+        border-left:none;
+      }
+    }
+    .release-step-active {
+      color:white;
+    }
+  }
+  .release-content {
+    float: left;
+    background: #f4f4f4;    
+    border-left: 1px solid #e1e1e1;
+    border-right: 1px solid #e1e1e1;
+
+    .release-content-group{
+      padding:29px;
+      border-bottom:1px solid #e1e1e1;
+
+      .release-content-title{
+        color:#008edc;
+        font-weight:bold;
+        font-size:16px;
+      }
+      p {
+        color:#777777;
+        font-weight:bold;
+        font-size: 13px;
+      }
+      .control-label {
+        width: auto;
+      }
+      .controls {
+        margin-left: 80px;
+
+        input {
+          width: 520px;
+        }
+        textarea {
+          width:520px;
+          height:150px;
+        }
+      }
+    }
+
+    .release-templates-group {
+      .release-template {
+        float: left;
+        width: 213px;
+        padding-left: 22px;
+        &:first-child {
+        padding-left: 0;
+      }
+      }
+    }
+
+
+    form {
+      margin: 0;
+    }
+  }
+  .release-footer {
+    background: white;
+    float: left;
+    height:99px;
+    line-height: 99px;
+    text-indent: 30px;
+    border: 1px solid #e1e1e1;
+    border-top: none;
+    @include border-radius(0px 0px 3px 3px);
+    .btn-large {
+      font-size: 12px;
+      padding: 11px 65px;
+    }
+  }
 }
 */
