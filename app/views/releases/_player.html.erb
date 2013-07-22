@@ -35,14 +35,16 @@ if first_track.present?
         <%= render 'releases/track', release: release, track: track, position: index + 1, feedback: feedback, form: f %>
       <% end %>
       
+      <% if feedback.persisted? %>
       <div class="bar">
         <a class="download-release">Download release as a zipfile</a>
       </div>
+      <% end %>
+      
       <div class="feedback">
         <span>Your feedback</span>
         <%= f.text_area :body %>
         <%= f.submit 'Submit feedback', class: 'btn btn-primary' %>
-        <!-- <button class="btn btn-primary" type="button">Submit feedback</button> -->
       </div>
     </div>
   <% end %>

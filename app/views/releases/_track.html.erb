@@ -2,7 +2,9 @@
 <%= form.fields_for :ratings, rating do |f| %>
   <div class="bar player-track">
     <span class="player-track-title"><%= track.position || position %>. <%= track.artist %> - <strong><%= track.title %></strong></span>
+    <% if feedback.persisted? %>
     <%= link_to 'download', track.attachment.url, class: 'download', download: track.attachment_file_name %>
+    <% end %>
     <%= f.hidden_field :id       if rating.persisted? %>
     <%= f.hidden_field :track_id %>
     <%= f.select :value, 1.upto(10).to_a,
