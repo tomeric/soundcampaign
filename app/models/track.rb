@@ -29,7 +29,12 @@ class Track < ActiveRecord::Base
   
   ### CALLBACKS:
   
-  before_validation :set_track_attributes, on: :create
+  before_validation :set_track_attributes,
+    on: :create
+  
+  before_validation :update_attachment_from_track_attributes,
+    on: :update,
+    if: :update_attachment?
   
   ### INSTANCE METHODS:
   
@@ -54,17 +59,34 @@ class Track < ActiveRecord::Base
     self.title  ||= 'Unknown Title'
   end
   
+  def update_attachment?
+    false
+  end
+  
   private
   
+  def update_attachment_from_track_attributes
+    pathname = Pathname.new(attachment_io.path)
+    
+    TagLib::FileRef.open(pathname.to_s) do |file|
+      return if file.null?
+      tag = file.tag
+      tag.artist = artist
+      tag.title  = title
+      tag.album  = release.try(:title)
+      tag.track  = (position.presence || 0) + 1
+      file.save
+    end
+    
+    self.attachment = pathname
+  end
+  
   def set_track_attributes_from_attachment
-    begin
-      TagLib::FileRef.open(attachment_io.path) do |fileref|
-        unless fileref.null?
-          tag = fileref.tag
-          self.artist ||= tag.artist.presence
-          self.title  ||= tag.title.presence
-        end
-      end
+    TagLib::FileRef.open(attachment_io.path) do |file|
+      return if file.null?
+      tag = file.tag
+      self.artist ||= tag.artist.presence
+      self.title  ||= tag.title.presence
     end
   end
   
