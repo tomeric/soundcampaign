@@ -33,6 +33,14 @@ class Feedback < ActiveRecord::Base
     end
   }
   
+  ### INSTANCE METHODS:
+  
+  def rating_for(track)
+    rating = ratings.for(track).first_or_initialize
+    rating.track = track
+    rating
+  end
+  
   private
   
   def user_or_subscriber_present

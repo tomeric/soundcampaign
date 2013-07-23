@@ -1,4 +1,5 @@
 #= require jplayer/jquery.jplayer.min
+#= require jquery.raty.min
 
 class SCPlayer
   constructor: (@widget, @tracks) ->
@@ -59,10 +60,22 @@ class SCPlayer
 
 $ ->
   if $.fn.raty?
+    $('.star').parent().find('select.rating').hide()
     $('.star').raty
       starHalf: '<%= image_path "icons/star-half.png" %>'
       starOff:  '<%= image_path "icons/star-off.png" %>'
-      starOn:   '<%= image_path "icons/star-on.png"  %>'
+      starOn:   '<%= image_path "icons/star-on.png"  %>',
+      half:  true,
+      click: (stars, event) ->
+        if stars
+          score = stars * 2
+          $(this).parent().find('select.rating').val(score)
+      score: ->
+        score = $(this).parent().find('select.rating').val()
+        if score
+          score / 2
+        else
+          false
   
   if $.fn.jPlayer?
     player = new SCPlayer($('.release-player'), $('.player-track'))

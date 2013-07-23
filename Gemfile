@@ -14,25 +14,26 @@ gem 'friendly_id'
 gem 'protected_attributes'
 
 # Data:
-gem 'iconv'
-gem 'roo'
-gem 'mp3info'
+gem 'roo',         require: false
+gem 'taglib-ruby', require: false
 
 # Files:
 gem 'aws-sdk'
 gem 'paperclip'
 
 # Authentication:
-gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
+gem 'devise'
 
-# Frontend:
+# Views:
+gem 'formtastic'
+
+# Asset Pipeline:
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'bootstrap-sass-rails'
 gem 'modernizr-rails'
 gem 'bourbon'
 gem 'uglifier'
-gem 'formtastic'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'turbolinks'
@@ -42,18 +43,25 @@ gem 'jquery-turbolinks'
 gem 'rails-i18n', github: 'svenfuchs/rails-i18n'
 
 group :development do
-  gem 'sqlite3'
-  gem 'taps'
-  gem 'rb-fsevent',       require: false
-  gem 'guard-bundler'
-  gem 'guard-rspec'
+  # Debugging:
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'pry'
+  
+  # Heroku:
+  gem 'sqlite3',          require: false
+  gem 'taps',             require: false
+  
+  # Guard:
+  gem 'rb-fsevent',       require: false
+  gem 'guard-bundler',    require: false
+  gem 'guard-rspec',      require: false
+  
+  # Console:
+  gem 'pry',              require: false
 end
 
 group :test do
-  gem 'rspec-rails',        '~> 2.14.0.rc1'
+  gem 'rspec-rails'
   gem 'spork'
   
   # Test tools:

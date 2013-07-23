@@ -3,7 +3,7 @@ first_track = tracks.first
 
 if first_track.present?
 %>
-  <div class="release-player">
+  <%= form_for [release, feedback], html: { class: 'release-player'} do |f| %>
     <div class="jplayer"></div>
     <div class="releases faux-table">
       <div class="top">
@@ -30,21 +30,22 @@ if first_track.present?
         </div>
         -->
       </div>
+      
       <% tracks.each.with_index do |track, index| %>
-      <div class="bar player-track">
-        <span class="player-track-title"><%= track.position || index + 1 %>. <%= track.artist %> - <strong><%= track.title %></strong></span>
-        <%= link_to 'download', track.attachment.url, class: 'download', download: track.attachment_file_name %>
-        <div class="star"></div>
-      </div>
+        <%= render 'releases/track', release: release, track: track, position: index + 1, feedback: feedback, form: f %>
       <% end %>
+      
+      <% if feedback.persisted? %>
       <div class="bar">
         <a class="download-release">Download release as a zipfile</a>
       </div>
+      <% end %>
+      
       <div class="feedback">
         <span>Your feedback</span>
-        <textarea></textarea>
-        <button class="btn btn-primary" type="button">Submit feedback</button>
+        <%= f.text_area :body %>
+        <%= f.submit 'Submit feedback', class: 'btn btn-primary' %>
       </div>
     </div>
-  </div>
+  <% end %>
 <% end %>

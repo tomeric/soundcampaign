@@ -13,4 +13,10 @@ class Rating < ActiveRecord::Base
     greater_than_or_equal_to:  1,
     only_integer:             true
   
+  ### SCOPES:
+  
+  scope :for, -> track {
+    where(track_id: track.id)
+  }
+  
 end

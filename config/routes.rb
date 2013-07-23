@@ -12,7 +12,9 @@ SoundCampaign::Application.routes.draw do
     concerns: :undestroyable
   
   resources :releases,
-    concerns: :undestroyable
+    concerns: :undestroyable do
+    resources :feedbacks
+  end
   
   resources :artists, 
     concerns: :undestroyable
