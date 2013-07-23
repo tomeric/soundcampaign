@@ -18,9 +18,11 @@
 
 # Ignore all logfiles and tempfiles
 /.sass-cache
+/Build
 /log/*.log
 /tmp
 .DS_Store
+.sass-cache/*
 
 # Ignore precompiled assets
 /public/assets
