@@ -1,3 +1,5 @@
+require 'taglib'
+
 class Track < ActiveRecord::Base
   include Archivable
   
@@ -56,12 +58,13 @@ class Track < ActiveRecord::Base
   
   def set_track_attributes_from_attachment
     begin
-      Mp3Info.open(attachment_io.path) do |info|
-        self.artist ||= info.tag.artist.presence
-        self.title  ||= info.tag.title.presence
+      TagLib::FileRef.open(attachment_io.path) do |fileref|
+        unless fileref.null?
+          tag = fileref.tag
+          self.artist ||= tag.artist.presence
+          self.title  ||= tag.title.presence
+        end
       end
-    rescue => e
-      puts e.inspect
     end
   end
   

@@ -14,8 +14,8 @@ gem 'friendly_id'
 gem 'protected_attributes'
 
 # Data:
-gem 'mp3info'
 gem 'roo',         require: false
+gem 'taglib-ruby', require: false
 
 # Files:
 gem 'aws-sdk'
