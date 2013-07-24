@@ -31,6 +31,9 @@ FactoryGirl.define do
     name         { generate :brand     }
   end
   
+  factory :campaign do
+  end
+  
   factory :release do
     organization { build :organization }
     label        { build :label        }
