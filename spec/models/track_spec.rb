@@ -18,6 +18,26 @@ describe Track do
   end
   
   describe 'instance methods' do
+    describe '#update_attachment_from_track_attributes' do
+      it "updates the attachment's id3 tags based on the track attributes" do
+        track.title    = 'The Awesome Title'
+        track.artist   = 'The Awesome Artist'
+        track.release  = build :release, title: 'The Awesome Album'
+        track.position = 3
+        track.update_attachment_from_track_attributes
+        
+        file = track.send(:attachment_io)
+        
+        TagLib::FileRef.open(file.path) do |file|
+          tag = file.tag
+          expect(tag.title).to  eql 'The Awesome Title'
+          expect(tag.artist).to eql 'The Awesome Artist'
+          expect(tag.album).to  eql 'The Awesome Album'
+          expect(tag.track).to  eql 4
+        end
+      end 
+    end
+    
     describe '#set_track_attributes' do
       context 'without id3 tags' do
         it "sets the track's title to 'Unknown Title'" do

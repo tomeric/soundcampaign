@@ -63,8 +63,6 @@ class Track < ActiveRecord::Base
     false
   end
   
-  private
-  
   def update_attachment_from_track_attributes
     pathname = Pathname.new(attachment_io.path)
     
@@ -89,6 +87,8 @@ class Track < ActiveRecord::Base
       self.title  ||= tag.title.presence
     end
   end
+  
+  private
   
   def attachment_io
     file = attachment.queued_for_write[:original]
