@@ -25,8 +25,8 @@
               <span class="email-title"><%= @release.title %></span>
               <span class="email-sub-title"><%= @label.name %> <%= @release.catid %>· Release date : <%= @release.date.strftime('%D/%M/%y') %></span>
               <ul>
-                <% @tracks.each do |track| %>
-                  <li><%= track.position + 1%>. <%= track.artist %> - <strong><%= track.title %></strong></li>
+                <% @tracks.each.with_index do |track, index| %>
+                  <li><%= index + 1 %>. <%= track.artist %> - <strong><%= track.title %></strong></li>
                 <% end %>
               </ul>
               <%= link_to 'Listen to release', @release, class: 'email-button' %>
