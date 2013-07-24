@@ -18,13 +18,17 @@ describe Track do
   end
   
   describe 'instance methods' do
-    describe '#update_attachment_from_track_attributes' do
+    describe '#set_attachment_tags_from_track_attributes' do
+      let(:track) {
+        build :track,
+          title:    'The Awesome Title',
+          artist:   'The Awesome Artist',
+          position: 3,
+          release:  build(:release, title: 'The Awesome Album')
+      }
+      
       it "updates the attachment's id3 tags based on the track attributes" do
-        track.title    = 'The Awesome Title'
-        track.artist   = 'The Awesome Artist'
-        track.release  = build :release, title: 'The Awesome Album'
-        track.position = 3
-        track.update_attachment_from_track_attributes
+        track.set_attachment_tags_from_track_attributes
         
         file = track.send(:attachment_io)
         
@@ -36,6 +40,30 @@ describe Track do
           expect(tag.track).to  eql 4
         end
       end 
+    end
+    
+    describe '#set_track_attributes_from_attachment_tags' do
+      let(:track) { build :track, attachment: fixture('track_id3.mp3') }
+      
+      it "sets the track's title to the title in the id3 tag" do
+        track.title = nil
+        
+        expect {
+          track.set_track_attributes_from_attachment_tags
+        }.to change {
+          track.title
+        }.to 'ID3 Title'
+      end
+      
+      it "sets the track's artist to the artist in the id3 tag" do
+        track.artist = nil
+        
+        expect {
+          track.set_track_attributes_from_attachment_tags
+        }.to change {
+          track.artist
+        }.to 'ID3 Artist'
+      end
     end
     
     describe '#set_track_attributes' do
@@ -64,24 +92,9 @@ describe Track do
       context 'with id3 tags' do
         let(:track) { build :track, attachment: fixture('track_id3.mp3') }
         
-        it "sets the track's title to the title in the id3 tag" do
-          track.title = nil
-          
-          expect {
-            track.set_track_attributes
-          }.to change {
-            track.title
-          }.to 'ID3 Title'
-        end
-        
-        it "sets the track's artist to the artist in the id3 tag" do
-          track.artist = nil
-          
-          expect {
-            track.set_track_attributes
-          }.to change {
-            track.artist
-          }.to 'ID3 Artist'
+        it "sets the track's attributes from the attachment's tags" do
+          expect(track).to receive(:set_track_attributes_from_attachment_tags)
+          track.set_track_attributes
         end
       end
       

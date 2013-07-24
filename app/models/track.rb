@@ -49,13 +49,13 @@ class Track < ActiveRecord::Base
   end
   
   def set_track_attributes
-    set_track_attributes_from_attachment if attachment?
+    set_track_attributes_from_attachment_tags if attachment?
     
     self.artist ||= 'Unknown Artist'
     self.title  ||= 'Unknown Title'
   end
   
-  def update_attachment_from_track_attributes
+  def set_attachment_tags_from_track_attributes
     pathname = Pathname.new(attachment_io.path)
     
     TagLib::FileRef.open(pathname.to_s) do |file|
@@ -71,7 +71,7 @@ class Track < ActiveRecord::Base
     self.attachment = pathname
   end
   
-  def set_track_attributes_from_attachment
+  def set_track_attributes_from_attachment_tags
     TagLib::FileRef.open(attachment_io.path) do |file|
       return if file.null?
       tag = file.tag
