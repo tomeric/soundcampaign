@@ -25,7 +25,7 @@ gem 'paperclip'
 gem 'devise'
 
 # Views:
-gem 'formtastic'
+gem 'formtastic',   '>= 2.3.0.rc2'
 gem 'dynamic_form'
 
 # Asset Pipeline:
