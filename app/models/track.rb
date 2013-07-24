@@ -32,10 +32,6 @@ class Track < ActiveRecord::Base
   before_validation :set_track_attributes,
     on: :create
   
-  before_validation :update_attachment_from_track_attributes,
-    on: :update,
-    if: :update_attachment?
-  
   ### INSTANCE METHODS:
   
   def as_json
@@ -57,10 +53,6 @@ class Track < ActiveRecord::Base
     
     self.artist ||= 'Unknown Artist'
     self.title  ||= 'Unknown Title'
-  end
-  
-  def update_attachment?
-    false
   end
   
   def update_attachment_from_track_attributes
