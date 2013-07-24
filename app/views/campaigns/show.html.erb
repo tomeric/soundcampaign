@@ -1,0 +1,46 @@
+<div class="release-campaign">
+  <div class="release-header">
+    <span class="release-header-title">Preview: <%= @campaign.name %></span>
+  </div>
+  
+  <%= render 'steps', step: 2 %>
+  
+  <div class="release-content">
+    <form class="form-horizontal">
+      <div class="release-content-group">
+        <span class="release-content-title">Preview your campaign</span>
+        <p>This is how your recipients will receive your email</p>
+        <div class="release-templates-group">
+          
+        </div>
+      </div>
+      <div class="release-content-group">
+        <div class="release-template-preview email-template-1">
+          <div class="view-browser">
+            Email not loading correctly? <%= link_to 'View it in your browser', [@release, :campaign] %>
+          </div>
+          <div class="email-template">
+            <div class="email-top">
+              <%= image_tag @release.cover.url(:thumbnail), alt: "Cover for #{@release.title}" %>
+              <span class="email-title"><%= @release.title %></span>
+              <span class="email-sub-title"><%= @label.name %> <%= @release.catid %>· Release date : <%= @release.date.strftime('%D/%M/%y') %></span>
+              <ul>
+                <% @tracks.each do |track| %>
+                  <li><%= track.position + 1%>. <%= track.artist %> - <strong><%= track.title %></strong></li>
+                <% end %>
+              </ul>
+              <%= link_to 'Listen to release', @release, class: 'email-button' %>
+            </div>
+            <%= simple_format @campaign.body %>
+          </div>
+          <div class="email-footer">
+            Sent with <%= link_to 'SoundCampaign', root_url %>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="release-footer">
+    <button class="btn btn-large" type="button">Next Step</button>
+  </div>
+</div>

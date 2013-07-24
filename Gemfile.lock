@@ -80,6 +80,7 @@ GEM
       railties (>= 3.2.6, < 5)
       warden (~> 1.2.3)
     diff-lcs (1.2.4)
+    dynamic_form (1.1.4)
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (1.4.0)
@@ -275,6 +276,7 @@ DEPENDENCIES
   coffee-rails
   database_cleaner
   devise
+  dynamic_form
   factory_girl_rails
   fakeweb
   ffaker

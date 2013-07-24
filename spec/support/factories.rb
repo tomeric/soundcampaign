@@ -32,6 +32,10 @@ FactoryGirl.define do
   end
   
   factory :campaign do
+    release       { build :release      }
+    name          { |c| c.release.title }
+    email_subject { |c| c.release.title }
+    email_from    { generate :email     }
   end
   
   factory :release do

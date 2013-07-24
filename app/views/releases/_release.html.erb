@@ -4,8 +4,8 @@
   </span>
   <%= link_to 'Edit',    [:edit, release],
         class: 'action edit' %>
-  <%= link_to 'Public', release,
+  <%= link_to 'Public',  release,
         class: 'action public' %>
-  <%= link_to 'Send',   '#TODO',
+  <%= link_to 'Send',    [release, :campaign],
         class: 'action send' %>
 </li>

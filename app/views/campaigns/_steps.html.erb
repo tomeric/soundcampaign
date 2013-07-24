@@ -1,0 +1,20 @@
+<div class="release-steps">
+  <% if step > 1 %>
+    <%= link_to '1. Campaign information', new_release_campaign_url(@release), class: 'release-step' %>
+  <% else %>
+    <span class="release-step release-step-active">
+      1. Campaign information
+    </span>
+  <% end %>
+  <% if @campaign.persisted? %>
+    <%= link_to '2. Preview campaign', release_campaign_url(@release), class: "release-step #{'release-step-active' if step == 2}" %>
+    <%= link_to '3. Recipients & Confirm', edit_release_campaign_url(@release), class: "release-step #{'release-step-active' if step == 3}" %>
+  <% else %>
+    <span class="release-step">
+      2. Preview campaign
+    </span>
+    <span class="release-step">
+      3. Recipients &amp; Confirm
+    </span>
+  <% end %>
+</div>

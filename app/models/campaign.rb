@@ -4,4 +4,15 @@ class Campaign < ActiveRecord::Base
   
   belongs_to :release
   
+  ### VALIDATIONS:
+  
+  validates :name,
+    presence: true
+  
+  validates :email_subject,
+    presence: true
+  
+  validates :email_from,
+    presence: true
+  
 end

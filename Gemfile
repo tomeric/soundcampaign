@@ -26,6 +26,7 @@ gem 'devise'
 
 # Views:
 gem 'formtastic'
+gem 'dynamic_form'
 
 # Asset Pipeline:
 gem 'sass-rails'
