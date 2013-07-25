@@ -44,10 +44,6 @@ class Track < ActiveRecord::Base
     }
   end
   
-  def length
-    90.seconds
-  end
-  
   def set_track_attributes
     set_track_attributes_from_attachment_tags if attachment?
     
@@ -60,11 +56,14 @@ class Track < ActiveRecord::Base
     
     TagLib::FileRef.open(pathname.to_s) do |file|
       return if file.null?
-      tag = file.tag
-      tag.artist = artist
-      tag.title  = title
-      tag.album  = release.try(:title)
-      tag.track  = (position.presence || 0) + 1
+      
+      if tag = file.tag
+        tag.artist = artist
+        tag.title  = title
+        tag.album  = release.try(:title)
+        tag.track  = (position.presence || 0) + 1
+      end
+      
       file.save
     end
     
@@ -74,9 +73,18 @@ class Track < ActiveRecord::Base
   def set_track_attributes_from_attachment_tags
     TagLib::FileRef.open(attachment_io.path) do |file|
       return if file.null?
-      tag = file.tag
-      self.artist ||= tag.artist.presence
-      self.title  ||= tag.title.presence
+      
+      if tag = file.tag
+        self.artist ||= tag.artist.presence
+        self.title  ||= tag.title.presence
+      end
+      
+      if properties = file.audio_properties
+        self.length      = properties.length
+        self.bitrate     = properties.bitrate
+        self.sample_rate = properties.sample_rate
+        self.channels    = properties.channels
+      end
     end
   end
   

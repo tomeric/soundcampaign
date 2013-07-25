@@ -45,24 +45,17 @@ describe Track do
     describe '#set_track_attributes_from_attachment_tags' do
       let(:track) { build :track, attachment: fixture('track_id3.mp3') }
       
-      it "sets the track's title to the title in the id3 tag" do
-        track.title = nil
+      it "sets the track's attributes based on information from the id3 tags" do
+        track.title  = nil # Only set when nil
+        track.artist = nil # Only set when nil
+        track.set_track_attributes_from_attachment_tags
         
-        expect {
-          track.set_track_attributes_from_attachment_tags
-        }.to change {
-          track.title
-        }.to 'ID3 Title'
-      end
-      
-      it "sets the track's artist to the artist in the id3 tag" do
-        track.artist = nil
-        
-        expect {
-          track.set_track_attributes_from_attachment_tags
-        }.to change {
-          track.artist
-        }.to 'ID3 Artist'
+        expect(track.title).to       eql 'ID3 Title'
+        expect(track.artist).to      eql 'ID3 Artist'
+        expect(track.length).to      eql 5
+        expect(track.bitrate).to     eql 48
+        expect(track.channels).to    eql 1
+        expect(track.sample_rate).to eql 44100
       end
     end
     
