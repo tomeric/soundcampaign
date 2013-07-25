@@ -1,49 +1,51 @@
 .sign-in-form {
-	width:$gridColumnWidth * 7;
-	margin: 0 auto;
-
-	.sign-in-form-top {
-		float: left;
-		width: 100%;
-		margin: 0 0 15px 0;
-
-		h1, a {
-			height: $baseLineHeight * 3;
-			line-height: $baseLineHeight * 3;
-		}
-		h1 {
-			float: left;
-			margin: 0;
-			font-size: 24px;
-			color: #738792;
-		}
-		a {
-			float: right;
-			font-size: 12px;
-			font-weight: 600;
-			color: #0093e3;
-			text-decoration: none;
-		}
-	}
-
-	input {
-		@include box-sizing(border-box);
-		height: 36px;
-		width: 100%;
-		margin-bottom: 15px;
-	}
-
-	.sign-in-form-submit {
-		font-size: 11px;
-		color: #738792;
-
-		input {
-			width: auto;
-			margin: 0 10px 2px 0;
-		}
-
-	}
-	.right {
-		float: right;
-	}
+  width:$gridColumnWidth * 7;
+  margin: 0 auto;
+  
+  .sign-in-form-top {
+    float: left;
+    width: 100%;
+    margin: 0 0 15px 0;
+    
+    h1, a {
+      height: $baseLineHeight * 3;
+      line-height: $baseLineHeight * 3;
+    }
+    h1 {
+      float: left;
+      margin: 0;
+      font-size: 24px;
+      color: #738792;
+    }
+    a {
+      float: right;
+      font-size: 12px;
+      font-weight: 600;
+      color: #0093e3;
+      text-decoration: none;
+    }
+  }
+  
+  input {
+    @include box-sizing(border-box);
+    height: 36px;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  .sign-in-form-submit {
+    label {
+      font-size: 11px;
+      color: #738792;
+    }
+    
+    input {
+      width: auto;
+      margin: 0 10px 2px 0;
+    }
+  }
+  
+  .right {
+    float: right;
+  }
 }

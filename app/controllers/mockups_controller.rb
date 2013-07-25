@@ -21,7 +21,7 @@ class MockupsController < ApplicationController
     case @template
     when 'teaser'
       'teaser'
-    when /^send_release_[0-9]$/
+    when /^send_release_[0-9]$/, 'sign_in'
       'application'
     else
       'backend'
