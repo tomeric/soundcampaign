@@ -10,13 +10,20 @@ class SCPlayer
     @initializePlayer()
   
   initializePlayer: ->
-    @player.jPlayer
+    @player.jPlayer(
       swfPath:  '<%= asset_path("jplayer/Jplayer.swf") %>'
       supplied: 'mp3'
       volume:   0.8,
-      ready:    =>
-        console.log @tracks
-        @change @tracks[0] if @tracks.length >= 1
+      ready: => @change @tracks[0] if @tracks.length >= 1
+    ).bind(
+      $.jPlayer.event.timeupdate,
+      (event) => @updateTimer(event)
+    )
+  
+  updateTimer: (event) ->
+    status = event.jPlayer.status
+    currentTime = $.jPlayer.convertTime(status.currentTime)
+    @widget.find('.current-time').text(currentTime)
   
   perform: (args...) ->
     @player.jPlayer args...
@@ -48,6 +55,17 @@ class SCPlayer
       @playing = false
       @perform 'pause', args...
   
+  updateTrackInfo: ->
+    trackInfo = @widget.find('.time')
+    duration  = $.jPlayer.convertTime(parseInt(@track.attr('data-length')))
+    artist    = @track.find('.track-artist').text()
+    title     = @track.find('.track-title').text()
+    
+    trackInfo.find('.current-time').text('00:00')
+    trackInfo.find('.track-length').text(duration)
+    trackInfo.find('.track-artist').text(artist)
+    trackInfo.find('.track-title').text(title)
+  
   change: (track) ->
     @track = $ track
     
@@ -56,7 +74,12 @@ class SCPlayer
     @perform 'setMedia', mp3: file
     
     # If we're already playing, start playing the track we're switching to:
-    @play() if @playing
+    if @playing
+      @pause()
+      @updateTrackInfo()
+      @play()
+    else
+      @updateTrackInfo()
 
 $ ->
   if $.fn.raty?

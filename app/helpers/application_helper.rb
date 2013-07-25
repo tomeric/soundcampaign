@@ -20,4 +20,12 @@ module ApplicationHelper
     
     messages.join.html_safe
   end
+  
+  def duration_to_clock(seconds)
+    if seconds > 1.hour
+      Time.at(seconds).utc.strftime('%H:%M:%S')
+    else
+      Time.at(seconds).utc.strftime('%M:%S')
+    end
+  end
 end

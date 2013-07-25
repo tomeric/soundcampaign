@@ -24,7 +24,12 @@ if first_track.present?
           <div class="playpause"></div>
           <div class="right"></div>
         </div>
-        <div class="time">00:00 / <%= first_track.length %> <%= first_track.position %>. <%= first_track.artist %> - <strong><%= first_track.title %></strong></div>
+        <div class="time">
+          <span class="current-time">00:00</span> /
+          <span class="track-length"><%= duration_to_clock first_track.length %></span>
+          <span class="track-artist"><%= first_track.artist %></span> -
+          <strong class="track-title"><%= first_track.title %></strong>
+        </div>
         <!--
         <div class="volume">
         </div>
