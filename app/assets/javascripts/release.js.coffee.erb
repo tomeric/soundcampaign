@@ -70,7 +70,7 @@ class SCPlayer
     @track = $ track
     
     # Set the track so we can play it:
-    file = @track.find('a.download').attr('href')
+    file = @track.attr('data-attachment-url')
     @perform 'setMedia', mp3: file
     
     # If we're already playing, start playing the track we're switching to:
