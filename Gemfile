@@ -25,7 +25,8 @@ gem 'paperclip'
 gem 'devise'
 
 # Views:
-gem 'formtastic'
+gem 'formtastic',   '>= 2.3.0.rc2'
+gem 'dynamic_form'
 
 # Asset Pipeline:
 gem 'sass-rails'
@@ -41,6 +42,9 @@ gem 'jquery-turbolinks'
 
 # I18n:
 gem 'rails-i18n', github: 'svenfuchs/rails-i18n'
+
+# Logging:
+gem 'honeybadger'
 
 group :development do
   # Debugging:

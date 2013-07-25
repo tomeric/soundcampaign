@@ -1,9 +1,8 @@
 .release-campaign {
-	float:left;
-	width: $siteWidth;
-	@include border-radius(3px);
+  float:left;
+  width: $siteWidth;
+  @include border-radius(3px);
   
-
   .release-information-box {
     background: #fff;
     border-right: 1px solid #e7e7e7;
@@ -54,151 +53,174 @@
   }
 }
 .release-header {
-		@include border-radius(3px 3px 0px 0px);
-		width: $siteWidth - 2;
-		height: $baseLineHeight * 2 - 2;
+    @include border-radius(3px 3px 0px 0px);
+    width: $siteWidth - 2;
+    height: $baseLineHeight * 2 - 2;
     line-height: $baseLineHeight * 2 - 2;
-		border-top: 1px solid #207aa0;
-		
-		border-bottom:1px solid rgba(0,0,0, 0.9);
-		@include background-image(linear-gradient(#00a6ff, #008cd8));
-		
-		border-left: 1px solid #207aa0;
-		border-right: 1px solid #207aa0;
-		.release-header-title {
-			float:left;
-			font-size: 17px;
-			padding-left: ($gridColumnWidth / 2) - 2;
-			font-weight: bold;
-			color:white;
-			@include text-shadow(rgba(15,102,149, 0.9) 0px 0px 2px);
-		}
-		&:after { 
-			@include border-radius(3px 3px 0px 0px);
-			display:block; 
-			content:''; 
-			border-top:1px solid rgba(255,255,255, 0.7);
-			height:100%; 
-			width:100%; 
-			@include box-sizing(border-box);
-		}
-	}
+    border-top: 1px solid #207aa0;
+    
+    border-bottom:1px solid rgba(0,0,0, 0.9);
+    @include background-image(linear-gradient(#00a6ff, #008cd8));
+    
+    border-left: 1px solid #207aa0;
+    border-right: 1px solid #207aa0;
+    .release-header-title {
+      float:left;
+      font-size: 17px;
+      padding-left: ($gridColumnWidth / 2) - 2;
+      font-weight: bold;
+      color:white;
+      @include text-shadow(rgba(15,102,149, 0.9) 0px 0px 2px);
+    }
+    &:after { 
+      @include border-radius(3px 3px 0px 0px);
+      display:block; 
+      content:''; 
+      border-top:1px solid rgba(255,255,255, 0.7);
+      height:100%; 
+      width:100%; 
+      @include box-sizing(border-box);
+    }
+  }
 
 .release-steps {
-		height: $baseLineHeight * 1.5 - 2;
-    line-height: $baseLineHeight * 1.5 - 2;
-		@include background-image(linear-gradient(#535353, #2f2f2f));
-		color:white;
-		font-size:11px;
-		font-weight: bold;
-		text-align: center;
-
-		.release-step {
-			width: ($siteWidth - 6) / 3;
-			float: left;
-			height: 24px;
-			line-height: 24px;
-			border-top:1px solid #727272;
-			border-right:1px solid #313131;
-			border-left: 1px solid #686868;
-			color:#757575;
-			&:first-child {
-				border-left:none;
-			}
-		}
-		.release-step-active {
-			color:white;
-		}
-	}
+  height: $baseLineHeight * 1.5 - 2;
+  line-height: $baseLineHeight * 1.5 - 2;
+  @include background-image(linear-gradient(#535353, #2f2f2f));
+  color:white;
+  font-size:11px;
+  font-weight: bold;
+  text-align: center;
+  
+  .release-step {
+    width: ($siteWidth - 6) / 3;
+    float: left;
+    height: 24px;
+    line-height: 24px;
+    border-top:1px solid #727272;
+    border-right:1px solid #313131;
+    border-left: 1px solid #686868;
+    color:#757575;
+    &:first-child {
+      border-left:none;
+    }
+  }
+  
+  .release-step-active {
+    color:white;
+  }
+}
 
 
 .release-content {
-		float: left;
-		width: $siteWidth - 2;
-		
-		background: #f4f4f4;		
-		border-left: 1px solid #e1e1e1;
-		border-right: 1px solid #e1e1e1;
-
-		.release-content-group{
-      position: relative;
-      float: left;
-			padding:29px;
-			border-bottom:1px solid #e1e1e1;
-      width: 100%;
-      @include box-sizing(border-box);
-
-			.release-content-title{
-				color:#008edc;
-				font-weight:bold;
-				font-size:16px;
-			}
-      .release-campaign-info {
-        list-style: none;
-        margin: 15px 0 0 0;
-        font-size: 12px;
-        span {
-          font-weight: bold;
-          width: 80px;
-          display: inline-block;
-        }
-      }
-      .release-campaign-view-btn {
-        position: absolute;
-        top: 29px;
-        right: 29px;
-        float: right;
-        margin: 0;
-        font-size: 12px;
+  float: left;
+  width: $siteWidth - 2;
+  
+  background: #f4f4f4;    
+  border-left: 1px solid #e1e1e1;
+  border-right: 1px solid #e1e1e1;
+  
+  .release-content-group{
+    position: relative;
+    float: left;
+    padding:29px;
+    border-bottom:1px solid #e1e1e1;
+    width: 100%;
+    @include box-sizing(border-box);
+      
+    .release-content-title{
+      color:#008edc;
+      font-weight:bold;
+      font-size:16px;
+    }
+    
+    .release-campaign-info {
+      list-style: none;
+      margin: 15px 0 0 0;
+      font-size: 12px;
+      
+      span {
         font-weight: bold;
+        width: 80px;
+        display: inline-block;
       }
-      .send-campaign-directly {
-        margin: 0 10px 0 0;
+    }
+    
+    .release-campaign-view-btn {
+      position: absolute;
+      top: 29px;
+      right: 29px;
+      float: right;
+      margin: 0;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    
+    .send-campaign-directly {
+      margin: 0 10px 0 0;
+    }
+    
+    p {
+      color:#777777;
+      font-weight:bold;
+      font-size: 13px;
+    }
+    
+    .control-label {
+      width: auto;
+    }
+    
+    .controls {
+      margin-left: 80px;
+      
+      input {
+        width: 520px;
       }
-			p {
-				color:#777777;
-				font-weight:bold;
-				font-size: 13px;
-			}
-			.control-label {
-				width: auto;
-			}
-			.controls {
-				margin-left: 80px;
+      
+      textarea {
+        width: 520px;
+        height: 150px;
+      }
+      
+      .field_with_errors input,
+      .field_with_errors textarea {
+        border-color: red;
+      }
+      
+      .formError {
+        margin-bottom: 0 - ($baseLineHeight * 1.25);
+        color: red;
+        font-size: 11px;
+        line-height: $baseLineHeight * 1.25;
+        width: 530px;
+        text-align: right;
+      }
+    }
+    .right {
+      float: right;
+    }
+  }
 
-				input {
-					width: 520px;
-				}
-				textarea {
-					width:520px;
-					height:150px;
-				}
-			}
-      .right {
-        float: right;
-      }
-		}
-
-		.release-templates-group {
-			.release-template {
-				float: left;
-				width: 213px;
-				padding-left: 22px;
-				&:first-child {
-				  padding-left: 0;
+    .release-templates-group {
+      .release-template {
+        float: left;
+        width: 213px;
+        padding-left: 22px;
+        &:first-child {
+          padding-left: 0;
         }
         input {
           margin: 10px auto;
           display: block;
         }
-			}
-		}
+      }
+    }
 
 
-		form {
-			margin: 0;
-		}
-	}
+    form {
+      margin: 0;
+    }
+  }
 
   .release-template-preview {
     margin: 0 auto;
@@ -242,16 +264,21 @@
           padding: 9px 0;
           font-size: 12px;
         }
-        button {
+        .email-button {
+          display: block;
+          float: left;
           background: #333333;
           @include border-radius(3px);
-          border: none;
           padding: 5px 40px;
           color: white;
           font-weight: 600;
           font-size: 12px;
-          margin: 20px 0 0 0;
-
+          //margin: 20px 0 0 0;
+          
+          &:hover {
+            text-decoration: none;
+            background: #262626;
+          }
         }
       }
       p {
@@ -517,21 +544,21 @@
   }
 
 
-	.release-footer {
-		background: white;
-		float: left;
-		height:99px;
-		width: $siteWidth - 2;
-		line-height: 99px;
-		text-indent: 30px;
-		border: 1px solid #e1e1e1;
-		border-top: none;
-		@include border-radius(0px 0px 3px 3px);
-		.btn-large {
-			font-size: 12px;
-			padding: 11px 65px;
-		}
-	}
+  .release-footer {
+    background: white;
+    float: left;
+    height:99px;
+    width: $siteWidth - 2;
+    line-height: 99px;
+    text-indent: 30px;
+    border: 1px solid #e1e1e1;
+    border-top: none;
+    @include border-radius(0px 0px 3px 3px);
+    .btn-large {
+      font-size: 12px;
+      padding: 11px 65px;
+    }
+  }
 
 
 

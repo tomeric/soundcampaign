@@ -19,6 +19,8 @@ class Release < ActiveRecord::Base
   
   belongs_to :label
   
+  has_one :campaign
+  
   has_many :tracks
   accepts_nested_attributes_for :tracks
   

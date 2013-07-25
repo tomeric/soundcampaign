@@ -1,0 +1,73 @@
+<div class="release-campaign">
+  <div class="release-header">
+    <span class="release-header-title">Confirm &amp send: <%= @release.title %></span>
+  </div>
+  
+  <%= render 'steps', step: 3 %>
+  
+  <div class="release-content">
+    <form class="form-horizontal">
+      <div class="release-content-group">
+        <span class="release-content-title">Here is the overview of your campaign</span>
+        <p>
+          Check if everything is correct. If not you can return to a previous step and make changes.
+          <label class="right">
+            <input class="send-campaign-directly" type="checkbox" name="optionsRadios" id="optionsRadios1" value="option1" checked> Send campaign directly
+          </label>
+        </p>
+      </div>
+      
+      <div class="release-content-group">
+        <span class="release-content-title">Campaign Summary</span>
+        <ul class="release-campaign-info">
+          <li><span>Name :</span> <%= @campaign.name %></li>
+          <li><span>Subject :</span> <%= @campaign.email_subject %></li>
+          <li><span>From :</span> <%= link_to @campaign.email_from, "mailto:#{@campaign.email_from}" %></li>
+        </ul>
+        <%= link_to 'View release page', @release, class: 'release-campaign-view-btn btn btn-primary' %>
+      </div>
+      
+      <div class="release-content-group">
+        <span class="release-content-title">Schedule</span>
+        
+        <div class="release-list">
+          <div class="release-list-select">
+            <div class="release-list-select-icon"></div>
+            <div class="release-list-select-date">
+              <input type="text" value="Select date" class="datepicker_recurring_start" />
+            </div>
+            <div class="release-list-select-time">
+              <input type="text" value="12:30" />
+            </div>
+            <div class="release-list-select-list">
+              <select class="select selectpicker" title='Select contactlist'>
+                <option></option>
+                <option>Blue</option>
+                <option>Red</option>
+                <option>Green</option>
+                <option>Yellow</option>
+                <option>Brown</option>
+              </select>
+            </div>
+            <div class="release-list-select-del"></div>
+          </div>
+        </div>
+
+         <div class="release-list-add">
+           Click here to add a date and contactlist
+         </div>
+         
+         <!--
+            <div class="release-end">
+              <div class="release-list-select-icon"></div>
+              <div class="release-list-select-date"></div>
+              <div class="release-list-select-text">The end date for your campaign</div>
+            </div>
+         -->
+      </div>
+    </form>
+  </div>
+  <div class="release-footer">
+    <button class="btn btn-large" type="button">Finish</button>
+  </div>
+</div>

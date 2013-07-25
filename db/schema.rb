@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130628113328) do
+ActiveRecord::Schema.define(version: 20130724082400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,18 @@ ActiveRecord::Schema.define(version: 20130628113328) do
     t.integer  "organization_id",    null: false
     t.datetime "deleted_at"
   end
+
+  create_table "campaigns", force: true do |t|
+    t.integer  "release_id"
+    t.string   "name",          null: false
+    t.string   "email_subject", null: false
+    t.string   "email_from",    null: false
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "campaigns", ["release_id"], name: "index_campaigns_on_release_id", using: :btree
 
   create_table "contact_lists", force: true do |t|
     t.integer  "organization_id"

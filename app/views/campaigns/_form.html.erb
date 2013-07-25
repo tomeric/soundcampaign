@@ -1,0 +1,66 @@
+<%= form_for [@release, @campaign], url: release_campaign_path(@release) do |f| %>
+  <div class="release-content">
+    <div class="form-horizontal">
+      <div class="release-content-group">
+        <%= f.label :name, 'Choose the name of your campaign',
+              class: 'release-content-title' %>
+        <p>Most of the time it's easiest to just use the name of the release</p>
+        <div class="control-group">
+          <%= f.label :name, 'Name',
+                class: 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :name,
+                  placeholder: 'Name of your campaign' %>
+            <%= f.error_message_on :name %>
+          </div>
+        </div>
+      </div>
+      <div class="release-content-group">
+        <%= f.label :email_subject, 'Enter the email subject line for this campaign',
+              class: 'release-content-title' %>
+        <p>This is what will appear in the subject field in your recipient's email client</p>
+        <div class="control-group">
+          <%= f.label :email_subject, 'Subject',
+                class: 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :email_subject,
+                placeholder: 'Subject of your email' %>
+            <%= f.error_message_on :email_subject %>
+          </div>
+        </div>
+      </div>
+      <div class="release-content-group">
+        <%= f.label :email_from, 'Set who this campaign is from',
+              class: 'release-content-title' %>
+        <p>This is what will appear in the from field of your recipients email client when they receive this campaign</p>
+        <div class="control-group">
+          <%= f.label :email_from, 'From',
+                class: 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :email_from,
+                placeholder: 'From field of your email' %>
+            <%= f.error_message_on :email_from %>
+          </div>
+        </div>
+      </div>
+      <div class="release-content-group">
+        <%= f.label :body, 'Define body text',
+              class: 'release-content-title' %>
+        <p>This is what will appear in the body text of the mail template</p>
+        <div class="control-group">
+          <%= f.label :body, 'Body Text',
+                class: 'control-label' %>
+          <div class="controls">
+            <%= f.text_area :body,
+                placeholder: 'Body text of your email',
+                rows: 3 %>
+            <%= f.error_message_on :body %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="release-footer">
+    <%= f.submit 'Next Step', class: 'btn btn-large' %>
+  </div>
+<% end %>
