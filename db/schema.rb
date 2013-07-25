@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130724082400) do
+ActiveRecord::Schema.define(version: 20130725070725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -199,6 +199,10 @@ ActiveRecord::Schema.define(version: 20130724082400) do
     t.datetime "updated_at"
     t.integer  "organization_id",         null: false
     t.datetime "deleted_at"
+    t.integer  "length"
+    t.integer  "bitrate"
+    t.integer  "sample_rate"
+    t.integer  "channels"
   end
 
   add_index "tracks", ["release_id"], name: "index_tracks_on_release_id", using: :btree
