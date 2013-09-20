@@ -83,6 +83,7 @@ GEM
     dynamic_form (1.1.4)
     erubis (2.7.0)
     eventmachine (1.0.3)
+    excon (0.24.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
     factory_girl (4.2.0)
@@ -131,6 +132,8 @@ GEM
     json (1.8.0)
     launchy (2.3.0)
       addressable (~> 2.3)
+    letter_opener (1.1.2)
+      launchy (~> 2.2)
     listen (1.2.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -292,6 +295,7 @@ DEPENDENCIES
   jquery-turbolinks
   jquery-ui-rails
   launchy
+  letter_opener
   modernizr-rails
   paperclip
   pg

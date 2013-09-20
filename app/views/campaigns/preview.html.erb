@@ -1,0 +1,13 @@
+<div class="release-campaign">
+  <div class="release-header">
+    <span class="release-header-title">Preview: <%= @release.title %></span>
+  </div>
+  
+  <%= render 'steps', step: 3 %>
+  
+  <div class="release-content">
+    <div class="form-horizontal">
+      <%= render 'preview_form', release: @release, campaign: @campaign %>
+    </div>
+  </div>
+</div>

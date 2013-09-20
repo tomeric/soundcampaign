@@ -1,0 +1,10 @@
+<div class="release-content-group">
+  <span class="release-content-title">Campaign Summary</span>
+  
+  <ul class="release-campaign-info">
+    <li><span>Name :</span> <%= campaign.name %></li>
+    <li><span>Subject :</span> <%= campaign.email_subject %></li>
+    <li><span>From :</span> <%= link_to campaign.email_from, "mailto:#{campaign.email_from}" %></li>
+  </ul>
+  <%= link_to 'View release page', release, class: 'release-campaign-view-btn btn btn-primary' %>
+</div>

@@ -44,6 +44,17 @@ class CampaignsController < ApplicationController
     end
   end
   
+  def preview
+    @campaign  = @release.campaign
+    @receivers = (params[:receivers] || "").split(',').map(&:strip)
+    
+    if @receivers.present?
+      CampaignMailer.preview_campaign(@campaign, @receivers).deliver
+    else
+      render 'preview'
+    end
+  end
+  
   def edit
     @campaign = @release.campaign
   end

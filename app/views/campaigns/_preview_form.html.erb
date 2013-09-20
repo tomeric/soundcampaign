@@ -1,0 +1,14 @@
+<div class="release-content-group">
+  <span class="release-content-title">Preview campaign</span>
+  
+  <p>Because most email clients will display your email design differently, we recommend sending yourself a few tests before finishing the campaign. You can send a preview to up to 5 addresses at once by separating them by a comma.</p>
+  
+  <%= form_tag preview_release_campaign_url(release), method: 'post' do %>
+    <fieldset>
+      <p>
+        <%= text_field_tag :receivers, '', placeholder: 'Up to 5 email addresses separated by commas' %>
+        <%= submit_tag 'Send preview', class: 'btn btn-primary' %>
+      </p>
+    </fieldset>
+  <% end %>
+</div>
