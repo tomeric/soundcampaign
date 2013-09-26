@@ -90,4 +90,12 @@ FactoryGirl.define do
   factory :import_row, class: Import::Row do
     import { build :import }
   end
+  
+  factory :email_log do
+    message_id { SecureRandom.uuid  }
+    to         { [generate(:email)] }
+    from       {  generate :email   }
+    subject    { generate :title    }
+    body       { generate :story    }
+  end
 end
