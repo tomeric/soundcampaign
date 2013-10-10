@@ -17,6 +17,9 @@ gem 'protected_attributes'
 gem 'roo',         require: false
 gem 'taglib-ruby', require: false
 
+# Mail:
+gem 'mandrill-rails'
+
 # Files:
 gem 'aws-sdk'
 gem 'paperclip'

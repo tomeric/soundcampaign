@@ -1,0 +1,11 @@
+<section class="section" id="mandrill">
+  <%= render 'header', title: 'Mandrill Events' %>
+  <% if @events.present? %>
+    <%= render 'events', events: @events %>
+  <% else %>
+    <div class="blank-slate">
+      <h2 class="blank-slate-title">No events available!</h2>
+      <p class="blank-slate-subtitle">Please send a campaign or test e-mail to start seeing events.</p>
+    </div>
+  <% end %>
+</section>

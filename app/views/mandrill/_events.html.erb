@@ -1,0 +1,7 @@
+<ol>
+  <% events.each do |event| %>
+  <li>
+    <textarea cols="80" rows="20"><%= event.json_payload %></textarea>
+  </li>
+  <% end %>
+</ol>

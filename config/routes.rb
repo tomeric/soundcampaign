@@ -40,6 +40,8 @@ SoundCampaign::Application.routes.draw do
     end
   end
   
+  resources :mandrill
+  
   resources :mockups, only: %i[index show]
   
   devise_for :users
