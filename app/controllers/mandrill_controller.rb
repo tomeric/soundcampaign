@@ -10,7 +10,11 @@ class MandrillController < ApplicationController
   end
   
   def create
-    MandrillEvent.create(json_payload: params['mandrill_events'] || '[]')
+    mandrill_events = JSON.parse(params['mandrill_events'] || '[]')
+    mandrill_events.each do |mandrill_event|
+      MandrillEvent.create(json_payload: mandrill_event.to_json)
+    end
+    
     super
   end
 end
