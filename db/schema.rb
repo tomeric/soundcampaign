@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131010085242) do
+ActiveRecord::Schema.define(version: 20131010110059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,12 +73,18 @@ ActiveRecord::Schema.define(version: 20131010085242) do
   create_table "email_logs", force: true do |t|
     t.string   "message_id"
     t.integer  "campaign_id"
-    t.string   "to",          default: [], array: true
+    t.string   "to",             default: [],    array: true
     t.string   "from"
     t.string   "subject"
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "sent_at"
+    t.datetime "opened_at"
+    t.datetime "clicked_at"
+    t.boolean  "bounced",        default: false
+    t.boolean  "marked_as_spam", default: false
+    t.string   "clicked_links",  default: [],    array: true
   end
 
   add_index "email_logs", ["campaign_id"], name: "index_email_logs_on_campaign_id", using: :btree
