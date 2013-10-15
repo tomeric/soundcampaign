@@ -3,8 +3,6 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   
-  CANONICAL_HOSTNAME = 'soundcampaign.com'
-  
   if Rails.env.production?
     before_action :redirect_to_canonical_hostname, unless: :on_canonical_hostname?
   end
@@ -12,12 +10,12 @@ class ApplicationController < ActionController::Base
   private
   
   def redirect_to_canonical_hostname
-    canonical_url  = "#{request.protocol}#{CANONICAL_HOSTNAME}#{request.path}"
+    canonical_url  = "#{request.protocol}#{Settings.canonical_hostname}#{request.path}"
     redirect_to canonical_url, status: :moved_permanently
   end
   
   def on_canonical_hostname?
-    request.host == CANONICAL_HOSTNAME
+    request.host == Settings.canonical_hostname
   end
   
   def hash_to_indexed_array(hash = {})
