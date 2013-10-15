@@ -1,6 +1,7 @@
 defaults: &defaults
-  contact_email: "mail@soundcampaign.com"
   canonical_hostname: "soundcampaign.com"
+  campaign_email: "campaign@soundcampaign.com"
+  contact_email:  "mail@soundcampaign.com"
   contact_address: |
     Sesamstraat 111
     Maastricht
@@ -11,6 +12,7 @@ defaults: &defaults
 
 development:
   <<: *defaults
+  canonical_hostname: "soundcampaign.dev"
 
 production:
   <<: *defaults

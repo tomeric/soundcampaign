@@ -1,7 +1,7 @@
 class CampaignMailer < ActionMailer::Base
   helper MailHelper
   
-  default from: 'info@soundcampaign.com'
+  default from: Settings.campaign_email
   
   def preview_campaign(campaign, recipients = [])
     normal_campaign(campaign, recipients, "[Preview] #{campaign.email_subject}")
