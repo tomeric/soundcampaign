@@ -1,14 +1,13 @@
 <footer class="page-footer">
   <div class="content">
     <div class="block">
-      <h4>Help</h4>
+      <h4>About</h4>
       <ul>
-        <li>Take the tour</li>
-        <li>Help</li>
-        <li>Videos</li>
-        <li>Support</li>
+        <li><%= link_to 'Blog', Settings.urls.blog %></li>
       </ul>
     </div>
+    
+    <!--
     <div class="block">
       <h4>Developers</h4>
       <ul>
@@ -17,12 +16,15 @@
         <li>API blog</li>
       </ul>
     </div>
+    -->
+    
     <div class="block">
       <h4>Contact</h4>
       <ul>
-        <li>mail@soundcampaign.com</li>
-        <li>Sesamstraat 111</li>
-        <li>Maastricht</li>
+        <li><%= mail_to Settings.contact_email %></li>
+        <% Settings.contact_address.split("\n").each do |line| %>
+          <li><%= line %></li>
+        <% end %>
       </ul>
     </div>
   </div>
