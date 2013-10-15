@@ -1,0 +1,18 @@
+defaults: &defaults
+  contact_email: "mail@soundcampaign.com"
+  contact_address: |
+    Sesamstraat 111
+    Maastricht
+  urls:
+    blog: "http://blog.soundcampaign.com/"
+    facebook: "https://www.facebook.com/SoundCampaign"
+    twitter: "https://twitter.com/soundcampaign_"
+
+development:
+  <<: *defaults
+
+production:
+  <<: *defaults
+
+test:
+  <<: *defaults

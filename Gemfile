@@ -3,6 +3,9 @@ ruby '2.0.0'
 
 gem 'rails', '= 4.0.0'
 
+# Configuration:
+gem 'settingslogic'
+
 # Daemons:
 group :production do
   gem 'thin'
