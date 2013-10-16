@@ -52,6 +52,10 @@ gem 'rails-i18n', github: 'svenfuchs/rails-i18n'
 # Logging:
 gem 'honeybadger'
 
+group :production do
+  gem 'rails_12factor'
+end
+
 group :development do
   # Debugging:
   gem 'better_errors'
