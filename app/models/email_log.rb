@@ -2,6 +2,8 @@ class EmailLog < ActiveRecord::Base
   
   ### ASSOCIATIONS:
   
+  has_many :mandrill_events
+  
   belongs_to :recipient,
     polymorphic: true
   
