@@ -3,7 +3,15 @@
     <div class="block">
       <h4>About</h4>
       <ul>
+        <% if Settings.urls['blog'] %>
         <li><%= link_to 'Blog', Settings.urls.blog %></li>
+        <% end %>
+        <% if Settings.urls['facebook'] %>
+        <li><%= link_to 'Facebook', Settings.urls.facebook %></li>
+        <% end %>
+        <% if Settings.urls['twitter'] %>
+        <li><%= link_to 'Twitter', Settings.urls.twitter %></li>
+        <% end %>
       </ul>
     </div>
     
