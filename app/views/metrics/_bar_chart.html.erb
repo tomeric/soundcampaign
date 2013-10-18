@@ -1,0 +1,24 @@
+<%
+start_date = Date.today
+end_date   = start_date + 30.days
+date_range = (start_date ... end_date)
+%>
+<div class="d3-bar-chart">
+  <table class="data">
+    <% date_range.each.with_index do |date, index| %>
+      <tr>
+        <th class="month-name">
+          <% if index == 0 || date.day == 1 %>
+            <%= Date::MONTHNAMES[date.month] %>
+          <% end %>
+        </th>
+        <th class="month-day">
+          <%= date.day %>
+        </th>
+        <td class="value">
+          <%= (30 - index) / 2 + rand(10 + (30 - index) / 2) %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

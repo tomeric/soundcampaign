@@ -37,6 +37,7 @@ gem 'dynamic_form'
 # Asset Pipeline:
 gem 'sass-rails'
 gem 'coffee-rails'
+gem 'd3-rails'
 gem 'bootstrap-sass-rails', '~> 2.3.2.1'
 gem 'modernizr-rails'
 gem 'bourbon'

@@ -14,6 +14,7 @@ SoundCampaign::Application.routes.draw do
   resources :releases,
     concerns: :undestroyable do
     resources :feedbacks
+    resource  :metrics
     resource  :campaign do
       post :preview
     end

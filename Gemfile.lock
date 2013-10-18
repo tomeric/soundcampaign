@@ -73,6 +73,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    d3-rails (3.3.7)
+      railties (>= 3.1)
     daemons (1.1.9)
     database_cleaner (1.2.0)
     debug_inspector (0.0.2)
@@ -285,6 +287,7 @@ DEPENDENCIES
   bourbon
   capybara
   coffee-rails
+  d3-rails
   database_cleaner
   devise
   dynamic_form

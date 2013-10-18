@@ -1,0 +1,15 @@
+.d3-bar-chart {
+  .graph {
+    width:  880px;
+    height: 325px;
+    margin: 0 auto;
+  }
+  
+  rect:hover {
+    fill: #00a3fb;
+  }
+  
+  svg {
+    shape-rendering: crispEdges;
+  }
+}
