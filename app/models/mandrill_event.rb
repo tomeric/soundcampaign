@@ -19,7 +19,7 @@ class MandrillEvent < ActiveRecord::Base
   ##
   
   def handle_send(payload)
-    email_log.sent_at = Time.now
+    email_log.sent_at = payload.timestamp || created_at
     email_log.save!
   end
   
@@ -33,12 +33,12 @@ class MandrillEvent < ActiveRecord::Base
   end
   
   def handle_open(payload)
-    email_log.opened_at ||= Time.now
+    email_log.opened_at ||= payload.timestamp || created_at
     email_log.save!
   end
   
   def handle_click(payload)
-    email_log.clicked_at    ||= Time.now
+    email_log.clicked_at    ||= payload.timestamp || created_at
     email_log.clicked_links = (email_log.clicked_links + payload.all_clicked_links).uniq
     email_log.save!
   end
