@@ -39,7 +39,7 @@ class MandrillEvent < ActiveRecord::Base
   
   def handle_click(payload)
     email_log.clicked_at    ||= Time.now
-    email_log.clicked_links = (mail.clicked_links + payload.all_clicked_links).uniq
+    email_log.clicked_links = (email_log.clicked_links + payload.all_clicked_links).uniq
     email_log.save!
   end
   
