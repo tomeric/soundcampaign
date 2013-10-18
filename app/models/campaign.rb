@@ -4,6 +4,8 @@ class Campaign < ActiveRecord::Base
   
   belongs_to :release
   
+  has_many :email_logs
+  
   ### VALIDATIONS:
   
   validates :name,

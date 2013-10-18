@@ -7,7 +7,7 @@ class MetricsController < ApplicationController
   before_action :require_release_owner
   
   def show
-    
+    @opens_per_day = @campaign.email_logs.number_of_opens_per_day
   end
   
   private
