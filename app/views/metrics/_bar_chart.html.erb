@@ -6,7 +6,17 @@ date_range = (start_date ... end_date)
 <div class="d3-bar-chart">
   <table class="data">
     <% date_range.each.with_index do |date, index| %>
-      <tr>
+      <tr class="<%= 
+        date.month.even? ? 'even' : 'odd'
+      %>-month <%=
+        if date == Date.today
+          'present'
+        elsif date < Date.today
+          'past'
+        else
+          'future'
+        end
+      %>">
         <th class="month-name">
           <% if index == 0 || date.day == 1 %>
             <%= Date::MONTHNAMES[date.month] %>
@@ -16,7 +26,7 @@ date_range = (start_date ... end_date)
           <%= date.day %>
         </th>
         <td class="value">
-          <%= params[:random].present? ? (30 - index) / 2 + rand(10 + (30 - index) / 2) : dataset[date] || 0 %>
+          <%= params[:random].present? && date <= Date.today ? (30 - index) / 2 + rand(10 + (30 - index) / 2) : dataset[date] || 0 %>
         </td>
       </tr>
     <% end %>
