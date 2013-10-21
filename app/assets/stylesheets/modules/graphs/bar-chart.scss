@@ -1,7 +1,23 @@
 .d3-bar-chart {
+  $past-color:    #d9d9d9;
+  $present-color: #888888;
+  $future-color:  #a9a9a9;
+  
+  .odd-month {
+    &.past    { color: $past-color;    }
+    &.present { color: $present-color; }
+    &.future  { color: $future-color;  }
+  }
+  
+  .even-month {
+    &.past    { color: darken($past-color,    7.5%); }
+    &.present { color: darken($present-color, 7.5%); }
+    &.future  { color: darken($future-color,  7.5%); }
+  }
+  
   .graph {
     width:  880px;
-    height: 325px;
+    height: $baseLineHeight * 8;
     margin: 0 auto;
   }
   
