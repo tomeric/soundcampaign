@@ -78,6 +78,8 @@
     border-left:  1px solid #acacac;
     position: relative;
     text-align: center;
+    background-position: center;
+    background-repeat: no-repeat;
     
     &:before {
       display: block;
@@ -104,12 +106,36 @@
   }
   
   .edit {
-    background: image-url("icons/edit_light.png") center no-repeat;
+    @include background-image(image-url("icons/edit_light.png"));
+    background-size: 17px 20px;
     text-indent: -3000em;
   }
   
   .delete {
-    background: image-url("icons/remove_light.png") center no-repeat;
+    @include background-image(image-url("icons/remove_light.png"));
+    background-size: 16px 16px;
+    text-indent: -3000em;
+  }
+  
+  .metrics {
+    @include background-image(image-url("icons/stats.png"));
+    background-size: 16px 16px;
+    text-indent: -3000em;
+    
+    @include media-retina {
+      @include background-image(image-url("icons/stats@2x.png"));
+    }
+  }
+  
+  .public {
+    @include background-image(image-url("icons/public_light.png"));
+    background-size: 22px 15px;
+    text-indent: -3000em;
+  }
+  
+  .send {
+    @include background-image(image-url("icons/send_light.png"));
+    background-size: 19px 16px;
     text-indent: -3000em;
   }
 }
