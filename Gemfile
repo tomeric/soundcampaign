@@ -68,8 +68,8 @@ group :development do
   gem 'taps',             require: false
   
   # Guard:
+  gem 'guard'
   gem 'rb-fsevent',       require: false
-  gem 'guard-bundler',    require: false
   gem 'guard-rspec',      require: false
   
   # Console:
