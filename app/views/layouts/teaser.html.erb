@@ -8,14 +8,17 @@
     <title>SOUNDCAMPAIGN</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <%= stylesheet_link_tag    :teaser,    data: { 'turbolinks-track' => true } %>
+    <%= stylesheet_link_tag    :application,    data: { 'turbolinks-track' => true } %>
     <%= javascript_include_tag :modernizr, data: { 'turbolinks-track' => true } %>
-    <%= render 'shared/javascripts', main: 'teaser' %>
+    <%= render 'shared/javascripts' %>
+    <script type="text/javascript" src="//use.typekit.net/dcj1luk.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     <%= csrf_meta_tags %>
+    
   </head>
-    <body id="TEASER">
-      <div class="main-wrapper">
-        <%= yield %>
-      </div>
-    </body>
+  <body>
+    <%= render 'shared/header' %>
+    <%= yield %>
+    <%= render 'shared/footer' %>   
+  </body>
 </html>
