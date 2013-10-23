@@ -13,6 +13,17 @@ class EmailLog < ActiveRecord::Base
   
   before_save :connect_to_campaign
   
+  ### SCOPES:
+  
+  scope :opened, -> date = nil {
+    if date
+      where('opened_at >= ? and opened_at < ?', date, (date + 1.day).beginning_of_day)
+    else
+      where('opened_at is not null')
+    end
+  }
+  
+  
   ### CLASS METHODS:
   
   def self.delivered_email(message)
@@ -24,16 +35,31 @@ class EmailLog < ActiveRecord::Base
     end.save
   end
   
-  def self.number_of_opens_per_day
-    query = connection.unprepared_statement do
-      where('opened_at IS NOT NULL')
-      .select("FLOOR((EXTRACT(EPOCH FROM localtimestamp) - EXTRACT(EPOCH FROM opened_at)) / #{1.day.to_i}) AS reverse_index, COUNT(*) AS count")
-      .group("reverse_index")
-      .order("reverse_index DESC")
-      .to_sql
-    end
+  def self.number_of(type, per: 1.day)
+    unit  = per.to_i
+    event = case type
+            when :clicks
+              'clicked'
+            when :opens
+              'opened'
+            end
     
-    rows   = connection.select_all(query)
+    number_of_occurences event, unit
+  end
+  
+  ### INSTANCE METHODS:
+  
+  def connect_to_campaign
+    if match = message_id.match(/campaign:([0-9]+)\+/) 
+      self.campaign = Campaign.find_by id: match[1].to_i
+    end
+  end
+  
+  private
+  
+  def self.number_of_occurences(type, unit)
+    rows = connection.select_all(stats_query("#{type}_at", unit))
+    
     counts = Hash[
       *rows.map do |row|
         [row['reverse_index'].to_i, row['count'].to_i]
@@ -51,18 +77,19 @@ class EmailLog < ActiveRecord::Base
     end
     
     Hash[
-      counts.map do |age, opens|
-        [age.days.ago.to_date, opens]
+      counts.map do |age, occurences|
+        [age.days.ago.to_date, occurences]
       end
     ]
   end
   
-  ### INSTANCE METHODS:
-  
-  def connect_to_campaign
-    if match = message_id.match(/campaign:([0-9]+)\+/) 
-      self.campaign = Campaign.find_by id: match[1].to_i
+  def self.stats_query(column, unit)
+    query = connection.unprepared_statement do
+      where("#{column} IS NOT NULL")
+      .select("FLOOR((EXTRACT(EPOCH FROM localtimestamp) - EXTRACT(EPOCH FROM #{column})) / #{unit}) AS reverse_index, COUNT(*) AS count")
+      .group("reverse_index")
+      .order("reverse_index DESC")
+      .to_sql
     end
   end
-  
 end

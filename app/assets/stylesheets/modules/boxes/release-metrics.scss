@@ -1,0 +1,39 @@
+.release-metrics {
+  background: #fff;
+  padding: ($baseLineHeight/2 - 1) ($gridColumnWidth/2 - 1);
+  border: 1px solid #b3b3b3;
+  @include border-radius(3px);
+  @include box-shadow(rgba(black, 0.3) 0 1px 2px);
+  
+  .quick-metrics {
+    background: #fcfcfc;
+    border-top: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+    margin: ($baseLineHeight - 1) (0 - ($gridColumnWidth / 2 - 1));
+    padding: 0;
+    
+    ul {
+      @include clearfix;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    li {
+      padding: ($baseLineHeight/2) ($gridColumnWidth);
+      float: left;
+      text-align: center;
+      border-left: 1px solid #e6e6e6;
+      
+      &:first-child {
+        border-left: 0;
+      }
+    }
+    
+    strong {
+      display: block;
+      font-size: 24px;
+      line-height: $baseLineHeight * 1.5;
+    }
+  }
+}

@@ -16,9 +16,10 @@
   }
   
   .graph {
+    display: block;
+    margin: $baseLineHeight/2 auto;
     width:  880px;
-    height: $baseLineHeight * 8;
-    margin: 0 auto;
+    height: $baseLineHeight * 10;
   }
   
   rect:hover {

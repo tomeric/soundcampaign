@@ -7,7 +7,12 @@ class MetricsController < ApplicationController
   before_action :require_release_owner
   
   def show
-    @opens_per_day = @campaign.email_logs.number_of_opens_per_day
+    @recipient_count  = @campaign.email_logs.count
+    @feedback_count   = @release.feedbacks.count
+    @open_count       = @campaign.email_logs.opened.count
+    @open_today_count = @campaign.email_logs.opened(Date.today).count
+    @opens_per_day    = @campaign.email_logs.number_of :opens,  per: 1.day
+    @clicks_per_day   = @campaign.email_logs.number_of :clicks, per: 1.day
   end
   
   private

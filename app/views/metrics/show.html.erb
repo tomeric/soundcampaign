@@ -1,1 +1,34 @@
-<%= render 'bar_chart', dataset: @opens_per_day %>
+<div class="release-metrics">
+  <h1><%= @release.title %></h1>
+  
+  <section class="quick-metrics">
+    <ul>
+      <li>
+        <strong><%= @recipient_count %></strong>
+        recipients
+      </li>
+      <li>
+        <strong><%= @open_count %></strong>
+        opened
+      </li>
+      <li>
+        <strong><%= @open_today_count %></strong>
+        opened today
+      </li>
+      <li>
+        <strong><%= @feedback_count %></strong>
+        feedback
+      </li>
+    </ul>
+  </section>
+  
+  <section class="charted mail-opened-metrics">
+    <h2>Opens</h2>
+    <%= render 'bar_chart', dataset: @opens_per_day  %>
+  </section>
+  
+  <section class="charted mail-clicked-metrics">
+    <h2>Clicks</h2>
+    <%= render 'bar_chart', dataset: @clicks_per_day %>
+  </section>
+</div>
