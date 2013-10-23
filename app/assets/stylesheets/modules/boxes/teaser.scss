@@ -9,7 +9,6 @@
 	overflow: hidden;
 	position: relative;
 	&:after{
-		border: 1px solid red;
 		box-shadow: inset 0px 0px 60px rgba(0, 0, 0, 0.9);
 	}
 	.content {
@@ -19,7 +18,7 @@
 		width: 984px;
 		height: 696px;
 		
-		.teaser-content {
+		.teaser-intro {
 			width: 490px
 		}
 		h1, h2 {
@@ -99,11 +98,73 @@
 
 
 .teaser-content {
+	float: left;
+	width: 100%;
 	background: #f4f4f4;
 	.content {
 		margin-left: 0px;
 		margin-right: auto;
 		margin-left: auto;
 		width: 984px;
+		.teaser-attention {
+			font-size: 14px;
+			color: #454c57;
+			background: #e2e4e7;
+			width: $gridColumnWidth * 24 - 2;
+			height: 39px;
+			line-height: 39px;
+			text-align: center;
+			border: 1px solid #cdcfd1;
+			margin: 17px 0;
+			@include border-radius(5px);
+		}
+		.teaser-box {
+			cursor: pointer;
+			float: left;
+			width: $gridColumnWidth * (22/3) - 2;
+			height: 140px;
+			background:white;
+			border: 1px solid #e6e6e6;
+			@include border-radius(5px);
+			margin-right: $gridColumnWidth;
+			margin-bottom: 220px;
+			@include transition (background-position 0.2s ease);
+			&:last-child {
+				margin-right:0;
+			}
+			&:hover {
+				background-position: 50% 23px;
+				background-color: #fbfbfb;
+			}
+			h3 {
+				width: 100%;
+				text-align: center;
+				margin-top: 60px;
+				margin-bottom: 0;
+				font-size: 18px;
+				font-weight: 600;
+			}
+			span {
+				width: 100%;
+				text-align: center;
+				display: block;
+			}
+
+		}
+		.teaser-card {
+				@include background-image(image-url("icons/teaser-card.png"));
+				background-repeat: no-repeat;
+				background-position: 50% 29px;
+			}
+		.teaser-star {
+				@include background-image(image-url("icons/teaser-star.png"));
+				background-repeat: no-repeat;
+				background-position: 50% 29px;
+			}
+		.teaser-cursor {
+				@include background-image(image-url("icons/teaser-cursor.png"));
+				background-repeat: no-repeat;
+				background-position: 50% 29px;
+			}
 	}
 }
