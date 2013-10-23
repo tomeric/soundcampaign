@@ -49,7 +49,7 @@ $.fn.barChart = ->
              .attr('x',      (d, i) -> xScale(i))
              .attr('y',      (d   ) -> height - yScale(d[0]) - 36)
              .attr('width',  xScale.rangeBand())
-             .attr('height', (d   ) -> yScale(d[0]))
+             .attr('height', (d   ) -> Math.max.apply Math, [yScale(d[0]), 1])
              .attr('fill',   (d   ) -> d[2])
     
     # Tooltip:
