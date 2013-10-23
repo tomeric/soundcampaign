@@ -11,7 +11,7 @@ class ReleasesController < ApplicationController
     only: %i[show edit update destroy undestroy]
   
   def index
-    @releases = current_organization.releases
+    @releases = current_organization.releases.includes(:campaign)
   end
   
   def show
