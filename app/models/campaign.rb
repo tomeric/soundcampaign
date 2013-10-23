@@ -17,4 +17,10 @@ class Campaign < ActiveRecord::Base
   validates :email_from,
     presence: true
   
+  ### INSTANCE METHODS:
+  
+  def sent?
+    sent_at.present?
+  end
+  
 end

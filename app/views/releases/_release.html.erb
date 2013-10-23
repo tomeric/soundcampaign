@@ -2,10 +2,15 @@
   <span class="title">
     <strong><%= release.title %></strong> (Artists)
   </span>
+  <% if release.campaign.try(:sent?) %>
+  <%= link_to 'Metrics', [release, :metrics],
+        class: 'action metrics' %>
+  <% else %>
   <%= link_to 'Edit',    [:edit, release],
         class: 'action edit' %>
-  <%= link_to 'Public',  release,
-        class: 'action public' %>
   <%= link_to 'Send',    [release, :campaign],
         class: 'action send' %>
+  <% end %>
+  <%= link_to 'Public',  release,
+        class: 'action public' %>
 </li>
