@@ -1,6 +1,7 @@
 class FeedbacksController < ApplicationController
   
   before_action :require_user
+  
   before_action :load_release
   
   def create
@@ -14,9 +15,9 @@ class FeedbacksController < ApplicationController
     if @feedback.update_attributes(feedback_params)
       redirect_to @release
     else
-      @label    = @release.label
-      @tracks   = @release.tracks
-      render 'releases/show'
+      @label  = @release.label
+      @tracks = @release.tracks
+      render 'releases/show', layout: 'release'
     end
   end
   
@@ -24,12 +25,11 @@ class FeedbacksController < ApplicationController
   
   def feedback_params
     params.require(:feedback)
-          .permit(:body,
-                  { ratings_attributes: [[:id, :track_id, :value]] })
+          .permit(:body, { ratings_attributes: [[:id, :track_id, :value]] })
   end
   
   def load_release
-    @release = Release.find(params[:release_id])
+    @release = Release.find_by id: params[:release_id]
   end
   
 end
