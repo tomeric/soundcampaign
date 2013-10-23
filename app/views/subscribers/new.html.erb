@@ -1,22 +1,33 @@
-<%= render 'teaser' %>
-<div id="teaser_forms">
-  <div class="container-fluid" id="subscribe">
-    <div class="row-fluid">
-      <div class="span12">
-        <div class="top">Notify me at launch!</div>
-      </div>
+<div class="teaser">
+  <div class="content">
+    <div class="teaser-intro">
+      <h1>Music promotion the beautiful and easy way.</h1>
+      <h2>Sound Campaign is an online promotion tool for labels and music professionals. Send audio campaigns with functional e-mail templates and beautiful online pages.</h2>
     </div>
-    <div class="row-fluid bottom">
-      <div class="form">
-        <%= form_tag subscribers_path, method: 'post', html: { class: 'form-inline' } do %>
-          <div class="span9">
-            <%= text_field_tag 'email', @subscriber.email, placeholder: 'Email address here', class: 'email' %>
-          </div>
-          <div class="span3">
-            <button type="submit" class="btn teasersubmit">Sign up!</button>
-          </div>
-        <% end %>
-      </div>
+  </div>
+  <div class="teaser-images">
+    <%= image_tag("teaser_mbp.png",  alt: "Teaser mbp",  class: "teaser-mpb") %>
+    <%= image_tag("teaser_ipad.png", alt: "Teaser ipad", class: "teaser-ipad") %>
+    <%= image_tag("teaser_htc.png",  alt: "Teaser htc",  class: "teaser-htc") %>
+ </div>
+</div>
+<div class="teaser-content">
+  <div class="content">
+    <div class="teaser-attention">We are currently in private beta, sound campaign will be publicly available in 2014.</div>
+    
+    <div class="teaser-box teaser-card">
+      <h3>Pricing</h3>
+      <span>Simple pricing, small or big.</span>
+    </div>
+    
+    <div class="teaser-box teaser-star">
+      <h3>Features</h3>
+      <span>See how it works.</span>
+    </div>
+    
+    <div class="teaser-box teaser-cursor">
+      <h3>Try it</h3>
+      <span>Your first campaign is on us!</span>
     </div>
   </div>
 </div>
