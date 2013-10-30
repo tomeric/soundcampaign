@@ -63,6 +63,11 @@ group :development do
   gem 'binding_of_caller'
   gem 'letter_opener'
   
+  # Deployment:
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
+  gem 'capistrano-bundler'
+  
   # Heroku:
   gem 'sqlite3',          require: false
   gem 'taps',             require: false
