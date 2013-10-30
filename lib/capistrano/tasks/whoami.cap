@@ -1,0 +1,5 @@
+task :whoami do
+  on roles(:all) do
+    execute :whoami
+  end
+end
