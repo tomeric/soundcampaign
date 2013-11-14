@@ -2,7 +2,7 @@ set :stage, :staging
 
 # This is the Vagrant VM:
 server 'localhost', 
-  roles: %w{app worker db},
+  roles: %w{app web worker db},
   user:  'deploy',
   ssh_options: { port: 2222 }
 

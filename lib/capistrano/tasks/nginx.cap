@@ -1,7 +1,7 @@
 namespace :nginx do
   desc 'Setup NGINX confiuration for this application'
   task :setup do
-    on roles(:app) do
+    on roles(:web) do
       template = File.read File.expand_path('../../templates/nginx_site.conf.erb', __FILE__)
       result   = ERB.new(template).result(binding)
       
@@ -20,7 +20,7 @@ namespace :nginx do
   %w[start stop restart reload].each do |command|
     desc "#{command.capitalize} NGINX"
     task command do
-      on roles(:app) do
+      on roles(:web) do
         sudo "service nginx #{command}"
       end
     end
