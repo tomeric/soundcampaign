@@ -45,22 +45,6 @@ set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle publi
 # set :keep_releases, 5
 
 namespace :deploy do
-  desc 'Create database.yml'
-  task :create_database_config do
-    invoke :'rvm:init'
-    database = "#{fetch(:application)}_#{fetch(:stage)}"
-    settings = nil
-    
-    on roles(:db) do
-      with database: database,
-           hostname: '127.0.0.1' do
-        settings = capture :erb, "#{fetch(:home_dir)}/postgresql.yml.erb",
-                   raise_on_non_zero_exit: false
-        upload! StringIO.new(settings), "#{shared_path}/config/database.yml"
-      end
-    end
-  end
-  
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence do
@@ -70,5 +54,4 @@ namespace :deploy do
   end
   
   after :finishing, 'deploy:cleanup'
-  after :'deploy:check:make_linked_dirs', 'deploy:create_database_config'
 end

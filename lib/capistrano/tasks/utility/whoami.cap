@@ -1,0 +1,8 @@
+namespace :utility do
+  desc "Execute 'whoami' on server and return the result"
+  task :whoami do
+    on roles(:all) do
+      execute :whoami
+    end
+  end
+end
