@@ -6,11 +6,6 @@ gem 'rails', '= 4.0.0'
 # Configuration:
 gem 'settingslogic'
 
-# Daemons:
-group :production do
-  gem 'thin'
-end
-
 # Database:
 gem 'pg'
 gem 'friendly_id'
@@ -54,7 +49,8 @@ gem 'rails-i18n', github: 'svenfuchs/rails-i18n'
 gem 'honeybadger'
 
 group :production do
-  gem 'rails_12factor'
+  # Web server:
+  gem 'unicorn'
 end
 
 group :development do
