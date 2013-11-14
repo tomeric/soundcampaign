@@ -45,10 +45,17 @@ set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle publi
 # set :keep_releases, 5
 
 namespace :deploy do
+  desc 'Setup application'
+  task :setup do
+    invoke 'nginx:setup'
+  end
+  
   desc 'Restart application'
   task :restart do
     invoke 'unicorn:restart'
+    invoke 'nginx:reload'
   end
   
+  after :starting,  'deploy:setup'
   after :finishing, 'deploy:cleanup'
 end

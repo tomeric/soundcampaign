@@ -1,0 +1,28 @@
+namespace :nginx do
+  desc 'Setup NGINX confiuration for this application'
+  task :setup do
+    on roles(:app) do
+      template = File.read File.expand_path('../../templates/nginx_site.conf.erb', __FILE__)
+      result   = ERB.new(template).result(binding)
+      
+      remote_result_path = "#{fetch(:home_dir)}/#{fetch(:application)}_nginx.conf"
+      remote_config_path = "#{fetch(:nginx_sites_path, '/etc/nginx/sites-enabled')}/#{fetch(:application)}"
+      
+      upload! StringIO.new(result), remote_result_path
+      
+      sudo "rm #{remote_config_path}",
+           raise_on_non_zero_exit: false
+      
+      sudo :ln, '-s', remote_result_path, remote_config_path
+    end
+  end
+  
+  %w[start stop restart reload].each do |command|
+    desc "#{command.capitalize} NGINX"
+    task command do
+      on roles(:app) do
+        sudo "service nginx #{command}"
+      end
+    end
+  end
+end
