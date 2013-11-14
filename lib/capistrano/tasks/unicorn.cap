@@ -1,0 +1,35 @@
+namespace :unicorn do
+  desc "Start your app's unicorn"
+  task :start do
+    invoke :'rvm:init'
+    on roles(:app) do
+      within(current_path) { execute "script/unicorn", "start" }
+    end 
+  end
+  
+  desc "Stop your app's unicorn"
+  task :stop do
+    invoke :'rvm:init'
+    on roles(:app) do
+      within(current_path) { execute "script/unicorn", "stop" }
+    end
+  end
+  
+  desc "Restart your app's unicorn" 
+  task :restart do
+    invoke :'rvm:init'
+    on roles(:app) do
+      within(current_path) { execute "script/unicorn", "restart" }
+    end
+  end
+  
+  desc "Reload your app's unicorn"
+  task :reload do
+    invoke :'rvm:init'
+    on roles(:app) do
+      within(current_path) { execute "script/unicorn", "reload" }
+    end
+  end
+  
+  after :'deploy:starting', 'unicorn:restart'
+end

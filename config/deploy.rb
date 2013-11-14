@@ -26,7 +26,7 @@ SSHKit.config.command_map = Hash.new do |hash, key|
   
   if %w{rails rake}.include?(key.to_s)
     hash[key] = "#{rvm_prepend} #{bundle_prepend} #{key}"
-  elsif %w{erb bundle}.include?(key.to_s)
+  elsif %w{erb bundle script/unicorn}.include?(key.to_s)
     hash[key] = "#{rvm_prepend} #{key}"
   else
     hash[key] = key
@@ -47,10 +47,7 @@ set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle publi
 namespace :deploy do
   desc 'Restart application'
   task :restart do
-    on roles(:app), in: :sequence do
-      # Restart Passenger by touching tmp/restart.txt:
-      execute :touch, release_path.join('tmp/restart.txt')
-    end
+    invoke 'unicorn:restart'
   end
   
   after :finishing, 'deploy:cleanup'
