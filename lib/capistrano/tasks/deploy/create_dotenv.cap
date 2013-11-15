@@ -1,0 +1,12 @@
+namespace :deploy do
+  desc 'Create .env in shared directory'
+  task :create_dotenv do
+    dotenv_path = File.expand_path('../../../../../.env', __FILE__)
+    
+    on roles(:all) do
+      upload! File.open(dotenv_path, 'r'), "#{shared_path}/.env"
+    end if File.exists?(dotenv_path)
+  end
+  
+  after :'deploy:check:make_linked_dirs', 'deploy:create_dotenv'
+end
