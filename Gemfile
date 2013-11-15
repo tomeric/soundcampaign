@@ -5,6 +5,7 @@ gem 'rails', '= 4.0.0'
 
 # Configuration:
 gem 'settingslogic'
+gem 'dotenv-rails'
 
 # Database:
 gem 'pg'

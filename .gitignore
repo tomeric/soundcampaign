@@ -13,8 +13,9 @@
 .ruby-version
 .rvmrc
 
-# Ignore yml configurations
+# Ignore configuration files containing secrets:
 /config/*.yml
+/.env
 
 # Ignore all logfiles and tempfiles
 /.sass-cache
