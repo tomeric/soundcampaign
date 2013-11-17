@@ -7,6 +7,9 @@ Bundler.require(*Rails.groups(assets: %w(development test)))
 
 module SoundCampaign
   class Application < Rails::Application
+    # Load settings:
+    require File.expand_path('../../app/models/settings', __FILE__)
+    
     # Timezone:
     config.time_zone = 'UTC'
     
@@ -30,6 +33,7 @@ module SoundCampaign
       config.console = Pry
     end if Rails.env.development?
     
+    # Generators:
     config.generators do |g|
       g.helper false
       g.assets false
