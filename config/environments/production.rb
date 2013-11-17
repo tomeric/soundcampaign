@@ -73,16 +73,19 @@ SoundCampaign::Application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
   
-  config.action_mailer.smtp_settings = {
-    port:           '587',
-    address:        'smtp.mandrillapp.com',
-    user_name:      ENV['MANDRILL_USERNAME'],
-    password:       ENV['MANDRILL_APIKEY'],
-    domain:         'heroku.com',
-    authentication: :plain
-  }
-  config.action_mailer.delivery_method = :smtp
-  
+  # Mandrill:
+  if ENV['MANDRILL_USERNAME'].present? && ENV['MANDRILL_APIKEY'].present?
+    config.action_mailer.smtp_settings = {
+      address:              'smtp.mandrillapp.com',
+      port:                 25,                          # ports 587 and 2525 are also supported with STARTTLS
+      enable_starttls_auto: true,                        # detects and uses STARTTLS
+      user_name:            ENV['MANDRILL_USERNAME'],
+      password:             ENV['MANDRILL_APIKEY'],      # SMTP password is any valid API key
+      authentication:       'login',                     # Mandrill supports 'plain' or 'login'
+      domain:               Settings.canonical_hostname, # your domain to identify your server when connecting
+    }
+    config.action_mailer.delivery_method = :smtp
+  end
   
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).
