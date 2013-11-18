@@ -3,12 +3,18 @@
     <div class="teaser-intro">
       <h1>Music promotion the beautiful and easy way.</h1>
       <h2>Sound Campaign is an online promotion tool for labels and music professionals. Send audio campaigns with functional e-mail templates and beautiful online pages.</h2>
+      <%= form_tag subscribers_url, method: 'post', class: 'form-inline' do %>
+        <%= text_field_tag :email, params[:email], class: 'input-small input-beta-access', placeholder: 'Your email address' %>
+        <%= submit_tag 'Request beta access', class: 'btn btn-frontpage' %>
+      <% end %>
     </div>
   </div>
   <div class="teaser-images">
     <%= image_tag("teaser_mbp.png",  alt: "Teaser mbp",  class: "teaser-mpb") %>
+    <!--
     <%= image_tag("teaser_ipad.png", alt: "Teaser ipad", class: "teaser-ipad") %>
     <%= image_tag("teaser_htc.png",  alt: "Teaser htc",  class: "teaser-htc") %>
+    -->
  </div>
 </div>
 <div class="teaser-content">

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131021125359) do
+ActiveRecord::Schema.define(version: 20131118114224) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -216,6 +216,16 @@ ActiveRecord::Schema.define(version: 20131021125359) do
   end
 
   add_index "subscribers", ["email"], name: "index_subscribers_on_email", unique: true, using: :btree
+
+  create_table "track_events", force: true do |t|
+    t.integer  "track_id",                     null: false
+    t.string   "action",                       null: false
+    t.integer  "subscriber_id"
+    t.integer  "user_id"
+    t.text     "payload_json",  default: "{}"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tracks", force: true do |t|
     t.integer  "release_id"
