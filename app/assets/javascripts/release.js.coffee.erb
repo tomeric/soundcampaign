@@ -1,11 +1,18 @@
 #= require jplayer/jquery.jplayer.min
 #= require jquery.raty.min
 
-class SCPlayer
+window.SC ||= {}
+window.SC.trackEvent = (event, metadata = null) ->
+  metadata.event = event
+  if metadata?.track
+    $.post "/track_events", metadata
+
+class SC.Player
   constructor: (@widget, @tracks) ->
-    @player  = @widget.find('.jplayer')
-    @track   = null
-    @playing = false
+    @player      = @widget.find('.jplayer')
+    @track       = null
+    @playing     = false
+    @currentTime = '00:00'
     
     @initializePlayer()
   
@@ -22,8 +29,8 @@ class SCPlayer
   
   updateTimer: (event) ->
     status = event.jPlayer.status
-    currentTime = $.jPlayer.convertTime(status.currentTime)
-    @widget.find('.current-time').text(currentTime)
+    @currentTime = status.currentTime
+    @widget.find('.current-time').text $.jPlayer.convertTime(@currentTime)
   
   perform: (args...) ->
     @player.jPlayer args...
@@ -32,6 +39,8 @@ class SCPlayer
     @playing
   
   next: ->
+    SC.trackEvent 'next-track', track: @track?.attr('data-track-id'), timer: @currentTime
+    
     if nextTrack = @tracks[@tracks.index(@track) + 1]
       @change nextTrack
     else
@@ -39,6 +48,8 @@ class SCPlayer
     @play()
   
   prev: ->
+    SC.trackEvent 'previous-track', track: @track?.attr('data-track-id'), timer: @currentTime
+    
     if prevTrack = @tracks[@tracks.index(@track) - 1]
       @change prevTrack
     else
@@ -46,11 +57,15 @@ class SCPlayer
     @play()
   
   play: (args...) ->
+    SC.trackEvent 'play-track', track: @track?.attr('data-track-id'), timer: @currentTime
+    
     unless @playing
       @playing = true
       @perform 'play', args...
   
   pause: (args...) ->
+    SC.trackEvent 'pause-track', track: @track?.attr('data-track-id'), timer: @currentTime
+    
     if @playing
       @playing = false
       @perform 'pause', args...
@@ -66,8 +81,11 @@ class SCPlayer
     trackInfo.find('.track-artist').text(artist)
     trackInfo.find('.track-title').text(title)
   
-  change: (track) ->
+  change: (track, trackChange = false) ->
     @track = $ track
+    
+    if trackChange
+      SC.trackEvent 'change-track', track: @track?.attr('data-track-id'), timer: @currentTime
     
     # Set the track so we can play it:
     file = @track.attr('data-attachment-url')
@@ -82,6 +100,11 @@ class SCPlayer
       @updateTrackInfo()
 
 $ ->
+  $('.download-release').click ->
+    $('.player-track').each ->
+      track = $ this
+      SC.trackEvent 'download-track', track: track?.attr('data-track-id')
+  
   if $.fn.raty?
     $('.star').parent().find('select.rating').hide()
     $('.star').raty
@@ -90,21 +113,26 @@ $ ->
       starOn:   '<%= image_path "icons/star-on.png"  %>',
       half:  true,
       click: (stars, event) ->
+        track = $(this).parent()
+        
+        SC.trackEvent 'rate-track', track: track?.attr('data-track-id'), stars: stars
+        
         if stars
           score = stars * 2
-          $(this).parent().find('select.rating').val(score)
+          track.find('select.rating').val(score)
       score: ->
-        score = $(this).parent().find('select.rating').val()
+        track = $(this).parent()
+        score = track.find('select.rating').val()
         if score
           score / 2
         else
           false
   
   if $.fn.jPlayer?
-    player = new SCPlayer($('.release-player'), $('.player-track'))
+    player = new SC.Player($('.release-player'), $('.player-track'))
     
     # Click on playlist:
-    $('.player-track-title').on    'click', -> player.change($(this).parent())
+    $('.player-track-title').on    'click', -> player.change($(this).parent(), true)
     
     # Click on prev/next button:
     $('.release-player .left').on  'click', -> player.prev()
