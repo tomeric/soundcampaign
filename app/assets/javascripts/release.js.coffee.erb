@@ -25,6 +25,9 @@ class SC.Player
     ).bind(
       $.jPlayer.event.timeupdate,
       (event) => @updateTimer(event)
+    ).bind(
+      $.jPlayer.event.ended,
+      (event) => @next()
     )
   
   updateTimer: (event) ->
