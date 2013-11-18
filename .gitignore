@@ -23,7 +23,7 @@
 /log/*.log
 /tmp
 .DS_Store
-.sass-cache/*
+.sass-cache
 
 # Ignore precompiled assets
 /public/assets
