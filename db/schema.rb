@@ -218,11 +218,11 @@ ActiveRecord::Schema.define(version: 20131118114224) do
   add_index "subscribers", ["email"], name: "index_subscribers_on_email", unique: true, using: :btree
 
   create_table "track_events", force: true do |t|
-    t.integer  "track_id",      null: false
-    t.string   "action",        null: false
+    t.integer  "track_id",                     null: false
+    t.string   "action",                       null: false
     t.integer  "subscriber_id"
     t.integer  "user_id"
-    t.json     "payload"
+    t.text     "payload_json",  default: "{}"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
