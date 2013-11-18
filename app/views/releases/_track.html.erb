@@ -1,6 +1,6 @@
 <% rating = feedback.rating_for(track) %>
 <%= form.fields_for :ratings, rating do |f| %>
-  <div class="bar player-track" data-length="<%= track.length %>" data-attachment-url="<%= track.attachment.url %>">
+  <div class="bar player-track" data-track-id="<%= track.id %>" data-length="<%= track.length %>" data-attachment-url="<%= track.attachment.url %>">
     <span class="player-track-title"><span class="track-position"><%= track.position || position %></span>. <span class="track-artist"><%= track.artist %></span> - <strong class="track-title"><%= track.title %></strong></span>
     <% if feedback.persisted? %>
     <%= link_to 'download', track.attachment.url, class: 'download', download: track.attachment_file_name %>
