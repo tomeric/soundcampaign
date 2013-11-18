@@ -210,6 +210,38 @@ input[type="button"].btn-block {
 .btn-primary.active {
   background-color: #003399 \9;
 }
+.btn-frontpage {
+  color: #522d00;
+  font-size: 14px;
+  padding:13px 23px;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4);
+  background-color: #ebebeb;
+  @include box-shadow(0 1px 2px rgba(0,0,0,.15), inset 0 1px rgba(255,255,255,.4));
+  border: solid 1px rgba(0,0,0,.5);
+  @include background-image(linear-gradient(to top, #ff8b00, #ffb55c));
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff8b00', endColorstr='#ffb55c', GradientType=0);
+  *background-color: #ff9f2d;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.btn-frontpage:hover,
+.btn-frontpage:focus,
+.btn-frontpage:active,
+.btn-frontpage.active,
+.btn-frontpage.disabled,
+.btn-frontpage[disabled] {
+  color: #522d00;
+  background-color: #ebebeb;
+  *background-color: darken(#ff9f2d,  5%);
+  @include background-image(linear-gradient(to top, darken(#ff8b00,  5%), lighten(#ffb55c,  3%)));
+
+}
+.btn-frontpage:active,
+.btn-frontpage.active {
+  background-color: #003399 \9;
+}
 .btn-warning {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);

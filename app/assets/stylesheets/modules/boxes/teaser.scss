@@ -40,6 +40,7 @@
 			font-weight: 300;
 			line-height: 29px;
 			margin-top: 19px;
+			margin-bottom: 55px;
 			}
 		}
 	.teaser-images {
@@ -49,7 +50,7 @@
 		
 		img {
 			position: absolute;
-			left: 55%;
+			left: 60%;
 			bottom: 0;
 			max-width: initial;
 			
@@ -58,7 +59,7 @@
 		
 	}
 }
-
+/*
 .teaser-images img {
 		-webkit-animation-name: fade;
 	    -webkit-animation-iteration-count: infinite;
@@ -69,33 +70,36 @@
 }
 
 				@-webkit-keyframes fade {
-    0% {opacity: 0;}
-    20% {opacity: 1;}
-    33% {opacity: 1;}
-    53% {opacity: 0;}
-    100% {opacity: 0;}
+    0% {opacity: 0;left:60%;}
+    20% {opacity: 1;left:55%;}
+    33% {opacity: 1;left:55%;}
+    53% {opacity: 1;left:55%;}
+    100% {opacity: 0;left:55%;}
 }
 @keyframes fade {
-    0% {opacity: 0;}
-    20% {opacity: 1;}
-    33% {opacity: 1;}
-    53% {opacity: 0;}
-    100% {opacity: 0;}
+    0% {opacity: 0;left:60%;}
+    20% {opacity: 1;left:55%;}
+    33% {opacity: 1;left:55%;}
+    53% {opacity: 1;left:55%;}
+    100% {opacity: 0;left:55%;}
 }
 
 
 
 .teaser-mbp {
-		}
-		.teaser-ipad {
-		    -webkit-animation-delay: -12s;
-		}
-		.teaser-htc {
-		    -webkit-animation-delay: -6s;
-		}
+}
+.teaser-ipad {
+	-webkit-animation-delay: -12s;
+}
+.teaser-htc {
+ -webkit-animation-delay: -6s;
+}
+*/
 
+.teaser-mbp {
 
-
+    -vendor-animation-iteration-count: infinite;
+}
 
 .teaser-content {
 	float: left;
@@ -106,6 +110,7 @@
 		margin-right: auto;
 		margin-left: auto;
 		width: 984px;
+		cursor: default;
 		.teaser-attention {
 			font-size: 14px;
 			color: #454c57;
@@ -167,4 +172,10 @@
 				background-position: 50% 29px;
 			}
 	}
+}
+
+.form-inline .input-beta-access {
+	width: 200px;
+	padding: 8px;
+	margin-right: 10px;
 }
