@@ -11,6 +11,9 @@
   
   .block {
     @include makeColumn(4, 2);
+    margin-top:($baseLineHeight * 1.5);
+    margin-bottom: ($baseLineHeight * 1.5);
+
     
     &:first-child {
       margin-left: 0;
@@ -29,7 +32,7 @@
   h4 {
     font-size: 15px;
     font-weight: bold;
-    margin: ($baseLineHeight * 1.5) 0;
+    margin-bottom: ($baseLineHeight * 1.5);
   }
   
   ul {

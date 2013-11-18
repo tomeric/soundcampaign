@@ -19,7 +19,7 @@ class MockupsController < ApplicationController
   
   def pick_layout
     case @template
-    when 'teaser'
+    when 'teaser', 'teaser_thankyou'
       'teaser'
     when /^send_release_[0-9]$/, 'sign_in'
       'application'
