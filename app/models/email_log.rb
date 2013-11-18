@@ -4,8 +4,7 @@ class EmailLog < ActiveRecord::Base
   
   has_many :mandrill_events
   
-  belongs_to :recipient,
-    polymorphic: true
+  belongs_to :recipient
   
   belongs_to :campaign
   

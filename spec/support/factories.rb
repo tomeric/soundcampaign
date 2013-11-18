@@ -38,6 +38,12 @@ FactoryGirl.define do
     email_from    { generate :email     }
   end
   
+  factory :recipient do
+    campaign { build :campaign  }
+    email    { generate :email  }
+    secret   { generate :secret }
+  end
+  
   factory :release do
     organization { build :organization }
     label        { build :label        }
@@ -74,10 +80,10 @@ FactoryGirl.define do
   end
   
   factory :track_event do
-    track        { build :track      }
-    subscriber   { build :subscriber }
-    action       'play'
-    payload_json { Hash.new.to_json  }
+    track        { build :track     }
+    recipient    { build :recipient }
+    action       'play-track'
+    payload_json { Hash.new.to_json }
   end
   
   factory :contact_list do
