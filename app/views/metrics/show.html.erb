@@ -32,3 +32,16 @@
     <%= render 'bar_chart', dataset: @clicks_per_day %>
   </section>
 </div>
+
+<section class="release-feedbacks">
+  <% if @feedbacks.present? %>
+    <ol>
+      <%= render @feedbacks %>
+    </ol>
+  <% else %>
+    <div class="blank-slate">
+      <h2 class="blank-slate-title">No feedback yet!</h2>
+      <p class="blank-slate-subtitle">Witty subtitle.</p>
+    </div>
+  <% end %>
+</section>

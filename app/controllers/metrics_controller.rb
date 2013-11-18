@@ -13,6 +13,8 @@ class MetricsController < ApplicationController
     @open_today_count = @campaign.email_logs.opened(Date.today).count
     @opens_per_day    = @campaign.email_logs.number_of :opens,  per: 1.day
     @clicks_per_day   = @campaign.email_logs.number_of :clicks, per: 1.day
+    
+    @feedbacks = @release.feedbacks
   end
   
   private

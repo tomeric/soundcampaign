@@ -1,0 +1,14 @@
+<li class="feedback">
+  <div class="feedback-header">
+    <strong>User ID:</strong> <%= feedback.user_id || "-" %><br/>
+    <strong>Subscriber ID:</strong> <%= feedback.subscriber_id || "-" %><br/>
+  </div>
+  <div class="feedback-body">
+    <%= simple_format feedback.body %>
+  </div>
+  <ul class="feedback-ratings">
+    <% feedback.ratings.each do |rating| %>
+      <li><strong><%= rating.track.title %>:</strong> <%= pluralize(rating.value, 'star') %></li>
+    <% end %>
+  </ul>
+</li>
