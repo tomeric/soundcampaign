@@ -73,6 +73,13 @@ FactoryGirl.define do
     title        { generate :title     }
   end
   
+  factory :track_event do
+    track      { build :track      }
+    subscriber { build :subscriber }
+    action     'play'
+    payload    { Hash.new          }
+  end
+  
   factory :contact_list do
     organization { build :organization }
     name         { generate :brand     }
