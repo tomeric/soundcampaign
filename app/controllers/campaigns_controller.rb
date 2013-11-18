@@ -48,10 +48,11 @@ class CampaignsController < ApplicationController
     @campaign  = @release.campaign
     @receivers = (params[:receivers] || "").split(',').map(&:strip)
     
-    if @receivers.present?
-      CampaignMailer.preview_campaign(@campaign, @receivers).deliver
-    else
-      render 'preview'
+    @receivers.each do |receiver|
+      recipient = @campaign.recipients.where(email: receiver).first_or_create
+      
+      mail = CampaignMailer.preview_campaign(@campaign, recipient)
+      mail.deliver
     end
   end
   
