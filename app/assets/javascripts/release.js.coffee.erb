@@ -26,6 +26,12 @@ class SC.Player
       $.jPlayer.event.timeupdate,
       (event) => @updateTimer(event)
     ).bind(
+      $.jPlayer.event.waiting,
+      (event) => @widget.addClass('player-loading')
+    ).bind(
+      $.jPlayer.event.playing,
+      (event) => @widget.removeClass('player-loading')
+    ).bind(
       $.jPlayer.event.ended,
       (event) => @next()
     )
@@ -34,6 +40,8 @@ class SC.Player
     status = event.jPlayer.status
     @currentTime = status.currentTime
     @widget.find('.current-time').text $.jPlayer.convertTime(@currentTime)
+    
+    @widget.removeClass('player-loading') if @currentTime > 0
   
   perform: (args...) ->
     @player.jPlayer args...

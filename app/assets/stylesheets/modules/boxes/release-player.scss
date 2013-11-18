@@ -4,6 +4,13 @@
   @include box-shadow(rgba(black, 0.2) 0 2px 3px);
   transition: all 0.5s ease;
   
+  &.player-loading {
+    // Overwrites when player is loading a track:
+    .player .controls .playpause.playing {
+      @include background-image(image-url("icons/player_loading_spinner.gif"), linear-gradient(#404040, #2d2d2d));
+    }
+  }
+  
   @include modular-mq(PortraitTablets-Desktop) {
     @include makeColumn(12, 0.5);
     float: right;
