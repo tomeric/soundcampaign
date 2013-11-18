@@ -10,6 +10,7 @@ class CampaignMailer < ActionMailer::Base
   def normal_campaign(campaign, recipient, subject = nil)
     @campaign   = campaign
     @recipient  = recipient
+    @secret     = @recipient.secret
     @release    = @campaign.release
     @label      = @release.label
     @tracks     = @release.tracks
