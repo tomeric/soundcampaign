@@ -1,5 +1,6 @@
 class CreateTrackEvents < ActiveRecord::Migration
   def change
+    enable_extension "plpgsql"
     create_table :track_events do |t|
       t.belongs_to :track,      null: false
       t.string     :action,     null: false
