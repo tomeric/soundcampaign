@@ -26,6 +26,9 @@ SoundCampaign::Application.routes.draw do
   resources :tracks,
     only: %i[create destroy show]
   
+  resources :track_events,
+    only: %i[create index]
+  
   resources :contact_lists,
     concerns: :undestroyable do
     
