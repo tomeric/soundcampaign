@@ -4,8 +4,7 @@ class CampaignsController < ApplicationController
   
   before_action :set_release
   
-  before_action :require_release_owner,
-    except: %i[show]
+  before_action :require_release_owner
   
   def new
     @label    = @release.label
