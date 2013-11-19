@@ -10,12 +10,13 @@
     border-right: 1px solid rgba(45,45,45, 0.9);
   }
 
-  button {
+  .btn {
     position: absolute;
     @include vertical-middle;
     padding: 0;
     right: 0;
     height: 32px;
+    line-height: 30px;
     width: 107px;
     @include box-sizing(border-box);
   }
