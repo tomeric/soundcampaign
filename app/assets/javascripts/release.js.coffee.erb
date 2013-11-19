@@ -5,6 +5,11 @@ window.SC ||= {}
 window.SC.trackEvent = (event, metadata = null) ->
   metadata.event = event
   if metadata?.track
+    if window.ga?
+      # Track event with Analytics:
+      window.ga 'send', 'event', 'player', event, "/tracks/#{metadata.track}"
+    
+    # Track event with our own implementation:
     $.post "/track_events", metadata
 
 class SC.Player
