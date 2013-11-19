@@ -1,10 +1,11 @@
 defaults: &defaults
   canonical_hostname: "soundcampaign.com"
   campaign_email: "campaign@soundcampaign.com"
-  contact_email:  "mail@soundcampaign.com"
+  contact_email:  "support@soundcampaign.com"
   contact_address: |
-    Sesamstraat 111
-    Maastricht
+    Brugstraat 77
+    6131 AC Sittard
+    The Netherlands
   urls:
     blog: "http://blog.soundcampaign.com/"
     facebook: "https://www.facebook.com/SoundCampaign"

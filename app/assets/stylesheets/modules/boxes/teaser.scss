@@ -11,6 +11,9 @@
 	&:after{
 		box-shadow: inset 0px 0px 60px rgba(0, 0, 0, 0.9);
 	}
+	&.teaser_thankyou {
+      @include background-image(image-url("bg_teaser_thankyou.jpg"));
+    }
 	.content {
 		margin-left: 0px;
 		margin-right: auto;
@@ -42,6 +45,13 @@
 			margin-top: 19px;
 			margin-bottom: 55px;
 			}
+		.visit_blog {
+			color: white;
+			text-decoration: none;
+			padding: 13px 21px;
+			border: 2px solid #c3c3c3;
+			@include border-radius(3px);
+		}
 		}
 	.teaser-images {
 
@@ -119,15 +129,18 @@
 			color: #454c57;
 			background: #e2e4e7;
 			width: $gridColumnWidth * 24 - 2;
-			height: 39px;
-			line-height: 39px;
+			line-height: 25px;
+			padding: 13px 0;
 			text-align: center;
 			border: 1px solid #cdcfd1;
 			margin: 17px 0;
 			@include border-radius(5px);
+			p {
+				margin:0;
+			}
 		}
 		.teaser-box {
-			cursor: pointer;
+			cursor: auto;
 			float: left;
 			width: $gridColumnWidth * (22/3) - 2;
 			height: 140px;
