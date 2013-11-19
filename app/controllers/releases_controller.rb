@@ -2,16 +2,21 @@ class ReleasesController < ApplicationController
   
   layout 'backend'
   
-  before_action :require_user
+  before_action :require_user,
+    except: %i[show]
   
   before_action :set_release,
-    only: %i[show edit update destroy undestroy]
+    except: %i[index new create]
   
   before_action :require_release_owner,
-    only: %i[show edit update destroy undestroy]
+    except: %i[index new create show]
+  
+  before_action :require_release_owner_or_recipient,
+    only: %i[show]
   
   def index
-    @releases = current_organization.releases.includes(:campaign)
+    @releases = current_organization.releases
+                                    .includes(:campaign)
   end
   
   def show
@@ -70,10 +75,12 @@ class ReleasesController < ApplicationController
   end
   
   def set_release
-    if action_name == 'undestroy'
-      @release = current_organization.releases.archived.find_by(id: params[:id])
+    if action_name == 'show'
+      @release = Release.find_by id: params[:id]
+    elsif action_name == 'undestroy'
+      @release = current_organization.releases.archived.find_by id: params[:id]
     else
-      @release = current_organization.releases.find_by(id: params[:id])
+      @release = current_organization.releases.find_by id: params[:id]
     end
   end
   

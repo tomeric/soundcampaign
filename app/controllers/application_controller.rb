@@ -29,9 +29,14 @@ class ApplicationController < ActionController::Base
   end
   
   def current_organization
-    @current_organization ||= current_user.organization
+    @current_organization ||= current_user.try(:organization)
   end
   helper_method :current_organization
+  
+  def current_recipient
+    return false unless @release.try(:campaign).present?
+    @current_recipient ||= @release.campaign.recipients.find_by secret: params[:secret]
+  end
   
   def unauthorized
     redirect_to new_user_session_url(return_to: request.url)
@@ -55,5 +60,12 @@ class ApplicationController < ActionController::Base
   
   def require_user
     unauthorized unless user_signed_in?
+  end
+  
+  def require_release_owner_or_recipient
+    unauthorized unless current_recipient.present? || (
+                          user_signed_in? &&
+                          current_organization == @release.try(:organization)
+                        )
   end
 end
