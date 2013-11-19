@@ -1,11 +1,15 @@
 .logo {
   float: left;
-  height: $mainHeaderHeight;
-  line-height: $mainHeaderHeight + 11;
+  height: 50px;
+  width: 183px;
+  margin: 0;
+  padding: 0;
   @include user-select(none);
-  img {
-    height: 22px;
-    width:183px;
-    margin:0 0 10px 0;
+  background: image-url('icons/logo.png') left center no-repeat;
+  background-size: 183px 24px;
+  text-indent: -3000em;
+  
+  @include media-retina {
+    background-image: image-url('icons/logo@2x.png');
   }
 }

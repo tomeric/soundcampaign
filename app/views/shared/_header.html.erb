@@ -1,8 +1,6 @@
 <header id="top" class="page-header">
   <div class="content">
-    <%= link_to root_url, id: 'logo', class: 'logo' do %>
-      <%= image_tag("sc_logo.svg", :alt => "SoundCampaign") %>
-    <% end %>
+    <%= link_to 'Sound Campaign', root_url, id: 'logo', class: 'logo' %>
     
     <nav class="account-nav">
       <% if user_signed_in? %>
