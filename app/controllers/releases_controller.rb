@@ -22,7 +22,7 @@ class ReleasesController < ApplicationController
   def show
     @label    = @release.label
     @tracks   = @release.tracks
-    @feedback = @release.feedbacks.by(current_user)
+    @feedback = @release.feedbacks.by(current_user || current_recipient)
                         .first_or_initialize
     
     render layout: 'release'

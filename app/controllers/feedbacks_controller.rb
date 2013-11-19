@@ -8,8 +8,8 @@ class FeedbacksController < ApplicationController
   before_action :require_release_owner_or_recipient,
     only: %i[create update]
   
-  before_action :require_feedback_owner_or_recipient,
-    only: %i[create update]
+  before_action :require_feedback_author,
+    only: %i[update]
   
   def create
     update
@@ -17,7 +17,7 @@ class FeedbacksController < ApplicationController
   
   def update
     if @feedback.update_attributes(feedback_params)
-      redirect_to @release
+      redirect_to release_url(@release, secret: current_recipient.try(:secret))
     else
       @label  = @release.label
       @tracks = @release.tracks
@@ -27,9 +27,13 @@ class FeedbacksController < ApplicationController
   
   private
   
-  def require_feedback_owner_or_recipient
-    unauthorized unless (current_user      && @feedback.user      == current_user     ) ||
-                        (current_recipient && @feedback.recipient == current_recipient)
+  def require_feedback_author
+    unauthorized unless feedback_author?
+  end
+  
+  def feedback_author?
+    (current_user      && @feedback.user      == current_user     ) ||
+    (current_recipient && @feedback.recipient == current_recipient)
   end
   
   def feedback_params
