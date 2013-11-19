@@ -4,8 +4,6 @@ class TrackEvent < ActiveRecord::Base
   
   belongs_to :track
   
-  belongs_to :user
-  
-  belongs_to :subscriber
+  belongs_to :recipient
   
 end

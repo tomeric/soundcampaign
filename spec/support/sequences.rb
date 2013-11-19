@@ -42,4 +42,13 @@ FactoryGirl.define do
   sequence :story do |n|
     Faker::Lorem.paragraphs(3).join("\n\n")
   end
+  
+  sequence :secret do |n|
+    @secrets ||= []
+    
+    secret = Digest::SHA256.hexdigest([n, Time.now.to_f * 1000_000, rand(1000_000_000)].join('+'))
+    secret.append("+#{n}") if @secrets.include? secret
+    
+    (@secrets << secret).last
+  end
 end

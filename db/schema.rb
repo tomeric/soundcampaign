@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131118114224) do
+ActiveRecord::Schema.define(version: 20131118142919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 20131118114224) do
     t.boolean  "bounced",        default: false
     t.boolean  "marked_as_spam", default: false
     t.string   "clicked_links",  default: [],    array: true
+    t.integer  "recipient_id"
   end
 
   add_index "email_logs", ["campaign_id"], name: "index_email_logs_on_campaign_id", using: :btree
@@ -175,6 +176,20 @@ ActiveRecord::Schema.define(version: 20131118114224) do
   add_index "ratings", ["feedback_id"], name: "index_ratings_on_feedback_id", using: :btree
   add_index "ratings", ["track_id"], name: "index_ratings_on_track_id", using: :btree
 
+  create_table "recipients", force: true do |t|
+    t.integer  "campaign_id"
+    t.integer  "user_id"
+    t.integer  "contact_id"
+    t.string   "email",       null: false
+    t.string   "secret",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "recipients", ["campaign_id"], name: "index_recipients_on_campaign_id", using: :btree
+  add_index "recipients", ["contact_id"], name: "index_recipients_on_contact_id", using: :btree
+  add_index "recipients", ["user_id"], name: "index_recipients_on_user_id", using: :btree
+
   create_table "release_artists", force: true do |t|
     t.integer  "release_id", null: false
     t.integer  "artist_id",  null: false
@@ -218,13 +233,12 @@ ActiveRecord::Schema.define(version: 20131118114224) do
   add_index "subscribers", ["email"], name: "index_subscribers_on_email", unique: true, using: :btree
 
   create_table "track_events", force: true do |t|
-    t.integer  "track_id",                     null: false
-    t.string   "action",                       null: false
-    t.integer  "subscriber_id"
-    t.integer  "user_id"
-    t.text     "payload_json",  default: "{}"
+    t.integer  "track_id",                    null: false
+    t.string   "action",                      null: false
+    t.text     "payload_json", default: "{}"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "recipient_id",                null: false
   end
 
   create_table "tracks", force: true do |t|
