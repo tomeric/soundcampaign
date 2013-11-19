@@ -1,7 +1,7 @@
 set :stage, :staging
 
 # This is the *main* server:
-server 'jackson.soundcampaign.com', 
+server 'soundcampaign.com', 
   roles: %w{app web worker db},
   user:  'deploy'
 

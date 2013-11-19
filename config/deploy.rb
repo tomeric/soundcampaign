@@ -7,13 +7,15 @@ set :ssh_options, forward_agent: true,
                   auth_methods:  %w{publickey}
 
 # Git:
-set :scm,      :git
-set :repo_url, 'git@github.com:tomeric/soundcampaign.git'
-set :branch,   -> { `git rev-parse --abbrev-ref HEAD`.chomp }
+set :scm,               :git
+set :repo_url,          'git@github.com:tomeric/soundcampaign.git'
+set :branch,            'master'
+set :git_shallow_clone, 1
 
 # Deployment:
-set :home_dir,  "/home/deploy"
-set :deploy_to, "#{fetch(:home_dir)}/#{fetch(:application)}"
+set :home_dir,   "/home/deploy"
+set :deploy_to,  "#{fetch(:home_dir)}/#{fetch(:application)}"
+set :deploy_via, :remote_cache
 
 # RVM config:
 set :rvm_type,         :system
