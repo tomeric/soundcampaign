@@ -1,11 +1,13 @@
 require 'spec_helper'
 
 describe ReleasesController do
-  let(:user)    { create :user                       }
-  let(:label)   { create :label                      }
-  let(:release) { create :release,
-                    organization: user.organization,
-                    label:        label              }
+  let(:user)     { create :user                       }
+  let(:label)    { create :label                      }
+  let(:release)  { create :release,
+                     organization: user.organization,
+                     label:        label              }
+  let(:campaign) { create :campaign,
+                     release: release                 }
   
   context 'authorization' do
     context 'logged out' do
@@ -18,7 +20,7 @@ describe ReleasesController do
       it { should_not have_access_to :delete, :destroy, id: release.to_param }
     end
     
-    context 'logged in' do
+    context 'as a release owner' do
       before { sign_in user }
       
       let(:owned_release) { release         }
@@ -35,6 +37,22 @@ describe ReleasesController do
       it { should_not have_access_to :patch,  :update,  id: other_release.to_param }
       it { should     have_access_to :delete, :destroy, id: owned_release.to_param }
       it { should_not have_access_to :delete, :destroy, id: other_release.to_param }
+    end
+    
+    context 'as a recipient' do
+      let(:recipient)     { create :recipient, campaign: campaign }
+      let(:other_release) { create :release                       }
+      
+      it { should_not have_access_to :get,    :index                                                         }
+      it { should_not have_access_to :get,    :new                                                           }
+      it { should_not have_access_to :post,   :create                                                        }
+      it { should_not have_access_to :get,    :show,    id: release.to_param                                 }
+      it { should     have_access_to :get,    :show,    id: release.to_param,       secret: recipient.secret }
+      it { should_not have_access_to :get,    :show,    id: other_release.to_param                           }
+      it { should_not have_access_to :get,    :show,    id: other_release.to_param, secret: recipient.secret }
+      it { should_not have_access_to :get,    :edit,    id: release.to_param                                 }
+      it { should_not have_access_to :patch,  :update,  id: release.to_param                                 }
+      it { should_not have_access_to :delete, :destroy, id: release.to_param                                 }
     end
   end
   

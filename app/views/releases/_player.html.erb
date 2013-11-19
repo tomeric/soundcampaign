@@ -49,6 +49,9 @@ if first_track.present?
       <div class="feedback">
         <span>Your feedback</span>
         <%= f.text_area :body %>
+        
+        <%= hidden_field_tag :secret, params[:secret] if params[:secret].present? %>
+        
         <%= f.submit 'Submit feedback', class: 'btn btn-primary' %>
       </div>
     </div>

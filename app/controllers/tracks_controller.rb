@@ -1,5 +1,7 @@
 class TracksController < ApplicationController
   
+  before_filter :require_user
+  
   def create
     @track = current_organization.tracks.new
     @track.attachment = uploaded_attachment

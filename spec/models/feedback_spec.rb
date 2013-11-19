@@ -8,16 +8,16 @@ describe Feedback do
   context 'validations' do
     it { should validate_presence_of :body }
     
-    it 'validates the presence of a subscriber or a user' do
-      feedback.subscriber = nil
-      feedback.user       = nil
+    it 'validates the presence of a recipient or a user' do
+      feedback.recipient = nil
+      feedback.user      = nil
       expect(feedback).to_not be_valid
       
       feedback.user = create :user
       expect(feedback).to be_valid
       
-      feedback.user       = nil
-      feedback.subscriber = create :subscriber
+      feedback.user      = nil
+      feedback.recipient = create :recipient
       expect(feedback).to be_valid
     end
   end
@@ -25,8 +25,8 @@ describe Feedback do
   context 'scopes' do
     describe '.by' do
       context 'with a user' do
-        let(:user)             { create :user                                  }
-        let(:feedback_by_user) { create :feedback, user: user, subscriber: nil }
+        let(:user)             { create :user                                 }
+        let(:feedback_by_user) { create :feedback, user: user, recipient: nil }
         
         it 'includes feedback written by the given user' do
           expect(feedback_by_user).to be_in Feedback.by user
@@ -38,17 +38,17 @@ describe Feedback do
         end
       end
       
-      context 'with a subscriber' do
-        let(:subscriber)             { create :subscriber                                  }
-        let(:feedback_by_subscriber) { create :feedback, user: nil, subscriber: subscriber }
+      context 'with a recipient' do
+        let(:recipient)             { create :recipient                                 }
+        let(:feedback_by_recipient) { create :feedback, user: nil, recipient: recipient }
         
-        it 'includes feedback written by the given subscriber' do
-          expect(feedback_by_subscriber).to be_in Feedback.by subscriber
+        it 'includes feedback written by the given recipient' do
+          expect(feedback_by_recipient).to be_in Feedback.by recipient
         end
         
-        it 'excludes feedback written by another subscriber' do
-          other_subscriber = create :subscriber
-          expect(feedback_by_subscriber).to_not be_in Feedback.by other_subscriber
+        it 'excludes feedback written by another recipient' do
+          other_recipient = create :recipient
+          expect(feedback_by_recipient).to_not be_in Feedback.by other_recipient
         end
       end
     end

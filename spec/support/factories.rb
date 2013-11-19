@@ -51,9 +51,9 @@ FactoryGirl.define do
   end
   
   factory :feedback do
-    release    { build :release    }
-    subscriber { build :subscriber }
-    body       { generate :story   }
+    release   { build :release   }
+    recipient { build :recipient }
+    body      { generate :story  }
   end
   
   factory :rating do

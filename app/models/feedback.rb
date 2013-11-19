@@ -6,7 +6,7 @@ class Feedback < ActiveRecord::Base
   
   belongs_to :user
   
-  belongs_to :subscriber
+  belongs_to :recipient
   
   has_many :ratings
   accepts_nested_attributes_for :ratings,
@@ -17,17 +17,17 @@ class Feedback < ActiveRecord::Base
   validates :body,
     presence: true
   
-  validate :user_or_subscriber_present
+  validate :user_or_recipient_present
   
   ### SCOPES:
   
-  scope :by, -> user_or_subscriber {
-    if user_or_subscriber.is_a?(User)
-      user = user_or_subscriber
+  scope :by, -> user_or_recipient {
+    if user_or_recipient.is_a?(User)
+      user = user_or_recipient
       where(user_id: user.id)
-    elsif user_or_subscriber.is_a?(Subscriber)
-      subscriber = user_or_subscriber
-      where(subscriber_id: subscriber.id)
+    elsif user_or_recipient.is_a?(Recipient)
+      recipient = user_or_recipient
+      where(recipient_id: recipient.id)
     else
       none
     end
@@ -43,12 +43,12 @@ class Feedback < ActiveRecord::Base
   
   private
   
-  def user_or_subscriber_present
-    required_attributes = new_record? ? %i[user subscriber]
-                                      : %i[user_id subscriber_id]
+  def user_or_recipient_present
+    required_attributes = new_record? ? %i[user recipient]
+                                      : %i[user_id recipient_id]
     
     unless required_attributes.map{ |attr| send(attr) }.any?(&:present?)
-      errors.add :subscriber, :blank
+      errors.add :recipient, :blank
     end
   end
   
