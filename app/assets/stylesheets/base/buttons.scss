@@ -82,7 +82,7 @@
   color: #333333;
   background: #f1f1f1;
   *background-: #f1f1f1;
-  @include background(linear-gradient(bottom, #e6e6e6, #ffffff));
+  /*@include background(linear-gradient(bottom, #e6e6e6, #ffffff));*/
 }
 .btn:active,
 .btn.active {
@@ -454,4 +454,39 @@ input[type="submit"].btn.btn-mini {
 .btn-link[disabled]:focus {
   color: #333333;
   text-decoration: none;
+}
+
+/* Custom buttons based on bootstrap */
+
+.btn-black {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #363636;
+  background-image: -moz-linear-gradient(top, #444444, #222222);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#444444), to(#222222));
+  background-image: -webkit-linear-gradient(top, #444444, #222222);
+  background-image: -o-linear-gradient(top, #444444, #222222);
+  background-image: linear-gradient(to bottom, #444444, #222222);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff444444', endColorstr='#ff222222', GradientType=0);
+  border-color: #222222 #222222 #000000;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #222222;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.btn-black:hover,
+.btn-black:focus,
+.btn-black:active,
+.btn-black.active,
+.btn-black.disabled,
+.btn-black[disabled] {
+  color: #ffffff;
+  background-color: #222222;
+  *background-color: #151515;
+}
+.btn-black:active,
+.btn-black.active {
+  background-color: #080808 \9;
 }

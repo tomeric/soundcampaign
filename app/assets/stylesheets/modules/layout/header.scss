@@ -21,7 +21,7 @@ $pageHeaderGradientEnd:    darken($primaryColor,  2%) !default;
     @include makeRow;
     @include container-fixed;
     width: $siteWidth;
-    border-right: 1px solid rgba(255,255,255, 0.3);
+    /*border-right: 1px solid rgba(255,255,255, 0.3);*/
     .page-public-release & {
       border-right: 1px solid rgba(255, 255, 255, 0.1);
     }

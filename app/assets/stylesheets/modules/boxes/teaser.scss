@@ -55,7 +55,7 @@
 			max-width: initial;
 			opacity: 0;
 			@include animation-name(teaser-devices);
-			@include animation-duration(30.0s);
+			@include animation-duration(24.0s);
 			@include animation-timing-function(ease);
   		@include animation-iteration-count(infinite);
 		}	
@@ -67,10 +67,10 @@
 	@include animation-delay(0s);
 }
 .teaser-htc {
-	@include animation-delay(10.0s);
+	@include animation-delay(8.0s);
 }
 .teaser-mbp {
-	@include animation-delay(20.0s);
+	@include animation-delay(16.0s);
 }
 
 
@@ -80,12 +80,12 @@
     left:70%;
     opacity: 0;
   }
-  10% {
-  	left:60%;
+  7% {
+  	left:56%;
     opacity: 1;
   }
   33% {
-  	left:60%;
+  	left:56%;
     opacity: 1;
   }
   35% {
@@ -144,6 +144,15 @@
 				background-position: 50% 23px;
 				background-color: #fbfbfb;
 			}
+
+			-webkit-filter: grayscale(100%);
+      -moz-filter: grayscale(100%);
+      -ms-filter: grayscale(100%);
+      -o-filter: grayscale(100%);
+      filter: grayscale(100%);
+      filter: gray; /* IE 6-9 */
+
+
 			h3 {
 				width: 100%;
 				text-align: center;

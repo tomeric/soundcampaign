@@ -1,12 +1,26 @@
 .account-nav {
   float: right;
-  border-left: 1px solid rgba(0,54,83, 0.6);
-  border-right: 1px solid rgba(0,54,83, 0.6);
+  height: $mainHeaderHeight;
+  position: relative;
+  /*border-left: 1px solid rgba(0,54,83, 0.6);
+  border-right: 1px solid rgba(0,54,83, 0.6);*/
 
   .page-public-release & {
     border-left: 1px solid rgba(45,45,45, 0.9);
     border-right: 1px solid rgba(45,45,45, 0.9);
   }
+
+  button {
+    position: absolute;
+    @include vertical-middle;
+    padding: 0;
+    right: 0;
+    height: 32px;
+    width: 107px;
+    @include box-sizing(border-box);
+  }
+
+
   
   img {
     height: $baseLineHeight * 1.5;
@@ -25,7 +39,7 @@
     font-size: 13px;
     font-weight: bold;
     padding: 0 ($gridColumnWidth / 4);
-    border-left: 1px solid rgba(255, 255, 255, 0.3);
+    /*border-left: 1px solid rgba(255, 255, 255, 0.3);*/
 
       .page-public-release & {
         border-left: 1px solid rgba(255, 255, 255, 0.1);

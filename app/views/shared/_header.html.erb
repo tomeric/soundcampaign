@@ -12,6 +12,8 @@
         <% end%>
         <!-- dropdown menu --> 
       <% else %>
+        <button class="btn btn-black" type="button">Log in</button>
+        <!-- deze aanpassen aub :) -->
         <%= link_to content_tag(:span, 'Login'), new_user_session_path, class: 'login' %>
       <% end %>
     </nav>
