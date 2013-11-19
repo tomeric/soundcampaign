@@ -6,6 +6,8 @@ defaults: &defaults
     Brugstraat 77
     6131 AC Sittard
     The Netherlands
+  analytics:
+    tracking_id: 'UA-45889403-1'
   urls:
     blog: "http://blog.soundcampaign.com/"
     facebook: "https://www.facebook.com/SoundCampaign"
