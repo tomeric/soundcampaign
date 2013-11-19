@@ -36,9 +36,15 @@
       padding:0;
     }
   }
+  
   .account-nav img {
     @include box-shadow(rgba(black, 1) 0 0 1px 1px);
   }
+  
+  .login {
+    display: none;
+  }
+  
   aside {
     @include modular-mq(LandscapePhone-PortraitTable) {
       position: relative;
