@@ -16,6 +16,14 @@
         opened today
       </li>
       <li>
+        <strong><%= @plays_count %></strong>
+        tracks played
+      </li>
+      <li>
+        <strong><%= @plays_today_count %></strong>
+        tracks played today
+      </li>
+      <li>
         <strong><%= @feedback_count %></strong>
         feedback
       </li>
@@ -30,6 +38,11 @@
   <section class="charted mail-clicked-metrics">
     <h2>Clicks</h2>
     <%= render 'bar_chart', dataset: @clicks_per_day %>
+  </section>
+  
+  <section class="charted plays-metrics">
+    <h2>Plays</h2>
+    <%= render 'bar_chart', dataset: @plays_per_day %>
   </section>
 </div>
 
