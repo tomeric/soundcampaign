@@ -91,10 +91,9 @@
     padding: 0 ($gridColumnWidth * 0.25);
     
     .filename {
-      line-height: $baseLineHeight * 1.5;
+      line-height: $baseLineHeight * 2.5;
       font-size: 11px;
       overflow: hidden;
-      position: relative;
       z-index: 11;
     }
     

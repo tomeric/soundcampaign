@@ -214,5 +214,24 @@
 	width: 200px;
 	padding: 8px;
 	margin-right: 10px;
+}
 
+@include modular-mq(PortraitTablets-Desktop) {
+	.front-page .content {
+		width: 740px;
+		@include transition (all 1.0s ease-in-out);
+	}
+}
+@include modular-mq(LandscapePhone-PortraitTable) {
+	.front-page .content {
+		width: 470px;
+		@include transition (all 1.0s ease-in-out);
+	}
+}
+@include modular-mq(LandscapePhone-Down) {
+	.front-page .content {
+		width: 100%;
+		margin: 0 15px;
+		@include transition (all 1.0s ease-in-out);
+	}
 }
