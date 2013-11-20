@@ -2,15 +2,18 @@
 #= require jquery.raty.min
 
 window.SC ||= {}
-window.SC.trackEvent = (event, metadata = null) ->
-  metadata.event = event
-  if metadata?.track
+window.SC.trackEvent = (event, metadata = {}) ->
+  metadata.event  = event
+  metadata.secret = $('body').data('recipient-id')
+  
+  if metadata.track
     if window.ga?
       # Track event with Analytics:
       window.ga 'send', 'event', 'player', event, "/tracks/#{metadata.track}"
     
-    # Track event with our own implementation:
-    $.post "/track_events", metadata
+    if metadata.secret?
+      # Track event with our own implementation:
+      $.post "/track_events", metadata
 
 class SC.Player
   constructor: (@widget, @tracks) ->

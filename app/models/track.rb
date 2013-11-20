@@ -13,6 +13,9 @@ class Track < ActiveRecord::Base
   
   belongs_to :release
   
+  has_many :events,
+    class_name: 'TrackEvent'
+  
   ### VALIDATIONS:
   
   validates_attachment :attachment,
