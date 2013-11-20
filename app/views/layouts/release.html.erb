@@ -13,7 +13,10 @@
     <%= render 'shared/javascripts'    %>
     <%= csrf_meta_tags %>
   </head>
-  <body class="page-public-release">
+  <body<% if current_recipient %>
+         data-recipient-id="<%= current_recipient.secret %>"
+       <% end %>
+         class="page-public-release">
     <div class="page-wrapper">
       <%= render 'shared/header' %>
       <%= yield %>

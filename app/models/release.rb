@@ -24,6 +24,10 @@ class Release < ActiveRecord::Base
   has_many :tracks
   accepts_nested_attributes_for :tracks
   
+  has_many :track_events,
+    through: :tracks,
+    source:  :events
+  
   has_many :release_artists
   
   has_many :artists,

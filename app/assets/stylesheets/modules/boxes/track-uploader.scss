@@ -8,6 +8,29 @@
   text-align: center;
   position: relative;
   
+  p {
+    margin:  0;
+    padding: 0;
+  }
+  
+  //
+  .upload-new-track {
+    display: block;
+  }
+  
+  &.upload-started .upload-new-track {
+    display: none;
+  }
+  
+  .uploading-track {
+    display: none;
+  }
+  
+  &.upload-started .uploading-track {
+    display: block;
+  }
+  //
+  
   .qq-uploader {
     position: relative;
     
@@ -160,6 +183,11 @@
     cursor: pointer;
     
     border-left: 1px solid #585858;
+    
+    @include media-retina {
+      background-image: image-url("icons/cross_light@2x.png");
+      background-size: 20px 20px;
+    }
     
     &:before {
       display: block;

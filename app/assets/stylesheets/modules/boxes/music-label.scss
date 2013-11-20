@@ -19,6 +19,11 @@
   }
   .music-label-header-edit {
     background: image-url("icons/pencil_light.png") 50% 50% no-repeat;
+    
+    @include media-retina {
+      @include background-image(image-url("icons/edit_light@2x.png"));
+      background-size: 20px 20px;
+    }
   }
   
   // CONTENT:

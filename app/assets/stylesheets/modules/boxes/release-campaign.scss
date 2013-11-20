@@ -434,6 +434,11 @@
       
       border-left: 1px solid #585858;
       
+      @include media-retina {
+        @include background-image(image-url("icons/cross_light@2x.png"));
+        background-size: 20px 20px;
+      }
+      
       &:before {
         display: block;
         position: absolute;

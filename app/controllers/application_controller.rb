@@ -37,6 +37,7 @@ class ApplicationController < ActionController::Base
     return false unless @release.try(:campaign).present?
     @current_recipient ||= @release.campaign.recipients.find_by secret: params[:secret]
   end
+  helper_method :current_recipient
   
   def unauthorized
     redirect_to new_user_session_url(return_to: request.url)
