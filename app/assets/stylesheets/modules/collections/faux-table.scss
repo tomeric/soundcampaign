@@ -109,12 +109,22 @@
     @include background-image(image-url("icons/edit_light.png"));
     background-size: 17px 20px;
     text-indent: -3000em;
+    
+    @include media-retina {
+      background-image: image-url("icons/edit_light@2x.png");
+      background-size: 20px 20px;
+    }
   }
   
   .delete {
     @include background-image(image-url("icons/remove_light.png"));
     background-size: 16px 16px;
     text-indent: -3000em;
+    
+    @include media-retina {
+      @include background-image(image-url("icons/cross_light@2x.png"));
+      background-size: 20px 20px;
+    }
   }
   
   .metrics {
@@ -131,11 +141,21 @@
     @include background-image(image-url("icons/public_light.png"));
     background-size: 22px 15px;
     text-indent: -3000em;
+    
+    @include media-retina {
+      background-image: image-url("icons/public_light@2x.png");
+      background-size: 20px 20px;
+    }
   }
   
   .send {
     @include background-image(image-url("icons/send_light.png"));
     background-size: 19px 16px;
     text-indent: -3000em;
+    
+    @include media-retina {
+      background-image: image-url("icons/send_light@2x.png");
+      background-size: 20px 20px;
+    }
   }
 }
