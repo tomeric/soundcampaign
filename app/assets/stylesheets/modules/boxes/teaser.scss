@@ -57,6 +57,11 @@
 			padding: 13px 21px;
 			border: 2px solid #c3c3c3;
 			@include border-radius(3px);
+			@include transition (all 0.5s ease-in-out);
+			&:hover {
+				border: 2px solid #31acee;
+
+			}
 		}
 		}
 	.teaser-images {

@@ -2,7 +2,6 @@
   float:right;
   @include makeColumn(18, 0.5);
   @include box-shadow(rgba(black, 0.2) 0 2px 3px);
-  transition: all 0.5s ease;
   
   &.player-loading {
     // Overwrites when player is loading a track:
@@ -114,7 +113,6 @@
         @include box-shadow(inset rgba(white, 0.3) 0 1px 1px);
         border:1px solid #090807;
         cursor: pointer;
-        transition: all 0.5s ease;
         
         &.playing {
           @include background-image(image-url("icons/pause.png"), linear-gradient(#404040, #2d2d2d));
@@ -144,13 +142,14 @@
     }
     
     .time {
-      float: left;
+
       height:42px;
       line-height: 42px;
       margin: 3px 10px;
       color:white;
       text-shadow: 1px 1px black;
       font-size: 12px;
+      overflow: hidden;
     }
     
     .volume {
@@ -179,6 +178,10 @@
     
     &:hover {
       border-top:1px solid #363636;
+    }
+
+    .player-track-title {
+      cursor: pointer;
     }
     
     .star {
