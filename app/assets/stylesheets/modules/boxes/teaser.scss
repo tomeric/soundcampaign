@@ -13,6 +13,12 @@
 	}
 	&.teaser_thankyou {
       @include background-image(image-url("bg_teaser_thankyou.jpg"));
+      background-repeat:no-repeat;
+      background-color: #060c0b;
+      @media screen and (min-width: 1790px) {
+		 	background-size: auto;
+
+	}
     }
 	.content {
 		margin-left: 0px;
