@@ -8,6 +8,29 @@
   text-align: center;
   position: relative;
   
+  p {
+    margin:  0;
+    padding: 0;
+  }
+  
+  //
+  .upload-new-track {
+    display: block;
+  }
+  
+  &.upload-started .upload-new-track {
+    display: none;
+  }
+  
+  .uploading-track {
+    display: none;
+  }
+  
+  &.upload-started .uploading-track {
+    display: block;
+  }
+  //
+  
   .qq-uploader {
     position: relative;
     
