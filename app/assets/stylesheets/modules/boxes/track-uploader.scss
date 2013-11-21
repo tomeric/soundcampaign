@@ -4,15 +4,21 @@
   @include border-radius(3px);
   width: 100%;
   @include box-sizing(border-box);
+  
   .tracks {
     margin:0;
     list-style: none;
+    
     .track {
       height: ($baseLineHeight * 2.5);
-      border-top:1px solid #c0c0c0;
+      border-top: 1px solid #c0c0c0;
+      border-bottom: 1px solid #c0c0c0;;
+      
       &:first-child {
-      border-top:none;
+        border-top: none;
+        border-bottom: none;
       }
+      
       .track-cancel {
         float: left;
         width: 50px;
@@ -22,13 +28,14 @@
           background: image-url("icons/cross_gray_uploader_hover.png") 50% 50% no-repeat;
         }
       }
+      
       .filename {
         color: #9f9f9f;
         font-size: 13px;
         height: ($baseLineHeight * 2.5);
         line-height: ($baseLineHeight * 2.5);
       }
-
+      
       .loader {
         display: block;
         width: 150px;
@@ -37,7 +44,8 @@
         @include border-radius(5px);
         border: 1px solid #14adff;
         position: relative;
-        margin: 19px; 
+        margin: 19px;
+        
         .loader-inner {
           position: absolute;
           float:left;
@@ -49,27 +57,28 @@
     }
   }
 }
+
 .track-uploader {
   font-size: 13px;
-  border-top: 1px solid #c0c0c0;
   @include border-bottom-radius(3px);
   line-height: ($baseLineHeight * 3 - 2);
   padding: 0;
   text-indent: 51px;
   position: relative;
-  background: #fafafa image-url("icons/plus_blue_uploader.png") 15px 50% no-repeat;
-    &:hover {
-      background: #fafafa image-url("icons/plus_blue_uploader_hover.png") 15px 50% no-repeat;
-    }
   
-  p {
+  .upload-new-track, .uploading-track {
     margin:  0;
     padding: 0;
   }
   
-  //
+  // Upload states:
   .upload-new-track {
     display: block;
+    background: #fafafa image-url("icons/plus_blue_uploader.png") 15px 50% no-repeat;
+  }
+  
+  &:hover .upload-new-track {
+    background: #fafafa image-url("icons/plus_blue_uploader_hover.png") 15px 50% no-repeat;
   }
   
   &.upload-started .upload-new-track {

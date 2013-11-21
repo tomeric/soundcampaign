@@ -30,6 +30,10 @@ $(document).ready ->
       
       # Append the template returned by the server to the track list:
       $('#track_list').append(reason.template)
+      
+      # Remove the track from the queue of uploading files:
+      trackList = dropzone.find('.tracks')
+      trackList.find(".track[data-upload-id='#{id}']").remove()
     
     ).on('submitted', (event, id, name) ->
       dropzone = $ event.target
@@ -51,6 +55,29 @@ $(document).ready ->
       # select multiple files that need to be uploaded at the same
       # time:
       dropzone.removeClass('upload-started')
+      
+      # Add a track to the queue of uploading tracks, or update it's
+      # progress bar:
+      trackList = dropzone.find('.tracks')
+      progress  = Math.round(uploadedBytes / totalBytes * 1000) / 10
+      
+      existing = trackList.find(".track[data-upload-id='#{id}']")
+      if existing
+        existing.find('.loader-inner').css width: "#{progress}%"
+      else
+        trackTemplate = """
+          <li class="track" data-upload-id="#{id}">
+            <!--
+            <a class="track-cancel" href="#verwijderen"></a>
+            -->
+            <span class="filename">#{name}</span>
+            <span class="loader">
+              <span class="loader-inner" style="width:#{progress}%"></span>
+            </span>
+          </li>
+        """
+        trackList.append(trackTemplate)
+      
     )
     
     trackDroppable.find('.qq-upload-button > div > *').click (e) ->
