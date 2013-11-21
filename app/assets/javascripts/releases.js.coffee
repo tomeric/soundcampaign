@@ -8,7 +8,7 @@ $(document).ready ->
         dragZone:     buttonText
         uploadButton: buttonText
       validation:
-        allowedExtensions: ['mp3']
+        allowedExtensions: ['mp3', 'wav']
       request:
         customHeaders: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') }
         endpoint: trackDroppable.attr('data-upload-url')
