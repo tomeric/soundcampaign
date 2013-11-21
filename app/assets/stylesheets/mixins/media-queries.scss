@@ -1,6 +1,6 @@
 @mixin modular-mq($breakpoint) {
   @if $breakpoint == PortraitTablets-Desktop {
-    @media screen and (min-width: 768px) and (max-width: 986px) { @content; }
+    @media screen and (min-width: 768px) and (max-width: 1006px) { @content; }
   }
   @else if $breakpoint == LandscapePhone-PortraitTable {
     @media screen and (max-width: 767px) { @content; }
