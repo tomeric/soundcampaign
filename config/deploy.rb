@@ -52,6 +52,10 @@ namespace :deploy do
     invoke 'nginx:setup'
   end
   
+  desc 'Restart'
+  task :restart do
+  end
+  
   desc 'Restart application'
   task :restart_processes do
     invoke 'unicorn:restart'
