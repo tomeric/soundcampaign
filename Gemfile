@@ -3,6 +3,11 @@ ruby '2.0.0'
 
 gem 'rails', '= 4.0.0'
 
+# Background processing:
+gem 'daemons'
+gem 'delayed_job_active_record'
+gem 'delayed_paperclip'
+
 # Configuration:
 gem 'settingslogic'
 gem 'dotenv-rails'

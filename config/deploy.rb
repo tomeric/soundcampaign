@@ -26,7 +26,7 @@ SSHKit.config.command_map = Hash.new do |hash, key|
   rvm_prepend     = "#{fetch(:rvm_path)}/bin/rvm #{fetch(:rvm_ruby_version)} do"
   bundle_prepend  = "bundle exec"
   
-  if %w{rails rake}.include?(key.to_s)
+  if %w{rails rake script/delayed_job}.include?(key.to_s)
     hash[key] = "#{rvm_prepend} #{bundle_prepend} #{key}"
   elsif %w{erb bundle script/unicorn}.include?(key.to_s)
     hash[key] = "#{rvm_prepend} #{key}"
@@ -52,12 +52,18 @@ namespace :deploy do
     invoke 'nginx:setup'
   end
   
-  desc 'Restart application'
+  desc 'Restart'
   task :restart do
+  end
+  
+  desc 'Restart application'
+  task :restart_processes do
     invoke 'unicorn:restart'
+    invoke 'delayed_job:restart'
     invoke 'nginx:reload'
   end
   
-  after :starting,  'deploy:setup'
-  after :finishing, 'deploy:cleanup'
+  after :starting,         'deploy:setup'
+  after :finishing,        'deploy:cleanup'
+  after :'deploy:updated', 'deploy:restart_processes'
 end
