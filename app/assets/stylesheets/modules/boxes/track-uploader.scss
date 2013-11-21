@@ -6,16 +6,16 @@
   @include box-sizing(border-box);
   
   .tracks {
+    position: relative;
+    z-index: 10000;
     margin:0;
     list-style: none;
     
     .track {
       height: ($baseLineHeight * 2.5);
-      border-top: 1px solid #c0c0c0;
       border-bottom: 1px solid #c0c0c0;;
       
       &:first-child {
-        border-top: none;
         border-bottom: none;
       }
       
@@ -24,8 +24,19 @@
         width: 50px;
         height: 100%;
         background: image-url("icons/cross_gray_uploader.png") 50% 50% no-repeat;
+        
+        @include media-retina {
+          background: image-url("icons/cross_gray_uploader@2x.png") 50% 50% no-repeat;
+          background-size: 20px 20px;
+        }
+        
         &:hover {
           background: image-url("icons/cross_gray_uploader_hover.png") 50% 50% no-repeat;
+          
+          @include media-retina {
+            background: image-url("icons/cross_gray_uploader_hover@2x.png") 50% 50% no-repeat;
+            background-size: 20px 20px;
+          }
         }
       }
       
@@ -75,10 +86,20 @@
   .upload-new-track {
     display: block;
     background: #fafafa image-url("icons/plus_blue_uploader.png") 15px 50% no-repeat;
+    
+    @include media-retina {
+      background: image-url("icons/plus_blue_uploader@2x.png") 15px 50% no-repeat;
+      background-size: 20px 20px;
+    }
   }
   
   &:hover .upload-new-track {
     background: #fafafa image-url("icons/plus_blue_uploader_hover.png") 15px 50% no-repeat;
+    
+    @include media-retina {
+      background: image-url("icons/plus_blue_uploader_hover@2x.png") 15px 50% no-repeat;
+      background-size: 20px 20px;
+    }
   }
   
   &.upload-started .upload-new-track {

@@ -9,7 +9,7 @@ working_directory APP_PATH
 preload_app true
 
 # Restart workers that have timed out
-timeout Integer(ENV['UNICORN_TIMEOUT'] || 30)
+timeout Integer(ENV['UNICORN_TIMEOUT'] || 300)
 
 # Listen on a unix socket
 listen File.join(APP_PATH, 'tmp', 'sockets', 'unicorn.sock'), backlog: 2048

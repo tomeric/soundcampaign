@@ -2,13 +2,14 @@ $(document).ready ->
   $('.track-uploader').each ->
     trackDroppable = $ this
     buttonText = trackDroppable.html()
+    
     trackDroppable.fineUploader(
       debug: true
       text:
         dragZone:     buttonText
         uploadButton: buttonText
       validation:
-        allowedExtensions: ['mp3']
+        allowedExtensions: ['mp3', 'wav']
       request:
         customHeaders: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') }
         endpoint: trackDroppable.attr('data-upload-url')
@@ -22,6 +23,15 @@ $(document).ready ->
       dropzone = $ event.target
       dropzone.removeClass('upload-started')
     
+    ).on('cancel',   (event, id, name) ->
+      # Remove the "Your track is uploading" message so a user can select the
+      # next track that needs to be uploaded:
+      dropzone = $ event.target
+      dropzone.removeClass('upload-started')
+      
+      # Remove the track from the queue of uploading files:
+      trackList = dropzone.find('.tracks')
+      trackList.find(".track[data-upload-id='#{id}']").remove()
     ).on('complete', (event, id, name, reason) ->
       # Remove the "Your track is uploading" message so a user can select the
       # next track that needs to be uploaded:
@@ -67,9 +77,7 @@ $(document).ready ->
       else
         trackTemplate = """
           <li class="track" data-upload-id="#{id}">
-            <!--
-            <a class="track-cancel" href="#verwijderen"></a>
-            -->
+            <a class="track-cancel" href="#cancel"></a>
             <span class="filename">#{name}</span>
             <span class="loader">
               <span class="loader-inner" style="width:#{progress}%"></span>
@@ -80,5 +88,12 @@ $(document).ready ->
       
     )
     
+    trackDroppable.on 'click', '.track-cancel', (e) ->
+      cancel = $ this
+      upload = cancel.parent().data 'upload-id'
+      trackDroppable.fineUploader 'cancel', upload
+      e.preventDefault()
+    
     trackDroppable.find('.qq-upload-button > div > *').click (e) ->
-      $(this).parent().parent().click()
+      if $(this).parents('.tracks').length == 0
+        $(this).parent().parent().click()
