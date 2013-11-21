@@ -54,48 +54,26 @@
             placeholder: 'A description of your release' %>
     </div>
   </div>
-
-  <br>
-  <br>
-
-
-<div class="track-upload-list">
-  <div id="track_uploader" class="track-uploader" data-upload-url="<%= tracks_path %>">
-    <ul class="tracks">
-    </ul>
-    
-    <p class="upload-new-track">Add your tracks by <strong>drag &amp; drop</strong> or <a href="#track_uploader">click here</a> to select your tracks.</p>
-    <p class="uploading-track">Please wait a moment while <strong class="track-name">your track</strong> is being uploaded.</p>
-  </div>
-</div>
-
-<div class="track-rules">Supported file types: wav and mp3</div>
-
   
-
+  <br>
+  <br>
+  
+  <div class="track-upload-list">
+    <div id="track_uploader" class="track-uploader" data-upload-url="<%= tracks_path %>">
+      <ul class="tracks">
+      </ul>
+      
+      <p class="upload-new-track">Add your tracks by <strong>drag &amp; drop</strong> or <a href="#track_uploader">click here</a> to select your tracks.</p>
+      <p class="uploading-track">Please wait a moment while <strong class="track-name">your track</strong> is being uploaded.</p>
+    </div>
+  </div>
+  
+  <div class="track-rules">Supported file types: wav and mp3</div>
+  
   <ul id="track_list" class="release-tracks">
     <% @release.tracks.each do |track| %>
       <%= render 'tracks/fields', form: f, track: track %>
     <% end %>
-    
-   <!-- release track upload -->
-    <!--
-    <li class="release-track">
-      <div class="release-track-handle">
-      </div>
-      <div class="release-track-info">
-        <span class="filename">nobody_else_final.mp3</span>
-        <span class="loader">
-          <span class="loader-inner" style="width:40%"></span>
-        </span>
-      </div>
-      <div class="release-track-name">Karmon - Nobody Else Final</div>
-      <div class="release-track-delete">
-        <a href="#delete"></a>
-      </div>
-    </li>
-    -->
-    
   </ul>
   
   <div class="release-buttons">

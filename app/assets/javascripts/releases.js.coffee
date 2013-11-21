@@ -62,7 +62,7 @@ $(document).ready ->
       progress  = Math.round(uploadedBytes / totalBytes * 1000) / 10
       
       existing = trackList.find(".track[data-upload-id='#{id}']")
-      if existing
+      if existing[0]
         existing.find('.loader-inner').css width: "#{progress}%"
       else
         trackTemplate = """
