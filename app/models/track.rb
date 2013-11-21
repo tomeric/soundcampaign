@@ -1,11 +1,19 @@
 require 'taglib'
+require 'paperclip/processors/audio_processor'
 
 class Track < ActiveRecord::Base
   include Archivable
   
   ### PAPERCLIP:
   
-  has_attached_file :attachment
+  has_attached_file :attachment,
+    processors: %i[audio],
+    styles: {
+      streaming: { params: '--abr 96', format: 'mp3' },
+      download:  { params: '-V 1',     format: 'mp3' }
+    }
+  
+  process_in_background :attachment
   
   ### ASSOCIATIONS:
   
