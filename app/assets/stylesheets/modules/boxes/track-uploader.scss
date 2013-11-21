@@ -1,3 +1,47 @@
+.track-upload-list {
+  border: 1px solid #c0c0c0;
+  background: white;
+  @include border-radius(3px);
+  width: 100%;
+  @include box-sizing(border-box);
+  .tracks {
+    margin:0;
+    list-style: none;
+    .track {
+      height: ($baseLineHeight * 2.5);
+      border-top:1px solid #c0c0c0;
+      &:first-child {
+      border-top:none;
+      }
+      .track-handle {
+        float: left;
+        width: 50px;
+        height: 100%;
+        background: image-url("icons/move_light.png") 50% 50% no-repeat;
+      }
+      .loader {
+        display: block;
+        width: 150px;
+        float: right;
+        height: $baseLineHeight / 2;
+        @include border-radius(5px);
+        border: 1px solid #14adff;
+        position: relative; 
+        .loader-inner {
+          position: absolute;
+          float:left;
+          height: 10px;
+          @include border-radius(4px);
+          background-color: #66caff;
+        }
+      }
+    }
+  }
+}
+
+
+/*
+
 .track-uploader {
   background: #ebebeb;
   border: 1px dashed #c0c0c0;
@@ -212,3 +256,6 @@
     }
   }
 }
+
+
+*/
