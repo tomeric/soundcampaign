@@ -1,0 +1,25 @@
+namespace :delayed_job do
+  desc "Start your app's delayed_job worker(s)"
+  task :start do
+    invoke :'rvm:init'
+    on roles(:worker) do
+      within(release_path) { execute "delayed_job", "start", "-n #{fetch(:delayed_job_workers, 1)}" }
+    end 
+  end
+  
+  desc "Stop your app's delayed_job worker(s)"
+  task :stop do
+    invoke :'rvm:init'
+    on roles(:worker) do
+      within(release_path) { execute "delayed_job", "stop" }
+    end
+  end
+  
+  desc "Restart your app's delayed_job worker(s)" 
+  task :restart do
+    invoke :'rvm:init'
+    on roles(:worker) do
+      within(release_path) { execute "delayed_job", "restart", "-n #{fetch(:delayed_job_workers, 1)}" }
+    end
+  end
+end
