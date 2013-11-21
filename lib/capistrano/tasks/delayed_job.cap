@@ -3,7 +3,7 @@ namespace :delayed_job do
   task :start do
     invoke :'rvm:init'
     on roles(:worker) do
-      within(release_path) { execute "delayed_job", "start", "-n #{fetch(:delayed_job_workers, 1)}" }
+      within(release_path) { execute "script/delayed_job", "start", "-n #{fetch(:delayed_job_workers, 1)}" }
     end 
   end
   
@@ -11,7 +11,7 @@ namespace :delayed_job do
   task :stop do
     invoke :'rvm:init'
     on roles(:worker) do
-      within(release_path) { execute "delayed_job", "stop" }
+      within(release_path) { execute "script/delayed_job", "stop" }
     end
   end
   
@@ -19,7 +19,7 @@ namespace :delayed_job do
   task :restart do
     invoke :'rvm:init'
     on roles(:worker) do
-      within(release_path) { execute "delayed_job", "restart", "-n #{fetch(:delayed_job_workers, 1)}" }
+      within(release_path) { execute "script/delayed_job", "restart", "-n #{fetch(:delayed_job_workers, 1)}" }
     end
   end
 end
