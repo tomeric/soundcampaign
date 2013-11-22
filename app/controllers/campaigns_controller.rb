@@ -49,9 +49,7 @@ class CampaignsController < ApplicationController
     
     @receivers.each do |receiver|
       recipient = @campaign.recipients.where(email: receiver).first_or_create
-      
-      mail = CampaignMailer.preview_campaign(@campaign, recipient)
-      mail.deliver
+      DeliverCampaignJob.perform_later(@campaign, recipient, true)
     end
   end
   
