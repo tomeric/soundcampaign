@@ -21,7 +21,8 @@ class Release < ActiveRecord::Base
   
   has_one :campaign
   
-  has_many :tracks
+  has_many :tracks,
+    order: :position
   accepts_nested_attributes_for :tracks
   
   has_many :track_events,
@@ -55,6 +56,24 @@ class Release < ActiveRecord::Base
   
   def cover_changed?
     cover.dirty?
+  end
+  
+  def tracks=(new_tracks)
+    result = super new_tracks
+    reorder_tracks! Array.wrap(new_tracks).flatten.map(&:id)
+    result
+  end
+  
+  def track_ids=(new_track_ids)
+    result = super new_track_ids
+    reorder_tracks! Array.wrap(new_track_ids).flatten
+    result
+  end
+  
+  def reorder_tracks!(ordered_track_ids)
+    ordered_track_ids.each.with_index do |track_id, index|
+      Track.where(id: track_id).update_all position: index + 1
+    end
   end
   
   private
