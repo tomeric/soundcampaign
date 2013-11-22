@@ -1,5 +1,5 @@
 <%= fields_for 'release[tracks_attributes][]', track do |f| %>
-  <li class="release-track">
+  <li class="release-track" id="release_<%= dom_id(track) %>">
     <%= hidden_field_tag 'release[track_ids][]', track.id, id: "release_track_ids_#{track.id}" %>
     <%= f.hidden_field :id %>
     <div class="release-track-handle">
@@ -16,7 +16,7 @@
     </div>
     <div class="release-track-delete">
       <%= link_to 'Delete', track,
-            data:  { method: :destroy },
+            data:  { method: 'DELETE', remote: true },
             class: 'delete' %>
     </div>
   </li>

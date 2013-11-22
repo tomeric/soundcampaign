@@ -25,6 +25,24 @@ class TracksController < ApplicationController
     end
   end
   
+  def destroy
+    @track = current_organization.tracks.find_by id: params[:id]
+    
+    @track.destroy
+    @release = @track.release
+    
+    if @release.present?
+      @release.tracks.each.with_index do |track, index|
+        track.update_column :position, index + 1
+      end
+    end
+    
+    respond_to do |format|
+      format.js
+      format.html { redirect_to @release }
+    end
+  end
+  
   private
   
   def error_messages(object)
