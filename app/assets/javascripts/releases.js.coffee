@@ -1,4 +1,9 @@
 $(document).ready ->
+  $('.release-track .delete').click ->
+    link  = $ this
+    track = link.parents('.release-track')
+    track.fadeOut()
+  
   $('.track-uploader').each ->
     trackDroppable = $ this
     buttonText = trackDroppable.html()
