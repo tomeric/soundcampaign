@@ -6,6 +6,17 @@ class TrackEvent < ActiveRecord::Base
   
   belongs_to :recipient
   
+  ### SCOPES:
+  
+  scope :played, -> date = nil {
+    if date
+      where('track_events.action = ? and track_events.created_at >= ? and track_events.created_at < ?',
+            'play-track', date.beginning_of_day, (date + 1.day).beginning_of_day)
+    else
+      where(action: 'play-track')
+    end
+  }
+  
   ### CLASS METHODS:
   
   def self.number_of(type, per: 1.day)
