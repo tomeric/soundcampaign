@@ -3,13 +3,22 @@
     <%= link_to 'Sound Campaign', root_url, id: 'logo', class: 'logo' %>
     
     <% if user_signed_in? %>
-      <nav class="account-nav logged-in">
-        <%= link_to edit_user_registration_path, class: 'user' do %>
+      <nav class="account-nav logged-in dropdown">
+        <%= link_to edit_user_registration_path, :data => {:toggle=>"dropdown"}, class: 'user dropdown-toggle' do %>
+
           <%= gravatar_tag current_user.email %>
           <span><%= current_user.name %></span>
         <% end%>
-        <!-- dropdown menu -->
+        <ul class="dropdown-menu" role="menu">
+          <div class="dropdown-arrow"></div>
+          <li class="dd-settings"><a href="#">Account settings</a></li>
+          <li class="dd-payment"><a href="#">Payment details</a></li>
+          <li class="dd-logout"><a href="#">Sign out</a></li>
+        </ul>
       </nav> 
+        
+        <!-- dropdown menu -->
+      
     <% else %>
       <nav class="account-nav ">
         <%= link_to content_tag(:span, 'Log in'), new_user_session_path, class: 'btn btn-black login-btn' %>
