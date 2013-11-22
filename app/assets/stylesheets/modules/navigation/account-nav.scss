@@ -24,7 +24,16 @@
     @include box-sizing(border-box);
   }
 
-
+  a span {
+    background-repeat: no-repeat;
+    background-position: right 50%;
+    padding-right: 15px;
+    @include background-image(image-url("icons/dropdown_arrow.png"));
+    @include media-retina {
+      @include background-image(image-url("icons/dropdown_arrow@2x.png"));
+      background-size: 8px 6px;
+    }
+  }
   
   img {
     height: $baseLineHeight * 1.5;
@@ -84,11 +93,12 @@
     };
   }
   .dropdown-menu {
+    background: black;
     border: 1px solid #090909;
     /*@include box-shadow(0 0 3px 0 rgba(0, 0, 0, 0.65));*/
     @include border-radius(3px); 
     padding: 0;
-    right: 0;
+    right: -8px;
     left: auto;
     width: 228px;
     @include box-shadow(border-box);
@@ -97,41 +107,48 @@
     @include animation-timing-function(ease);
 
     li {
-      border-top: 1px solid #000000;
-      background: #242424;
-      &.dd-settings {
-        border-top: none;
-        background: image-url("icons/cross_gray_uploader.png") 50% 50% no-repeat;
-        a {
+      a {
+        color: #ffffff;
+        font-weight: 600;
+        font-size: 13px;
+        border-top: 1px solid #000000;
+        height: ($baseLineHeight * 1.6);
+        line-height: ($baseLineHeight * 1.6);
+        background-color: #242424;
+        text-indent: 24px;
+        background-position: 15px 50%;
+        background-repeat: no-repeat;
+        &:hover {
+          background-color:#3f3f3f;
+        };
+        &.dd-settings {
+          border-top: none;
           @include border-top-radius(2px);
-          &:hover {
-              @include border-top-radius(2px);
-            }
+          @include background-image(image-url("icons/settings.png"));
+          @include media-retina {
+            @include background-image(image-url("icons/settings@2x.png"));
+            background-size: 18px 18px;
+          }
         }
-
-      }
-      &.dd-payment {
-
-      }
-      &.dd-logout {
-        @include border-bottom-radius(2px);
-        a {
+        &.dd-payment {
+          @include background-image(image-url("icons/payment.png"));
+          @include media-retina {
+            @include background-image(image-url("icons/payment@2x.png"));
+            background-size: 18px 18px;
+          }
+        }
+        &.dd-logout {
+          @include border-bottom-radius(2px);
+          @include background-image(image-url("icons/logout.png"));
+          @include media-retina {
+            @include background-image(image-url("icons/logout@2x.png"));
+            background-size: 18px 18px;
+          }
           &:hover {
-            @include border-bottom-radius(2px);
-            background:#cc3435;
+            background-color:#cc3435;
           };
         }
       }
-    }
-    a {
-      color: #ffffff;
-      font-weight: 600;
-      font-size: 13px;
-      height: ($baseLineHeight * 1.6);
-      line-height: ($baseLineHeight * 1.6);
-      &:hover {
-        background:#3f3f3f;
-      };
     }
   }
 }
