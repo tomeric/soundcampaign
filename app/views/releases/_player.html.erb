@@ -54,7 +54,7 @@ if first_track.present?
         
         <%= hidden_field_tag :secret, params[:secret] if params[:secret].present? %>
         
-        <%= f.submit 'Submit feedback', class: 'btn btn-primary' %>
+        <%= f.submit (release.persisted? ? 'Update feedback' : 'Submit feedback'), class: 'btn btn-primary' %>
       </div>
     </div>
   <% end %>
