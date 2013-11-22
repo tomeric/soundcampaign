@@ -2,17 +2,21 @@
   <div class="content">
     <%= link_to 'Sound Campaign', root_url, id: 'logo', class: 'logo' %>
     
-    <nav class="account-nav">
-      <% if user_signed_in? %>
+    <% if user_signed_in? %>
+      <nav class="account-nav logged-in">
         <%= link_to edit_user_registration_path, class: 'user' do %>
           <%= gravatar_tag current_user.email %>
           <span><%= current_user.name %></span>
         <% end%>
-        <!-- dropdown menu --> 
-      <% else %>
+        <!-- dropdown menu -->
+      </nav> 
+    <% else %>
+      <nav class="account-nav ">
         <%= link_to content_tag(:span, 'Log in'), new_user_session_path, class: 'btn btn-black login-btn' %>
-      <% end %>
-    </nav>
+      </nav>
+    <% end %>
+
+
     
     <!--
     <nav class="section-nav">

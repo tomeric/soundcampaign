@@ -2,8 +2,11 @@
   float: right;
   height: $mainHeaderHeight;
   position: relative;
-  /*border-left: 1px solid rgba(0,54,83, 0.6);
-  border-right: 1px solid rgba(0,54,83, 0.6);*/
+  &.logged-in {
+    border-left: 1px solid rgba(0,54,83, 0.6);
+    border-right: 1px solid rgba(0,54,83, 0.6);
+    box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.3), 1px 0 0 rgba(255, 255, 255, 0.3);
+  }
 
   .page-public-release & {
     border-left: 1px solid rgba(45,45,45, 0.9);
