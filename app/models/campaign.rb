@@ -8,6 +8,9 @@ class Campaign < ActiveRecord::Base
   
   has_many :email_logs
   
+  has_many :track_events,
+    through: :release
+  
   ### VALIDATIONS:
   
   validates :name,
