@@ -124,6 +124,10 @@ $ ->
       track = $ this
       SC.trackEvent 'download-track', track: track?.attr('data-track-id')
   
+  $('.player-track .download').click ->
+    track = $(this).parent()
+    SC.trackEvent 'download-track', track: track?.attr('data-track-id')
+  
   if $.fn.raty?
     $('.star').parent().find('select.rating').hide()
     $('.star').raty
