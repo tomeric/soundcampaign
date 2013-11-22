@@ -59,7 +59,12 @@
   <br>
   
   <div class="track-upload-list">
-    <div id="track_uploader" class="track-uploader" data-upload-url="<%= tracks_path %>">
+    <div id="track_uploader"
+         class="track-uploader"
+         <% if @release.persisted? %>
+         data-release-id="<%= @release.id%>"
+         <% end %>
+         data-upload-url="<%= tracks_path %>">
       <ul class="tracks">
       </ul>
       

@@ -6,6 +6,10 @@ class TracksController < ApplicationController
     @track = current_organization.tracks.new
     @track.attachment = uploaded_attachment
     
+    if params[:release_id].present?
+      @track.release = current_organization.releases.find_by id: params[:release_id]
+    end
+    
     if @track.save
       template = render_to_string(partial: 'tracks/fields', locals: { track: @track })
       result   = @track.as_json

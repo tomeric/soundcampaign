@@ -12,8 +12,9 @@ $(document).ready ->
         allowedExtensions: ['mp3', 'wav']
       request:
         customHeaders: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') }
-        endpoint: trackDroppable.attr('data-upload-url')
-        inputName: 'attachment'
+        endpoint:      trackDroppable.attr('data-upload-url')
+        inputName:     'attachment'
+        params:        { release_id: trackDroppable.attr('data-release-id') }
       multiple: true
     ).on('error', (event, id, name, reason) ->
       console?.log ["Error", event, id, name, reason]
