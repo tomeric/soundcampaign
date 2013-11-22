@@ -21,8 +21,9 @@ class Release < ActiveRecord::Base
   
   has_one :campaign
   
-  has_many :tracks,
-    order: :position
+  has_many :tracks, -> {
+    order :position
+  }
   accepts_nested_attributes_for :tracks
   
   has_many :track_events,
