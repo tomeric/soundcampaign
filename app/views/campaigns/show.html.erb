@@ -21,7 +21,9 @@
           </div>
           <div class="email-template">
             <div class="email-top">
-              <%= image_tag @release.cover.url(:thumbnail), alt: "Cover for #{@release.title}" %>
+              <% if @release.cover %>
+                <%= image_tag @release.cover.url(:thumbnail), alt: "Cover for #{@release.title}" %>
+              <% end %>
               <span class="email-title"><%= @release.title %></span>
               <span class="email-sub-title"><%= @label.name %> <%= @release.catid %>· Release date : <%= @release.date.strftime('%D/%M/%y') %></span>
               <ul>

@@ -1,15 +1,10 @@
 class Artist < ActiveRecord::Base
   include Archivable
   
-  ### PAPERCLIP:
-  
-  has_attached_file :cover,
-    styles: {
-      thumbnail:    ['230x460', :jpg],
-      thumbnail_2x: ['460x460', :jpg]
-    }
-  
   ### ASSOCIATIONS:
+  
+  has_one :cover,
+    as: :coverable
   
   belongs_to :organization
   

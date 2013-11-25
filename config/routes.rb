@@ -27,6 +27,9 @@ SoundCampaign::Application.routes.draw do
   resources :tracks,
     only: %i[create destroy]
   
+  resources :covers,
+    only: %i[create]
+  
   resources :track_events,
     only: %i[create index]
   

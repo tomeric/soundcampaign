@@ -1,7 +1,9 @@
 <aside id="sidebar" class="main-sidebar">
-  <div class="release-cover">
-    <%= image_tag(release.cover.url, alt: "#{release.title} cover") %>
-  </div>
+  <% if release.cover %>
+    <div class="release-cover">
+      <%= image_tag(release.cover.url, alt: "#{release.title} cover") %>
+    </div>
+  <% end %>
   <div class="release-info">
     <h3>Label Information</h3>
     <ul>

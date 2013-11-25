@@ -3,17 +3,10 @@ require 'poster_generator'
 class Release < ActiveRecord::Base
   include Archivable
   
-  ### PAPERCLIP:
-  
-  has_attached_file :poster
-  
-  has_attached_file :cover,
-    styles: {
-      thumbnail:    ['230x460', :jpg],
-      thumbnail_2x: ['460x460', :jpg]
-    }
-  
   ### ASSOCIATIONS:
+  
+  has_one :cover,
+    as: :coverable
   
   belongs_to :organization
   
@@ -42,22 +35,7 @@ class Release < ActiveRecord::Base
   validates :title,
     presence: true
   
-  ### CALLBACKS:
-  
-  before_save :generate_poster, if: :cover_changed?
-  
   ### INSTANCE METHODS:
-  
-  def generate_poster(options = {})
-    if cover?
-      generator   = PosterGenerator.new(cover_io, options)
-      self.poster = generator.create
-    end
-  end
-  
-  def cover_changed?
-    cover.dirty?
-  end
   
   def tracks=(new_tracks)
     result = super new_tracks
@@ -75,13 +53,6 @@ class Release < ActiveRecord::Base
     ordered_track_ids.each.with_index do |track_id, index|
       Track.where(id: track_id).update_all position: index + 1
     end
-  end
-  
-  private
-  
-  def cover_io
-    file = cover.queued_for_write[:original]
-    file || Paperclip.io_adapters.for(cover)
   end
   
 end

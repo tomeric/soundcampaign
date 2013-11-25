@@ -1,16 +1,19 @@
 <%= form_for @label do |f| %>
   <div class="music-label cover-box edit">
     <div class="top">
-      <div class="cover-drop">
-        <label for="label_cover" class="cover-drop-label">
-          <%= f.file_field :cover %>
+      <div class="cover-drop"
+         <% if @label.persisted? %>
+           data-label-id="<%= @label.id %>"
+         <% end %>
+           data-upload-url="<%= covers_path %>">
+        <div class="cover-drop-label">
           <p class="cover-info">
             Drag &amp; drop image here
           </p>
           <p class="cover-info">
             230px by 230px works best
           </p>
-        </label>
+        </div>
       </div>
       <header class="header">
         <span class="title">

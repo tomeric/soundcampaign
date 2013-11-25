@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131125100928) do
+ActiveRecord::Schema.define(version: 20131125132809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "artists", force: true do |t|
-    t.string   "name",               null: false
+    t.string   "name",            null: false
     t.text     "bio"
     t.string   "soundcloud_url"
     t.string   "facebook_url"
@@ -26,13 +26,9 @@ ActiveRecord::Schema.define(version: 20131125100928) do
     t.string   "website_url"
     t.string   "email"
     t.string   "country"
-    t.string   "cover_file_name"
-    t.string   "cover_content_type"
-    t.integer  "cover_file_size"
-    t.datetime "cover_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "organization_id",    null: false
+    t.integer  "organization_id", null: false
     t.datetime "deleted_at"
   end
 
@@ -70,6 +66,25 @@ ActiveRecord::Schema.define(version: 20131125100928) do
 
   add_index "contacts", ["contact_list_id"], name: "index_contacts_on_contact_list_id", using: :btree
   add_index "contacts", ["email", "contact_list_id", "deleted_at"], name: "contact_list_contact", unique: true, using: :btree
+
+  create_table "covers", force: true do |t|
+    t.integer  "organization_id"
+    t.integer  "coverable_id"
+    t.string   "coverable_type"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+    t.string   "poster_file_name"
+    t.string   "poster_content_type"
+    t.integer  "poster_file_size"
+    t.datetime "poster_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "covers", ["organization_id"], name: "index_covers_on_organization_id", using: :btree
+  add_index "covers", ["coverable_id", "coverable_type"], name: "index_covers_on_coverable_id_and_coverable_type", using: :btree
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
@@ -154,10 +169,6 @@ ActiveRecord::Schema.define(version: 20131125100928) do
     t.string   "contact_phone"
     t.string   "contact_zipcode_city"
     t.string   "contact_url"
-    t.string   "cover_file_name"
-    t.string   "cover_content_type"
-    t.integer  "cover_file_size"
-    t.datetime "cover_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "organization_id",      null: false
@@ -220,10 +231,6 @@ ActiveRecord::Schema.define(version: 20131125100928) do
     t.string   "style"
     t.date     "date"
     t.text     "description"
-    t.string   "cover_file_name"
-    t.string   "cover_content_type"
-    t.integer  "cover_file_size"
-    t.datetime "cover_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "organization_id",     null: false
