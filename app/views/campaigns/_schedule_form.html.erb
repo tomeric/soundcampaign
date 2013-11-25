@@ -1,40 +1,59 @@
-<!--
-<div class="release-content-group">
-  <span class="release-content-title">Schedule</span>
-  
-  <div class="release-list">
-    <div class="release-list-select">
-      <div class="release-list-select-icon"></div>
-      <div class="release-list-select-date">
-        <input type="text" value="Select date" class="datepicker_recurring_start" />
-      </div>
-      <div class="release-list-select-time">
-        <input type="text" value="12:30" />
-      </div>
-      <div class="release-list-select-list">
-        <select class="select selectpicker" title='Select contactlist'>
-          <option></option>
-          <option>Blue</option>
-          <option>Red</option>
-          <option>Green</option>
-          <option>Yellow</option>
-          <option>Brown</option>
-        </select>
-      </div>
-      <div class="release-list-select-del"></div>
-    </div>
-  </div>
-
-   <div class="release-list-add">
-     Click here to add a date and contactlist
-   </div>
-   
-   </!--
-      <div class="release-end">
+<%= form_tag deliver_release_campaign_url(release), method: 'post' do %>
+  <div class="release-content-group">
+    <span class="release-content-title">Select contact list(s)</span>
+    
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    
+    <% if current_organization.contact_lists.present? %>
+      <ul class="contact-lists">
+        <% current_organization.contact_lists.each do |list| %>
+          <li>
+            <%= check_box_tag 'contact_lists[]', list.id, false, id: "contact_list_#{list.id}" %>
+            <label class="contact-list-name" for="contact_list_<%= list.id %>"><%= list.name %></label>
+            (<span class="contact-list-count"><%= list.contacts.count %></span>)
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p class="empty"></p>
+    <% end %>
+    
+    <!--
+    <div class="release-list">
+      <div class="release-list-select">
         <div class="release-list-select-icon"></div>
-        <div class="release-list-select-date"></div>
-        <div class="release-list-select-text">The end date for your campaign</div>
+        <div class="release-list-select-date">
+          <input type="text" value="Select date" class="datepicker_recurring_start" />
+        </div>
+        <div class="release-list-select-time">
+          <input type="text" value="12:30" />
+        </div>
+        <div class="release-list-select-list">
+          <select class="select selectpicker" title='Select contactlist'>
+            <option></option>
+            <option>Blue</option>
+            <option>Red</option>
+            <option>Green</option>
+            <option>Yellow</option>
+            <option>Brown</option>
+          </select>
+        </div>
+        <div class="release-list-select-del"></div>
       </div>
-   --/>
-</div>
--->
+    </div>
+    
+    <div class="release-list-add">
+      Click here to add a date and contactlist
+    </div>
+    
+    <div class="release-end">
+      <div class="release-list-select-icon"></div>
+      <div class="release-list-select-date"></div>
+      <div class="release-list-select-text">The end date for your campaign</div>
+    </div>
+    -->
+  </div>
+  <div class="release-footer">
+    <%= submit_tag 'Deliver campaign', class: 'btn btn-large' %>
+  </div>
+<% end %>

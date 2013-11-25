@@ -45,11 +45,32 @@ class CampaignsController < ApplicationController
   
   def preview
     @campaign  = @release.campaign
-    @receivers = (params[:receivers] || "").split(',').map(&:strip)
     
-    @receivers.each do |receiver|
-      recipient = @campaign.recipients.where(email: receiver).first_or_create
-      DeliverCampaignJob.perform_later(@campaign, recipient, true)
+    if @receivers.present?
+      @receivers = (params[:receivers] || "").split(',').map(&:strip)
+      
+      @receivers.each do |receiver|
+        recipient = @campaign.recipients.where(email: receiver).first_or_create
+        DeliverCampaignJob.perform_later(@campaign, recipient, true)
+      end
+      
+      redirect_to [:edit, @release, :campaign]
+    else
+      render :preview
+    end
+  end
+  
+  def deliver
+    @campaign = @release.campaign
+    
+    contact_list_ids = Array.wrap(params[:contact_lists]).flatten.compact
+    @contact_lists   = current_organization.contact_lists.where(id: contact_list_ids)
+    
+    if @contact_lists.present?
+      @campaign.send_to @contact_lists
+      redirect_to [@release, :metrics]
+    else
+      render :deliver
     end
   end
   

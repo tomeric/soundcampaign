@@ -17,6 +17,7 @@ SoundCampaign::Application.routes.draw do
     resource  :metrics
     resource  :campaign do
       post :preview
+      post :deliver
     end
   end
   
