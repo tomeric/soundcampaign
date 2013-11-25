@@ -63,6 +63,10 @@ class ApplicationController < ActionController::Base
     unauthorized unless user_signed_in?
   end
   
+  def require_release_recipient
+    unauthorized unless current_recipient.present?
+  end
+  
   def require_release_owner_or_recipient
     unauthorized unless current_recipient.present? || (
                           user_signed_in? &&

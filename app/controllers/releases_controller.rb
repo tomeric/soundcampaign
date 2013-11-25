@@ -20,10 +20,13 @@ class ReleasesController < ApplicationController
   end
   
   def show
-    @label    = @release.label
-    @tracks   = @release.tracks
-    @feedback = @release.feedbacks.by(current_user || current_recipient)
-                        .first_or_initialize
+    @label  = @release.label
+    @tracks = @release.tracks
+    
+    if current_recipient
+      @feedback = @release.feedbacks.by(current_recipient)
+                          .first_or_initialize
+    end
     
     render layout: 'release'
   end

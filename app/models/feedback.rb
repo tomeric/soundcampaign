@@ -4,8 +4,6 @@ class Feedback < ActiveRecord::Base
   
   belongs_to :release
   
-  belongs_to :user
-  
   belongs_to :recipient
   
   has_many :ratings,
@@ -19,20 +17,12 @@ class Feedback < ActiveRecord::Base
   validates :body,
     presence: true
   
-  validate :user_or_recipient_present
+  validate :recipient_present
   
   ### SCOPES:
   
-  scope :by, -> user_or_recipient {
-    if user_or_recipient.is_a?(User)
-      user = user_or_recipient
-      where(user_id: user.id)
-    elsif user_or_recipient.is_a?(Recipient)
-      recipient = user_or_recipient
-      where(recipient_id: recipient.id)
-    else
-      none
-    end
+  scope :by, -> recipient {
+    where(recipient_id: recipient.id)
   }
   
   ### INSTANCE METHODS:
@@ -45,13 +35,9 @@ class Feedback < ActiveRecord::Base
   
   private
   
-  def user_or_recipient_present
-    required_attributes = new_record? ? %i[user recipient]
-                                      : %i[user_id recipient_id]
-    
-    unless required_attributes.map{ |attr| send(attr) }.any?(&:present?)
-      errors.add :recipient, :blank
-    end
+  def recipient_present
+    required = new_record? ? :recipient : :recipient_id
+    errors.add :recipient, :blank unless send(required).present?
   end
   
 end

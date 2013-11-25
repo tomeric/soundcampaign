@@ -4,8 +4,6 @@ class Recipient < ActiveRecord::Base
   
   belongs_to :campaign
   
-  belongs_to :user
-  
   belongs_to :contact
   
   has_many :email_logs

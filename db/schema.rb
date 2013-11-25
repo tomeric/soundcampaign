@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131121105929) do
+ActiveRecord::Schema.define(version: 20131125100928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -111,7 +111,6 @@ ActiveRecord::Schema.define(version: 20131121105929) do
 
   create_table "feedbacks", force: true do |t|
     t.integer  "release_id"
-    t.integer  "user_id"
     t.integer  "recipient_id"
     t.text     "body"
     t.datetime "created_at"
@@ -120,7 +119,6 @@ ActiveRecord::Schema.define(version: 20131121105929) do
 
   add_index "feedbacks", ["recipient_id"], name: "index_feedbacks_on_recipient_id", using: :btree
   add_index "feedbacks", ["release_id"], name: "index_feedbacks_on_release_id", using: :btree
-  add_index "feedbacks", ["user_id"], name: "index_feedbacks_on_user_id", using: :btree
 
   create_table "import_rows", force: true do |t|
     t.integer  "import_id"
@@ -194,7 +192,6 @@ ActiveRecord::Schema.define(version: 20131121105929) do
 
   create_table "recipients", force: true do |t|
     t.integer  "campaign_id"
-    t.integer  "user_id"
     t.integer  "contact_id"
     t.string   "email",       null: false
     t.string   "secret",      null: false
@@ -204,7 +201,6 @@ ActiveRecord::Schema.define(version: 20131121105929) do
 
   add_index "recipients", ["campaign_id"], name: "index_recipients_on_campaign_id", using: :btree
   add_index "recipients", ["contact_id"], name: "index_recipients_on_contact_id", using: :btree
-  add_index "recipients", ["user_id"], name: "index_recipients_on_user_id", using: :btree
 
   create_table "release_artists", force: true do |t|
     t.integer  "release_id", null: false

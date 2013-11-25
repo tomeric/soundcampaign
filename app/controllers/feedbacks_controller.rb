@@ -2,10 +2,10 @@ class FeedbacksController < ApplicationController
   
   before_action :load_release
   
-  before_action :load_feedback,
+  before_action :require_release_recipient,
     only: %i[create update]
-  
-  before_action :require_release_owner_or_recipient,
+    
+  before_action :load_feedback,
     only: %i[create update]
   
   before_action :require_feedback_author,
@@ -32,8 +32,7 @@ class FeedbacksController < ApplicationController
   end
   
   def feedback_author?
-    (current_user      && @feedback.user      == current_user     ) ||
-    (current_recipient && @feedback.recipient == current_recipient)
+    current_recipient && @feedback.recipient == current_recipient
   end
   
   def feedback_params
@@ -48,8 +47,7 @@ class FeedbacksController < ApplicationController
   def load_feedback
     @feedback = case action_name
     when 'create'
-      @release.feedbacks.by(current_user || current_recipient)
-                        .first_or_initialize
+      @release.feedbacks.by(current_recipient).first_or_initialize
     when 'update'
       @release.feedbacks.find(params[:id])
     end
