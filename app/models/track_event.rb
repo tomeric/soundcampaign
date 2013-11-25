@@ -63,7 +63,7 @@ class TrackEvent < ActiveRecord::Base
       where("action = ?", action)
       .select("FLOOR((EXTRACT(EPOCH FROM localtimestamp) - EXTRACT(EPOCH FROM track_events.created_at)) / #{unit}) AS reverse_index, COUNT(*) AS count")
       .group("reverse_index")
-      .order("reverse_index DESC")
+      .reorder("reverse_index DESC")
       .to_sql
     end
   end
