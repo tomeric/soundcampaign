@@ -22,6 +22,8 @@ class Organization < ActiveRecord::Base
   
   has_many :tracks
   
+  has_many :covers
+  
   ### VALIDATIONS:
   
   validates :name,
