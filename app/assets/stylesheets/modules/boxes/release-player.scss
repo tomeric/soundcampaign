@@ -191,6 +191,11 @@
     .star {
       float:right;
       transition: all 0.5s ease;
+      
+      img {
+        height: 16px;
+        width: 16px;
+      }
     }
     
     .download {

@@ -129,12 +129,14 @@ $ ->
     SC.trackEvent 'download-track', track: track?.attr('data-track-id')
   
   if $.fn.raty?
+    retina = window?.devicePixelRatio > 1
+    
     $('.star').parent().find('select.rating').hide()
     $('.star').raty
-      starHalf: '<%= image_path "icons/star-half.png" %>'
-      starOff:  '<%= image_path "icons/star-off.png" %>'
-      starOn:   '<%= image_path "icons/star-on.png"  %>',
-      half:  true,
+      starHalf: if retina then '<%= image_path "icons/star-half@2x.png" %>' else '<%= image_path "icons/star-half.png" %>'
+      starOff:  if retina then '<%= image_path "icons/star-off@2x.png" %>'  else '<%= image_path "icons/star-off@2x.png" %>'
+      starOn:   if retina then '<%= image_path "icons/star-on@2x.png"  %>'  else '<%= image_path "icons/star-on@2x.png"  %>'
+      half:     true
       click: (stars, event) ->
         track = $(this).parent()
         
