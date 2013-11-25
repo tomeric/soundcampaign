@@ -28,4 +28,16 @@ class Campaign < ActiveRecord::Base
     sent_at.present?
   end
   
+  def send_to(*collection)
+    collection = collection.flatten.compact
+    return false unless collection.present?
+    
+    collection.each do |list|
+      SendCampaignJob.perform_later(self, list)
+    end
+    
+    self.sent_at = Time.now
+    save!
+  end
+  
 end
