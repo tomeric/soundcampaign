@@ -22,7 +22,11 @@ class Track < ActiveRecord::Base
   belongs_to :release
   
   has_many :events,
-    class_name: 'TrackEvent'
+    class_name: 'TrackEvent',
+    dependent:  :destroy
+  
+  has_many :ratings,
+    dependent: :destroy
   
   ### VALIDATIONS:
   
