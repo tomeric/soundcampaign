@@ -49,6 +49,7 @@
     .content {
       height: $baseLineHeight * 21; // NOT OPTIMAL
       border-left: 1px solid #e7e7e7;
+      border: 10px solid red;
     }
   }
 }

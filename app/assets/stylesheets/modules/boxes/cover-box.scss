@@ -132,7 +132,7 @@
   .content {
     padding: ($baseLineHeight / 2 - 1) ($gridColumnWidth / 2);
     font-size: 13px;
-    overflow: auto;
+    overflow-x: hidden; 
     position: relative;
   }
   
