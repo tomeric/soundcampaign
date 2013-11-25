@@ -1,6 +1,7 @@
 <% if form && feedback %>
+  <%  rating = feedback.rating_for(track) %>
   <%= form.fields_for :ratings, rating do |f| %>
-    <%= render 'track_contents', track: track, position: position, form: f, feedback: feedback %>
+    <%= render 'track_contents', track: track, position: position, form: f, feedback: feedback, rating: rating %>
   <% end %>
 <% else %>
   <%= render 'track_contents', track: track, position: position, form: nil, feedback: nil %>
