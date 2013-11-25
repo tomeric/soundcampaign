@@ -80,6 +80,9 @@
 			@include animation-timing-function(ease);
   		@include animation-iteration-count(infinite);
   		pointer-events: none;
+  		.no-cssanimations &{
+  			@include animation(none);
+  		}
 		}	
 	}
 }
