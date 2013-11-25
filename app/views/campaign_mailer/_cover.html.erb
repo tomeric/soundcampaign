@@ -2,7 +2,9 @@
   <tbody>
     <tr>
       <td valign="top" style="border-collapse: collapse;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;">
+        <% if release.cover %>
         <img src="<%= release.cover.url %>" alt="" border="0" style="margin: 0;padding: 0;max-width: 180px;border: 0;height: auto;line-height: 100%;outline: none;text-decoration: none;display: inline;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom-right-radius:4px;border-bottom-left-radius:4px;">
+        <% end %>
       </td>
     </tr>
   </tbody>
