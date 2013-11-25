@@ -5,26 +5,21 @@
   
   <%= render 'steps', step: 3 %>
   
-  <div class="release-content">
-    <div class="form-horizontal">
-      <div class="release-content-group">
-        <span class="release-content-title">Here is the overview of your campaign</span>
-        <p>
-          Check if everything is correct. If not you can return to a previous step and make changes.
-          <!--
-          <label class="right">
-            <input class="send-campaign-directly" type="checkbox" name="optionsRadios" id="optionsRadios1" value="option1" checked> Send campaign directly
-          </label>
-          -->
-        </p>
-      </div>
-      
-      <%= render 'summary',       release: @release, campaign: @campaign %>
-      <%= render 'preview_form',  release: @release, campaign: @campaign %>
-      <%= render 'schedule_form', release: @release, campaign: @campaign %>
+  <div class="release-content form-horizontal">
+    <div class="release-content-group">
+      <span class="release-content-title">Here is the overview of your campaign</span>
+      <p>
+        Check if everything is correct. If not you can return to a previous step and make changes.
+        <!--
+        <label class="right">
+          <input class="send-campaign-directly" type="checkbox" name="optionsRadios" id="optionsRadios1" value="option1" checked> Send campaign directly
+        </label>
+        -->
+      </p>
     </div>
-  </div>
-  <div class="release-footer">
-    <button class="btn btn-large" type="button" disabled>Finish</button>
+    
+    <%= render 'summary',       release: @release, campaign: @campaign %>
+    <%= render 'preview_form',  release: @release, campaign: @campaign %>
+    <%= render 'schedule_form', release: @release, campaign: @campaign %>
   </div>
 </div>

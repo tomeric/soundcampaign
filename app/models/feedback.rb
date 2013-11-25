@@ -8,7 +8,9 @@ class Feedback < ActiveRecord::Base
   
   belongs_to :recipient
   
-  has_many :ratings
+  has_many :ratings,
+    dependent: :destroy
+  
   accepts_nested_attributes_for :ratings,
     allow_destroy: true
   

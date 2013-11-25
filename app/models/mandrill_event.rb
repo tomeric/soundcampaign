@@ -38,12 +38,16 @@ class MandrillEvent < ActiveRecord::Base
   end
   
   def handle_click(payload)
+    handle_open(payload)
+    
     email_log.clicked_at    ||= payload.timestamp || created_at
     email_log.clicked_links = (email_log.clicked_links + payload.all_clicked_links).uniq
     email_log.save!
   end
   
   def handle_spam(payload)
+    handle_open(payload)
+    
     email_log.marked_as_spam = true
     email_log.save!
   end

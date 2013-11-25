@@ -13,7 +13,8 @@ class Import < ActiveRecord::Base
   
   has_many :rows,
     -> { order :position },
-    class_name: Import::Row
+    class_name: Import::Row,
+    dependent:  :destroy
   
   ### VALIDATIONS:
   

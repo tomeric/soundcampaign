@@ -13,7 +13,8 @@ class Label < ActiveRecord::Base
   
   belongs_to :organization
   
-  has_many :releases
+  has_many :releases,
+    dependent: :destroy
   
   ### VALIDATIONS:
   

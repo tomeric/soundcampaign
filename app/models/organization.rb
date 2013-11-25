@@ -5,16 +5,20 @@ class Organization < ActiveRecord::Base
   has_many :members,
     class_name: User
   
-  has_many :artists
+  has_many :artists,
+    dependent: :destroy
   
-  has_many :contact_lists
+  has_many :contact_lists,
+    dependent: :destroy
   
   has_many :contacts,
     through: :contact_lists
   
-  has_many :labels
+  has_many :labels,
+    dependent: :destroy
   
-  has_many :releases
+  has_many :releases,
+    dependent: :destroy
   
   has_many :tracks
   
