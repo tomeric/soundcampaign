@@ -12,6 +12,8 @@ class Cover < ActiveRecord::Base
   
   ### ASSOCIATIONS:
   
+  belongs_to :organization
+  
   belongs_to :coverable,
     polymorphic: true
   
@@ -20,6 +22,18 @@ class Cover < ActiveRecord::Base
   after_save :generate_poster_later, if: :attachment_changed?
   
   ### INSTANCE METHODS:
+  
+  def as_json(options = {})
+    super.delete_if do |key, value|
+      key =~ %r{^(attachment|poster|coverable)_}
+    end.merge(
+      attachment:    url(:thumbnail),
+      attachment_2x: url(:thumbnail_2x),
+      poster:        poster_url
+    ).merge(
+      "#{coverable_type.underscore.to_sym}_id" => coverable_id
+    )
+  end
   
   def url(style = :original)
     attachment.url(style)

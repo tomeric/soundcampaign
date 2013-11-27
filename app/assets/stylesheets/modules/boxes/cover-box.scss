@@ -51,32 +51,86 @@
   }
   
   .cover-drop {
-    background: image-url('icons/paperclip.png') 50% 36% no-repeat #2c2c2c;
+    background: #2c2c2c;
     @include box-shadow(inset 0px 0px 3px 2px rgba(0,0,0, 0.3));
     
-    input[type="file"] {
-      display: block;
-      position: absolute;
-      left: 0;
-      right: 0;
-      width: $cover-box-cover-dimensions;
-      height: $cover-box-cover-dimensions;
-      opacity: 0.1;
-      border: 0;
-      margin: 0;
-      padding: 0;
-      z-index: 10;
+    .qq-uploader {
+      position: relative;
+    
+      .qq-upload-drop-area {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 11;
+      }
+    
+      .qq-upload-drop-area-active {
+        background: lighten(#ebebeb, 2.5%);
+      }
+    
+      .qq-drop-processing, .qq-upload-list {
+        display: none;
+      }
+    
+      input[type=file] {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    
+    &.uploading, &.upload-started {
+      .cover-drop-label {
+        display: none;
+      }
     }
   }
   
   .cover-drop-label {
+    background: rgba(#2c2c2c, 0.4) image-url('icons/paperclip.png') 50% 36% no-repeat;
     display: block;
     position: absolute;
     left: 0;
     right: 0;
+    top: 0;
+    bottom: 0;
     width: $cover-box-cover-dimensions;
     height: $cover-box-cover-dimensions;
-    z-index: 9;
+    margin: 0;
+    z-index: 10;
+    text-shadow: 1px 1px black;
+  }
+  
+  .cover-preview {
+    display: block;
+    width: $cover-box-cover-dimensions;
+    height: $cover-box-cover-dimensions;
+    
+    .filename {
+      color: white;
+      text-align: center;
+      display: block;
+      margin-top: $baseLineHeight * 3.5;
+    }
+    
+    .loader {
+      display: block;
+      width: 175px;
+      margin: $baseLineHeight auto;
+      height: $baseLineHeight / 2;
+      @include border-radius(5px);
+      border: 1px solid white;
+      position: relative;
+      
+      .loader-inner {
+        position: absolute;
+        float:left;
+        height: 10px;
+        @include border-radius(4px);
+        background-color: white;
+      }
+    }
   }
   
   .cover-info {

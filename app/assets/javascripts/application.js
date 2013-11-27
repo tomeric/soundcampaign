@@ -9,6 +9,7 @@
 //= require jquery.autosize
 //= require fine-uploader/jquery.fineuploader
 //= require d3
+//= require covers
 //= require releases
 //= require imports
 //= require release

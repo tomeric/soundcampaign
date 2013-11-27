@@ -65,7 +65,7 @@ class LabelsController < ApplicationController
   
   def label_params
     params.require(:label)
-          .permit(:name, :description, :catid, :style, :cover,
+          .permit(:name, :description, :catid, :style, :cover_id,
                   :contact_name,   :contact_email, :contact_zipcode_city,
                   :contact_street, :contact_phone, :contact_url)
     

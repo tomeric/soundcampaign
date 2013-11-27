@@ -3,19 +3,24 @@ class CoversController < ApplicationController
   before_filter :require_user
   
   def create
-    @cover = current_organization.covers.new
-    @cover.attachment = uploaded_attachment
-    
     if params[:release_id].present?
-      @cover.coverable = current_organization.releases.find_by id: params[:release_id]
+      @coverable = current_organization.releases.find_by id: params[:release_id]
     elsif params[:artist_id].present?
-      @cover.coverable = current_organization.artists.find_by id: params[:artist_id]
+      @coverable = current_organization.artists.find_by id: params[:artist_id]
     elsif params[:label_id].present?
-      @cover.coverable = current_organization.labels.find_by id: params[:label_id]
+      @coverable = current_organization.labels.find_by id: params[:label_id]
     end
     
+    if @coverable
+      @cover = @coverable.cover || @coverable.build_cover
+    else
+      @cover = current_organization.covers.new
+    end
+    
+    @cover.attachment = uploaded_attachment
+    
     if @cover.save
-      result = @cover.as_json.merge(success: true)
+      result = @cover.as_json.merge(success: true, thumbnailUrl: @cover.url(:thumbnail))
       
       render json:   result,
              status: :created

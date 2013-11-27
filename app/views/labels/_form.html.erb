@@ -3,8 +3,9 @@
     <div class="top">
       <div class="cover-drop"
          <% if @label.persisted? %>
-           data-label-id="<%= @label.id %>"
+           data-association="label_id=<%= @label.id %>"
          <% end %>
+           data-file-attribute="label[cover_id]"
            data-upload-url="<%= covers_path %>">
         <div class="cover-drop-label">
           <p class="cover-info">
@@ -13,6 +14,14 @@
           <p class="cover-info">
             230px by 230px works best
           </p>
+        </div>
+        
+        <div class="cover-preview">
+          <% if @label.cover %>
+            <div class="preview">
+              <%= image_tag @label.cover.url(:thumbnail), class: 'preview-thumbnail' %>
+            </div>
+          <% end %>
         </div>
       </div>
       <header class="header">
