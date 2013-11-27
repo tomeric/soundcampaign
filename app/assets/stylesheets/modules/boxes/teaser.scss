@@ -348,6 +348,12 @@
 		.btn-frontpage {
 			width: 100%;
 		}
+		.teaser .teaser-images > div {
+			@include animation(none);
+			opacity: 1;
+		}
+		.teaser .teaser-images .teaser-ipad {display: none;}
+		.teaser .teaser-images .teaser-mbp {display: none;}
 	}
 	
 }
