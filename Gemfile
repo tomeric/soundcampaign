@@ -53,6 +53,7 @@ gem 'rails-i18n', github: 'svenfuchs/rails-i18n'
 
 # Logging:
 gem 'honeybadger'
+gem 'delayed_job_honeybadger'
 
 group :production do
   # Web server:

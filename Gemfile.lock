@@ -93,6 +93,9 @@ GEM
     delayed_job_active_record (4.0.0)
       activerecord (>= 3.0, < 4.1)
       delayed_job (>= 3.0, < 4.1)
+    delayed_job_honeybadger (0.0.2)
+      delayed_job
+      honeybadger
     delayed_paperclip (2.6.1)
       paperclip (>= 3.3.0)
     devise (3.1.1)
@@ -319,6 +322,7 @@ DEPENDENCIES
   daemons
   database_cleaner
   delayed_job_active_record
+  delayed_job_honeybadger
   delayed_paperclip
   devise
   dotenv-rails
