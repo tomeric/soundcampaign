@@ -1,7 +1,6 @@
 <li class="feedback">
   <div class="feedback-header">
-    <strong>User ID:</strong> <%= feedback.user_id || "-" %><br/>
-    <strong>Recipient ID:</strong> <%= feedback.recipient_id || "-" %><br/>
+    <strong>Recipient:</strong> <%= feedback.recipient.email %>
   </div>
   <div class="feedback-body">
     <%= simple_format feedback.body %>
