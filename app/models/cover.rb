@@ -20,15 +20,19 @@ class Cover < ActiveRecord::Base
   ### INSTANCE METHODS:
   
   def as_json(options = {})
-    super.delete_if do |key, value|
+    result = super.delete_if do |key, value|
       key =~ %r{^(attachment|poster|coverable)_}
     end.merge(
       attachment:    url(:thumbnail),
       attachment_2x: url(:thumbnail_2x),
       poster:        poster_url
-    ).merge(
-      "#{coverable_type.underscore.to_sym}_id" => coverable_id
     )
+    
+    result.merge!(
+      "#{coverable_type.underscore.to_sym}_id" => coverable_id
+    ) if coverable.present?
+    
+    result
   end
   
   def url(style = :original)

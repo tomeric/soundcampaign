@@ -19,6 +19,7 @@
         <div class="cover-preview">
           <% if @label.cover %>
             <div class="preview">
+              <%= f.hidden_field :cover_id %>
               <%= image_tag @label.cover.url(:thumbnail), class: 'preview-thumbnail' %>
             </div>
           <% end %>

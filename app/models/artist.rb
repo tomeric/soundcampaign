@@ -13,4 +13,14 @@ class Artist < ActiveRecord::Base
   has_many :releases,
     through: :release_artists
   
+  ### INSTANCE METHODS:
+  
+  def cover_id
+    cover.try(:id)
+  end
+  
+  def cover_id=(new_cover_id)
+    self.cover = Cover.find_by id: new_cover_id
+  end
+  
 end

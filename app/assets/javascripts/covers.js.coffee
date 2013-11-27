@@ -5,7 +5,7 @@ $(document).ready ->
     association = droppable.data('association')
     urlParams   = {}
     
-    if association.indexOf('=') >= 0
+    if association?.indexOf('=') >= 0
       params = association.split('=')
       key    = params[0]
       value  = params[1]
@@ -38,6 +38,8 @@ $(document).ready ->
       dropzone = $ event.target
       dropzone.removeClass('upload-started')
               .removeClass('uploading')
+      
+      dropzone.find('.cover-preview').html('')
     ).on('complete', (event, id, name, reason) ->
       dropzone = $ event.target
       dropzone.removeClass('upload-started')

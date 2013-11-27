@@ -35,7 +35,18 @@ class Release < ActiveRecord::Base
   validates :title,
     presence: true
   
+  validates :label,
+    presence: true
+  
   ### INSTANCE METHODS:
+  
+  def cover_id
+    cover.try(:id)
+  end
+  
+  def cover_id=(new_cover_id)
+    self.cover = Cover.find_by id: new_cover_id
+  end
   
   def tracks=(new_tracks)
     result = super new_tracks
