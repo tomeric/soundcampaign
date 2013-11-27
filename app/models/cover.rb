@@ -19,7 +19,7 @@ class Cover < ActiveRecord::Base
   
   ### CALLBACKS:
   
-  after_save :generate_poster_later, if: :attachment_changed?
+  after_save :generate_poster_later
   
   ### INSTANCE METHODS:
   
@@ -53,10 +53,6 @@ class Cover < ActiveRecord::Base
       self.poster = generator.create
       save!
     end
-  end
-  
-  def attachment_changed?
-    attachment.dirty?
   end
   
   private
