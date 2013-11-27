@@ -100,6 +100,11 @@
     margin: 0;
     z-index: 10;
     text-shadow: 1px 1px black;
+    
+    @include media-retina {
+      background: rgba(#2c2c2c, 0.4) image-url('icons/paperclip@2x.png') 50% 36% no-repeat;
+      background-size: 32px 32px;
+    }
   }
   
   .cover-preview {
