@@ -20,6 +20,8 @@ class CoversController < ApplicationController
     @cover.attachment = uploaded_attachment
     
     if @cover.save
+      @cover.generate_poster_later
+      
       result = @cover.as_json.merge(success: true, thumbnailUrl: @cover.url(:thumbnail))
       
       render json:   result,
