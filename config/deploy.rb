@@ -56,6 +56,14 @@ namespace :deploy do
   task :restart do
   end
   
+  desc 'Cleanup'
+  task :cleanup do
+    invoke :'rvm:init'
+    on roles(:all) do
+      within(release_path) { execute :rake, "honeybadger:deploy TO=#{fetch(:rails_env)} REPO=#{repo_url} USER=#{local_user}" }
+    end
+  end
+  
   desc 'Restart application'
   task :restart_processes do
     invoke 'unicorn:restart'
