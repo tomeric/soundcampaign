@@ -69,7 +69,7 @@
 
 
 		
-		img {
+		> div {
 			position: absolute;
 			left: 60%;
 			bottom: 0;
@@ -89,13 +89,34 @@
 
 
 .teaser-ipad {
+	@include background-image(image-url("teaser_ipad.png"));
+	width: 653px;
+	height: 637px;
 	@include animation-delay(0s);
+	@include media-retina {
+    @include background-image(image-url("teaser_ipad@2x.png"));
+    background-size: 653px 637px;
+  }
 }
 .teaser-htc {
+	@include background-image(image-url("teaser_htc.png"));
+	width: 373px;
+	height: 618px;
 	@include animation-delay(8.0s);
+	@include media-retina {
+    @include background-image(image-url("teaser_htc@2x.png"));
+    background-size: 373px 618px;
+  }
 }
 .teaser-mbp {
+	@include background-image(image-url("teaser_mbp.png"));
+	width: 922px;
+	height: 610px;
 	@include animation-delay(16.0s);
+	@include media-retina {
+    @include background-image(image-url("teaser_mbp@2x.png"));
+    background-size: 922px 610px;
+  }
 }
 
 
@@ -195,14 +216,6 @@
 				background-color: #fbfbfb;
 			}
 
-			-webkit-filter: grayscale(100%);
-      -moz-filter: grayscale(100%);
-      -ms-filter: grayscale(100%);
-      -o-filter: grayscale(100%);
-      filter: grayscale(100%);
-      filter: gray; /* IE 6-9 */
-
-
 			h3 {
 				width: 100%;
 				text-align: center;
@@ -222,6 +235,10 @@
 				@include background-image(image-url("icons/teaser-card.png"));
 				background-repeat: no-repeat;
 				background-position: 50% 29px;
+				@include media-retina {
+			    @include background-image(image-url("teaser-card@2x.png"));
+			    background-size: 373px 618px;
+			  }
 			}
 		.teaser-star {
 				@include background-image(image-url("icons/teaser-star.png"));
@@ -297,7 +314,7 @@
 	}
 	.front-page .teaser .teaser-images {
 		position: relative;
-			img {
+			div {
 				position: absolute;
 				left: 10%;
 				top: 0;

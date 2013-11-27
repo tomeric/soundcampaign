@@ -83,8 +83,8 @@ ActiveRecord::Schema.define(version: 20131125132809) do
     t.datetime "updated_at"
   end
 
-  add_index "covers", ["organization_id"], name: "index_covers_on_organization_id", using: :btree
   add_index "covers", ["coverable_id", "coverable_type"], name: "index_covers_on_coverable_id_and_coverable_type", using: :btree
+  add_index "covers", ["organization_id"], name: "index_covers_on_organization_id", using: :btree
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
