@@ -3,7 +3,7 @@
 	height: 696px;
 	@include background-image(image-url("bg_teaser.jpg"));
 	@media screen and (min-width: 1790px) {
-		 background-size: 100% 100%;
+		background-size: 100% 100%;
 	}
 	background-position: 50% 50%;
 	overflow: hidden;
@@ -12,28 +12,26 @@
 		box-shadow: inset 0px 0px 60px rgba(0, 0, 0, 0.9);
 	}
 	&.teaser_thankyou {
-      @include background-image(image-url("bg_teaser_thankyou.jpg"));
-      background-repeat:no-repeat;
-      background-color: #060c0b;
-      @media screen and (min-width: 1790px) {
-		 	background-size: auto;
-
+		@include background-image(image-url("bg_teaser_thankyou.jpg"));
+		background-repeat:no-repeat;
+		background-color: #060c0b;
+		@media screen and (min-width: 1790px) {
+			background-size: auto;
+		}
 	}
-    }
 	.content {
 		margin-left: 0px;
 		margin-right: auto;
 		margin-left: auto;
 		width: 984px;
 		height: 696px;
-		
 		.teaser-intro {
 			width: 490px
 		}
 		h1, h2 {
 			width: 100%;
 			float: left;
-			}
+		}
 		h1 {
 			color: #fffef5;
 			font-size:40px;
@@ -41,7 +39,7 @@
 			font-weight: 400;
 			line-height: 58px;
 			margin-top: 128px;
-			}
+		}
 		h2 {
 			color: #f4f4f4;
 			font-size: 18px;
@@ -50,25 +48,21 @@
 			line-height: 29px;
 			margin-top: 19px;
 			margin-bottom: 55px;
-			}
+		}
 		.visit_blog {
 			color: white;
 			text-decoration: none;
 			padding: 13px 21px;
 			border: 2px solid #c3c3c3;
 			@include border-radius(3px);
+			display: inline-block;
 			@include transition (all 0.5s ease-in-out);
 			&:hover {
 				border: 2px solid #31acee;
-
 			}
 		}
-		}
+	}
 	.teaser-images {
-
-
-
-		
 		> div {
 			position: absolute;
 			left: 60%;
@@ -78,98 +72,50 @@
 			@include animation-name(teaser-devices);
 			@include animation-duration(24.0s);
 			@include animation-timing-function(ease);
-  		@include animation-iteration-count(infinite);
-  		pointer-events: none;
-  		.no-cssanimations &{
-  			@include animation(none);
-  		}
+			@include animation-iteration-count(infinite);
+			pointer-events: none;
+			.no-cssanimations &{
+				@include animation(none);
+			}
+		}
+		.teaser-ipad {
+			@include background-image(image-url("teaser_ipad.png"));
+			width: 653px;
+			height: 637px;
+			@include animation-delay(0s);
+			@include media-retina {
+				@include background-image(image-url("teaser_ipad@2x.png"));
+				background-size: 653px 637px;
+			}
+			.no-cssanimations &{
+				display: none;
+			}
+		}
+		.teaser-htc {
+			@include background-image(image-url("teaser_htc.png"));
+			width: 373px;
+			height: 618px;
+			@include animation-delay(8.0s);
+			@include media-retina {
+				@include background-image(image-url("teaser_htc@2x.png"));
+				background-size: 373px 618px;
+			}
+			.no-cssanimations &{
+				display: none;
+			}
+		}
+		.teaser-mbp {
+			@include background-image(image-url("teaser_mbp.png"));
+			width: 922px;
+			height: 610px;
+			@include animation-delay(16.0s);
+			@include media-retina {
+				@include background-image(image-url("teaser_mbp@2x.png"));
+				background-size: 922px 610px;
+			}
 		}	
 	}
 }
-
-
-.teaser-ipad {
-	@include background-image(image-url("teaser_ipad.png"));
-	width: 653px;
-	height: 637px;
-	@include animation-delay(0s);
-	@include media-retina {
-    @include background-image(image-url("teaser_ipad@2x.png"));
-    background-size: 653px 637px;
-  }
-}
-.teaser-htc {
-	@include background-image(image-url("teaser_htc.png"));
-	width: 373px;
-	height: 618px;
-	@include animation-delay(8.0s);
-	@include media-retina {
-    @include background-image(image-url("teaser_htc@2x.png"));
-    background-size: 373px 618px;
-  }
-}
-.teaser-mbp {
-	@include background-image(image-url("teaser_mbp.png"));
-	width: 922px;
-	height: 610px;
-	@include animation-delay(16.0s);
-	@include media-retina {
-    @include background-image(image-url("teaser_mbp@2x.png"));
-    background-size: 922px 610px;
-  }
-}
-
-
-
-@include keyframes(teaser-devices) {
-  0% {
-    left:70%;
-    opacity: 0;
-  }
-  7% {
-  	left:56%;
-    opacity: 1;
-  }
-  33% {
-  	left:56%;
-    opacity: 1;
-  }
-  35% {
-  	opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@include keyframes(teaser-devices-mobile) {
-  0% {
-    left:20%;
-    opacity: 0;
-  }
-  7% {
-  	left:6%;
-    opacity: 1;
-  }
-  33% {
-  	left:6%;
-    opacity: 1;
-  }
-  35% {
-  	opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-
-
-
-
-
-
-
 .teaser-content {
 	float: left;
 	width: 100%;
@@ -232,23 +178,31 @@
 
 		}
 		.teaser-card {
-				@include background-image(image-url("icons/teaser-card.png"));
+				@include background-image(image-url("icons/teaser-card-gray.png"));
 				background-repeat: no-repeat;
 				background-position: 50% 29px;
 				@include media-retina {
-			    @include background-image(image-url("teaser-card@2x.png"));
-			    background-size: 373px 618px;
+			    @include background-image(image-url("teaser-card-gray@2x.png"));
+			    background-size: 32px 32x;
 			  }
 			}
 		.teaser-star {
-				@include background-image(image-url("icons/teaser-star.png"));
+				@include background-image(image-url("icons/teaser-star-gray.png"));
 				background-repeat: no-repeat;
 				background-position: 50% 29px;
+				@include media-retina {
+			    @include background-image(image-url("teaser-star-gray@2x.png"));
+			    background-size: 32px 32x;
+			  }
 			}
 		.teaser-cursor {
-				@include background-image(image-url("icons/teaser-cursor.png"));
+				@include background-image(image-url("icons/teaser-cursor-gray.png"));
 				background-repeat: no-repeat;
 				background-position: 50% 29px;
+				@include media-retina {
+			    @include background-image(image-url("teaser-cursor-gray@2x.png"));
+			    background-size: 32px 32x;
+			  }
 			}
 	}
 }
@@ -276,10 +230,23 @@
 	}
 }
 @include modular-mq(LandscapePhone-PortraitTable) {
+	.account-nav {
+			display: none;
+		}
 	.front-page .teaser {
 		@include background-image(image-url("bg_teaser_mobile.jpg"));
 		height: 850px;
+		&.teaser_thankyou {
+      @include background-image(image-url("bg_teaser_thankyou_70.jpg"));
+      background-repeat:no-repeat;
+      background-color: #060c0b;
+      height: auto;
+      background-position: 50% 50%;
+      padding: 60px 0;
+    }
 	}
+
+
 	.front-page .content {
 		width: 100%;
 		height: auto;
@@ -331,6 +298,7 @@
 
 @include modular-mq(LandscapePhone-Down) {
 	.front-page {
+
 		h1 {
 			margin:0 10px;
 			font-size: 90%;
@@ -354,6 +322,53 @@
 		}
 		.teaser .teaser-images .teaser-ipad {display: none;}
 		.teaser .teaser-images .teaser-mbp {display: none;}
+		.page-footer .block {
+			margin-left: 0;
+		}
 	}
 	
+}
+
+/* Animation keyframes */
+
+@include keyframes(teaser-devices) {
+  0% {
+    left:70%;
+    opacity: 0;
+  }
+  7% {
+  	left:56%;
+    opacity: 1;
+  }
+  33% {
+  	left:56%;
+    opacity: 1;
+  }
+  35% {
+  	opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@include keyframes(teaser-devices-mobile) {
+  0% {
+    left:20%;
+    opacity: 0;
+  }
+  7% {
+  	left:6%;
+    opacity: 1;
+  }
+  33% {
+  	left:6%;
+    opacity: 1;
+  }
+  35% {
+  	opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
 }

@@ -3,18 +3,17 @@
   color: darken(white, 20%);
   
   .content {
-    @include makeRow;
     @include container-fixed;
     clear: both;
     width: $siteWidth;
+    @include box-sizing(border-box);
+    padding: 0 20px;
   }
   
   .block {
     @include makeColumn(4, 2);
     margin-top:($baseLineHeight * 1.5);
     margin-bottom: ($baseLineHeight * 1.5);
-
-    
     &:first-child {
       margin-left: 0;
     }
@@ -41,12 +40,7 @@
     font-size: 13px;
   }
   
-  @media (max-width: 767px) {
-    margin-left:  -20px;
-    margin-right: -20px;
-    padding-left:  20px;
-    padding-right: 20px;
-  }
+  
 }
 
 .page-public-release {
