@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   
   devise *%i[ database_authenticatable
               recoverable
+              registerable
               rememberable
               trackable
               validatable ]
