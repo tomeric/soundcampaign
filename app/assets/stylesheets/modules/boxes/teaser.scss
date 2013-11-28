@@ -183,7 +183,7 @@
 				background-position: 50% 29px;
 				@include media-retina {
 			    @include background-image(image-url("icons/teaser-card-gray@2x.png"));
-			    background-size: 32px 32x;
+			    background-size: 32px 32px;
 			  }
 			}
 		.teaser-star {
@@ -192,7 +192,7 @@
 				background-position: 50% 29px;
 				@include media-retina {
 			    @include background-image(image-url("icons/teaser-star-gray@2x.png"));
-			    background-size: 32px 32x;
+			    background-size: 32px 32px;
 			  }
 			}
 		.teaser-cursor {
@@ -201,7 +201,7 @@
 				background-position: 50% 29px;
 				@include media-retina {
 			    @include background-image(image-url("icons/teaser-cursor-gray@2x.png"));
-			    background-size: 32px 32x;
+			    background-size: 32px 32px;
 			  }
 			}
 	}
