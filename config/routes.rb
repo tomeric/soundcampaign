@@ -52,5 +52,7 @@ SoundCampaign::Application.routes.draw do
   
   resources :mockups, only: %i[index show]
   
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'registrations'
+  }
 end

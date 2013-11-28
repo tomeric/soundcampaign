@@ -1,0 +1,4 @@
+<%= form_tag subscribers_url, method: 'post', class: 'form-inline' do %>
+  <%= text_field_tag :email, params[:email], class: 'input-small input-beta-access', placeholder: 'Your email address' %>
+  <%= submit_tag 'Request beta access', class: 'btn btn-frontpage' %>
+<% end %>
