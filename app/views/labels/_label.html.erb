@@ -14,8 +14,10 @@
       <span class="count"><%= label.releases.count %></span>
       <%= link_to 'Edit', [:edit, label],
           class: 'header-action music-label-header-edit' %>
+      <!--
       <%= link_to 'Show', label,
           class: 'header-action music-label-header-sound' %>
+      -->
     </header>
     <div class="content">
       <%= simple_format label.description %>
