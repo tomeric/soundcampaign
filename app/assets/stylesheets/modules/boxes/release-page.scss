@@ -13,6 +13,7 @@
 
   img {
     @include border-radius(3px);
+    display: block;
   }
 
   @include modular-mq(LandscapePhone-PortraitTable) {
