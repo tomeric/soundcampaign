@@ -182,7 +182,7 @@
 				background-repeat: no-repeat;
 				background-position: 50% 29px;
 				@include media-retina {
-			    @include background-image(image-url("teaser-card-gray@2x.png"));
+			    @include background-image(image-url("icons/teaser-card-gray@2x.png"));
 			    background-size: 32px 32x;
 			  }
 			}
@@ -191,7 +191,7 @@
 				background-repeat: no-repeat;
 				background-position: 50% 29px;
 				@include media-retina {
-			    @include background-image(image-url("teaser-star-gray@2x.png"));
+			    @include background-image(image-url("icons/teaser-star-gray@2x.png"));
 			    background-size: 32px 32x;
 			  }
 			}
@@ -200,7 +200,7 @@
 				background-repeat: no-repeat;
 				background-position: 50% 29px;
 				@include media-retina {
-			    @include background-image(image-url("teaser-cursor-gray@2x.png"));
+			    @include background-image(image-url("icons/teaser-cursor-gray@2x.png"));
 			    background-size: 32px 32x;
 			  }
 			}
