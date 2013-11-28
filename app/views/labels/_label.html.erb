@@ -1,8 +1,14 @@
 <section class="music-label cover-box" id="<%= dom_id(label) %>">
   <div class="top">
-    <div class="cover">
-      <%= image_tag label.cover.url(:thumbnail_2x) %>
-    </div>
+    <% if label.cover %>
+      <div class="cover">
+        <%= image_tag label.cover.url(:thumbnail_2x) %>
+      </div>
+    <% else %>
+      <div class="cover no-cover">
+        <!-- placeholder cover -->
+      </div>
+    <% end %>
     <header class="header">
       <%= link_to label.name, label, class: 'title' %>
       <span class="count"><%= label.releases.count %></span>
