@@ -41,7 +41,8 @@ class Release < ActiveRecord::Base
   ### SCOPES:
   
   scope :pending, -> {
-    joins(:campaign).where(campaigns: { sent_at: nil })
+    joins('LEFT JOIN campaigns ON campaigns.release_id = releases.id')
+    .where('campaigns.sent_at IS NULL')
   }
   
   scope :finished, -> {
