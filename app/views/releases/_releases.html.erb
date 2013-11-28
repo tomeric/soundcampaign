@@ -1,16 +1,22 @@
+<%
+pending  = releases.pending
+finished = releases.finished
+%>
 <div class="releases faux-table">
-  <% releases.group_by(&:label).each do |label, releases| %>
-    <% if label %>
-    <div class="top">
-      <span class="title"><%= label.name %></span>
-      <span class="count"><%= label.releases.count %></span>
-    </div>
-    <% end %>
-    <div class="bar">
-      Pending releases
-    </div>
+  <div class="top">
+    <span class="title">Releases</span>
+    <span class="count"><%= releases.count %></span>
+  </div>
+  <% if pending.present? %>
+    <div class="bar">Pending releases</div>
     <ul>
-      <%= render releases %>
+      <%= render pending %>
+    </ul>
+  <% end %>
+  <% if finished.present? %>
+    <div class="bar">Delivered releases</div>
+    <ul>
+      <%= render finished %>
     </ul>
   <% end %>
 </div>

@@ -38,6 +38,16 @@ class Release < ActiveRecord::Base
   validates :label,
     presence: true
   
+  ### SCOPES:
+  
+  scope :pending, -> {
+    joins(:campaign).where(campaigns: { sent_at: nil })
+  }
+  
+  scope :finished, -> {
+    joins(:campaign).where('campaigns.sent_at IS NOT NULL')
+  }
+  
   ### INSTANCE METHODS:
   
   def cover_id
