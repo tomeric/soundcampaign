@@ -52,5 +52,5 @@ SoundCampaign::Application.routes.draw do
   
   resources :mockups, only: %i[index show]
   
-  devise_for :users, skip: %i[registrations confirmations]
+  devise_for :users
 end
