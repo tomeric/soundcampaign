@@ -4,7 +4,7 @@ $pageHeaderGradientEnd:    darken($primaryColor,  2%) !default;
 .page-header {
   height: $mainHeaderHeight - 1px;
   position: relative;
-  z-index: 3;
+  z-index: 1000;
   margin: 0;
   padding: 0;
   border-bottom: 1px solid #207aa0;
