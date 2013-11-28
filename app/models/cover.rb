@@ -6,6 +6,8 @@ class Cover < ActiveRecord::Base
   
   has_attached_file :attachment,
     styles: {
+      small:        ['36x36',   :jpg],
+      small_2x:     ['72x72',   :jpg],
       thumbnail:    ['230x460', :jpg],
       thumbnail_2x: ['460x460', :jpg]
     }
