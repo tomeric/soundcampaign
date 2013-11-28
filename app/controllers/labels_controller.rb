@@ -11,7 +11,7 @@ class LabelsController < ApplicationController
     only: %i[show edit update destroy undestroy]
   
   def index
-    @labels = current_organization.labels
+    @labels = current_organization.labels.order(:name)
   end
   
   def show

@@ -11,17 +11,19 @@ class ContactListsController < ApplicationController
     only: %i[show edit update destroy undestroy]
   
   def index
-    @contact_lists = current_organization.contact_lists
+    @contact_lists = current_organization.contact_lists.order(name: :asc)
   end
   
   def show
+    @contacts = @contact_list.contacts
+    
     respond_to do |format|
       format.html do
-        @contacts = @contact_list.contacts # Add pagination
+        @contacts = @contacts.order(name: :asc) # Add pagination later
       end
       
       format.csv do
-        @contacts = @contact_list.contacts
+        @contacts = @contacts.order(id: :asc)
       end
     end
   end

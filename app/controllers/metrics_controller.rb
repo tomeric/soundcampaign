@@ -19,7 +19,7 @@ class MetricsController < ApplicationController
     @opens_per_day = @campaign.email_logs.number_of   :opens, per: 1.day
     @plays_per_day = @campaign.track_events.number_of :plays, per: 1.day
     
-    @feedbacks = @release.feedbacks
+    @feedbacks = @release.feedbacks.order(created_at: :desc)
   end
   
   private
