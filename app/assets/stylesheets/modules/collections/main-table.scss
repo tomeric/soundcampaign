@@ -4,10 +4,7 @@
   @include border-radius(3px);
   border-collapse:separate;
   .main-table-btn-edit a, .main-table-btn-del a, .main-table-add a, .main-table-edit a {
-      display:inline-block; 
-      height:100%; 
-      width:18px;
-      text-indent: 0;
+      display: block;
     }
   
   
@@ -50,19 +47,27 @@
       float:right;
       height: 39px;
       width: 50px;
-      background: url(plus.png) 50% 50% no-repeat;
       border-left:1px solid #0f71a6;
       @include box-shadow(inset 1px 0px 1px rgba(255,255,255, 0.4));
-
+      background: image-url("icons/plus.png") 50% 50% no-repeat;
+      text-indent: -3000em;
+      @include media-retina {
+        background: image-url("icons/plus@2x.png") 50% 50% no-repeat;
+        background-size: 20px 20px;
+      }
     }
     .main-table-edit {
       float:right;
       height: 39px;
       width: 50px;
-      background: url(pencil.png) 50% 50% no-repeat;
       border-left:1px solid #0f71a6;
       @include box-shadow(inset 1px 0px 1px rgba(255,255,255, 0.4));
-
+      background: image-url("icons/edit_light.png") 50% 50% no-repeat;
+      text-indent: -3000em;
+      @include media-retina {
+        background: image-url("icons/edit_light@2x.png") 50% 50% no-repeat;
+        background-size: 20px 20px;
+      }
     }
     .main-table-importexport {
       float:right;
@@ -139,10 +144,20 @@
       }
     }
     .main-table-btn-edit {
-      background: url(pencil.png) 50% 50% no-repeat;
+      background: image-url("icons/edit_light.png") 50% 50% no-repeat;
+      text-indent: -3000em;
+      @include media-retina {
+        background: image-url("icons/edit_light@2x.png") 50% 50% no-repeat;
+        background-size: 20px 20px;
+      }
     }
     .main-table-btn-del {
-      background: url(cross.png) 50% 50% no-repeat;
+      background: image-url("icons/cross_light.png") 50% 50% no-repeat;
+      text-indent: -3000em;
+      @include media-retina {
+        background: image-url("icons/cross_light@2x.png") 50% 50% no-repeat;
+        background-size: 20px 20px;
+      }
     }
 
     .popover {
