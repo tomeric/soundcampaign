@@ -24,6 +24,7 @@
 /tmp
 .DS_Store
 .sass-cache
+*.sublime-workspace
 
 # Ignore precompiled assets
 /public/assets
