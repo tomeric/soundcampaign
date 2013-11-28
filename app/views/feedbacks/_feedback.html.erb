@@ -1,6 +1,15 @@
+<%
+contact = feedback.recipient.try(:contact)
+%>
 <li class="feedback">
   <div class="feedback-header">
-    <strong>Recipient:</strong> <%= feedback.recipient.email %>
+    <div class="feedback-header-gravatar"><%= gravatar_tag current_user.email %></div>
+    <div class="feedback-header-name">
+      <%= contact.try(:name) || feedback.recipient.email %>
+      <% if contact.try(:name) && contact.try(:email) %>
+      <small>(<%= contact.email %>)</small>
+      <% end %>
+    </div>
   </div>
   <div class="feedback-body">
     <%= simple_format feedback.body %>
