@@ -11,9 +11,11 @@
         <% end%>
         <ul class="dropdown-menu" role="menu">
           <div class="dropdown-arrow"></div>
-          <li><a class="dd-settings" href="#">Account settings</a></li>
-          <li><a class="dd-payment" href="#">Payment details</a></li>
-          <li><a class="dd-logout" href="#">Sign out</a></li>
+          <li><%= link_to 'Account settings', edit_user_registration_path, class: 'dd-settings' %></li>
+          <!--
+            <li><%= link_to 'Payment details', nil, class: 'dd-payment' %></li>
+          -->
+          <li><%= link_to 'Sign out', destroy_user_session_path, class: 'dd-logout' %></li>
         </ul>
       </nav> 
         
