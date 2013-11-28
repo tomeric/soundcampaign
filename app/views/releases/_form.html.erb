@@ -95,8 +95,10 @@
   </ul>
   
   <div class="release-buttons">
-    <%= link_to  'Cancel', releases_path,
-          class: 'release-cancel-link' %>
+    <%= link_to  'Delete', @release,
+          class: 'release-delete-link',
+          data: { method: 'DELETE' } %>
+    
     <%= f.submit 'Save',
           class: 'release-save-button' %>
   </div>
