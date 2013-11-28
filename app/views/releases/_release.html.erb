@@ -16,7 +16,7 @@
   <% else %>
     <%= link_to 'Edit',    [:edit, release],
           class: 'action edit' %>
-    <%= link_to 'Send',    [release, :campaign],
+    <%= link_to 'Send',    [:edit, release, :campaign],
           class: 'action send' %>
   <% end %>
   <%=   link_to 'Public',  release,

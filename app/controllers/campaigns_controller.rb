@@ -75,6 +75,7 @@ class CampaignsController < ApplicationController
   
   def edit
     @campaign = @release.campaign
+    redirect_to [:new, @release, :campaign] if @campaign.blank?
   end
   
   def update
