@@ -97,7 +97,7 @@
   <div class="release-buttons">
     <%= link_to  'Delete', @release,
           class: 'release-delete-link',
-          data: { method: 'DELETE' } %>
+          data: { method: 'DELETE' } unless @release.new_record? %>
     
     <%= f.submit 'Save',
           class: 'release-save-button' %>
