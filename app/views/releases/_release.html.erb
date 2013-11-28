@@ -1,16 +1,24 @@
 <li>
-  <span class="title">
-    <strong><%= release.title %></strong> (Artists)
+  <% if release.cover %>
+    <%= image_tag release.cover.url(:small_2x), class: 'cover' %>
+  <% else %>
+    <%= image_tag 'icons/default-coverart-small@2x.png', class: 'cover' %>
+  <% end %>
+  <span class="release-label">
+    <strong><%= release.label.name %></strong>
+  </span>
+  <span class="release-title">
+    <%= release.title %>
   </span>
   <% if release.campaign.try(:sent?) %>
-  <%= link_to 'Metrics', [release, :metrics],
-        class: 'action metrics' %>
+    <%= link_to 'Metrics', [release, :metrics],
+          class: 'action metrics' %>
   <% else %>
-  <%= link_to 'Edit',    [:edit, release],
-        class: 'action edit' %>
-  <%= link_to 'Send',    [release, :campaign],
-        class: 'action send' %>
+    <%= link_to 'Edit',    [:edit, release],
+          class: 'action edit' %>
+    <%= link_to 'Send',    [release, :campaign],
+          class: 'action send' %>
   <% end %>
-  <%= link_to 'Public',  release,
-        class: 'action public' %>
+  <%=   link_to 'Public',  release,
+          class: 'action public' %>
 </li>
