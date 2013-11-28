@@ -45,10 +45,9 @@ class CampaignsController < ApplicationController
   
   def preview
     @campaign  = @release.campaign
+    @receivers = (params[:receivers] || "").split(',').map(&:strip)
     
     if @receivers.present?
-      @receivers = (params[:receivers] || "").split(',').map(&:strip)
-      
       @receivers.each do |receiver|
         recipient = @campaign.recipients.where(email: receiver).first_or_create
         DeliverCampaignJob.perform_later(@campaign, recipient, true)
