@@ -39,5 +39,34 @@
 }
 
 .release-feedbacks {
-  background: red;
+  ol {
+    @include container-fixed;
+    width: $gridColumnWidth * 16;
+    margin-top: $baseLineHeight * 2.5;
+    list-style: none;
+    .feedback {
+      border-top: 1px solid #d9d9d9;
+      padding:0 0 30px 0;
+      font-size:14px;
+      color: #323232;
+      .feedback-header {
+        font-weight: 600;
+        width: 100%;
+        height: $baseLineHeight * 3.5;
+        line-height: $baseLineHeight * 3.5;
+        .feedback-header-gravatar {
+          float: left;
+          margin-right: 10px;
+          img {
+            max-height: 44px;
+            border: 1px solid #727272;
+            border-radius: 3px;
+          }
+        }
+        .feedback-header-name {
+          float: left;
+        }
+      }
+    }
+  }
 }
