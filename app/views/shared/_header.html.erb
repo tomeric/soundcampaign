@@ -18,16 +18,11 @@
           <li><%= link_to 'Sign out', destroy_user_session_path, class: 'dd-logout' %></li>
         </ul>
       </nav> 
-        
-        <!-- dropdown menu -->
-      
     <% else %>
       <nav class="account-nav ">
         <%= link_to content_tag(:span, 'Log in'), new_user_session_path, class: 'btn btn-black login-btn' %>
       </nav>
     <% end %>
-
-
     
     <!--
     <nav class="section-nav">
