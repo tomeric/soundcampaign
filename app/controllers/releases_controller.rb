@@ -64,7 +64,7 @@ class ReleasesController < ApplicationController
   
   def undestroy
     @release.unarchive
-    redirect_to @release
+    redirect_to releases_url
   end
   
   private
