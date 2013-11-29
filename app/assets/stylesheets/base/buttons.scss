@@ -501,7 +501,7 @@ input[type="submit"].btn.btn-mini {
   height: $baseLineHeight * 2;
   line-height: $baseLineHeight;
   margin: 0;
-  padding: ($baseLineHeight * 0.5) ($gridColumnWidth * 0.75);
+  padding: ($baseLineHeight * 0.4) ($gridColumnWidth * 0.75);
   
   @include box-sizing(border-box);
   @include border-radius(3px);
