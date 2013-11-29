@@ -1,4 +1,5 @@
 require 'taglib'
+require 'waveformjson'
 require 'paperclip/processors/audio_processor'
 
 class Track < ActiveRecord::Base
@@ -47,6 +48,9 @@ class Track < ActiveRecord::Base
   
   before_validation :set_track_attributes,
     on: :create
+  
+  after_save :generate_waveform_later,
+    if: :generate_waveform?
   
   ### INSTANCE METHODS:
   
@@ -102,6 +106,28 @@ class Track < ActiveRecord::Base
         self.channels    = properties.channels
       end
     end
+  end
+  
+  def generate_waveform_later
+    GenerateWaveformJob.perform_later(self)
+  end
+  
+  def generate_waveform?
+    !attachment_processing? && waveform_json.blank?
+  end
+  
+  def waveform
+    @waveform ||= if waveform_json?
+      JSON.parse(waveform_json)
+    end
+  end
+  
+  def generate_waveform!
+    return false if attachment_processing?
+    
+    lossless_io = open(attachment.url(:lossless))
+    self.waveform_json = Waveformjson.generate(lossless_io, width: 710, height: 90, method: :peak).to_json
+    save!
   end
   
   private

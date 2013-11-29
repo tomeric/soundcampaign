@@ -18,8 +18,9 @@ gem 'friendly_id'
 gem 'protected_attributes'
 
 # Data:
-gem 'roo',         require: false
-gem 'taglib-ruby', require: false
+gem 'roo',          require: false
+gem 'taglib-ruby',  require: false
+gem 'waveformjson', require: false
 
 # Mail:
 gem 'mandrill-rails'
