@@ -9,7 +9,6 @@ $(document).ready ->
     buttonText = trackDroppable.html()
     
     trackDroppable.fineUploader(
-      debug: true
       text:
         dragZone:     buttonText
         uploadButton: buttonText

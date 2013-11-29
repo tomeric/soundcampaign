@@ -20,7 +20,6 @@ $(document).ready ->
       $(droppable).fineUploader 'drawThumbnail', uploadId, thumbnail[0]
     
     droppable.fineUploader(
-      debug: true
       multiple: false
       text:
         dragZone:     buttonText
