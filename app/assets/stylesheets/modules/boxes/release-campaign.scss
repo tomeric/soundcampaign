@@ -200,6 +200,22 @@
     .right {
       float: right;
     }
+    .contact-lists {
+      float: left;
+      list-style: none;
+      width: 100%;
+      li {
+        float: left;
+        width: 100%;
+        > input, label {
+          float: left;
+        }
+        label {
+          padding: 0 10px;
+          font-style: 12px;
+        }
+      }
+    }
   }
 
     .release-templates-group {
