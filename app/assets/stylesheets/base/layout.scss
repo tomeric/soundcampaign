@@ -6,6 +6,13 @@ body {
   background: $footerBackgroundColor;
 }
 
+.backend-layout,
+.application-layout {
+  body {
+    min-width: $siteWidth + ($gridColumnWidth / 2);
+  }
+}
+
 .page-wrapper {
   background: $bodyBackground;
 }
