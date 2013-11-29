@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-shared_examples_for Archivable do
+shared_examples_for Archivable do |options|
   let!(:klass) { subject.class }
   let(:model) do
     subject.save! if subject.new_record?
@@ -60,6 +60,34 @@ shared_examples_for Archivable do
           }.to Time.now
         end
       end
+      
+      if associations = options[:associations]
+        associations.each do |association, factory|
+          let!(:associated_model) { factory.call(model) }
+          
+          it "sets deleted_at of associated #{association.to_s.singularize} to the current time" do
+            Timecop.freeze do
+              expect {
+                model.archive
+              }.to change {
+                associated_model.reload.deleted_at
+              }.to Time.now
+            end
+          end
+          
+          it "doesn't set deleted_at of previously archived #{association.to_s.singularize} to the current time" do
+            Timecop.freeze do
+              associated_model.archive(1.day.ago)
+              
+              expect {
+                model.archive
+              }.to_not change {
+                associated_model.reload.deleted_at
+              }
+            end
+          end
+        end
+      end
     end
     
     describe '#unarchive' do
@@ -70,6 +98,33 @@ shared_examples_for Archivable do
         }.to change {
           model.deleted_at
         }.to nil
+      end
+      
+      if associations = options[:associations]
+        associations.each do |association, factory|
+          let!(:associated_model) { factory.call(model) }
+          
+          it "sets deleted_at of associated #{association.to_s.singularize} to nil" do
+            model.archive
+            
+            expect {
+              model.unarchive
+            }.to change {
+              associated_model.reload.deleted_at
+            }.to nil
+          end
+          
+          it "doesn't set deleted_at of previously archived #{association.to_s.singularize} to nil" do
+            associated_model.archive(1.day.ago)
+            model.archive
+            
+            expect {
+              model.unarchive
+            }.to_not change {
+              associated_model.reload.deleted_at
+            }
+          end
+        end
       end
     end
   end
