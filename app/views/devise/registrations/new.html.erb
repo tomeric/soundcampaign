@@ -6,7 +6,10 @@
     <%= f.input :password_confirmation, required: true     %>
   <% end %>
   <%= f.actions do %>
-    <%= f.action :submit, label: 'Sign up' %>
+    <li class="action">
+      <%= f.submit 'Sign up',
+            class: 'submit-btn' %>
+    </li>
   <% end %>
 <% end %>
 

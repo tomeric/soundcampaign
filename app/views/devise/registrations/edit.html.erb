@@ -9,9 +9,9 @@
     <%= f.input :password_confirmation %>
   <% end %>
   <%= f.actions do %>
-    <%= f.action :submit, label: 'Update' %>
-    <!-- 
-      <p>Unhappy? <%= link_to 'Cancel my account', registration_path(resource_name), confirm: 'Are you sure?', method: :delete %>.</p>
-    -->
+    <li class="action">
+      <%= f.submit 'Save',
+            class: 'submit-btn' %>
+    </li>
   <% end %>
 <% end %>

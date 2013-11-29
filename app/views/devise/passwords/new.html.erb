@@ -3,8 +3,9 @@
     <%= f.input :email %>
   <% end %>
   <%= f.actions do %>
-    <%= f.action :submit, label:  'Send me reset password instructions'%>
+    <li class="action">
+      <%= f.submit 'Send me reset password instructions',
+            class: 'submit-btn' %>
+    </li>
   <% end %>
 <% end %>
-
-<%= render 'devise/shared/links' %>

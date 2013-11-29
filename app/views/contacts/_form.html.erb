@@ -7,5 +7,13 @@ legend = @contact.new_record? ? "Add a new contact to #{@contact_list.name}" :
     <%= f.input :email, placeholder: 'The e-mail address of your contact' %>
     <%= f.input :name,  placeholder: 'The name of your contact'  %>
   <% end %>
-  <%= f.actions %>
+  <%= f.actions do %>
+    <li class="action">
+      <%= link_to  'Delete', [@contact_list, @contact],
+            class: 'delete-btn',
+            data: { method: 'DELETE' } unless @contact.new_record? %>
+      <%= f.submit 'Save',
+            class: 'submit-btn' %>
+    </li>
+  <% end %>
 <% end %>

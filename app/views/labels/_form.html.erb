@@ -87,9 +87,11 @@
     </div>
   </div>
   <div class="music-label-buttons">
-    <%= link_to  'Cancel', labels_path,
-          class: 'music-label-cancel-link' %>
+    <%= link_to  'Delete', @label,
+          class: 'delete-btn',
+          data: { method: 'DELETE' } unless @label.new_record? %>
+    
     <%= f.submit 'Save',
-          class: 'music-label-save-button' %>
+          class: 'submit-btn' %>
   </div>
 <% end %>
