@@ -39,38 +39,35 @@
     margin:0;
     font-size: 13px;
   }
-  
-  
 }
 
-.page-public-release {
-  .page-footer {
+.page-public-release .page-footer {
+  @include modular-mq(LandscapePhone-PortraitTable) {
+    margin:0;
+  }
+  
+  .content {
+    position: relative;
+    z-index: 3;
+    
+    @include modular-mq(PortraitTablets-Desktop) {
+      width: 760px;
+    }
+    
     @include modular-mq(LandscapePhone-PortraitTable) {
-      margin:0;
+      width: auto;
     }
-    
-    .content {
-      position: relative;
-      z-index: 3;
-      transition: all 0.5s ease;
-      @include modular-mq(PortraitTablets-Desktop) {
-        width: 760px;
-      }
-      @include modular-mq(LandscapePhone-PortraitTable) {
-        width: auto;
-      }
-    }
-    
-    span {
-      font-size: 11px;
-      float: right;
-      margin: 10px 0;
-    }
-    
-    img {
-      height: 14px;
-      float: right;
-      margin: 14px 5px;
-    }
+  }
+  
+  span {
+    font-size: 11px;
+    float: right;
+    margin: 10px 0;
+  }
+  
+  img {
+    height: 14px;
+    float: right;
+    margin: 14px 5px;
   }
 }
