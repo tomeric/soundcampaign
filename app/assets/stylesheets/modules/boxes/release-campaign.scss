@@ -567,12 +567,15 @@
 
 
   .release-footer {
+    background: red;
+    text-align: right;
     background: white;
     float: left;
     height:99px;
-    width: $siteWidth - 2;
+    padding: 0 30px;
+    width: 100%;
+    box-sizing: border-box;
     line-height: 99px;
-    text-indent: 30px;
     border: 1px solid #e1e1e1;
     border-top: none;
     @include border-radius(0px 0px 3px 3px);
