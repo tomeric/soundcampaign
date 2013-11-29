@@ -30,7 +30,6 @@
     font-weight: bold;
     color: white;
     padding-left: $gridColumnWidth / 2;
-    @include text-shadow(rgba(15,102,149, 0.9) 0px 0px 2px);
   }
   
   .count {
