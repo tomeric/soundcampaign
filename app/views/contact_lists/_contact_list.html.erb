@@ -1,8 +1,5 @@
 <li>
   <%= link_to contact_list.name, contact_list, class: 'title' %>
-  <%= link_to 'Delete',  contact_list,
-        data:  { method:  :delete },
-        class: 'action delete' %>
   <%= link_to 'Edit',    [:edit, contact_list],
         class: 'action edit' %>
 </li>
