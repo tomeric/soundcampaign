@@ -28,7 +28,7 @@ class TracksController < ApplicationController
   def destroy
     @track = current_organization.tracks.find_by id: params[:id]
     
-    @track.destroy
+    @track.archive
     @release = @track.release
     
     if @release.present?
