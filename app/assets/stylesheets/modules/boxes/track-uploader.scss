@@ -209,12 +209,16 @@
     width: $gridColumnWidth * 4 - 1;
     height: 100%;
     padding: 0 ($gridColumnWidth * 0.25);
+    overflow: hidden;
+    white-space: nowrap;
     
     .filename {
       line-height: $baseLineHeight * 2.5;
       font-size: 11px;
       overflow: hidden;
       z-index: 11;
+      width: 100%;
+      display: block;
     }
     
     .loader {
