@@ -1,7 +1,16 @@
 .release-background {
-  height:252px;
+  height: 252px;
+  margin-bottom: -228px;
   position: relative;
   z-index: 1;
+  
+  @include modular-mq(LandscapePhone-PortraitTable) {
+    display: none;
+    margin: 0;
+    padding: 0;
+    width: 0;
+    height: 0;
+  }
 }
 
 .release-cover {
@@ -16,9 +25,11 @@
   }
   
   @include modular-mq(LandscapePhone-PortraitTable) {
-    width: 99px;
-    margin: 15px;
-    position: absolute;
+    display: none;
+    margin: 0;
+    padding: 0;
+    width: 0;
+    height: 0;
   }
 }
 
@@ -26,7 +37,6 @@
   .content-wrapper{
     position: relative;
     z-index: 3;
-    margin-top: -228px;
     
     @include modular-mq(PortraitTablets-Desktop) {
       width: 760px;
@@ -34,7 +44,6 @@
     
     @include modular-mq(LandscapePhone-PortraitTable) {
       width: auto;
-      margin-top: -400px;
       padding: 0;
     }
   }

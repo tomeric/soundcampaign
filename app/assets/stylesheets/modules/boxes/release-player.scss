@@ -24,7 +24,15 @@
     top: 0;
     float: none;
     width: auto;
-    margin:0;
+    margin: 0;
+    
+    .releases {
+      @include border-radius(0);
+    }
+    
+    &.release-player-no-feedback {
+      margin-bottom: 0;
+    }
   }
   
   .faux-table {
