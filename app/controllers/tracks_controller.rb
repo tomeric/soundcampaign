@@ -1,6 +1,11 @@
 class TracksController < ApplicationController
   
-  before_filter :require_user
+  before_filter :require_user, except: %i[show]
+  
+  def show
+    @track = Track.find_by id: params[:id]
+    render json: @track.waveform
+  end
   
   def create
     @track = current_organization.tracks.new
