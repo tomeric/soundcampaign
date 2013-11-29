@@ -18,16 +18,26 @@ module Paperclip
       source      = @file
       destination = Tempfile.new([@basename, @format ? ".#{@format}" : ''])
       
-      begin
+      case @format
+      when 'mp3'
+        program = 'lame'
         parameters = [@params, ':source', ':dest'].flatten.compact
-        parameters = parameters.join(' ').strip.squeeze(' ')
-        
-        Paperclip.run 'lame', parameters,
-                      source: File.expand_path(source.path),
-                      dest:   File.expand_path(destination.path)
+      when 'wav'
+        program = 'ffmpeg'
+        parameters = [@params, '-y', '-i :source', '-f wav :dest'].flatten.compact
+      end
       
+      parameters = parameters.join(' ').strip.squeeze(' ')
+      
+      begin
+        Paperclip.run(
+          program,
+          parameters,
+          source: File.expand_path(source.path),
+          dest:   File.expand_path(destination.path)
+        )
       rescue PaperclipCommandLineError => e
-        raise PaperclipError, "There was an error converting #{@basename} to mp3 - #{e}"
+        raise Paperclip::Error, "There was an error converting #{@basename} to #{@format} (ran: '#{program} #{parameters}') - #{e}"
       end
       
       destination
