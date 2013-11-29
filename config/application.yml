@@ -11,7 +11,7 @@ defaults: &defaults
   urls:
     blog: "http://blog.soundcampaign.com/"
     facebook: "https://www.facebook.com/SoundCampaign"
-    twitter: "https://twitter.com/soundcampaign_"
+    twitter: "https://twitter.com/sound_campaign"
 
 development:
   <<: *defaults
