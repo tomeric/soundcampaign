@@ -306,51 +306,6 @@
   }
 }
 
-
-
-.release-delete-link {
-  float: left;
-  display: block;
-  text-align: center;
-  width: 100px;
-  font-size: 13px;
-  font-weight: 600;
-  color: #cf3839;
-  margin-right: 15px;
-  height: ($baseLineHeight * 2.2);
-  line-height: ($baseLineHeight * 2.2);
-  border: 1px solid #b3b3b3;
-  @include box-sizing(border-box);
-  @include border-radius(3px);
-  &:hover {
-    color: #cf3839;
-    text-decoration: none;
-    border: 1px solid #cf3839;
-  }
-}
-
-input.release-save-button {
-  float: right;
-  display: block;
-  text-align: center;
-  width: 100px;
-  font-size: 13px;
-  font-weight: 600;
-  color: #2ac338;
-  height: ($baseLineHeight * 2.2);
-  line-height: ($baseLineHeight * 2.2);
-  border: 1px solid #b3b3b3;
-  padding: 0;
-  background: none;
-  @include box-sizing(border-box);
-  @include border-radius(3px);
-  &:hover {
-    color: #2ac338;
-    text-decoration: none;
-    border: 1px solid #2ac338;
-  }
-}
-
 /*
 
 .track-uploader {
