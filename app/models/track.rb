@@ -9,8 +9,9 @@ class Track < ActiveRecord::Base
   has_attached_file :attachment,
     processors: %i[audio],
     styles: {
-      streaming: { params: '--abr 96', format: 'mp3' },
-      download:  { params: '-V 1',     format: 'mp3' }
+      streaming: { format: 'mp3', params: '--abr 96' },
+      download:  { format: 'mp3', params: '-V 1'     },
+      lossless:  { format: 'wav'                     }
     }
   
   process_in_background :attachment
