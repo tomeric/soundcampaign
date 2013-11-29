@@ -25,7 +25,12 @@
                 <%= image_tag @release.cover.url(:thumbnail), alt: "Cover for #{@release.title}" %>
               <% end %>
               <span class="email-title"><%= @release.title %></span>
-              <span class="email-sub-title"><%= @label.name %> <%= @release.catid %>· Release date : <%= @release.date.strftime('%D/%M/%y') %></span>
+              <span class="email-sub-title">
+                <%= @label.name %>
+                <% if @release.date %>
+                  · Release date : <%= @release.date.strftime('%D/%M/%y') %>
+                <% end %>
+              </span>
               <ul>
                 <% @tracks.each.with_index do |track, index| %>
                   <li><%= index + 1 %>. <%= track.artist %> - <strong><%= track.title %></strong></li>
