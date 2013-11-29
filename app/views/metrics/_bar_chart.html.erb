@@ -1,5 +1,5 @@
 <%
-start_date = [dataset.keys.min, Date.today].compact.first
+start_date = [@campaign.try(:sent_at).to_date, dataset.keys.min, Date.today].compact.first
 end_date   = [dataset.keys.max, start_date + 30.days].compact.max
 date_range = (start_date ... end_date)
 %>
@@ -26,7 +26,7 @@ date_range = (start_date ... end_date)
           <%= date.day %>
         </th>
         <td class="value">
-          <%= params[:random].present? && date <= Date.today ? (30 - index) / 2 + rand(10 + (30 - index) / 2) : dataset[date] || 0 %>
+          <%= dataset[date] || 0 %>
         </td>
       </tr>
     <% end %>
