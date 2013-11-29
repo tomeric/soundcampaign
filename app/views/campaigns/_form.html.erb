@@ -61,6 +61,7 @@
     </div>
   </div>
   <div class="release-footer">
+    <%= hidden_field_tag :next_step, release_campaign_url(@release) if @campaign.persisted? %>
     <%= f.submit 'Next Step', class: 'btn btn-large' %>
   </div>
 <% end %>

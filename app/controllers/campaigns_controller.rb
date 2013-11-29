@@ -82,7 +82,7 @@ class CampaignsController < ApplicationController
     @campaign = @release.campaign
     
     if @campaign.update_attributes(campaign_attributes)
-      redirect_to :back
+      redirect_to params[:next_step].presence || :back
     else
       render :new
     end
