@@ -12,4 +12,10 @@
   @include media-retina {
     background-image: image-url('icons/logo@2x.png');
   }
+  
+  .page-public-release & {
+    @include modular-mq(LandscapePhone-PortraitTable) {
+      margin-left: $gridColumnWidth / 2 - 2;
+    }
+  }
 }
