@@ -6,5 +6,8 @@ describe Label do
   
   it { should be_valid }
   
-  it_behaves_like Archivable
+  it_behaves_like Archivable,
+    associations: {
+      releases: -> label { FactoryGirl.create :release, label: label }
+    }
 end
