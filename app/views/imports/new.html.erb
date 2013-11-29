@@ -4,6 +4,11 @@
     <%= f.inputs 'Import' do %>
       <%= f.input :spreadsheet, as: :file %>
     <%  end %>
-    <%= f.actions %>
+    <%= f.actions do %>
+      <li class="action">
+        <%= f.submit 'Import',
+              class: 'submit-btn' %>
+      </li>
+    <% end %>
   <%  end %>
 </section>

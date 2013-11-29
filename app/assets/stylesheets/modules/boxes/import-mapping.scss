@@ -1,0 +1,24 @@
+.import-mapping {
+  table {
+    clear: both;
+    width: 100%;
+    
+    .header-check {
+      min-width: 100px;
+      input {
+        line-height: $baseLineHeight;
+      }
+      
+      label {
+        display: inline-block;
+        line-height: $baseLineHeight;
+      }
+    }
+  }
+  
+  .import-mapping-actions {
+    display: block;
+    clear: both;
+    @include clearfix;
+  }
+}
