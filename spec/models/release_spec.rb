@@ -6,5 +6,8 @@ describe Release do
   
   it { should be_valid }
   
-  it_behaves_like Archivable
+  it_behaves_like Archivable,
+    associations: {
+      tracks: -> release { FactoryGirl.create :track, release: release }
+    }
 end
