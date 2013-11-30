@@ -60,8 +60,8 @@
       position: relative;
       margin:7px 8px 0px 7px;
       background: white;
-      height:90px;
-      border:1px solid #100e0c;
+      height: $baseLineHeight / 2 - 2;
+      border: 1px solid #100e0c;
       @include box-shadow(rgba(white, 0.2) 0 1px 2px);
       
       .waveform{
@@ -73,8 +73,9 @@
       .loader {
         position: absolute;
         height: 100%;
-        z-index:2;
+        z-index: 2;
         background: rgba(0,136,211, 0.2);
+        width: 0%;
       }
       
       .location {
@@ -82,6 +83,7 @@
         z-index:3;
         width:3px;
         height:100%;
+        left: 0%;
         cursor: pointer;
         background: rgba(0,136,211, 0.9);
       }
