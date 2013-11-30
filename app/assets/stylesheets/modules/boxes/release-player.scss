@@ -58,34 +58,50 @@
     
     .timeline {
       position: relative;
-      margin:7px 8px 0px 7px;
+      margin: 7px 8px 0px 7px;
       background: white;
       height: $baseLineHeight / 2 - 2;
       border: 1px solid #100e0c;
       @include box-shadow(rgba(white, 0.2) 0 1px 2px);
       
-      .waveform{
+      &.has-waveform {
+        height: ($baseLineHeight * 5) - 2;
+      }
+      
+      .waveforms {
         position: absolute;
         z-index:1;
         width:100%;
+        height: 100%;
+        
+        .waveform-wrapper {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+        }
       }
       
       .loader {
         position: absolute;
         height: 100%;
-        z-index: 2;
+        z-index: 4;
         background: rgba(0,136,211, 0.2);
         width: 0%;
+        max-width: 100% !important;
       }
       
       .location {
         position: absolute;
         z-index:3;
-        width:3px;
-        height:100%;
+        left: -2px;
+        border-right: 2px solid orange;
+        width: 0%;
+        max-width: 100%;
+        height: 100%;
         left: 0%;
         cursor: pointer;
-        background: rgba(0,136,211, 0.9);
       }
     }
     
