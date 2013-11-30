@@ -4,7 +4,11 @@ class TracksController < ApplicationController
   
   def show
     @track = Track.find_by id: params[:id]
-    render json: @track.waveform
+    
+    respond_to do |format|
+      format.json { render json: @track.waveform }
+      format.html
+    end
   end
   
   def create
