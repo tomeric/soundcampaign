@@ -17,7 +17,7 @@ class SC.Waveform
           .attr('preserveAspectRatio', 'none')
     
     @graph.selectAll('rect')
-          .data(@data.map (date) => date * @height / 2)
+          .data(@data.map (date) => date * @height / 2.5)
           .enter()
           .append('rect')
           .attr('x', (d, i) => i * (@width / @data.length))
