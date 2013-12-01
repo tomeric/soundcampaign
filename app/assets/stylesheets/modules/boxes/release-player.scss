@@ -10,10 +10,6 @@
     }
   }
   
-  &.release-player-no-feedback {
-    margin-bottom: $baseLineHeight * 3.5;
-  }
-  
   @include modular-mq(PortraitTablets-Desktop) {
     @include makeColumn(12, 0.5);
     float: right;
