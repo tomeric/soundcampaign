@@ -329,6 +329,97 @@
 	
 }
 
+
+.teaser-hr {
+	margin:15px 0;
+	float: left;
+	position: relative;
+	width: 100%;
+	line-height: $baseLineHeight;
+	height:  $baseLineHeight;
+	&:before {
+		width: 100%;
+		content: "";
+		border-bottom: 1px solid #d4d4d4;
+		position: absolute;
+		top: 50%;
+	}
+	span {
+		margin: 0 auto;
+		position: relative;
+		width: 190px;
+		display: block;
+		text-align: center;
+		font-size: 15px;
+		font-weight: 600;
+		color: #323232;
+		background-color: #f4f4f4;
+	}
+}
+
+.feature-box {
+	width: 100%;
+	> div {
+		&:first-child {
+			margin-right:30px;
+		}
+	}
+	.feature-box-image {
+		float: left;
+		width: 605px;
+		height: 510px;
+		background-position: 0 0;
+	}
+	.feature-box-content {
+		float: left;
+		width: 344px;
+		margin: 15px 0 0 0;
+	}
+	h2 {
+		color: #0092e1;
+		font-size: 30px;
+	}
+	.release-img {
+		@include background-image(image-url("feature_player.png"));
+				background-repeat: no-repeat;
+				background-position: 50% 0px;
+				@include media-retina {
+			    @include background-image(image-url("feature_player@2x.png"));
+			    background-size: 615px 509px;
+			  }
+	}
+	.template-img {
+		@include background-image(image-url("feature_email.png"));
+				background-repeat: no-repeat;
+				background-position: 50% 0px;
+				@include media-retina {
+			    @include background-image(image-url("feature_email2x.png"));
+			    background-size: 612px 461px;
+			  }
+	}
+	.metrics-img {
+		@include background-image(image-url("feature_metrics.png"));
+				background-repeat: no-repeat;
+				background-position: 50% 0px;
+				@include media-retina {
+			    @include background-image(image-url("feature_metrics2x.png"));
+			    background-size: 637px 495px;
+			  }
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Animation keyframes */
 
 @include keyframes(teaser-devices) {
