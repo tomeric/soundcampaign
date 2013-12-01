@@ -11,9 +11,7 @@ class SC.Waveform
     @width  = @wrapper.width()
     @height = @wrapper.height()
     
-    @graph.attr('width', @width)
-          .attr('height', @height)
-          .attr('viewBox', "0 0 #{@width} #{@height}")
+    @graph.attr('viewBox', "0 0 #{@width} #{@height}")
           .attr('preserveAspectRatio', 'none')
     
     @graph.selectAll('rect')
