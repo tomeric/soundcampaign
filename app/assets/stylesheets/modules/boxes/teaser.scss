@@ -288,7 +288,7 @@
 				background-repeat: no-repeat;
 				background-position: 50% 0px;
 				@include media-retina {
-			    @include background-image(image-url("feature_email2x.png"));
+			    @include background-image(image-url("feature_email@2x.png"));
 			    background-size: 612px 461px;
 			  }
 	}
@@ -297,7 +297,7 @@
 				background-repeat: no-repeat;
 				background-position: 50% 0px;
 				@include media-retina {
-			    @include background-image(image-url("feature_metrics2x.png"));
+			    @include background-image(image-url("feature_metrics@2x.png"));
 			    background-size: 637px 495px;
 			  }
 	}
