@@ -5,18 +5,40 @@ contact = feedback.recipient.try(:contact)
   <div class="feedback-header">
     <div class="feedback-header-gravatar"><%= gravatar_tag current_user.email %></div>
     <div class="feedback-header-name">
-      <%= contact.try(:name) || feedback.recipient.email %>
-      <% if contact.try(:name) && contact.try(:email) %>
-      <small>(<%= contact.email %>)</small>
+      <%= link_to_if contact, [contact.try(:list), contact] do %>
+        <%= contact.try(:name) || feedback.recipient.email %>
+        <% if contact.try(:name) && contact.try(:email) %>
+          <small>(<%= contact.email %>)</small>
+        <% end %>
       <% end %>
     </div>
   </div>
   <div class="feedback-body">
     <%= simple_format feedback.body %>
   </div>
-  <ul class="feedback-ratings">
-    <% feedback.ratings.each do |rating| %>
-      <li><strong><%= rating.track.title %>:</strong> <%= pluralize(rating.value, 'star') %></li>
-    <% end %>
-  </ul>
+  <% if feedback.ratings.present? %>
+    <ul class="tracks">
+      <% feedback.ratings.each do |rating|%>
+        <li class="track">
+          <div class="rating">
+            <%
+            on_stars   = (rating.value / 2).floor.times
+            half_stars = rating.value.odd? ? 1 : 0
+            off_stars  = 5 - on_stars - half_stars
+            %>
+            <% on_stars.times do %>
+              <%= image_tag "icons/star-on-white.png" %>
+            <% end %>
+            <% half_stars.times do %>
+              <%= image_tag "icons/star-half-white.png" %>
+            <% end %>
+            <% off_stars.times do %>
+              <%= image_tag "icons/star-off-white.png" %>
+            <% end %>
+          </div>
+          <div class="filename"><%= rating.track.author%> - <%= rating.track.title %></div>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
 </li>
