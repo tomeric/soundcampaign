@@ -47,57 +47,6 @@
       <%= render @feedbacks %>
     </ol>
   <% else %>
-    <div class="blank-slate">
-      <h2 class="blank-slate-title">No feedback yet!</h2>
-      <p class="blank-slate-subtitle">Witty subtitle.</p>
-    </div>
-
-    <!-- Tijdelijk om te testen -->
-    <ol>
-      <li class="feedback">
-        <div class="feedback-header">
-          <div class="feedback-header-gravatar">
-            <!-- Aanpassen naar gravatar / afb gebruiker -->
-            <%= gravatar_tag current_user.email %> 
-          </div>
-          <div class="feedback-header-name">
-           Gordon Hatusupy
-          </div>
-        </div>
-        <div class="feedback-body">
-          <p>
-          We're really excited to have the beta version of Sound Campaign up and running! Sound Campaign is a platform that makes music promotion simple and beautiful. We want to make it easy for music labels to manage and send their promotions in the most attractive and friendly way possible. Music professionals will be happy to receive your promotions in beautifully designed emailtemplates and release pages. Our goal is to improve the relationships between labels and music professionals to make it a more enjoyable experience for both.
-          </p>
-          <ul class="tracks">
-            <li class="track">
-              <div class="rating">
-                <%= image_tag "icons/star-on-white.png" %>
-                <%= image_tag "icons/star-on-white.png" %>
-                <%= image_tag "icons/star-on-white.png" %>
-                <%= image_tag "icons/star-on-white.png" %>
-                <%= image_tag "icons/star-on-white.png" %>
-              </div>
-              <div class="filename">The Hilliard Ensemble: Thomas Tallis "The Lamentations Of Jeremiah", "De lamentatione" (Auschnitt)
-              </div>
-              
-            </li>
-            <li class="track">
-              <div class="rating">
-                <%= image_tag "icons/star-on-white.png" %>
-                <%= image_tag "icons/star-on-white.png" %>
-                <%= image_tag "icons/star-on-white.png" %>
-                <%= image_tag "icons/star-on-white.png" %>
-                <%= image_tag "icons/star-on-white.png" %>
-              </div>
-              <div class="filename">Lorde - Royals (An-Ten-Nae 's Symphonic Reprise)
-              </div>
-              
-            </li>
-          </ul>
-        </div>
-      </li>
-    </ol>
-    <!-- Tijdelijk om te testen -->
-
+    <p>There are is no feedback yet</p>
   <% end %>
 </section>
