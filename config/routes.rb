@@ -51,6 +51,7 @@ SoundCampaign::Application.routes.draw do
   resources :mandrill
   
   if Rails.env.development?
+    require 'mail_preview'
     mount MailPreview => 'mail_view'
     resources :mockups, only: %i[index show]
   end

@@ -1,3 +1,5 @@
+require 'mail_view'
+
 class MailPreview < MailView
   def campaign
     if campaign = Campaign.offset(rand(Campaign.count)).first
