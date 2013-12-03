@@ -24,6 +24,7 @@ gem 'waveformjson', require: false
 
 # Mail:
 gem 'mandrill-rails'
+gem 'premailer-rails'
 
 # Files:
 gem 'aws-sdk'

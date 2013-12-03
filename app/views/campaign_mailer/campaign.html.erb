@@ -1,18 +1,76 @@
+<style type="text/css">
+.header-table {
+  border-collapse: collapse;
+  color: rgb(34,34,34);
+  font-family: Helvetica Neue, Helvetica,Arial,sans-serif;
+  font-size: 13px;
+  line-height: 22px;
+  text-align: left;
+  padding-top: 40px;
+  padding-right: 40px;
+  padding-bottom: 0px;
+  padding-left: 40px;
+}
+
+.cover-cell {
+  -premailer-width: 180px;
+  width: 180px;
+  border-collapse: collapse;
+  color: rgb(34,34,34);
+  font-family: Helvetica Neue, Helvetica,Arial,sans-serif;
+  font-size: 13px;
+  line-height: 22px;
+  text-align: left;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-bottom: 0px;
+  padding-left: 40px;
+}
+
+.tracks-cell {
+  -premailer-width: 300px;
+  width: 300px;
+  border-collapse: collapse;
+  color: rgb(34,34,34);
+  font-family: Helvetica Neue, Helvetica,Arial,sans-serif;
+  font-size: 13px;
+  line-height: 22px;
+  text-align: left;
+  padding-top: 20px;
+  padding-right: 40px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+}
+
+.release-content {
+  border-collapse: collapse;
+  color: rgb(34,34,34);
+  font-family: Helvetica Neue, Helvetica,Arial,sans-serif;
+  font-size: 13px;
+  line-height: 22px;
+  text-align: left;
+  padding-top: 40px;
+  padding-right: 40px;
+  padding-bottom: 40px;
+  padding-left: 40px;
+  background-color: #FFFFFF;
+}
+</style>
 <tr>
-  <td colspan="3" valign="top" style="border-collapse: collapse;color:rgb(34,34,34);font-family:Helvetica Neue, Helvetica,Arial,sans-serif;font-size:13px;line-height:22px;text-align:left;padding-top:40px;padding-right:40px;padding-bottom:0px;padding-left:40px;">
+  <td colspan="3" class="header-table">
     <%= render 'header', release: @release, label: @label %>
   </td>
 </tr>
 <tr>
-  <td valign="top" width="180"  style="border-collapse: collapse;color:rgb(34,34,34);font-family:Helvetica Neue, Helvetica,Arial,sans-serif;font-size:13px;line-height:22px;text-align:left;padding-top:20px;padding-right:20px;padding-bottom:0px;padding-left:40px;">
+  <td class="cover-cell">
     <%= render 'cover', release: @release %>
   </td>
-  <td valign="top" width="300"  style="border-collapse: collapse;color:rgb(34,34,34);font-family:Helvetica Neue, Helvetica,Arial,sans-serif;font-size:13px;line-height:22px;text-align:left;padding-top:20px;padding-right:40px;padding-bottom:0px;padding-left:20px;">
+  <td class="tracks-cell">
     <%= render 'tracks', release: @release, tracks: @tracks %>
   </td>
 </tr>
 <tr>
-  <td colspan="3" valign="top" class="bodyContent" style="border-collapse: collapse;color:rgb(34,34,34);font-family:Helvetica Neue, Helvetica,Arial,sans-serif;font-size:13px;line-height:22px;text-align:left;padding-top:40px;padding-right:40px;padding-bottom:40px;padding-left:40px;background-color: #FFFFFF;">
+  <td colspan="3" class="release-content">
     <%= render 'description', release: @release %>
   </td>
 </tr>

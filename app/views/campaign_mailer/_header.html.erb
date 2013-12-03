@@ -1,11 +1,52 @@
-<table border="0" cellpadding="20" cellspacing="0" width="100%">
+<style type="text/css">
+.release-header {
+  border: 0;
+  -premailer-cellpadding: 20;
+  -premailer-width: 100%;
+  width: 100%;
+}
+
+.release-header td {
+  border-collapse: collapse;
+  color:rgb(34,34,34);
+  font-family:Helvetica Neue, Helvetica,Arial,sans-serif;
+  font-size:13px;
+  line-height:22px;
+  text-align:left;
+  margin-top:0px;
+  margin-right:0px;
+  margin-bottom:0px;
+  margin-left:0px;
+  padding-top:0px;
+  padding-right:0px;
+  padding-bottom:0px;
+  padding-left:0px;
+}
+
+.release-header .release-title {
+  color:rgb(51,51,51);
+  font-size:30px;
+}
+
+.release-header .label-name {
+  
+}
+</style>
+<table class="release-header">
   <tbody>
     <tr>
-      <td align="center" valign="top" style="border-collapse: collapse;color:rgb(34,34,34);font-family:Helvetica Neue, Helvetica,Arial,sans-serif;font-size:13px;line-height:22px;text-align:left;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;">
-        <span style="color:rgb(51,51,51);font-size:30px;"><%= release.title %></span>
+      <td>
+        <span class="release-title">
+          <%= release.title %>
+        </span>
         <br><br>
-        <strong><%= [label.name, release.catid].join(' ') %></strong>
-        · Release date : <%= (release.date || Time.now).strftime('%d/%m/%Y') %>
+        <strong class="label-name">
+          <%= [label.name, release.catid].compact.join(' ') %>
+        </strong>
+        · 
+        <span class="release-metadata">
+          Release date : <%= (release.date || Time.now).strftime('%d/%m/%Y') %>
+        </span>
       </td>
     </tr>
   </tbody>
