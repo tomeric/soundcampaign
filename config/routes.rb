@@ -50,7 +50,10 @@ SoundCampaign::Application.routes.draw do
   
   resources :mandrill
   
-  resources :mockups, only: %i[index show]
+  if Rails.env.development?
+    mount MailPreview => 'mail_view'
+    resources :mockups, only: %i[index show]
+  end
   
   devise_for :users, controllers: {
     registrations: 'registrations'

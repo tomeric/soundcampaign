@@ -65,7 +65,10 @@ group :development do
   # Debugging:
   gem 'better_errors'
   gem 'binding_of_caller'
+  
+  # Mail:
   gem 'letter_opener'
+  gem 'mail_view'
   
   # Deployment:
   gem 'capistrano-rails'
