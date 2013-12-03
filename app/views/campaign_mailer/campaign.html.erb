@@ -1,61 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title><%= @campaign.email_subject %></title>
-</head>
-<body>
-<center>
-  <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" style="border-collapse:collapse!important;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;background-color:rgb(244,244,244)">
-    <tbody>
-      <tr>
-        <td align="center" valign="top" style="margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:30px;padding-right:20px;padding-bottom:30px;padding-left:20px">
-          <table border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse!important;width:600px">
-            <tbody>
-              <tr>
-                <td align="center" valign="top" style="padding-top:30px;padding-bottom:30px">
-                  <table border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse:separate!important;background-color:rgb(255,255,255);border-top-left-radius:4px;border-top-right-radius:4px;border-bottom-right-radius:4px;border-bottom-left-radius:4px">
-                    <tbody>
-                      <tr>
-                        <td colspan="3" valign="top" class="bodyContent" style="border-collapse: collapse;color:rgb(34,34,34);font-family:Helvetica Neue, Helvetica,Arial,sans-serif;font-size:13px;line-height:22px;text-align:left;padding-top:40px;padding-right:40px;padding-bottom:0px;padding-left:40px;">
-                          <%= render 'header', release: @release, label: @label %>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td valign="top" width="180"  style="border-collapse: collapse;color:rgb(34,34,34);font-family:Helvetica Neue, Helvetica,Arial,sans-serif;font-size:13px;line-height:22px;text-align:left;padding-top:20px;padding-right:20px;padding-bottom:0px;padding-left:40px;">
-                          <%= render 'cover', release: @release %>
-                        </td>
-                        <td valign="top" width="300"  style="border-collapse: collapse;color:rgb(34,34,34);font-family:Helvetica Neue, Helvetica,Arial,sans-serif;font-size:13px;line-height:22px;text-align:left;padding-top:20px;padding-right:40px;padding-bottom:0px;padding-left:20px;">
-                          <%= render 'tracks', release: @release, tracks: @tracks %>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td colspan="3" valign="top" class="bodyContent" style="border-collapse: collapse;color:rgb(34,34,34);font-family:Helvetica Neue, Helvetica,Arial,sans-serif;font-size:13px;line-height:22px;text-align:left;padding-top:40px;padding-right:40px;padding-bottom:40px;padding-left:40px;background-color: #FFFFFF;">
-                          <%= render 'description', release: @release %>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
-              <tr>
-                <td align="center" valign="top">
-                  <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse:collapse!important">
-                    <tbody>
-                      <tr>
-                        <td align="center" valign="top" style="color:rgb(96,96,96);font-family:Helvetica,Arial,sans-serif;font-size:11px;line-height:16px;padding-bottom:30px;adding-right:30px;text-align:right">
-                          Send with <%= link_to 'SoundCampaign', root_url %>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</center>
-</body>
-</html>
+<tr>
+  <td colspan="3" valign="top" style="border-collapse: collapse;color:rgb(34,34,34);font-family:Helvetica Neue, Helvetica,Arial,sans-serif;font-size:13px;line-height:22px;text-align:left;padding-top:40px;padding-right:40px;padding-bottom:0px;padding-left:40px;">
+    <%= render 'header', release: @release, label: @label %>
+  </td>
+</tr>
+<tr>
+  <td valign="top" width="180"  style="border-collapse: collapse;color:rgb(34,34,34);font-family:Helvetica Neue, Helvetica,Arial,sans-serif;font-size:13px;line-height:22px;text-align:left;padding-top:20px;padding-right:20px;padding-bottom:0px;padding-left:40px;">
+    <%= render 'cover', release: @release %>
+  </td>
+  <td valign="top" width="300"  style="border-collapse: collapse;color:rgb(34,34,34);font-family:Helvetica Neue, Helvetica,Arial,sans-serif;font-size:13px;line-height:22px;text-align:left;padding-top:20px;padding-right:40px;padding-bottom:0px;padding-left:20px;">
+    <%= render 'tracks', release: @release, tracks: @tracks %>
+  </td>
+</tr>
+<tr>
+  <td colspan="3" valign="top" class="bodyContent" style="border-collapse: collapse;color:rgb(34,34,34);font-family:Helvetica Neue, Helvetica,Arial,sans-serif;font-size:13px;line-height:22px;text-align:left;padding-top:40px;padding-right:40px;padding-bottom:40px;padding-left:40px;background-color: #FFFFFF;">
+    <%= render 'description', release: @release %>
+  </td>
+</tr>

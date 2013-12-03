@@ -1,4 +1,7 @@
 class CampaignMailer < ActionMailer::Base
+  
+  layout 'campaign_mail'
+  
   helper MailHelper
   
   default from: Settings.campaign_email
