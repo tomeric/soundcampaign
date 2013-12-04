@@ -80,7 +80,10 @@ SoundCampaign::Application.configure do
   # Paperclip & S3:
   if ENV['AWS_BUCKET'].present? && ENV['AWS_ACCESS_KEY_ID'].present?
     config.paperclip_defaults = {
-      storage: :s3,
+      storage:     :s3,
+      url:         ":s3_domain_url",
+      path:        "/:class/:attachment/:id_partition/:hash.:extension",
+      hash_secret: ENV['PAPERCLIP_HASH_SECRET'].presence,
       s3_credentials: {
         bucket:            ENV['AWS_BUCKET'],
         access_key_id:     ENV['AWS_ACCESS_KEY_ID'],
