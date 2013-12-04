@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe Cover do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject(:cover) { build :cover }
+  
+  it { should be_valid }
 end

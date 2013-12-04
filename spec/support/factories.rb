@@ -63,6 +63,13 @@ FactoryGirl.define do
     value    { 1.upto(10).to_a.sample }
   end
   
+  factory :cover do
+    attachment   { fixture 'cover.jpg'          }
+    organization { build :organization          }
+    coverable    { build :release,
+                     organization: organization }
+  end
+  
   factory :artist do
     organization { build :organization }
     name         { generate :name      }
