@@ -59,7 +59,7 @@ describe ContactListsController do
     
     it "assigns the requested contact list's contacts as @contacts" do
       create :contact, list: list
-      contacts = list.contacts
+      contacts = list.contacts.order(name: :asc)
       get :show, id: list.to_param
       expect(assigns[:contacts]).to eq contacts
     end

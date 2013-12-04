@@ -258,9 +258,9 @@ describe ReleasesController do
       }.by +1
     end
     
-    it 'redirects to the release' do
+    it 'redirects to the release list' do
       put :undestroy, id: release.to_param
-      expect(response).to redirect_to release
+      expect(response).to redirect_to releases_url
     end
   end
 end

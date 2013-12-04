@@ -61,7 +61,7 @@ shared_examples_for Archivable do |options|
         end
       end
       
-      if associations = options[:associations]
+      if associations = options.try(:[], :associations)
         associations.each do |association, factory|
           let!(:associated_model) { factory.call(model) }
           
@@ -100,7 +100,7 @@ shared_examples_for Archivable do |options|
         }.to nil
       end
       
-      if associations = options[:associations]
+      if associations = options.try(:[], :associations)
         associations.each do |association, factory|
           let!(:associated_model) { factory.call(model) }
           
