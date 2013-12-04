@@ -1,7 +1,7 @@
 window.SC ||= {}
 class SC.Waveform
   constructor: (@wrapper, data) ->
-    @data  = data.filter (date, index) -> index % 3 == 0
+    @data  = data.filter (date, index) -> index % 1 == 0
     @graph = d3.select(@wrapper.get(0))
                .append('svg')
     
@@ -20,6 +20,6 @@ class SC.Waveform
           .append('rect')
           .attr('x', (d, i) => i * (@width / @data.length))
           .attr('y', (d   ) => (@height / 2) - d)
-          .attr('width', '3px')
+          .attr('width', '1px')
           .attr('height', (d) => d * 2)
           .attr('fill', @wrapper.data('fill-color'))
