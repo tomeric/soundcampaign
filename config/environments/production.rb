@@ -77,6 +77,18 @@ SoundCampaign::Application.configure do
     config.action_mailer.delivery_method = :smtp
   end
   
+  # Paperclip & S3:
+  if ENV['AWS_BUCKET'].present? && ENV['AWS_ACCESS_KEY_ID'].present?
+    config.paperclip_defaults = {
+      storage: :s3,
+      s3_credentials: {
+        bucket:            ENV['AWS_BUCKET'],
+        access_key_id:     ENV['AWS_ACCESS_KEY_ID'],
+        secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+      }
+    }
+  end
+  
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).
   config.i18n.fallbacks = true

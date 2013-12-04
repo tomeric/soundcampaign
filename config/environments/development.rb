@@ -26,4 +26,12 @@ SoundCampaign::Application.configure do
 
   # Debug mode disables concatenation and preprocessing of assets.
   config.assets.debug = true
+  
+  # Paperclip:
+  config.paperclip_defaults = {
+    storage:     :filesystem,
+    url:         "/system/:class/:attachment/:id_partition/:hash.:extension",
+    path:        ":rails_root/public/system/:class/:attachment/:id_partition/:hash.:extension",
+    hash_secret: ENV['PAPERCLIP_HASH_SECRET'].presence
+  }
 end
