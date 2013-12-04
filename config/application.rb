@@ -22,7 +22,7 @@ module SoundCampaign
     config.assets.precompile += %w(teaser.css teaser.js modernizr.js)
     
     # ActionMailer:
-    config.action_mailer.default_url_options = { host: 'soundcampaign.com' }
+    config.action_mailer.default_url_options = { host: Settings.canonical_hostname }
     
     # ActiveRecord:
     config.active_record.whitelist_attributes = false
