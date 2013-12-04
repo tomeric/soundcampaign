@@ -14,6 +14,10 @@
   }
   
   .page-public-release & {
+    background: image-url('icons/logo-on-black.png') left center no-repeat;
+      @include media-retina {
+        background-image: image-url('icons/logo-on-black@2x.png');
+      }
     @include modular-mq(LandscapePhone-PortraitTable) {
       margin-left: $gridColumnWidth / 2 - 2;
     }
