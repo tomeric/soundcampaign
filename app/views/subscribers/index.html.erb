@@ -1,0 +1,11 @@
+<section class="section" id="subscribers">
+  <%= render 'subscribers/header', title: 'Subscribers' %>
+  <% if @subscribers.present? %>
+    <%= render 'subscribers', subscribers: @subscribers %>
+  <% else %>
+    <div class="blank-slate">
+      <h2 class="blank-slate-title">Let's see you get some people to sign up for your beta!</h2>
+      <p class="blank-slate-subtitle">No excuses left. Get to work!</p>
+    </div>
+  <% end %>
+</section>

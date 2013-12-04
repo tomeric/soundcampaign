@@ -1,12 +1,16 @@
 class SubscribersController < ApplicationController
-  layout 'teaser'
+  
+  layout :pick_layout
+  
+  before_action :require_admin,
+    except: %i[new create]
   
   def index
-    redirect_to new_subscriber_url
+    @subscribers = Subscriber.order(created_at: :desc).all
   end
   
   def new
-    if user_signed_in?
+    if user_signed_in? && params[:force].blank?
       if current_organization.labels.count > 0
         redirect_to releases_url
       else
@@ -27,6 +31,17 @@ class SubscribersController < ApplicationController
       render 'create', status: :created
     else
       render 'new',    status: :unprocessable_entity
+    end
+  end
+  
+  private
+  
+  def pick_layout
+    case action_name.to_sym
+    when :new, :create
+      'teaser'
+    else
+      'backend'
     end
   end
 end

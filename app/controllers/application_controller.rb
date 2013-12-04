@@ -44,6 +44,10 @@ class ApplicationController < ActionController::Base
     return false
   end
   
+  def require_admin
+    unauthorized unless user_signed_in? && current_user.has_role?('admin')
+  end
+  
   def require_label_owner
     unauthorized unless user_signed_in? &&
                         current_organization == @label.try(:organization)
