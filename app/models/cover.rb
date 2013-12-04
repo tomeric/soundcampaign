@@ -21,7 +21,7 @@ class Cover < ActiveRecord::Base
   
   ### CALLBACKS:
   
-  after_post_process :generate_poster_later
+  after_attachment_post_process :generate_poster_later
   
   ### INSTANCE METHODS:
   
