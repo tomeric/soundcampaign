@@ -61,6 +61,7 @@
       @include box-shadow(rgba(white, 0.2) 0 1px 2px);
       
       &.has-waveform {
+        overflow: hidden;
         height: 90px;
       }
       
@@ -97,7 +98,7 @@
       .location {
         position: absolute;
         z-index:3;
-        left: -2px;
+        margin-left: -2px;
         border-right: 2px solid orange;
         width: 0%;
         max-width: 100%;
