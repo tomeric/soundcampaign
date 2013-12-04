@@ -15,9 +15,17 @@ class User < ActiveRecord::Base
   
   belongs_to :organization
   
+  has_many :roles
+  
   ### VALIDATIONS:
   
   validates :name,
     presence: true
+  
+  ### INSTANCE METHODS:
+  
+  def has_role?(name)
+    roles.any? { |r| r.name == name }
+  end
   
 end
