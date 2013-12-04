@@ -26,6 +26,11 @@ FactoryGirl.define do
     name         { generate :name      }
   end
   
+  factory :role do
+    user { build :user }
+    name 'admin'
+  end
+  
   factory :label do
     organization { build :organization }
     name         { generate :brand     }
