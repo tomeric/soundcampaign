@@ -19,6 +19,10 @@ class Cover < ActiveRecord::Base
   belongs_to :coverable,
     polymorphic: true
   
+  ### CALLBACKS:
+  
+  after_post_process :generate_poster_later
+  
   ### INSTANCE METHODS:
   
   def as_json(options = {})
