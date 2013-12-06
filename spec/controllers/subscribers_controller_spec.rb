@@ -1,13 +1,6 @@
 require 'spec_helper'
 
-describe SubscribersController do
-  describe 'GET :index' do
-    it 'redirects to the new subscriber page' do
-      get :index
-      expect(response).to redirect_to new_subscriber_url
-    end
-  end
-  
+describe SubscribersController do  
   describe 'GET :new' do
     it "redirects to the user's labels if logged in and the user has no labels" do
       user = create :user
