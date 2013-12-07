@@ -26,4 +26,20 @@ describe Subscriber do
       end
     end
   end
+  
+  context 'instance methods' do
+    describe '#invite_used?' do
+      it "returns true if a user exists with the subscriber's invite_code" do
+        subscriber.generate_invite_code
+        create :user, invite_code: subscriber.invite_code
+        expect(subscriber.invite_used?).to be_true
+      end
+      
+      it "returns false if no user exists with the subscriber's invite_code" do
+        subscriber.generate_invite_code
+        User.where(invite_code: subscriber.invite_code).delete_all
+        expect(subscriber.invite_used?).to be_false
+      end
+    end
+  end
 end

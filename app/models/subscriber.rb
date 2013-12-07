@@ -21,6 +21,10 @@ class Subscriber < ActiveRecord::Base
   
   ### INSTANCE METHODS:
   
+  def invite_used?
+    invite_code? && User.where(invite_code: invite_code).exists?
+  end
+  
   def generate_invite_code
     seeds  = []
     seeds << email
