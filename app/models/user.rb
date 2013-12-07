@@ -22,10 +22,21 @@ class User < ActiveRecord::Base
   validates :name,
     presence: true
   
+  ### CALLBACKS:
+  
+  before_create :create_default_organization,
+    unless: :organization
+  
   ### INSTANCE METHODS:
   
   def has_role?(name)
     roles.any? { |r| r.name == name }
+  end
+  
+  private
+  
+  def create_default_organization
+    self.organization = create_organization name: name
   end
   
 end
