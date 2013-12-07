@@ -2,4 +2,5 @@
   <td><%= subscriber.id %></td>
   <td><%= link_to subscriber.email, "mailto:#{subscriber.email}" %></td>
   <td><%= subscriber.created_at %></td>
+  <td><%= link_to subscriber.invite_code, new_user_registration_path(invite_code: subscriber.invite_code) %></td>
 </tr>
