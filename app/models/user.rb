@@ -9,8 +9,6 @@ class User < ActiveRecord::Base
               trackable
               validatable ]
   
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me
-  
   ### ASSOCIATIONS:
   
   belongs_to :organization
