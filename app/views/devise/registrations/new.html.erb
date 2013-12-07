@@ -7,6 +7,7 @@
   <% end %>
   <%= f.actions do %>
     <li class="action">
+      <%= hidden_field_tag 'user[invite_code]', invite_code %>
       <%= f.submit 'Sign up',
             class: 'submit-btn' %>
     </li>
