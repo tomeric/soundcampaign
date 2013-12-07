@@ -13,6 +13,10 @@
 .ruby-version
 .rvmrc
 
+# Ignore binaries with annoying messages:
+bin/rails
+bin/rake
+
 # Ignore configuration files containing secrets:
 /config/*.yml
 /.env
