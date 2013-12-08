@@ -7,7 +7,26 @@ class ApplicationController < ActionController::Base
     before_action :redirect_to_canonical_hostname, unless: :on_canonical_hostname?
   end
   
+  before_filter :configure_permitted_devise_parameters, if: :devise_controller?
+  
   private
+  
+  def configure_permitted_devise_parameters
+    {
+      sign_in:        %i[password remember_me],
+      sign_up:        %i[password password_confirmation name invite_code],
+      account_update: %i[password password_confirmation current_password name invite_code]
+    }.each do |action, permitted|
+      devise_parameter_sanitizer.for(action) do |params|
+        auth_keys = resource_class.authentication_keys.respond_to?(:keys) ?
+                      resource_class.authentication_keys.keys :
+                      resource_class.authentication_keys
+        
+        attributes = auth_keys + permitted
+        params.permit *attributes
+      end
+    end
+  end
   
   def redirect_to_canonical_hostname
     canonical_url  = "#{request.protocol}#{Settings.canonical_hostname}#{request.path}"
