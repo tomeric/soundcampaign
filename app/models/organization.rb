@@ -32,7 +32,8 @@ class Organization < ActiveRecord::Base
   ### INSTANCE METHODS:
   
   def used_disk_space
-    tracks.sum(:attachment_file_size)
+    tracks.sum(:attachment_file_size) +
+    covers.sum(:attachment_file_size)
   end
   
   def available_disk_space

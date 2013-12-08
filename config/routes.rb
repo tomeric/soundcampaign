@@ -8,6 +8,8 @@ SoundCampaign::Application.routes.draw do
   root to: 'subscribers#new'
   resources :subscribers
   
+  resources :organizations
+  
   resources :labels,
     concerns: :undestroyable
   
