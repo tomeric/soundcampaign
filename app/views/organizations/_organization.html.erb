@@ -1,9 +1,12 @@
 <%
-last_sign_in   = organization.members.maximum(:last_sign_in_at) || organization.created_at
-releases_count = organization.releases.count
-labels_count   = organization.labels.count
-tracks_count   = organization.tracks.count
-contacts_count = organization.contacts.count
+last_sign_in    = organization.members.maximum(:last_sign_in_at) || organization.created_at
+releases_count  = organization.releases.count
+labels_count    = organization.labels.count
+tracks_count    = organization.tracks.count
+contacts_count  = organization.contacts.count
+campaigns_count = organization.campaigns.where('campaigns.sent_at IS NOT NULL').count
+plays_count     = organization.track_events.played.count
+feedbacks_count = organization.feedbacks.count
 %>
 <tr>
   <td class="org-id"><%= organization.id   %></td>
@@ -12,10 +15,15 @@ contacts_count = organization.contacts.count
     <time title="<%= last_sign_in %>"><%= time_ago_in_words last_sign_in %> ago</time>
   </td>
   <td class="org-counters">
-    <%= pluralize releases_count, 'release', 'releases' %><br/>
-    <%= pluralize labels_count,   'label',   'labels'   %><br/>
-    <%= pluralize tracks_count,   'track',   'tracks'   %><br/>
-    <%= pluralize contacts_count, 'contact', 'contacts' %>
+    <ul>
+      <li><%= pluralize releases_count,  'release',       'releases'       %></li>
+      <li><%= pluralize labels_count,    'label',         'labels'         %></li>
+      <li><%= pluralize tracks_count,    'track',         'tracks'         %></li>
+      <li><%= pluralize contacts_count,  'contact',       'contacts'       %></li>
+      <li><%= pluralize campaigns_count, 'campaign sent', 'campaigns sent' %></li>
+      <li><%= pluralize plays_count,     'track played',  'tracks played'  %></li>
+      <li><%= pluralize feedbacks_count, 'feedback',      'feedbacks'      %></li>
+    </ul>
   </td class="org-usage">
   <td><%= number_to_human_size organization.used_disk_space %></td>
 </tr>

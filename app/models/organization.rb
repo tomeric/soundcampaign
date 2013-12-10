@@ -20,9 +20,21 @@ class Organization < ActiveRecord::Base
   has_many :releases,
     dependent: :destroy
   
-  has_many :tracks
+  has_many :campaigns,
+    through: :releases
   
-  has_many :covers
+  has_many :feedbacks,
+    through: :releases
+  
+  has_many :tracks,
+    dependent: :destroy
+  
+  has_many :track_events,
+    through: :tracks,
+    source:  :events
+  
+  has_many :covers,
+    dependent: :destroy
   
   ### VALIDATIONS:
   
