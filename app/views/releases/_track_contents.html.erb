@@ -5,7 +5,7 @@
      data-waveform-url="<%= track_url(track, secret: params[:secret].presence) %>"
      data-waveform-color="steelblue">
   <% if feedback.try(:persisted?) %>
-    <%= link_to 'download', track.attachment.url(:download), class: 'download', download: track.attachment_file_name %>
+    <%= link_to 'download', download_track_path(track, secret: params[:secret]), class: 'download', download: track.attachment_file_name %>
   <% end %>
   <% if feedback && form %>
     <%= form.hidden_field :id if rating.persisted? %>
