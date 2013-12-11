@@ -6,7 +6,8 @@
      data-waveform-color="steelblue">
   <% if feedback.try(:persisted?) %>
     <%= link_to 'download', track.attachment.url(:download), class: 'download', download: track.attachment_file_name %>
-  <% elsif feedback && form %>
+  <% end %>
+  <% if feedback && form %>
     <%= form.hidden_field :id if rating.persisted? %>
     <%= form.hidden_field :track_id %>
     <%= form.select :value, 1.upto(10).to_a, { include_blank: true }, class: 'rating' %>
