@@ -61,7 +61,8 @@ class Track < ActiveRecord::Base
     }.merge(s3_options)
     
     if attachment.respond_to? :s3_object
-      attachment.s3_object(style).url_for(:read, s3_options)
+      uri = attachment.s3_object(style).url_for(:read, s3_options)
+      uri.to_s
     else
       attachment.url(style)
     end
