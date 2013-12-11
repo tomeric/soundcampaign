@@ -54,6 +54,19 @@ class Track < ActiveRecord::Base
   
   ### INSTANCE METHODS:
   
+  def url(style = :download, s3_options = {})
+    s3_options = {
+      expires_in: 10.minutes,
+      secure:     false
+    }.merge(s3_options)
+    
+    if attachment.respond_to? :s3_object
+      attachment.s3_object(style).url_for(:read, s3_options)
+    else
+      attachment.url(style)
+    end
+  end
+  
   def as_json
     {
       id: id,
