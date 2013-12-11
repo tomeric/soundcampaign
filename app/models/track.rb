@@ -140,7 +140,7 @@ class Track < ActiveRecord::Base
   def generate_waveform!
     return false if attachment_processing?
     
-    lossless_io = open(attachment.url(:lossless))
+    lossless_io = open(url(:lossless))
     self.waveform_json = Waveformjson.generate(lossless_io, width: 710, height: 90, method: :peak).to_json
     save!
   end
