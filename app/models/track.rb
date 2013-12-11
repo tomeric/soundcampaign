@@ -8,7 +8,8 @@ class Track < ActiveRecord::Base
   ### PAPERCLIP:
   
   has_attached_file :attachment,
-    processors: %i[audio],
+    processors:     %i[audio],
+    s3_permissions: :private,
     styles: {
       streaming: { format: 'mp3', params: '--abr 96' },
       download:  { format: 'mp3', params: '-V 1'     },
