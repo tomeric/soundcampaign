@@ -27,7 +27,12 @@ SoundCampaign::Application.routes.draw do
     concerns: :undestroyable
   
   resources :tracks,
-    only: %i[show create destroy]
+    except: %i[edit update] do
+    member do
+      get :stream
+      get :download
+    end
+  end
   
   resources :covers,
     only: %i[create]

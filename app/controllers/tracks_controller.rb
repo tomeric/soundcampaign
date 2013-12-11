@@ -1,10 +1,24 @@
 class TracksController < ApplicationController
   
-  before_filter :require_user, except: %i[show]
+  before_filter :require_user, except: %i[show download stream]
+  
+  before_action :load_track,
+    except: %i[new create destroy]
+  
   
   def show
-    @track = Track.find_by id: params[:id]
     render json: @track.waveform
+  end
+  
+  def download
+    redirect_to @track.url(
+      :download,
+      response_content_disposition: 'attachment'
+    )
+  end
+  
+  def stream
+    redirect_to @track.url(:streaming)
   end
   
   def create
@@ -49,6 +63,10 @@ class TracksController < ApplicationController
   end
   
   private
+  
+  def load_track
+    @track = Track.find_by id: params[:id]
+  end
   
   def error_messages(object)
     object.errors.messages.map do |attribute, messages|
