@@ -1,13 +1,17 @@
 <%
 contact = feedback.recipient.try(:contact)
+name    = contact.try(:name)
+email   = contact.try(:email) || feedback.recipient.try(:email)
 %>
 <li class="feedback">
   <div class="feedback-header">
-    <div class="feedback-header-gravatar"><%= gravatar_tag current_user.email %></div>
+    <% if email %>
+      <div class="feedback-header-gravatar"><%= gravatar_tag email %></div>
+    <% end %>
     <div class="feedback-header-name">
-      <%= contact.try(:name) || feedback.recipient.email %>
-      <% if contact.try(:name) && contact.try(:email) %>
-        <small>(<%= contact.email %>)</small>
+      <%= name || email %>
+      <% if name && email %>
+        <small>(<%= email %>)</small>
       <% end %>
     </div>
   </div>
