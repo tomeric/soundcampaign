@@ -5,6 +5,11 @@ class TracksController < ApplicationController
   before_action :load_track,
     except: %i[new create destroy]
   
+  before_action :load_release,
+    only: %i[show download stream]
+  
+  before_action :require_release_owner_or_recipient,
+    only: %i[show download stream]
   
   def show
     render json: @track.waveform
@@ -66,6 +71,10 @@ class TracksController < ApplicationController
   
   def load_track
     @track = Track.find_by id: params[:id]
+  end
+  
+  def load_release
+    @release = @track.release
   end
   
   def error_messages(object)
