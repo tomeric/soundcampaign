@@ -106,4 +106,5 @@ group :test do
   gem 'fuubar',             require: false
   gem 'turnip',             require: false
   gem 'timecop',            require: false
+  gem 'email_spec',         require: false
 end

@@ -111,6 +111,9 @@ GEM
     dotenv-rails (0.9.0)
       dotenv (= 0.9.0)
     dynamic_form (1.1.4)
+    email_spec (1.5.0)
+      launchy (~> 2.1)
+      mail (~> 2.2)
     erubis (2.7.0)
     execjs (2.0.2)
     factory_girl (4.2.0)
@@ -341,6 +344,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   dynamic_form
+  email_spec
   factory_girl_rails
   fakeweb
   ffaker
