@@ -21,6 +21,9 @@ set :deploy_via, :remote_cache
 set :rvm_type,         :system
 set :rvm_ruby_version, '2.0.0-p247'
 
+# Delayed Job:
+set :delayed_job_workers, 2
+
 # Execute bundled binaries with 'bundle exec', execute global ruby binaries with 'rvm x.x.x do':
 SSHKit.config.command_map = Hash.new do |hash, key|
   rvm_prepend     = "#{fetch(:rvm_path)}/bin/rvm #{fetch(:rvm_ruby_version)} do"
@@ -59,7 +62,7 @@ namespace :deploy do
   desc 'Cleanup'
   task :cleanup do
     invoke :'rvm:init'
-    on roles(:all) do
+    on primary(:app) do
       within(release_path) { execute :rake, "honeybadger:deploy TO=#{fetch(:rails_env)} REPO=#{repo_url} USER=#{local_user}" }
     end
   end

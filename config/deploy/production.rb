@@ -1,8 +1,16 @@
 set :stage, :staging
 
 # This is the *main* server:
-server '146.185.183.134',        # jackson.soundcampaign.com
-  roles: %w{app web worker db},
-  user:  'deploy'
+server 'jackson.soundcampaign.com',
+  roles:   %w{app web db},
+  user:    'deploy',
+  primary: true
+
+# These are the workers:
+%w[miley bieber].each do |bitch|
+  server "#{bitch}.soundcampaign.com",
+    roles: %w{app worker},
+    user:  'deploy'
+end
 
 fetch(:default_env).merge!(rails_env: :production)

@@ -5,9 +5,22 @@ namespace :deploy do
     database = "#{fetch(:application)}_#{fetch(:stage)}"
     settings = nil
     
+    on roles(:all) do
+      with database: database,
+           hostname: 'jackson.soundcampaign.com' do
+        execute :mkdir, '-p', "#{shared_path}/config"
+        
+        settings = capture :erb, "#{fetch(:home_dir)}/postgresql.yml.erb",
+                     raise_on_non_zero_exit: false
+        upload! StringIO.new(settings), "#{shared_path}/config/database.yml"
+      end
+    end
+    
     on roles(:db) do
       with database: database,
            hostname: '127.0.0.1' do
+        execute :mkdir, '-p', "#{shared_path}/config"
+        
         settings = capture :erb, "#{fetch(:home_dir)}/postgresql.yml.erb",
                      raise_on_non_zero_exit: false
         upload! StringIO.new(settings), "#{shared_path}/config/database.yml"
@@ -15,5 +28,5 @@ namespace :deploy do
     end
   end
   
-  after :'deploy:check:make_linked_dirs', 'deploy:create_database_config'
+  before :'deploy:symlink:shared', 'deploy:create_database_config'
 end
