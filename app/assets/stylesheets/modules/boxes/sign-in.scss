@@ -25,6 +25,10 @@
       text-decoration: none;
     }
   }
+
+  form {
+    float: left;
+  }
   
   input {
     @include box-sizing(border-box);
