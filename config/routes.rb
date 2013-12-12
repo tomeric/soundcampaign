@@ -63,6 +63,16 @@ SoundCampaign::Application.routes.draw do
     resources :mockups, only: %i[index show]
   end
   
+  require_administrator = -> request {
+    request.env['warden'].authenticated?
+    request.env['warden'].authenticate!
+    request.env['warden'].user.try(:has_role?, 'admin')
+  }
+  
+  constraints require_administrator do
+    mount DelayedJobWeb => 'jobs'
+  end
+  
   devise_for :users, controllers: {
     registrations: 'registrations'
   }

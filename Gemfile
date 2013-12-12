@@ -7,6 +7,7 @@ gem 'rails', '= 4.0.0'
 gem 'daemons'
 gem 'delayed_job_active_record'
 gem 'delayed_paperclip'
+gem 'delayed_job_web'
 
 # Configuration:
 gem 'settingslogic'
