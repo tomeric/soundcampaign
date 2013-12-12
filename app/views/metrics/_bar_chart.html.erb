@@ -1,5 +1,5 @@
 <%
-start_date = [@campaign.try(:sent_at).try(:to_date), dataset.keys.min, Date.today].compact.first
+start_date = [start_at.try(:to_date), dataset.keys.min, Date.today].compact.first
 end_date   = [dataset.keys.max, start_date + 30.days].compact.max
 date_range = (start_date ... end_date)
 %>

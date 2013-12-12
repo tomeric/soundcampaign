@@ -1,5 +1,5 @@
 <div class="release-metrics">
-  <h1><%= @release.title %></h1>
+  <h1>Metrics</h1>
   
   <section class="quick-metrics">
     <ul>
@@ -32,21 +32,11 @@
   
   <section class="charted mail-opened-metrics">
     <h2>Opens</h2>
-    <%= render 'bar_chart', dataset: @opens_per_day, start_at: @campaign.try(:sent_at)  %>
+    <%= render 'metrics/bar_chart', dataset: @opens_per_day, start_at: 30.days.ago  %>
   </section>
   
   <section class="charted plays-metrics">
     <h2>Plays</h2>
-    <%= render 'bar_chart', dataset: @plays_per_day, start_at: @campaign.try(:sent_at) %>
+    <%= render 'metrics/bar_chart', dataset: @plays_per_day, start_at: 30.days.ago %>
   </section>
 </div>
-
-<section class="release-feedbacks">
-  <% if @feedbacks.present? %>
-    <ol>
-      <%= render @feedbacks %>
-    </ol>
-  <% else %>
-    <p>There are is no feedback yet</p>
-  <% end %>
-</section>
