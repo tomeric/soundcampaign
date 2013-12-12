@@ -18,6 +18,9 @@ class Track < ActiveRecord::Base
   
   process_in_background :attachment
   
+  before_attachment_post_process -> a { a.set_encoding_status(true)  }
+  after_attachment_post_process  -> a { a.set_encoding_status(false) }
+  
   ### ASSOCIATIONS:
   
   belongs_to :organization
@@ -55,6 +58,10 @@ class Track < ActiveRecord::Base
   
   ### INSTANCE METHODS:
   
+  def ready?
+    !encoding? && !attachment_processing? && waveform_json?
+  end
+  
   def url(style = :download, s3_options = {})
     s3_options = {
       expires_in: 10.minutes,
@@ -77,6 +84,14 @@ class Track < ActiveRecord::Base
       artist: artist,
       attachment: (attachment.url if attachment?)
     }
+  end
+  
+  def set_encoding_status(value)
+    if persisted?
+      update_column :encoding, value
+    else
+      self.encoding = value
+    end
   end
   
   def set_track_attributes
@@ -140,12 +155,23 @@ class Track < ActiveRecord::Base
   def generate_waveform!
     return false if attachment_processing?
     
-    lossless_io = open(url(:lossless))
     self.waveform_json = Waveformjson.generate(lossless_io, width: 710, height: 90, method: :peak).to_json
+    
     save!
   end
   
   private
+  
+  def lossless_io
+    file = attachment.queued_for_write[:lossless]
+    return file if file.present?
+    
+    open(
+      attachment.respond_to?(:s3_object) ?
+        url(:lossless) : 
+        attachment.path(:lossless)
+    )
+  end
   
   def attachment_io
     file = attachment.queued_for_write[:original]

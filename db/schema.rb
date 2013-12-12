@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131207085320) do
+ActiveRecord::Schema.define(version: 20131212125120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,7 +68,6 @@ ActiveRecord::Schema.define(version: 20131207085320) do
   add_index "contacts", ["email", "contact_list_id", "deleted_at"], name: "contact_list_contact", unique: true, using: :btree
 
   create_table "covers", force: true do |t|
-    t.integer  "organization_id"
     t.integer  "coverable_id"
     t.string   "coverable_type"
     t.string   "attachment_file_name"
@@ -81,6 +80,7 @@ ActiveRecord::Schema.define(version: 20131207085320) do
     t.datetime "poster_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "organization_id"
   end
 
   add_index "covers", ["coverable_id", "coverable_type"], name: "index_covers_on_coverable_id_and_coverable_type", using: :btree
@@ -290,6 +290,7 @@ ActiveRecord::Schema.define(version: 20131207085320) do
     t.integer  "channels"
     t.boolean  "attachment_processing"
     t.text     "waveform_json"
+    t.boolean  "encoding"
   end
 
   add_index "tracks", ["release_id"], name: "index_tracks_on_release_id", using: :btree
