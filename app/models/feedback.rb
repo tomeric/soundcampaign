@@ -10,7 +10,8 @@ class Feedback < ActiveRecord::Base
     dependent: :destroy
   
   accepts_nested_attributes_for :ratings,
-    allow_destroy: true
+    allow_destroy: true,
+    reject_if:     -> attributes { attributes['value'].blank? }
   
   ### VALIDATIONS:
   
