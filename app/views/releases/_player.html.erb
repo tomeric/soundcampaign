@@ -1,5 +1,10 @@
 <% if feedback.present? %>
   <%= form_for [release, feedback], html: { class: 'release-player release-player-with-feedback'} do |f| %>
+    <!--
+    Release: <%= release.inspect %>
+    
+    Feedback: <%= feedback.inspect %>
+    -->
     <div class="jplayer"></div>
     <div class="faux-table">
       <%= render 'releases/player_content', release: release, feedback: feedback, tracks: tracks, form: f %>
