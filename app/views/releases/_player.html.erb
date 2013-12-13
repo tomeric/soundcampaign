@@ -1,13 +1,13 @@
 <% if feedback.present? %>
-  <%= form_for [release, feedback], html: { class: 'release-player release-player-with-feedback'} do |f| %>
-    <!--
-    Release: <%= release.inspect %>
-    
-    Feedback: <%= feedback.inspect %>
-    -->
+  <%= form_for [release, feedback],
+        html: { class: 'release-player release-player-with-feedback' } do |f| %>
     <div class="jplayer"></div>
     <div class="faux-table">
-      <%= render 'releases/player_content', release: release, feedback: feedback, tracks: tracks, form: f %>
+      <%= render 'releases/player_content',
+            release:  release,
+            feedback: feedback,
+            tracks:   tracks,
+            form:     f %>
       
       <% if feedback.persisted? %>
       <!--
@@ -22,8 +22,11 @@
         <%= f.text_area :body %>
       
         <%= hidden_field_tag :secret, params[:secret] if params[:secret].present? %>
-      
-        <%= f.submit (release.persisted? ? 'Update feedback' : 'Submit feedback'), class: 'btn btn-primary' %>
+        <%  button_text = feedback.new_record? ?
+                            'Submit feedback' :
+                            'Update feedback'   %>
+        
+        <%= f.submit button_text, class: 'btn btn-primary' %>
       </div>
     </div>
   <% end %>
@@ -31,7 +34,11 @@
   <div class="release-player release-player-no-feedback">
     <div class="jplayer"></div>
     <div class="releases faux-table">
-      <%= render 'releases/player_content', release: release, tracks: tracks, feedback: nil, form: nil %>
+      <%= render 'releases/player_content',
+            release:  release,
+            tracks:   tracks,
+            feedback: nil,
+            form:     nil %>
     </div>
   </div>
 <% end if tracks.present? %>
