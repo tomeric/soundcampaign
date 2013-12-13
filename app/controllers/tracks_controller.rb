@@ -18,7 +18,7 @@ class TracksController < ApplicationController
   def download
     redirect_to @track.url(
       :download,
-      response_content_disposition: 'attachment'
+      response_content_disposition: "attachment; filename=#{CGI.escape(@track.attachment_file_name)}"
     )
   end
   
