@@ -1,0 +1,12 @@
+namespace :utility do
+  desc "Create a backup of the database"
+  task :backup do
+    invoke :'rvm:init'
+    
+    on roles(:db) do
+      within(release_path) do
+        execute :backup, 'perform --trigger sound_campaign --config_file config/backup/config.rb'
+      end
+    end
+  end
+end

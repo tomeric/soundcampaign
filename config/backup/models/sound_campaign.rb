@@ -3,6 +3,7 @@
 Backup::Model.new :sound_campaign, 'Backup SoundCampaign data' do
   require 'yaml'
   require 'dotenv'
+  require 'pathname'
   
   # Load settings:
   APP_ROOT   = Pathname.new(File.expand_path('../../../', Config.config_file))
@@ -46,7 +47,7 @@ Backup::Model.new :sound_campaign, 'Backup SoundCampaign data' do
     
     if DATABASE['host']
       db.host   = DATABASE['host']
-      db.port   = DATABASE['password'] || 5432
+      db.port   = DATABASE['port'] || 5432
     end
   end
   

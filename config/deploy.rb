@@ -31,7 +31,7 @@ SSHKit.config.command_map = Hash.new do |hash, key|
   
   if %w{rails rake script/delayed_job}.include?(key.to_s)
     hash[key] = "#{rvm_prepend} #{bundle_prepend} #{key}"
-  elsif %w{erb bundle script/unicorn}.include?(key.to_s)
+  elsif %w{erb bundle backup script/unicorn}.include?(key.to_s)
     hash[key] = "#{rvm_prepend} #{key}"
   else
     hash[key] = key
