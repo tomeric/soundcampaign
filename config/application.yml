@@ -2,6 +2,7 @@ defaults: &defaults
   canonical_hostname: "soundcampaign.com"
   campaign_email: "campaign@soundcampaign.com"
   contact_email:  "info@soundcampaign.com"
+  backup_email:   "info@soundcampaign.com"
   contact_address: |
     Brugstraat 77
     6131 AC Sittard
