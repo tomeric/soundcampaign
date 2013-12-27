@@ -1,6 +1,7 @@
+<% title "Send \"#{@campaign.name}\" Campaign" %>
 <div class="release-campaign">
   <div class="release-header">
-    <span class="release-header-title">Confirm &amp send: <%= @release.title %></span>
+    <span class="release-header-title">Confirm &amp send: <%= @campaign.name %></span>
   </div>
   
   <%= render 'steps', step: 3 %>

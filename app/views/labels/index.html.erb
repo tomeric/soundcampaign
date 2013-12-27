@@ -1,13 +1,15 @@
 <%
+title 'Label Overview'
+
 if @labels.present?
-  title = "Your Labels"
+  header_title = "Your Labels"
 else
-  title = "Welcome #{current_user.try(:name)}"
+  header_title = "Welcome #{current_user.try(:name)}"
 end
 %>
 
 <section class="section" id="labels">
-  <%= render 'header', title: title %>
+  <%= render 'header', title: header_title %>
   
   <% if @labels.present? %>
     <%= render @labels %>
