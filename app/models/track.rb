@@ -18,8 +18,13 @@ class Track < ActiveRecord::Base
   
   process_in_background :attachment
   
-  before_attachment_post_process -> a { a.set_encoding_status(true)  }
-  after_attachment_post_process  -> a { a.set_encoding_status(false) }
+  before_attachment_post_process -> attachment {
+    attachment.set_encoding_status(true)
+  }
+  
+  after_attachment_post_process -> attachment {
+    attachment.set_encoding_status(false)
+  }
   
   ### ASSOCIATIONS:
   
@@ -78,10 +83,10 @@ class Track < ActiveRecord::Base
   
   def as_json
     {
-      id: id,
+      id:         id,
       release_id: release.try(:id),
-      title: title,
-      artist: artist,
+      title:      title,
+      artist:     artist,
       attachment: (attachment.url if attachment?)
     }
   end
@@ -147,17 +152,21 @@ class Track < ActiveRecord::Base
   end
   
   def waveform
-    @waveform ||= if waveform_json?
-      JSON.parse(waveform_json)
-    end
+    @waveform ||= (JSON.parse(waveform_json) if waveform_json?)
   end
   
   def generate_waveform!
-    return false if attachment_processing?
-    
-    self.waveform_json = Waveformjson.generate(lossless_io, width: 710, height: 90, method: :peak).to_json
-    
-    save!
+    unless attachment_processing?
+      self.waveform_json =
+        Waveformjson.generate(
+          lossless_io,
+          width:  710,
+          height: 90,
+          method: :peak
+        ).to_json
+      
+      save!
+    end
   end
   
   private

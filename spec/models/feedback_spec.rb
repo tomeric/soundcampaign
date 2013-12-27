@@ -32,4 +32,56 @@ describe Feedback do
       end
     end
   end
+  
+  context 'nested attributes' do
+    let(:feedback) { create :feedback                         }
+    let(:track)    { create :track, release: feedback.release }
+    
+    context 'ratings' do
+      it 'accepts rating attributes if the value is present' do
+        new_attributes = {
+          ratings_attributes: [{
+            track_id: track.id,
+            value:    10
+          }]
+        }
+        
+        feedback.attributes = new_attributes
+        expect(feedback.ratings).to have(1).item
+        
+        rating = feedback.ratings.last
+        expect(rating.value).to  eql 10
+      end
+      
+      it 'rejects rating attributes if the value is absent' do
+        new_attributes = {
+          ratings_attributes: [{
+            track_id: track.id,
+            value:    nil
+          }]
+        }
+        
+        feedback.attributes = new_attributes
+        expect(feedback.ratings).to be_empty
+      end
+    end
+  end
+  
+  context 'instance methods' do
+    describe '#rating_for' do
+      let(:feedback) { create :feedback                         }
+      let(:track)    { create :track, release: feedback.release }
+      
+      it 'returns an existing rating for the given track' do
+        rating = create :rating, feedback: feedback, track: track
+        expect(feedback.rating_for(track)).to eql rating
+      end
+      
+      it "returns a new rating for the given track if it doesn't exist yet" do
+        rating = feedback.rating_for(track)
+        expect(rating).to be_a Rating
+        expect(rating).to be_a_new_record
+      end
+    end
+  end
 end
