@@ -1,4 +1,4 @@
-guard 'rspec', turnip: true, cli: '-r fuubar --drb --format Fuubar' do
+guard 'rspec', cmd: 'rspec --color -r turnip/rspec  -r fuubar --drb --format Fuubar' do
   watch(%r{^spec/.+_spec\.rb})
   watch(%r{^lib/(.+)\.rb})     { |m| "spec/lib/#{m[1]}_spec.rb" }
   watch('spec/spec_helper.rb') { "spec" }
