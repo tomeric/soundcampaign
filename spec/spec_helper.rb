@@ -4,6 +4,9 @@ require 'spork'
 ENV["RAILS_ENV"] ||= 'test'
 
 Spork.prefork do
+  require 'simplecov'
+  SimpleCov.start 'rails'
+
   require File.expand_path('../../config/environment', __FILE__)
   require 'rspec/rails'
   

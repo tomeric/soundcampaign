@@ -108,4 +108,7 @@ group :test do
   gem 'turnip',             require: false
   gem 'timecop',            require: false
   gem 'email_spec',         require: false
+
+  # Reports:
+  gem 'simplecov',          require: false
 end

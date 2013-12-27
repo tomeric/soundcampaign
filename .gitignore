@@ -21,6 +21,9 @@ bin/rake
 /config/*.yml
 /.env
 
+# Ignore code reports:
+/coverage
+
 # Ignore all logfiles and tempfiles
 /.sass-cache
 /Build
