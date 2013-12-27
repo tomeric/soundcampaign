@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.1.0'
 
 gem 'rails', '= 4.0.0'
 
@@ -67,25 +67,25 @@ group :development do
   # Debugging:
   gem 'better_errors'
   gem 'binding_of_caller'
-  
+
   # Mail:
   gem 'letter_opener'
   gem 'mail_view'
-  
+
   # Deployment:
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
   gem 'capistrano-bundler'
-  
+
   # Heroku:
   gem 'sqlite3',          require: false
   gem 'taps',             require: false
-  
+
   # Guard:
   gem 'guard'
   gem 'rb-fsevent',       require: false
   gem 'guard-rspec',      require: false
-  
+
   # Console:
   gem 'pry',              require: false
 end
@@ -93,7 +93,7 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'spork'
-  
+
   # Test tools:
   gem 'shoulda-matchers'
   gem 'database_cleaner',   require: false
@@ -101,7 +101,7 @@ group :test do
   gem 'factory_girl_rails', require: false
   gem 'fakeweb',            require: false
   gem 'capybara',           require: false
-  
+
   # TDD Helpers:
   gem 'launchy',            require: false
   gem 'fuubar',             require: false
