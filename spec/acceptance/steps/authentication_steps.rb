@@ -3,6 +3,11 @@ step 'I have a user account' do
   @current_email = @current_user.email
 end
 
+step 'I am signed in' do
+  send 'I have a user account' unless @current_user
+  send 'I sign in with my credentials'
+end
+
 step 'I sign in with my credentials' do
   visit new_user_session_url
   

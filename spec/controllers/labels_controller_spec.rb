@@ -103,9 +103,10 @@ describe LabelsController do
         expect(assigned_label).to be_persisted
       end
       
-      it 'redirects to the created label' do
+      it 'redirects to the label overview' do
         post :create, label: attributes
-        expect(response).to redirect_to Label.last
+        label = Label.last
+        expect(response).to redirect_to labels_url(anchor: "label_#{label.id}")
       end
     end
     

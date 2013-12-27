@@ -29,7 +29,8 @@ class LabelsController < ApplicationController
     @label.organization = current_organization
     
     if @label.save
-      redirect_to @label, notice: 'Label was successfully created.'
+      redirect_to labels_url(anchor: dom_id(@label)),
+        notice: 'Label was successfully created.'
     else
       render action: 'new'
     end
