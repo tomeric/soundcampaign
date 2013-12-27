@@ -57,12 +57,10 @@ GEM
       i18n
       rake (>= 10.0.0)
       sshkit (>= 0.0.23)
-    capistrano-bundler (1.1.1)
-      capistrano (~> 3.0)
-      sshkit (>= 1.2.0)
-    capistrano-rails (1.1.0)
-      capistrano (>= 3.0.0)
-      capistrano-bundler (>= 1.0.0)
+    capistrano-bundler (1.0.0)
+      capistrano (>= 3.0.0.pre)
+    capistrano-rails (1.0.0)
+      capistrano
     capistrano-rvm (0.0.3)
       capistrano
     capybara (2.2.0)
@@ -345,8 +343,8 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass-rails (~> 2.3.2.1)
   bourbon
-  capistrano-bundler
-  capistrano-rails
+  capistrano-bundler (= 1.0.0)
+  capistrano-rails (= 1.0.0)
   capistrano-rvm
   capybara
   coffee-rails

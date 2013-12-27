@@ -73,9 +73,9 @@ group :development do
   gem 'mail_view'
 
   # Deployment:
-  gem 'capistrano-rails'
+  gem 'capistrano-rails',   '= 1.0.0'
   gem 'capistrano-rvm'
-  gem 'capistrano-bundler'
+  gem 'capistrano-bundler', '= 1.0.0'
 
   # Heroku:
   gem 'sqlite3',          require: false

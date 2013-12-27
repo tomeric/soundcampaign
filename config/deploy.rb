@@ -19,7 +19,7 @@ set :deploy_via, :remote_cache
 
 # RVM config:
 set :rvm_type,         :system
-set :rvm_ruby_version, '2.0.0-p247'
+set :rvm_ruby_version, '2.1.0'
 
 # Delayed Job:
 set :delayed_job_workers, 2
