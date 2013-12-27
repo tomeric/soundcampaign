@@ -1,5 +1,7 @@
 defaults: &defaults
   canonical_hostname: "soundcampaign.com"
+  name: "SoundCampaign"
+  subtitle: "Music promotion the beautiful and easy way"
   campaign_email: "campaign@soundcampaign.com"
   contact_email:  "info@soundcampaign.com"
   backup_email:   "info@soundcampaign.com"
