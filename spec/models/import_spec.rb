@@ -47,6 +47,25 @@ describe Import do
         
         expect(row.columns).to eql ['email', 'name']
       end
+      
+      context 'encodings and file formats' do
+        Dir[Rails.root.join('spec','fixtures','import','*.*')].each do |import_path|
+          basename = File.basename import_path
+          
+          before do
+            fixture_path = import_path.gsub("#{Rails.root.join('spec', 'fixtures')}/", '')
+            import.spreadsheet = fixture fixture_path
+          end
+          
+          it "can import #{basename}" do
+            expect {
+              import.import_rows!
+            }.to change {
+              import.rows.count
+            }
+          end
+        end
+      end
     end
   end
 end

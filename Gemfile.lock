@@ -71,6 +71,7 @@ GEM
       xpath (~> 2.0)
     celluloid (0.15.2)
       timers (~> 1.1.0)
+    charlock_holmes (0.6.9.4)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.3)
@@ -347,6 +348,7 @@ DEPENDENCIES
   capistrano-rails (= 1.0.0)
   capistrano-rvm
   capybara
+  charlock_holmes
   coffee-rails
   d3-rails
   daemons

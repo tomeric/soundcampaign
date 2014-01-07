@@ -1,5 +1,3 @@
-require 'roo'
-
 class Import < ActiveRecord::Base
   
   ### PAPERCLIP:
@@ -32,17 +30,44 @@ class Import < ActiveRecord::Base
   def import_rows!
     save if changed?
     
-    sheet = Roo::Spreadsheet.open(spreadsheet_io.path)
-    sheet.each_with_index do |columns, position|
-      unless columns.all?(&:blank?)
-        rows.create! columns: columns, position: position
-      end
+    parseable_spreadsheet.each_with_index do |columns, position|
+      import_row columns, position
     end
     
     rows
   end
   
+  def import_row(columns, position)
+    unless columns.all?(&:blank?)
+      rows.create! columns: columns, position: position
+    end
+  end
+  
   private
+  
+  def parseable_spreadsheet
+    begin
+      require 'roo'
+      Roo::Spreadsheet.open(
+        spreadsheet_io.path,
+        csv_options: { encoding: spreadsheet_encoding }
+      )
+    rescue
+      nil
+    end
+  end
+  
+  def spreadsheet_encoding
+    begin
+      require 'charlock_holmes'
+      
+      contents  = File.read spreadsheet_io.path
+      detection = CharlockHolmes::EncodingDetector.detect contents
+      detection.try(:[], :encoding) || 'UTF-8'
+    rescue
+      'UTF-8'
+    end
+  end
   
   def spreadsheet_io
     file = spreadsheet.queued_for_write[:original]
@@ -50,10 +75,9 @@ class Import < ActiveRecord::Base
   end
   
   def valid_spreadsheet
-    begin
-      Roo::Spreadsheet.open(spreadsheet_io.path)
+    if parseable_spreadsheet
       true
-    rescue
+    else
       errors.add :spreadsheet, :invalid
       false
     end
