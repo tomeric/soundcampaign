@@ -41,3 +41,7 @@ bin/rake
 
 # Ignore coverage reports
 /coverage
+
+# Ignore DB dumps:
+*.dump
+*.sql
