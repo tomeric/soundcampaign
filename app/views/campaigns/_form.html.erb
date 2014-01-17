@@ -1,4 +1,5 @@
 <%= form_for [@release, @campaign], url: release_campaign_path(@release) do |f| %>
+  <%= f.error_messages %>
   <div class="release-content">
     <div class="form-horizontal">
       <div class="release-content-group">
