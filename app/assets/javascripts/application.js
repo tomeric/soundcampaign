@@ -28,11 +28,4 @@ $(function(){
   $('body').on('focus',".datepicker_recurring_start", function(){
     $(this).datepicker();
   });
-
-  // Metrics page sorter
-  $('.activity-sort').siblings().find('li').click(function() {
-    var activitySort = this.className;
-    $('span', this).toggleClass("js-active");
-    $('.metrics-activity .' +activitySort).slideToggle('slow');
-  });
 });
