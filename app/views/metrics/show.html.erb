@@ -22,6 +22,7 @@
   <section class="release-metrics-activity">
     <header class="metrics-activity-header">
       <h2>Activity</h2>
+      <!--
       <div class="sort">
         <a class="activity-sort" data-toggle="dropdown">Sort</a>
         <ul class="dropdown-menu">
@@ -30,9 +31,10 @@
           <li class="js-activity-lestens">Listens<span class="js-active"></span></li>
         </ul>
       </div>
+      -->
     </header>
     
-    <%= render 'activities_grouped_by_date' %>
+    <%= render 'events_grouped_by_date', events_by_date: @events_by_date %>
   </section>
 </div>
 

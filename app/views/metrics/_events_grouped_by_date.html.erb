@@ -1,0 +1,15 @@
+<% events_by_date.each do |date, events| %>
+  <h3>
+    <% if date == Date.today %>
+      <strong>Today:</strong>
+    <% elsif date == Date.yesterday %>
+      <strong>Yesterday:</strong>
+    <% end %>
+    <%= date.strftime('%A, %B %-d') %>
+  </h3>
+  <div class="metrics-activity">
+    <% events.each do |event| %>
+      <%= render "metrics/events/#{event.to_partial_path.split('/').last}", event: event %>
+    <% end %>
+  </div>
+<% end %>

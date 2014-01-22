@@ -1,0 +1,12 @@
+<%
+recipient = event.recipient
+track     = event.parent.track
+%>
+<div class="metrics-activity-item js-activity-lestens">
+  <div class="metrics-activity-heading">
+    <span class="metrics-activity-notoggle">
+      <span class="activity-time"><%= event.created_at.strftime('%H:%M') %></span>
+      <strong><%= recipient.name %></strong> has played <%= track.artist %> - <%= track.title %>
+    </span>
+  </div>
+</div>

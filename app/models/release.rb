@@ -19,6 +19,9 @@ class Release < ActiveRecord::Base
     dependent: :destroy
   accepts_nested_attributes_for :tracks
   
+  has_many :events,
+    class_name: ReleaseEvent
+  
   has_many :track_events,
     through: :tracks,
     source:  :events
