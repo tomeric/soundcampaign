@@ -43,6 +43,7 @@ describe FeedbackEvent do
     describe '.for' do
       it 'creates a single FeedbackEvent for a feedback' do
         feedback = create :feedback
+        FeedbackEvent.delete_all
         
         expect {
           FeedbackEvent.for(feedback)

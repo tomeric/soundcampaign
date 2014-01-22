@@ -40,8 +40,9 @@ describe TrackPlayEvent do
   
   context 'class methods' do
     describe '.for' do
-      it 'creates a single TrackPlayEvent for a "play" TrackEvent' do
+      it 'creates a single TrackPlayEvent for a "track-play" TrackEvent' do
         track_event = create :played_track_event
+        TrackPlayEvent.delete_all
         
         expect {
           TrackPlayEvent.for(track_event)
@@ -56,8 +57,9 @@ describe TrackPlayEvent do
         }
       end
       
-      it "doesn't create a TrackPlayEvent for a TrackEvent that is not 'play'" do
+      it "doesn't create a TrackPlayEvent for a TrackEvent that is not \"track-play\"" do
         track_event = create :paused_track_event
+        TrackPlayEvent.delete_all
         
         expect {
           TrackPlayEvent.for(track_event)

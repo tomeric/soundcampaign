@@ -42,6 +42,7 @@ describe CampaignOpenEvent do
     describe '.for' do
       it 'creates a single CampaignOpenEvent for a opened EmailLog' do
         email_log = create :opened_email_log
+        CampaignOpenEvent.delete_all
         
         expect {
           CampaignOpenEvent.for(email_log)
@@ -58,6 +59,7 @@ describe CampaignOpenEvent do
       
       it "doesn't create a CampaignOpenEvent for a unopened EmailLog" do
         email_log = create :unopened_email_log
+        CampaignOpenEvent.delete_all
         
         expect {
           CampaignOpenEvent.for(email_log)

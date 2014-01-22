@@ -6,6 +6,10 @@ class TrackEvent < ActiveRecord::Base
   
   belongs_to :recipient
   
+  ### CALLBACKS:
+  
+  after_save :create_or_update_track_play_event
+  
   ### SCOPES:
   
   scope :played, -> date = nil {
@@ -66,6 +70,14 @@ class TrackEvent < ActiveRecord::Base
       .reorder("reverse_index DESC")
       .to_sql
     end
+  end
+  
+  ### INSTANCE METHODS:
+  
+  private
+  
+  def create_or_update_track_play_event
+    TrackPlayEvent.for(self)
   end
   
 end

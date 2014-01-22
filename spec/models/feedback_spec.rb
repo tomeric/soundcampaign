@@ -17,6 +17,15 @@ describe Feedback do
     end
   end
   
+  context 'callbacks' do
+    context 'on save' do
+      it 'tries to create a FeedbackEvent' do
+        expect(FeedbackEvent).to receive(:for).with(feedback)
+        feedback.save
+      end
+    end
+  end
+  
   context 'scopes' do
     describe '.by' do
       let(:recipient)             { create :recipient                      }

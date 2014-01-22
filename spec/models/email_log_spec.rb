@@ -16,6 +16,11 @@ describe EmailLog do
         email.should_receive(:connect_to_recipient)
         email.save
       end
+      
+      it 'tries to create a CampaignOpenEvent' do
+        expect(CampaignOpenEvent).to receive(:for).with(email)
+        email.save
+      end
     end
   end
   
