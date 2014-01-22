@@ -51,13 +51,13 @@ class EmailLog < ActiveRecord::Base
   
   def connect_to_campaign
     if match = message_id.match(/campaign:([0-9]+)\+/) 
-      self.campaign = Campaign.find_by id: match[1].to_i
+      self.campaign ||= Campaign.find_by id: match[1].to_i
     end
   end
   
   def connect_to_recipient
     if campaign
-      self.recipient = campaign.recipients.find_by email: to.first
+      self.recipient ||= campaign.recipients.find_by email: to.first
     end
   end
   
