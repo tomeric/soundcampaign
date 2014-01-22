@@ -10,6 +10,9 @@ module SoundCampaign
     # Load settings:
     require File.expand_path('../../app/models/settings', __FILE__)
     
+    # Autoload paths:
+    config.autoload_paths += [root.join('app', 'models', 'release_events')]
+    
     # Timezone:
     config.time_zone = 'UTC'
     
