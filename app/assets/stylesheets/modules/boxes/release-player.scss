@@ -232,7 +232,7 @@
     
     .download {
       float:right;
-      width: 40px;
+      width: 90px;
       height: 100%;
       display: block;
       border-left:1px solid #0d0d0d;
@@ -240,8 +240,14 @@
       text-indent: -3000em;
       cursor:pointer;
       transition: all 0.5s ease;
+      color: #F7F7F7;
+      background-position: 70px;
+      text-indent: 10px;
       &:hover {
         background: image-url("icons/download-release-hover.png") center no-repeat;
+        background-position: 70px;
+        color:white;
+        text-decoration:none;
       }
     }
     
