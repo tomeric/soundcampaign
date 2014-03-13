@@ -1,7 +1,7 @@
 <%
 recipient = event.recipient
 %>
-<div class="metrics-activity-item js-activity-lestens">
+<div class="metrics-activity-item js-activity-lestens" id="activity_item_<%= dom_id(event) %>">
   <div class="metrics-activity-heading">
     <span class="metrics-activity-notoggle">
       <span class="activity-time"><%= event.created_at.strftime('%H:%M') %></span>

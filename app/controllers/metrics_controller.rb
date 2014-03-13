@@ -20,8 +20,14 @@ class MetricsController < ApplicationController
     @plays_per_day = @campaign.track_events.number_of :plays, per: 1.day
     
     # Lists:
-    @feedbacks = @release.feedbacks.order(created_at: :desc)
-    @events    = @release.events.includes(recipient: :contact).order(created_at: :desc)
+    @feedbacks = @release.feedbacks
+                         .order(created_at: :desc)
+    @tracks    = @release.tracks
+                         .includes(:ratings)
+    @events    = @release.events
+                         .without_previous_siblings
+                         .includes(recipient: :contact)
+                         .order(created_at: :desc)
     
     # Grouped:
     @events_by_date = @events.group_by { |e| e.created_at.to_date }

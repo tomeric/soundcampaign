@@ -1,12 +1,23 @@
 <%
 recipient = event.recipient
-track     = event.parent.track
+tracks    = [event.parent.track]
+
+if event.upcoming_siblings_count > 0
+  tracks += event.upcoming_siblings.map do |event|
+              event.parent.try(:track)
+            end
+end
 %>
-<div class="metrics-activity-item js-activity-lestens">
+<div class="metrics-activity-item js-activity-lestens" id="activity_item_<%= dom_id(event) %>">
   <div class="metrics-activity-heading">
     <span class="metrics-activity-notoggle">
       <span class="activity-time"><%= event.created_at.strftime('%H:%M') %></span>
-      <strong><%= recipient.name %></strong> has played <%= track.artist %> - <%= track.title %>
+      <strong><%= recipient.name %></strong> has played
+      <%=
+        tracks.compact.uniq.map do |track|
+          "#{track.artist} - #{track.title}"
+        end.to_sentence
+      %>
     </span>
   </div>
 </div>

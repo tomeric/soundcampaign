@@ -11,7 +11,8 @@
           recipients: @recipient_count,
           feedback:   @feedback_count   %>
     
-    <%= render 'average_track_ratings' %>
+    <%= render 'average_track_ratings',
+          tracks: @tracks %>
     
     <%= render 'plays_and_opens',
           plays: @plays_per_day,

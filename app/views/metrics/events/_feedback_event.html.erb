@@ -2,7 +2,7 @@
 recipient = event.recipient
 feedback  = event.parent
 %>
-<div class="metrics-activity-item js-activity-feedback">
+<div class="metrics-activity-item js-activity-feedback" id="activity_item_<%= dom_id(event) %>">
   <div class="metrics-activity-heading">
     <a class="metrics-activity-toggle" data-toggle="collapse" href="#<%= dom_id(event) %>">
       <span class="activity-time"><%= event.created_at.strftime('%H:%M') %></span>
