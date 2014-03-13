@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131227112205) do
+ActiveRecord::Schema.define(version: 20140224091609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -231,8 +231,11 @@ ActiveRecord::Schema.define(version: 20131227112205) do
     t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "first_sibling_id"
+    t.integer  "upcoming_siblings_count", default: 0
   end
 
+  add_index "release_events", ["first_sibling_id"], name: "index_release_events_on_first_sibling_id", using: :btree
   add_index "release_events", ["parent_id"], name: "index_release_events_on_parent_id", using: :btree
   add_index "release_events", ["recipient_id"], name: "index_release_events_on_recipient_id", using: :btree
   add_index "release_events", ["release_id"], name: "index_release_events_on_release_id", using: :btree
