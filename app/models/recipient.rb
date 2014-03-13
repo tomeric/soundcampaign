@@ -21,7 +21,7 @@ class Recipient < ActiveRecord::Base
   ### INSTANCE METHODS:
   
   def name
-    contact.try(:name) || contact.try(:email) || email
+    contact.try(:name).presence || contact.try(:email).presence || email.presence
   end
   
   def set_unique_secret
