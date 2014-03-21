@@ -37,22 +37,21 @@ class ReleaseEvent < ActiveRecord::Base
   ### INSTANCE METHODS:
   
   def connect_to_siblings
-    # last_sibling = siblings.where(
-    #   'created_at >= :start AND id <> :id',
-    #   start: (created_at - PREVIOUS_SIBLING_INTERVAL).utc,
-    #   id:    id
-    # ).first
-    # 
-    # if last_sibling.present?
-    #   first_sibling = last_sibling.first_sibling || last_sibling
-    #   update_attributes first_sibling: first_sibling
-    #   first_sibling.update_attributes upcoming_siblings_count: first_sibling.upcoming_siblings.count
-    # end
+    siblings_within_time_period = siblings.where(
+      'created_at >= :start AND id <> :id',
+      start: (created_at - PREVIOUS_SIBLING_INTERVAL),
+      id:    id
+    )
+    
+    if (last_sibling = siblings_within_time_period.first).present?
+      first_sibling = last_sibling.first_sibling || last_sibling
+      update_attributes first_sibling: first_sibling
+      first_sibling.update_attributes upcoming_siblings_count: first_sibling.upcoming_siblings.count
+    end
   end
   
   def siblings
     self.class.unscoped.where(
-      type:         self.class.to_s,
       release_id:   release_id,
       recipient_id: recipient_id
     ).order(created_at: :desc)
