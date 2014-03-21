@@ -5,6 +5,9 @@ class ReleaseEvent < ActiveRecord::Base
   ### ASSOCIATIONS:
   
   has_many :upcoming_siblings,
+    -> {
+      order(created_at: :asc)
+    },
     class_name:  ReleaseEvent,
     foreign_key: 'first_sibling_id'
   
