@@ -11,7 +11,10 @@ class FeedbackEvent < ReleaseEvent
   
   ### CLASS METHODS:
   
-  def self.for(feedback)
+  def self.for(feedback_or_id)
+    feedback = feedback_or_id.is_a?(Feedback)  ?
+                 feedback_or_id                :
+                 Feedback.find(feedback_or_id)
     where(parent: feedback).first_or_create
   end
   

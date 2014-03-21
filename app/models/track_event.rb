@@ -8,7 +8,7 @@ class TrackEvent < ActiveRecord::Base
   
   ### CALLBACKS:
   
-  after_save :create_or_update_track_play_event
+  after_save :create_or_update_track_play_event_later
   
   ### SCOPES:
   
@@ -76,8 +76,8 @@ class TrackEvent < ActiveRecord::Base
   
   private
   
-  def create_or_update_track_play_event
-    TrackPlayEvent.for(self)
+  def create_or_update_track_play_event_later
+    TrackPlayEvent.delay.for(id)
   end
   
 end

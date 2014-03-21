@@ -24,7 +24,7 @@ class Feedback < ActiveRecord::Base
   
   ### CALLBACKS:
   
-  after_save :create_or_update_feedback_event
+  after_save :create_or_update_feedback_event_later
   
   ### SCOPES:
   
@@ -47,8 +47,8 @@ class Feedback < ActiveRecord::Base
     errors.add :recipient, :blank unless send(required).present?
   end
   
-  def create_or_update_feedback_event
-    FeedbackEvent.for(self)
+  def create_or_update_feedback_event_later
+    FeedbackEvent.delay.for(id)
   end
   
 end

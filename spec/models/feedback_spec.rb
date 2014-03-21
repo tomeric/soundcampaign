@@ -19,8 +19,9 @@ describe Feedback do
   
   context 'callbacks' do
     context 'on save' do
-      it 'tries to create a FeedbackEvent' do
-        expect(FeedbackEvent).to receive(:for).with(feedback)
+      it 'tries to create a FeedbackEvent in the background' do
+        expect(FeedbackEvent).to receive(:delay).and_return(FeedbackEvent)
+        expect(FeedbackEvent).to receive(:for).with(kind_of(Integer))
         feedback.save
       end
     end

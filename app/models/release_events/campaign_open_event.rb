@@ -11,10 +11,14 @@ class CampaignOpenEvent < ReleaseEvent
   
   ### CLASS METHODS:
   
-  def self.for(email_log)
-    return unless email_log.opened_at?
+  def self.for(email_log_or_id)
+    email_log = email_log_or_id.is_a?(EmailLog) ?
+                  email_log_or_id               :
+                  EmailLog.find(email_log_or_id)
     
-    where(parent: email_log).first_or_create
+    if email_log.try(:opened_at?)
+      where(parent: email_log).first_or_create
+    end
   end
   
   ### INSTANCE METHODS:

@@ -13,7 +13,7 @@ class EmailLog < ActiveRecord::Base
   before_save :connect_to_campaign
   before_save :connect_to_recipient
   
-  after_save :create_or_update_campaign_open_event
+  after_save :create_or_update_campaign_open_event_later
   
   ### SCOPES:
   
@@ -105,7 +105,7 @@ class EmailLog < ActiveRecord::Base
   
   private
   
-  def create_or_update_campaign_open_event
-    CampaignOpenEvent.for(self)
+  def create_or_update_campaign_open_event_later
+    CampaignOpenEvent.delay.for(id)
   end
 end

@@ -17,8 +17,9 @@ describe EmailLog do
         email.save
       end
       
-      it 'tries to create a CampaignOpenEvent' do
-        expect(CampaignOpenEvent).to receive(:for).with(email)
+      it 'tries to create a CampaignOpenEvent in the background' do
+        expect(CampaignOpenEvent).to receive(:delay).and_return(CampaignOpenEvent)
+        expect(CampaignOpenEvent).to receive(:for).with(kind_of(Integer))
         email.save
       end
     end

@@ -11,10 +11,14 @@ class TrackPlayEvent < ReleaseEvent
 
   ### CLASS METHODS:
   
-  def self.for(track_event)
-    return unless track_event.action == 'play-track'
+  def self.for(track_event_or_id)
+    track_event = track_event_or_id.is_a?(TrackEvent)  ?
+                    track_event_or_id                  :
+                    TrackEvent.find(track_event_or_id)
     
-    where(parent: track_event).first_or_create
+    if track_event.try(:action) == 'play-track'
+      where(parent: track_event).first_or_create
+    end
   end
   
   ### INSTANCE METHODS:
