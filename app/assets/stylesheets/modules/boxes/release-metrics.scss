@@ -178,7 +178,7 @@
     height: 40px;
     line-height: 40px;
   }
-
+  
   .tracks {
     margin: 0;
     .track {
@@ -203,7 +203,14 @@
       }
     }
   }
-
+  
+  .charts {
+    .d3-bar-chart {
+      width: 376px;
+      height: 225px;
+    }
+  }
+  
   h2 {
     font-size: 20px;
     color: #333333;
@@ -216,7 +223,6 @@
     font-size: 14px;
     color: #5E5E5E;
   }
-
 }
 
 

@@ -67,7 +67,7 @@ $.fn.barChart = ->
          .attr('y',  yPosition)
          .attr('text-anchor', 'middle')
          .attr('font-family', 'sans-serif')
-         .attr('font-size',   '14px')
+         .attr('font-size',   '10px')
          .attr('font-weight', 'bold')
          .attr('fill',        '#00a3fb')
     ).on('mouseout', ->
@@ -81,11 +81,11 @@ $.fn.barChart = ->
        .append("text")
        .text((d) -> d[1])
        .attr("fill", (d) -> d[2])
-       .attr("x", (d, i) -> xScale(i) + (width / dataset.length) - (dataset.length) + 8)
-       .attr("y", (d   ) -> height - 20)
-       .attr("text-anchor", "left")
+       .attr("x", (d, i) -> xScale(i) + (width / dataset.length) - (dataset.length) + 22.5)
+       .attr("y", (d   ) -> height - 23)
+       .attr("text-anchor", "middle")
        .attr("font-family", "sans-serif")
-       .attr("font-size",   "11px")
+       .attr("font-size",   "8px")
           
     # text label voor maand
     svg.selectAll("text.month")
@@ -98,7 +98,7 @@ $.fn.barChart = ->
        .attr("y", (d   ) -> height - 3)
        .attr("text-anchor", "left")
        .attr("font-family", "sans-serif")
-       .attr("font-size",   "12px")
+       .attr("font-size",   "10px")
 
 
 $(document).ready ->
