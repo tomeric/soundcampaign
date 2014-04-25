@@ -16,6 +16,12 @@ describe EmailLog do
         email.should_receive(:connect_to_recipient)
         email.save
       end
+      
+      it 'tries to create a CampaignOpenEvent in the background' do
+        expect(CampaignOpenEvent).to receive(:delay).and_return(CampaignOpenEvent)
+        expect(CampaignOpenEvent).to receive(:for).with(kind_of(Integer))
+        email.save
+      end
     end
   end
   

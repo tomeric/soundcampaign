@@ -1,0 +1,29 @@
+<h3>Average track-ratings</h3>
+<div class="block">
+  <ul class="tracks">
+    <% tracks.each.with_index do |track, index| %>
+      <li class="track">
+        <% if (ratings = track.ratings.map(&:value).compact).present? %>
+          <%
+          average    = (ratings.sum.to_f / ratings.count).round
+          on_stars   = (average / 2).floor
+          half_stars = average.odd? ? 1 : 0
+          off_stars  = 5 - on_stars - half_stars
+          %>
+          <div class="rating" title="<%= ((ratings.sum.to_f / ratings.count / 2)  * 100).to_i.to_f / 100 %>">
+            <% on_stars.times do %>
+              <%= image_tag "icons/star-on-white.png" %>
+            <% end %>
+            <% half_stars.times do %>
+              <%= image_tag "icons/star-half-white.png" %>
+            <% end %>
+            <% off_stars.times do %>
+              <%= image_tag "icons/star-off-white.png" %>
+            <% end %>
+          </div>
+        <% end %>
+        <div class="filename"><%= index + 1%>. <%= track.artist %> - <%= track.title %></div>
+      </li>
+    <% end %>
+  </ul>
+</div>

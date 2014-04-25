@@ -20,6 +20,10 @@ class Recipient < ActiveRecord::Base
   
   ### INSTANCE METHODS:
   
+  def name
+    contact.try(:name).presence || contact.try(:email).presence || email.presence
+  end
+  
   def set_unique_secret
     seeds = []
     seeds << (Time.now.to_f * 1000_000.0).to_i # Current time in microseconds

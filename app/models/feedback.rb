@@ -22,6 +22,10 @@ class Feedback < ActiveRecord::Base
   
   validate :recipient_present
   
+  ### CALLBACKS:
+  
+  after_save :create_or_update_feedback_event_later
+  
   ### SCOPES:
   
   scope :by, -> recipient {
@@ -41,6 +45,10 @@ class Feedback < ActiveRecord::Base
   def recipient_present
     required = new_record? ? :recipient : :recipient_id
     errors.add :recipient, :blank unless send(required).present?
+  end
+  
+  def create_or_update_feedback_event_later
+    FeedbackEvent.delay.for(id)
   end
   
 end

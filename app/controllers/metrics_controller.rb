@@ -19,7 +19,18 @@ class MetricsController < ApplicationController
     @opens_per_day = @campaign.email_logs.number_of   :opens, per: 1.day
     @plays_per_day = @campaign.track_events.number_of :plays, per: 1.day
     
-    @feedbacks = @release.feedbacks.order(created_at: :desc)
+    # Lists:
+    @feedbacks = @release.feedbacks
+                         .order(created_at: :desc)
+    @tracks    = @release.tracks
+                         .includes(:ratings)
+    @events    = @release.events
+                         .without_previous_siblings
+                         .includes(recipient: :contact)
+                         .order(created_at: :desc)
+    
+    # Grouped:
+    @events_by_date = @events.group_by { |e| e.created_at.to_date }
   end
   
   private

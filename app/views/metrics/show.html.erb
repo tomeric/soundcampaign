@@ -1,47 +1,45 @@
 <% title "\"#{@campaign.name}\" Metrics" %>
+
 <div class="release-metrics">
-  <h1><%= @campaign.name %></h1>
-  
-  <section class="quick-metrics">
-    <ul>
-      <li>
-        <strong><%= @recipient_count %></strong>
-        recipients
-      </li>
-      <li>
-        <strong><%= @open_count %></strong>
-        opened
-      </li>
-      <li>
-        <strong><%= @open_today_count %></strong>
-        opened today
-      </li>
-      <li>
-        <strong><%= @plays_count %></strong>
-        tracks played
-      </li>
-      <li>
-        <strong><%= @plays_today_count %></strong>
-        tracks played today
-      </li>
-      <li>
-        <strong><%= @feedback_count %></strong>
-        feedback
-      </li>
-    </ul>
+  <section class="metrics">
+    <header class="metrics-activity-header">
+      <h2>Metrics</h2>
+    </header>
+    
+    <%= render 'opens_and_feedback',
+          opens:      @open_count,
+          recipients: @recipient_count,
+          feedback:   @feedback_count   %>
+    
+    <%= render 'average_track_ratings',
+          tracks: @tracks %>
+    
+    <%= render 'plays_and_opens',
+          plays: @plays_per_day,
+          opens: @opens_per_day,
+          start: @campaign.try(:sent_at) %>
   </section>
   
-  <section class="charted mail-opened-metrics">
-    <h2>Opens</h2>
-    <%= render 'bar_chart', dataset: @opens_per_day, start_at: @campaign.try(:sent_at)  %>
-  </section>
-  
-  <section class="charted plays-metrics">
-    <h2>Plays</h2>
-    <%= render 'bar_chart', dataset: @plays_per_day, start_at: @campaign.try(:sent_at) %>
+  <section class="release-metrics-activity">
+    <header class="metrics-activity-header">
+      <h2>Activity</h2>
+      <!--
+      <div class="sort">
+        <a class="activity-sort" data-toggle="dropdown">Sort</a>
+        <ul class="dropdown-menu">
+          <li class="js-activity-feedback">Feedback<span class="js-active"></span></li>
+          <li class="js-activity-open">Open<span class="js-active"></span></li>
+          <li class="js-activity-lestens">Listens<span class="js-active"></span></li>
+        </ul>
+      </div>
+      -->
+    </header>
+    
+    <%= render 'events_grouped_by_date', events_by_date: @events_by_date %>
   </section>
 </div>
 
+<!--
 <section class="release-feedbacks">
   <% if @feedbacks.present? %>
     <ol>
@@ -51,3 +49,4 @@
     <p>There are is no feedback yet</p>
   <% end %>
 </section>
+-->

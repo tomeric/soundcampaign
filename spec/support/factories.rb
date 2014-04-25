@@ -90,13 +90,24 @@ FactoryGirl.define do
     organization { build :organization }
     artist       { generate :name      }
     title        { generate :title     }
+    
+    factory :released_track do
+      release { build :release }
+    end
   end
   
   factory :track_event do
-    track        { build :track     }
-    recipient    { build :recipient }
+    track        { build :released_track }
+    recipient    { build :recipient      }
     action       'play-track'
-    payload_json { Hash.new.to_json }
+    payload_json { Hash.new.to_json      }
+    
+    factory :played_track_event do
+    end
+    
+    factory :paused_track_event do
+      action 'pause-track'
+    end
   end
   
   factory :contact_list do
@@ -113,7 +124,8 @@ FactoryGirl.define do
     spreadsheet { fixture 'empty.csv' }
   end
   
-  factory :import_row, class: Import::Row do
+  factory :import_row,
+    class: Import::Row do
     import { build :import }
   end
   
@@ -123,5 +135,41 @@ FactoryGirl.define do
     from       {  generate :email   }
     subject    { generate :title    }
     body       { generate :story    }
+    
+    factory :opened_email_log do
+      opened_at { Time.now.utc }
+    end
+    
+    factory :opened_email_log_with_campaign do
+      opened_at { Time.now.utc                         }
+      campaign  { build :campaign                      }
+      recipient { build :recipient, campaign: campaign }
+      to        { [recipient.email]                    }
+    end
+    
+    factory :unopened_email_log do
+      opened_at { nil }
+    end
+  end
+  
+  factory :release_event do
+  end
+  
+  factory :campaign_open_event,
+    parent: :release_event,
+    class: CampaignOpenEvent do
+    parent { build :opened_email_log_with_campaign }
+  end
+  
+  factory :feedback_event,
+    parent: :release_event,
+    class:  FeedbackEvent do
+    parent { build :feedback }
+  end
+  
+  factory :track_play_event,
+    parent: :release_event,
+    class:  TrackPlayEvent do
+    parent { build :played_track_event }
   end
 end

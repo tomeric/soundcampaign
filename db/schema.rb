@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131212125120) do
+ActiveRecord::Schema.define(version: 20140224091609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20131212125120) do
   add_index "contacts", ["email", "contact_list_id", "deleted_at"], name: "contact_list_contact", unique: true, using: :btree
 
   create_table "covers", force: true do |t|
+    t.integer  "organization_id"
     t.integer  "coverable_id"
     t.string   "coverable_type"
     t.string   "attachment_file_name"
@@ -80,7 +81,6 @@ ActiveRecord::Schema.define(version: 20131212125120) do
     t.datetime "poster_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "organization_id"
   end
 
   add_index "covers", ["coverable_id", "coverable_type"], name: "index_covers_on_coverable_id_and_coverable_type", using: :btree
@@ -223,6 +223,22 @@ ActiveRecord::Schema.define(version: 20131212125120) do
   add_index "release_artists", ["artist_id"], name: "index_release_artists_on_artist_id", using: :btree
   add_index "release_artists", ["release_id", "artist_id"], name: "index_release_artists_on_release_id_and_artist_id", unique: true, using: :btree
   add_index "release_artists", ["release_id"], name: "index_release_artists_on_release_id", using: :btree
+
+  create_table "release_events", force: true do |t|
+    t.integer  "release_id"
+    t.integer  "recipient_id"
+    t.string   "type"
+    t.integer  "parent_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "first_sibling_id"
+    t.integer  "upcoming_siblings_count", default: 0
+  end
+
+  add_index "release_events", ["first_sibling_id"], name: "index_release_events_on_first_sibling_id", using: :btree
+  add_index "release_events", ["parent_id"], name: "index_release_events_on_parent_id", using: :btree
+  add_index "release_events", ["recipient_id"], name: "index_release_events_on_recipient_id", using: :btree
+  add_index "release_events", ["release_id"], name: "index_release_events_on_release_id", using: :btree
 
   create_table "releases", force: true do |t|
     t.integer  "label_id",            null: false

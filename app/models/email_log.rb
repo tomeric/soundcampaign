@@ -13,6 +13,8 @@ class EmailLog < ActiveRecord::Base
   before_save :connect_to_campaign
   before_save :connect_to_recipient
   
+  after_save :create_or_update_campaign_open_event_later
+  
   ### SCOPES:
   
   scope :opened, -> date = nil {
@@ -45,20 +47,6 @@ class EmailLog < ActiveRecord::Base
             end
     
     number_of_occurences event, unit
-  end
-  
-  ### INSTANCE METHODS:
-  
-  def connect_to_campaign
-    if match = message_id.match(/campaign:([0-9]+)\+/) 
-      self.campaign = Campaign.find_by id: match[1].to_i
-    end
-  end
-  
-  def connect_to_recipient
-    if campaign
-      self.recipient = campaign.recipients.find_by email: to.first
-    end
   end
   
   private
@@ -97,5 +85,27 @@ class EmailLog < ActiveRecord::Base
       .order("reverse_index DESC")
       .to_sql
     end
+  end
+  
+  ### INSTANCE METHODS:
+  
+  public
+  
+  def connect_to_campaign
+    if match = message_id.match(/campaign:([0-9]+)\+/) 
+      self.campaign ||= Campaign.find_by id: match[1].to_i
+    end
+  end
+  
+  def connect_to_recipient
+    if campaign
+      self.recipient ||= campaign.recipients.find_by email: to.first
+    end
+  end
+  
+  private
+  
+  def create_or_update_campaign_open_event_later
+    CampaignOpenEvent.delay.for(id)
   end
 end
