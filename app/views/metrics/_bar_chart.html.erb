@@ -1,6 +1,9 @@
 <%
 start_date = [start_at.try(:to_date), dataset.keys.min, Date.today].compact.first
-end_date   = [dataset.keys.max, start_date + 30.days].compact.max
+end_date   = [
+               [dataset.keys.max, start_date + 1.month].compact.min,
+               start_date + 1.month
+             ].max
 date_range = (start_date ... end_date)
 %>
 <div class="d3-bar-chart">
