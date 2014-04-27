@@ -6,7 +6,8 @@ class MandrillEventDecorator < Mandrill::WebHook::EventDecorator
   end
   
   def timestamp
-    msg['ts'] && Time.at(msg['ts'])
+    ts = self['ts'].presence || msg['ts'].presence
+    ts && Time.at(ts)
   end
   
   def metadata
