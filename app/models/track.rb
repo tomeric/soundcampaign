@@ -12,7 +12,7 @@ class Track < ActiveRecord::Base
     s3_permissions: :private,
     styles: {
       streaming: { format: 'mp3', params: '--abr 96' },
-      download:  { format: 'mp3', params: '-V 1'     },
+      download:  { format: 'mp3', params: '-b 320'   },
       lossless:  { format: 'wav'                     }
     }
   
