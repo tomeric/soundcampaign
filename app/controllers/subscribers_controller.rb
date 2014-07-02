@@ -6,7 +6,7 @@ class SubscribersController < ApplicationController
     except: %i[new create]
   
   def index
-    @subscribers = Subscriber.order(created_at: :desc).all
+    @subscribers = Subscriber.includes(:users).order(created_at: :desc).all
   end
   
   def new

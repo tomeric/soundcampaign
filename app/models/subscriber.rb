@@ -2,6 +2,13 @@ require 'digest/md5'
 
 class Subscriber < ActiveRecord::Base
   
+  ### ASSOCIATIONS
+  
+  has_many :users,
+    class_name: 'User',
+    foreign_key: :invite_code,
+    primary_key: :invite_code
+  
   ### VALIDATIONS:
   
   validates :email,
