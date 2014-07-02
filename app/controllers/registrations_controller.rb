@@ -13,7 +13,7 @@ class RegistrationsController < Devise::RegistrationsController
   def require_invite_code
     @subscriber = Subscriber.find_by invite_code: invite_code
     
-    if @subscriber.blank? || @subscriber.invite_used?
+    if @subscriber.blank? # || @subscriber.invite_used?
       render 'registration_closed',
         layout: 'teaser',
         status: :forbidden
