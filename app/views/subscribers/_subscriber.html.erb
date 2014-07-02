@@ -2,6 +2,6 @@
   <td><%= subscriber.id %></td>
   <td><%= link_to subscriber.email, "mailto:#{subscriber.email}" %></td>
   <td><%= l subscriber.created_at, format: :short %></td>
-  <td><%= subscriber.users.map { |u| link_to u.id, "mailto:#{u.email}", title: u.email }.to_sentence %></td>
+  <td><%= subscriber.users.map { |u| link_to u.id, "mailto:#{u.email}", title: u.email }.to_sentence.html_safe %></td>
   <td><%= link_to subscriber.invite_code, new_user_registration_path(invite_code: subscriber.invite_code) %></td>
 </tr>
