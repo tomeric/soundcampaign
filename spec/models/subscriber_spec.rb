@@ -35,6 +35,12 @@ describe Subscriber do
         expect(subscriber.invite_used?).to be_true
       end
       
+      it "returns false if the invite_code is equal to code that was accidently used multiple times" do
+        subscriber.invite_code = 'aeca7c93d286c45b484d0e597b734e9a'
+        create :user, invite_code: subscriber.invite_code
+        expect(subscriber.invite_used?).to be_false
+      end
+      
       it "returns false if no user exists with the subscriber's invite_code" do
         subscriber.generate_invite_code
         User.where(invite_code: subscriber.invite_code).delete_all
