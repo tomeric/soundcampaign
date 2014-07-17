@@ -48,10 +48,11 @@ class Import < ActiveRecord::Base
   def parseable_spreadsheet
     begin
       require 'roo'
-      Roo::Spreadsheet.open(
-        spreadsheet_io.path,
+      spreadsheet = File.open(spreadsheet_io.path, 'r')
+      extension   = File.extname(spreadsheet).gsub('.', '')
+      Roo::Spreadsheet.open spreadsheet,
+        extension:   extension,
         csv_options: { encoding: spreadsheet_encoding }
-      )
     rescue
       nil
     end
