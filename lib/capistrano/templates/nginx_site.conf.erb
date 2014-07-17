@@ -48,6 +48,17 @@ server {
     break;
   }
   
+  location ^~ /contact_lists/ {
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $http_host;
+    proxy_read_timeout 600;
+    proxy_connect_timeout 600;
+    proxy_buffering off;
+    proxy_redirect off;
+    proxy_pass http://unicorn_<%= application %>;
+    break;
+  }
+  
   try_files $uri/index.html $uri @unicorn_<%= application %>;
   location @unicorn_<%= application %> {
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
