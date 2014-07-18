@@ -13,7 +13,7 @@ class ContactList < ActiveRecord::Base
   validates :name,
     presence: true,
     uniqueness: {
-      scope: :organization_id
+      scope: [:deleted_at, :organization_id]
     }
   
   ### CALLBACKS:
