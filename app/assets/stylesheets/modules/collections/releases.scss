@@ -24,11 +24,11 @@
     z-index: 9999;
   }
   
-  .edit {
+  .edit, .metrics {
     right: ($gridColumnWidth * 1.25 + 1) * 2;
   }
   
-  .send, .metrics {
+  .send, .resend {
     right: ($gridColumnWidth * 1.25 + 1);
   }
   
