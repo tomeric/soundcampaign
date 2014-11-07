@@ -32,12 +32,18 @@ class Campaign < ActiveRecord::Base
     collection = collection.flatten.compact
     return false unless collection.present?
     
-    collection.each do |list|
-      SendCampaignJob.perform_later(self, list)
+    if sent_at?
+      collection.each do |list|
+        SendCampaignReminderJob.perform_later(self, list)
+      end
+    else
+      collection.each do |list|
+        SendCampaignJob.perform_later(self, list)
+      end
+      
+      self.sent_at = Time.now
+      save!
     end
-    
-    self.sent_at = Time.now
-    save!
   end
   
 end
