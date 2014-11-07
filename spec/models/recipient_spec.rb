@@ -20,17 +20,41 @@ describe Recipient do
       subject(:recipient) { create :recipient }
       
       it 'returns true if the recipient has any email log with clicked_at set' do
-        create :email_log, recipient: recipient, clicked_at: Time.now
+        email_log = build :email_log, clicked_at: Time.now
+        recipient.stub(:email_logs)
+                 .and_return [email_log]
+        
+        expect(recipient.clicked_link?).to be true
+      end
+      
+      it 'returns true if the recipient has a TrackPlay release event' do
+        event = build :track_play_event
+        recipient.stub(:release_events)
+                 .and_return [event]
+        
+        expect(recipient.clicked_link?).to be true
+      end
+      
+      it 'returns true if the recipient has a Feedback release event' do
+        event = build :feedback_event
+        recipient.stub(:release_events)
+                 .and_return [event]
+        
         expect(recipient.clicked_link?).to be true
       end
       
       it 'returns false if the recipient has no email log with clicked_at set' do
-        create :email_log, recipient: recipient, clicked_at: nil
+        email_log = build :email_log, clicked_at: nil
+        recipient.stub(:email_logs)
+                 .and_return [email_log]
+        
         expect(recipient.clicked_link?).to be false
       end
       
       it 'returns false if the recipient has no email logs' do
-        expect(recipient.email_logs).to    be_empty
+        recipient.stub(:email_logs)
+                 .and_return []
+        
         expect(recipient.clicked_link?).to be false
       end
     end

@@ -8,6 +8,8 @@ class Recipient < ActiveRecord::Base
   
   has_many :email_logs
   
+  has_many :release_events
+  
   ### VALIDATIONS:
   
   validates :secret,
@@ -25,7 +27,16 @@ class Recipient < ActiveRecord::Base
   end
   
   def clicked_link?
-    email_logs.any? { |log| log.clicked_at.present? }
+    clicked_email = email_logs.any? do |log|
+      log.clicked_at.present?
+    end
+    
+    used_release = release_events.any? do |evt|
+      evt.is_a?(TrackPlayEvent) ||
+      evt.is_a?(FeedbackEvent)
+    end
+    
+    clicked_email || used_release
   end
   
   def set_unique_secret
