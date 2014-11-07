@@ -1,26 +1,56 @@
-<% title "Send \"#{@campaign.name}\" Campaign" %>
-<div class="release-campaign">
-  <div class="release-header">
-    <span class="release-header-title">Confirm &amp send: <%= @campaign.name %></span>
-  </div>
-  
-  <%= render 'steps', step: 3 %>
-  
-  <div class="release-content form-horizontal">
-    <div class="release-content-group">
-      <span class="release-content-title">Here is the overview of your campaign</span>
-      <p>
-        Check if everything is correct. If not you can return to a previous step and make changes.
-        <!--
-        <label class="right">
-          <input class="send-campaign-directly" type="checkbox" name="optionsRadios" id="optionsRadios1" value="option1" checked> Send campaign directly
-        </label>
-        -->
-      </p>
+<% if @campaign.sent_at? %>
+  <%
+  title "Resend \"#{@campaign.name}\" Campaign"
+  %>
+  <div class="release-campaign">
+    <div class="release-header">
+      <span class="release-header-title">Resend: <%= @campaign.name %></span>
     </div>
     
-    <%= render 'summary',       release: @release, campaign: @campaign %>
-    <%= render 'preview_form',  release: @release, campaign: @campaign %>
-    <%= render 'schedule_form', release: @release, campaign: @campaign %>
+    <div class="release-content form-horizontal">
+      <div class="release-content-group">
+        <span class="release-content-title">You will be resending this campaign</span>
+        <p>
+         This campaign will be sent to all recipients that are new or haven't visited the release page.
+          <!--
+          <label class="right">
+            <input class="send-campaign-directly" type="checkbox" name="optionsRadios" id="optionsRadios1" value="option1" checked> Send campaign directly
+          </label>
+          -->
+        </p>
+      </div>
+      
+      <%= render 'summary',       release: @release, campaign: @campaign %>
+      <%= render 'schedule_form', release: @release, campaign: @campaign %>
+    </div>
   </div>
-</div>
+<% else %>
+  <%
+  title "Send \"#{@campaign.name}\" Campaign"
+  %>
+  <div class="release-campaign">
+    <div class="release-header">
+      <span class="release-header-title">Confirm &amp send: <%= @campaign.name %></span>
+    </div>
+    
+    <%= render 'steps', step: 3 %>
+    
+    <div class="release-content form-horizontal">
+      <div class="release-content-group">
+        <span class="release-content-title">Here is the overview of your campaign</span>
+        <p>
+          Check if everything is correct. If not you can return to a previous step and make changes.
+          <!--
+          <label class="right">
+            <input class="send-campaign-directly" type="checkbox" name="optionsRadios" id="optionsRadios1" value="option1" checked> Send campaign directly
+          </label>
+          -->
+        </p>
+      </div>
+      
+      <%= render 'summary',       release: @release, campaign: @campaign %>
+      <%= render 'preview_form',  release: @release, campaign: @campaign %>
+      <%= render 'schedule_form', release: @release, campaign: @campaign %>
+    </div>
+  </div>
+<% end %>

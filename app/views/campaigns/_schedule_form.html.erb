@@ -54,6 +54,10 @@
     -->
   </div>
   <div class="release-footer">
-    <%= submit_tag 'Deliver campaign', class: 'btn btn-large' %>
+    <% if campaign.sent_at? %>
+      <%= submit_tag 'Resend campaign', class: 'btn btn-large' %>
+    <% else %>
+      <%= submit_tag 'Send campaign', class: 'btn btn-large' %>
+    <% end %>
   </div>
 <% end %>
