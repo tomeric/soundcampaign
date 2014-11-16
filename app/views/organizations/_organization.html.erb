@@ -10,7 +10,11 @@ feedbacks_count = organization.feedbacks.count
 %>
 <tr>
   <td class="org-id"><%= organization.id   %></td>
-  <td class="org-name"><%= organization.name %></td>
+  <td class="org-name">
+    <%= organization.name %>
+    —
+    <%= link_to 'Switch', switch_organization_path(organization), data: { method: 'put' } %>
+  </td>
   <td class="org-last-sign-in">
     <time title="<%= last_sign_in %>"><%= time_ago_in_words last_sign_in %> ago</time>
   </td>

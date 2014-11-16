@@ -18,4 +18,12 @@ class OrganizationsController < ApplicationController
     @plays_per_day = TrackEvent.number_of :plays, per: 1.day
   end
   
+  def switch
+    @organization = Organization.find params[:id]
+    current_user.organization = @organization
+    current_user.save
+    
+    redirect_to releases_url
+  end
+  
 end
