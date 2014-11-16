@@ -23,7 +23,7 @@ module SoundCampaign
     
     # Asset pipeline:
     config.assets.initialize_on_precompile = false
-    config.assets.precompile += %w(teaser.css teaser.js modernizr.js jplayer/Jplayer.swf)
+    config.assets.precompile += %w(print.css print.js teaser.css teaser.js modernizr.js jplayer/Jplayer.swf)
     
     # ActionMailer:
     config.action_mailer.default_url_options = { host: Settings.canonical_hostname }

@@ -38,6 +38,8 @@ gem 'devise'
 # Views:
 gem 'formtastic',   '>= 2.3.0.rc2'
 gem 'dynamic_form'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 # Asset Pipeline:
 gem 'sass-rails'

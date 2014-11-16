@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="print-layout no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="print-layout no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="print-layout no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="print-layout no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <title><%= page_title %></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= wicked_pdf_stylesheet_link_tag    :print     %>
+    <%= wicked_pdf_javascript_include_tag :modernizr %>
+    <%= wicked_pdf_javascript_include_tag :print     %>
+  </head>
+  <body>
+    <div class="container">
+      <header class="row">
+        <div class="logo">
+          <%= wicked_pdf_image_tag 'logo/print_logo.png', alt: 'Sound Campaign' %>
+        </div>
+      </header>
+      
+      <%= yield %>
+    </div>
+  </body>
+</html>

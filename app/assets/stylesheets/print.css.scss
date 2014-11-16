@@ -1,0 +1,82 @@
+body{
+    font-family: "Helvetica Neue";
+}
+.container{
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 960px;
+    color:#222222;
+    /*border: 1px solid #fafafa;*/
+}
+.logo img {
+  width: 20%;
+}
+.one{
+    width: 50%;
+    float:left;
+    line-height: 24px;
+}
+.row{
+    margin-bottom: 40px;
+}
+.number{
+    font-size: 32px;
+    margin-top: 16px;
+    color:#cdcdcd;
+    float:left;
+}
+h2{
+    color:#555555;
+    font-weight: normal;
+}
+.blue{
+    color:#1da8fc;
+}
+.feedback_list{
+    clear: both;
+    margin-left: auto;
+    margin-right: auto;
+    width: 700px;
+    padding-top: 80px;
+}
+p{
+    font-size: 16px;
+    line-height: 24px;
+}
+.name{
+    font-weight: bold;
+}
+.date{
+    color:#cdcdcd;
+    padding-top: 5px;
+}
+.ratings{
+    padding-top: 90px;
+}
+.track{
+    clear:both;
+    margin-top: 12px;
+    padding-top: 5px;
+}
+.track_name{
+    float:left;
+}
+.track_stars img{
+    float:left;
+    height: 16px;
+    width: 16px;
+}
+.track_stars{
+    margin-left:10px;
+    margin-top:4px;
+    float:left;
+}
+.track_in_feedback{
+    min-height: 50px;
+}
+
+.feedback-body {
+  clear: both;
+  overflow: hidden;
+}

@@ -1,0 +1,28 @@
+<div class="ratings">
+  <strong>Average track-ratings</strong>
+  <% tracks.each.with_index do |track, index| %>
+    <div class="track">
+      <div class="track_name"><%= (index + 1).to_s.rjust(2, '0') %>. <%= track.artist %> - <%= track.title %></div>
+      <% if (ratings = track.ratings.map(&:value).compact).present? %>
+        <%
+        average    = (ratings.sum.to_f / ratings.count).round
+        on_stars   = (average / 2).floor
+        half_stars = average.odd? ? 1 : 0
+        off_stars  = 5 - on_stars - half_stars
+        %>
+        <div class="track_stars">
+          <% on_stars.times do %>
+            <%= wicked_pdf_image_tag "icons/star-on-white@2x.png" %>
+          <% end %>
+          <% half_stars.times do %>
+            <%= wicked_pdf_image_tag "icons/star-half-white@2x.png" %>
+          <% end %>
+          <% off_stars.times do %>
+            <%= wicked_pdf_image_tag "icons/star-off-white@2x.png" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+

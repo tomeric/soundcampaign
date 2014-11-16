@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="one">
+    <h2><%= @campaign.name %></h2>
+    <%= render 'opens_and_feedback',
+          opens:      @open_count,
+          recipients: @recipient_count,
+          feedback:   @feedback_count   %>
+    <%= render 'average_track_ratings',
+          tracks: @tracks %>
+  </div>
+  
+  <div class="one">
+    <p class="date">Campaign date: <%= @campaign.sent_at.strftime('%Y/%m/%d') %></p>
+    
+    <%= render @feedbacks %>
+  </div>
+</div>

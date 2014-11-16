@@ -31,6 +31,13 @@ class MetricsController < ApplicationController
     
     # Grouped:
     @events_by_date = @events.group_by { |e| e.created_at.to_date }
+    
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: 'show', layout: 'application'
+      end
+    end
   end
   
   private
