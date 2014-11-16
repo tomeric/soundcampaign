@@ -43,6 +43,14 @@ class Release < ActiveRecord::Base
   
   ### SCOPES:
   
+  scope :order_by_creation, -> {
+    order(created_at: :desc)
+  }
+  
+  scope :order_by_send_date, -> {
+    order('campaigns.sent_at DESC, releases.created_at DESC')
+  }
+  
   scope :pending, -> {
     joins('LEFT JOIN campaigns ON campaigns.release_id = releases.id')
     .where('campaigns.sent_at IS NULL')

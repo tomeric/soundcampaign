@@ -1,6 +1,6 @@
 <%
-pending  = releases.pending
-finished = releases.finished
+pending  = releases.pending.order_by_creation
+finished = releases.finished.order_by_send_date
 %>
 <div class="releases faux-table">
   <div class="top">
