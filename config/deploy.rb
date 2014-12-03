@@ -1,3 +1,5 @@
+require 'whenever/capistrano'
+
 set :application, 'soundcampaign'
 set :rails_env,   'production'
 

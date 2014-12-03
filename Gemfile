@@ -5,6 +5,7 @@ gem 'rails', '= 4.0.0'
 
 # Background processing:
 gem 'daemons'
+gem 'whenever',                  require: false
 gem 'delayed_job_active_record'
 gem 'delayed_paperclip'
 gem 'delayed_job_web'

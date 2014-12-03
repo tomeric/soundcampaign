@@ -72,6 +72,7 @@ GEM
     celluloid (0.15.2)
       timers (~> 1.1.0)
     charlock_holmes (0.6.9.4)
+    chronic (0.10.2)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.3)
@@ -332,6 +333,8 @@ GEM
       rack (>= 1.0)
     waveformjson (0.0.2)
       ruby-audio
+    whenever (0.9.4)
+      chronic (>= 0.6.3)
     wicked_pdf (0.11.0)
       rails
     wkhtmltopdf-binary (0.9.9.3)
@@ -405,5 +408,6 @@ DEPENDENCIES
   uglifier
   unicorn
   waveformjson
+  whenever
   wicked_pdf
   wkhtmltopdf-binary
