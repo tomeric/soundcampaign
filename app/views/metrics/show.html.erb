@@ -1,6 +1,11 @@
 <% title "\"#{@campaign.name}\" Metrics" %>
 
 <div class="release-metrics">
+
+  <section class="metrics-options">
+    <%= link_to 'Export PDF', release_metrics_url(@release, format: 'pdf'), class: 'btn btn-primary', target: '_blank' %>
+  </section>
+ 
   <section class="metrics">
     <header class="metrics-activity-header">
       <h2>Metrics</h2>
