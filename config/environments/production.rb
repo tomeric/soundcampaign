@@ -82,6 +82,7 @@ SoundCampaign::Application.configure do
     config.paperclip_defaults = {
       storage:     :s3,
       url:         ":s3_domain_url",
+      s3_protocol: :https,
       path:        "/:class/:attachment/:id_partition/:hash.:extension",
       hash_secret: ENV['PAPERCLIP_HASH_SECRET'].presence,
       s3_credentials: {
