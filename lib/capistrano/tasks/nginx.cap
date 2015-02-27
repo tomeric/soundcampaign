@@ -2,6 +2,17 @@ namespace :nginx do
   desc 'Setup NGINX confiuration for this application'
   task :setup do
     on roles(:web) do
+      # SSL:
+      ['soundcampaign_com_bundle.crt', 'soundcampaign_com.key'].each do |ssl_file|
+        local_path = File.expand_path("../../templates/#{ssl_file}", __FILE__)
+        temp_path  = "#{fetch(:home_dir)}/#{ssl_file}"
+        final_path = "#{fetch(:ssl_path, '/etc/ssl')}/#{ssl_file}"
+        
+        upload!   local_path, temp_path
+        sudo :mv, temp_path,  final_path
+      end
+      
+      # NGINX conf:
       template = File.read File.expand_path('../../templates/nginx_site.conf.erb', __FILE__)
       result   = ERB.new(template).result(binding)
       

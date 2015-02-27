@@ -7,12 +7,26 @@ upstream unicorn_<%= application %> {
 }
 
 server {
-  listen 80 default deferred;
+  listen 80 default;
+  return 301 https://soundcampaign.com$request_uri;
+}
+
+server {
+  listen 443 ssl default deferred;
   
   access_log <%= nginx_log_path %>/<%= application %>_access.log;
   error_log  <%= nginx_log_path %>/<%= application %>_error.log;
   
   root <%= current_path %>/public;
+  
+  # REWRITE:
+  if ( $host !~ ^(soundcampaign.com)$ ) {
+    rewrite ^/(.*)$ https://soundcampaign.com$uri permanent;
+  }
+  
+  # SSL:
+  ssl_certificate     /etc/ssl/soundcampaign_com_bundle.crt;
+  ssl_certificate_key /etc/ssl/soundcampaign_com.key;
   
   if (-f $document_root/system/maintenance.html) {
     return 503;
