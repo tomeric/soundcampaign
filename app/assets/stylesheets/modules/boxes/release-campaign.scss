@@ -565,6 +565,15 @@
     
   }
 
+  .campaign-costs {
+    background: white;
+    width: 100%;
+    > div {
+      width: 50%;
+      float: left;
+      box-sizing: border-box;
+    }
+  }
 
   .release-footer {
     background: red;
