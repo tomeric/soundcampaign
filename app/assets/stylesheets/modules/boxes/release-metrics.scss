@@ -1,4 +1,9 @@
 .release-metrics {
+  .metrics-options {
+    float: left;
+    width: 100%;
+    text-align: right;
+  }
   .metrics {
     @include makeColumn(10.5);
     float: left;
