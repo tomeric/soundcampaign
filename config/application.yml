@@ -12,7 +12,6 @@ defaults: &defaults
   analytics:
     tracking_id: 'UA-45889403-1'
   urls:
-    blog: "http://blog.soundcampaign.com/"
     facebook: "https://www.facebook.com/SoundCampaign"
     twitter: "https://twitter.com/sound_campaign"
 
