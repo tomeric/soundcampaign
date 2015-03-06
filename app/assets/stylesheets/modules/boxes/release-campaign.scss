@@ -565,6 +565,71 @@
     
   }
 
+  .campaign-costs {
+    background: white;
+    width: 100%;
+    > div {
+      width: 420px;
+      float: left;
+      box-sizing: border-box;
+      .comment {
+        height: 40px;
+        padding: 10px 0;
+      }
+      .cost-box {
+        float: left;
+        box-sizing: border-box;
+        border-radius: 2px;
+        width: 100%;
+        margin:10px 0;
+        .price {
+          box-sizing: border-box;
+          display: block;
+          padding: 20px;
+          color: #767777;
+          float: left;
+          width: 185px;
+          text-align: center;
+          font-size: 60px;
+          .title {
+            font-size: 50px;
+            line-height: 50px;
+          }
+          .subtitle {
+            font-size: 13px;
+          }
+        }
+        .plus {
+          float: left;
+          width: 48px;
+          height: 100%;
+          display: block;
+          text-align: center;
+          color: #82D3F9;
+          font-weight: 800;
+          font-size: 55px;
+          line-height: 90px;
+        }
+      }
+    }
+    .campaign-cost-box-left {
+      .cost-box {
+        border: 1px solid #DDDDDD;
+        background: #F8F8F8;
+      }
+    }
+    .campaign-cost-box-right {
+      margin-left: 84px;
+      .cost-box {
+        border: 1px solid #8DCCF1;
+        background: #F0F9FE;
+        
+        .price {
+          width: 100%;
+        }
+      }
+    }
+  }
 
   .release-footer {
     background: red;

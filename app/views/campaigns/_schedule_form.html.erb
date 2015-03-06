@@ -53,11 +53,38 @@
     </div>
     -->
   </div>
+  <div class="release-content-group campaign-costs">
+    <span class="release-content-title">Campaign costs</span>
+    <p>Pay per campaign</p>
+    <div class="campaign-cost-box-left">
+      <div class="comment">No monthly costs, you pay per campaign plus a small fee per recipient.</div>
+      <div class="cost-box">
+        <div class="price">
+          <div class="title">$5.00</div>
+          <div class="subtitle">per campaign</div>
+        </div>
+        <div class="plus">+</div>
+        <div class="price">
+          <div class="title">$0.05</div>
+          <div class="subtitle">per recipient</div>
+        </div>
+      </div>
+    </div>
+    <div class="campaign-cost-box-right">
+      <div class="comment"><strong>Your campaign:</strong></div>
+       <div class="cost-box">
+        <div class="price">
+          <div class="title">$5.00</div>
+          <div class="subtitle">Your campaign total with <strong>200 recipients</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="release-footer">
     <% if campaign.sent_at? %>
-      <%= submit_tag 'Resend campaign', class: 'btn btn-large' %>
+      <%= submit_tag 'Pay and resend campaign', class: 'btn btn-large' %>
     <% else %>
-      <%= submit_tag 'Send campaign', class: 'btn btn-large' %>
+      <%= submit_tag 'Pay and send campaign', class: 'btn btn-large' %>
     <% end %>
   </div>
 <% end %>

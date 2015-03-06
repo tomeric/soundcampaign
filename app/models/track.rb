@@ -70,7 +70,7 @@ class Track < ActiveRecord::Base
   def url(style = :download, s3_options = {})
     s3_options = {
       expires_in: 10.minutes,
-      secure:     false
+      secure:     true
     }.merge(s3_options)
     
     if attachment.respond_to? :s3_object

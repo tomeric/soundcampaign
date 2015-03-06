@@ -18,6 +18,6 @@ module GravatarHelper
     
     hash = Digest::MD5.hexdigest(email.downcase)
     
-    image_tag "http://www.gravatar.com/avatar/#{hash}?size=#{size}#{default}", opts
+    image_tag "https://www.gravatar.com/avatar/#{hash}?size=#{size}#{default}", opts
   end
 end
