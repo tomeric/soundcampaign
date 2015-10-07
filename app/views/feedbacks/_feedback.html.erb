@@ -21,25 +21,27 @@ email   = contact.try(:email) || feedback.recipient.try(:email)
     <% if feedback.ratings.present? %>
       <ul class="tracks">
         <% feedback.ratings.each do |rating|%>
-          <li class="track">
-            <div class="rating">
-              <%
-              on_stars   = (rating.value / 2).floor
-              half_stars = rating.value.odd? ? 1 : 0
-              off_stars  = 5 - on_stars - half_stars
-              %>
-              <% on_stars.times do %>
-                <%= image_tag "icons/star-on-white.png" %>
-              <% end %>
-              <% half_stars.times do %>
-                <%= image_tag "icons/star-half-white.png" %>
-              <% end %>
-              <% off_stars.times do %>
-                <%= image_tag "icons/star-off-white.png" %>
-              <% end %>
-            </div>
-            <div class="filename"><%= rating.track.artist %> - <%= rating.track.title %></div>
-          </li>
+          <% if rating.track.present? %>
+            <li class="track">
+              <div class="rating">
+                <%
+                on_stars   = (rating.value / 2).floor
+                half_stars = rating.value.odd? ? 1 : 0
+                off_stars  = 5 - on_stars - half_stars
+                %>
+                <% on_stars.times do %>
+                  <%= image_tag "icons/star-on-white.png" %>
+                <% end %>
+                <% half_stars.times do %>
+                  <%= image_tag "icons/star-half-white.png" %>
+                <% end %>
+                <% off_stars.times do %>
+                  <%= image_tag "icons/star-off-white.png" %>
+                <% end %>
+              </div>
+              <div class="filename"><%= rating.track.artist %> - <%= rating.track.title %></div>
+            </li>
+          <% end %>
         <% end %>
       </ul>
     <% end %>

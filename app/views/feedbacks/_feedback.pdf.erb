@@ -8,25 +8,27 @@ email   = contact.try(:email) || feedback.recipient.try(:email)
   <div class="track_in_feedback">
     <% if feedback.ratings.present? %>
       <% feedback.ratings.each do |rating|%>
-        <div class="track">
-          <div class="track_name"><%= rating.track.artist %> - <%= rating.track.title %></div>
-          <div class="track_stars">
-            <%
-            on_stars   = (rating.value / 2).floor
-            half_stars = rating.value.odd? ? 1 : 0
-            off_stars  = 5 - on_stars - half_stars
-            %>
-            <% on_stars.times do %>
-              <%= wicked_pdf_image_tag "icons/star-on-white@2x.png" %>
-            <% end %>
-            <% half_stars.times do %>
-              <%= wicked_pdf_image_tag "icons/star-half-white@2x.png" %>
-            <% end %>
-            <% off_stars.times do %>
-              <%= wicked_pdf_image_tag "icons/star-off-white@2x.png" %>
-            <% end %>
+        <% if rating.track.present? %>
+          <div class="track">
+            <div class="track_name"><%= rating.track.artist %> - <%= rating.track.title %></div>
+            <div class="track_stars">
+              <%
+              on_stars   = (rating.value / 2).floor
+              half_stars = rating.value.odd? ? 1 : 0
+              off_stars  = 5 - on_stars - half_stars
+              %>
+              <% on_stars.times do %>
+                <%= wicked_pdf_image_tag "icons/star-on-white@2x.png" %>
+              <% end %>
+              <% half_stars.times do %>
+                <%= wicked_pdf_image_tag "icons/star-half-white@2x.png" %>
+              <% end %>
+              <% off_stars.times do %>
+                <%= wicked_pdf_image_tag "icons/star-off-white@2x.png" %>
+              <% end %>
+            </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
     <% end %>
   </div>
