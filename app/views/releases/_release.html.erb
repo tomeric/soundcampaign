@@ -13,13 +13,9 @@
   <% if release.campaign.try(:sent?) %>
     <%= link_to 'Metrics', [release, :metrics],
           class: 'action metrics' %>
-    <%= link_to 'Resend',  [:edit, release, :campaign],
-          class: 'action resend' %>
   <% else %>
     <%= link_to 'Edit',    [:edit, release],
           class: 'action edit' %>
-    <%= link_to 'Send',    [:new, release, :campaign],
-          class: 'action send' %>
   <% end %>
   <%=   link_to 'Public',  release,
           class: 'action public' %>

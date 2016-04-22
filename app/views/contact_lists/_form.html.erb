@@ -13,7 +13,8 @@ legend = @contact_list.new_record? ? "Create a new contact list" :
             class: 'delete-btn',
             data: { method: 'DELETE' } unless @contact_list.new_record? %>
       <%= f.submit 'Save',
-            class: 'submit-btn' %>
+            class: 'submit-btn',
+            disabled: true %>
     </li>
   <% end %>
 <% end %>

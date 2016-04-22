@@ -82,9 +82,9 @@
   </div>
   <div class="release-footer">
     <% if campaign.sent_at? %>
-      <%= submit_tag 'Pay and resend campaign', class: 'btn btn-large' %>
+      <%= submit_tag 'Pay and resend campaign', class: 'btn btn-large', disabled: true %>
     <% else %>
-      <%= submit_tag 'Pay and send campaign', class: 'btn btn-large' %>
+      <%= submit_tag 'Pay and send campaign', class: 'btn btn-large', disabled: true %>
     <% end %>
   </div>
 <% end %>

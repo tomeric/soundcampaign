@@ -60,6 +60,8 @@ class CampaignsController < ApplicationController
   end
   
   def deliver
+    raise "Delivering campaigns is no longer possible."
+    
     @campaign = @release.campaign
     
     contact_list_ids = Array.wrap(params[:contact_lists]).flatten.compact
